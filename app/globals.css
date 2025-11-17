@@ -1,0 +1,48 @@
+@import 'tailwindcss';
+
+@theme inline {
+  --font-sans: 'Georgia', ui-serif, serif;
+  --font-serif: 'Georgia', ui-serif, serif;
+  
+  /* Dark, cozy Christmas catalogue palette */
+  --color-background: #0f1410;
+  --color-foreground: #f4ede4;
+  
+  --color-card: #1a3a1a;
+  --color-card-foreground: #f4ede4;
+  
+  --color-popover: #1a2a1a;
+  --color-popover-foreground: #f4ede4;
+  
+  --color-primary: #5c1a1a;
+  --color-primary-foreground: #f4ede4;
+  
+  --color-secondary: #2a4a2a;
+  --color-secondary-foreground: #f4ede4;
+  
+  --color-muted: #1a2a1a;
+  --color-muted-foreground: #b8a896;
+  
+  --color-accent: #b8860b;
+  --color-accent-foreground: #0f1410;
+  
+  --color-destructive: #7a2a2a;
+  --color-destructive-foreground: #f4ede4;
+  
+  --color-border: #3a4a3a;
+  --color-input: #2a3a2a;
+  --color-ring: #b8860b;
+  
+  --radius: 0.25rem;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
+
+.vintage-border {
+  border: 2px solid #3a4a3a;
+  box-shadow: inset 0 0 0 1px rgba(184, 134, 11, 0.1);
+}
