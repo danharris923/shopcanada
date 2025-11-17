@@ -29,7 +29,7 @@ export default function Home() {
       },
       'ardene': {
         tagline: 'Affordable Fashion for Every Canadian',
-        image: '/placeholder.jpg',
+        image: '/ardene-fashion-lifestyle.jpg',
         founded: 'Montreal, 1982'
       }
     }

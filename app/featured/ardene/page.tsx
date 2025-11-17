@@ -22,8 +22,8 @@ export default function ArdenePage() {
 
         <div className="bg-[#0f1410] border-2 border-[#3a4a3a] p-8 mb-8">
           <img
-            src="/placeholder.jpg"
-            alt="Ardene fashion store"
+            src="/ardene-fashion-lifestyle.jpg"
+            alt="Ardene fashion lifestyle"
             className="w-full h-64 object-cover mb-6"
           />
 
