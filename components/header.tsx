@@ -27,40 +27,52 @@ export function Header() {
             </Link>
             
             {/* Categories Dropdown */}
-            <div 
-              className="relative"
-              onMouseEnter={() => setShowCategories(true)}
-              onMouseLeave={() => setShowCategories(false)}
-            >
-              <button className="text-[#f4ede4] hover:text-[#b8860b] transition-colors font-medium flex items-center gap-1">
+            <div className="relative">
+              <button
+                onClick={() => setShowCategories(!showCategories)}
+                className="text-[#f4ede4] hover:text-[#b8860b] transition-colors font-medium flex items-center gap-1"
+              >
                 Categories
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg
+                  className={`w-4 h-4 transition-transform ${showCategories ? 'rotate-180' : ''}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              
+
               {showCategories && (
-                <div className="absolute top-full left-0 mt-2 w-64 bg-[#0f1410] border-2 border-[#3a4a3a] shadow-xl">
-                  <div className="p-2">
-                    {categories.slice(0, 6).map((category) => (
+                <>
+                  <div
+                    className="fixed inset-0 z-10"
+                    onClick={() => setShowCategories(false)}
+                  />
+                  <div className="absolute top-full left-0 mt-2 w-64 bg-[#0f1410] border-2 border-[#3a4a3a] shadow-xl z-20 max-h-[500px] overflow-y-auto">
+                    <div className="p-2">
+                      {categories.map((category) => (
+                        <Link
+                          key={category.slug}
+                          href={`/category/${category.slug}`}
+                          onClick={() => setShowCategories(false)}
+                          className="flex items-center gap-3 px-4 py-3 text-[#f4ede4] hover:bg-[#1a2a1a] hover:text-[#b8860b] transition-colors"
+                        >
+                          <span className="text-xl">{category.icon}</span>
+                          <span className="flex-1">{category.name}</span>
+                          <span className="text-xs text-[#b8a896]">({category.brandCount})</span>
+                        </Link>
+                      ))}
                       <Link
-                        key={category.slug}
-                        href={`/category/${category.slug}`}
-                        className="flex items-center gap-3 px-4 py-3 text-[#f4ede4] hover:bg-[#1a2a1a] hover:text-[#b8860b] transition-colors"
+                        href="/categories"
+                        onClick={() => setShowCategories(false)}
+                        className="block px-4 py-3 text-[#b8860b] hover:text-[#d4a520] transition-colors font-bold text-sm mt-2 border-t border-[#3a4a3a]"
                       >
-                        <span className="text-xl">{category.icon}</span>
-                        <span className="flex-1">{category.name}</span>
-                        <span className="text-xs text-[#b8a896]">({category.brandCount})</span>
+                        View All Categories →
                       </Link>
-                    ))}
-                    <Link
-                      href="/categories"
-                      className="block px-4 py-3 text-[#b8860b] hover:text-[#d4a520] transition-colors font-bold text-sm mt-2 border-t border-[#3a4a3a]"
-                    >
-                      View All Categories →
-                    </Link>
+                    </div>
                   </div>
-                </div>
+                </>
               )}
             </div>
             
