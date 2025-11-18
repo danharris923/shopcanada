@@ -52,20 +52,12 @@ export default function ArdenePage() {
                 </ul>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 pt-6">
-                <a
-                  href="https://www.ardene.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 bg-transparent text-[#b8860b] px-8 py-4 font-bold text-center border-2 border-[#b8860b] hover:bg-[#5c1a1a] transition-colors"
-                >
-                  VISIT ARDENE.COM →
-                </a>
+              <div className="pt-6">
                 <a
                   href="https://shopstyle.it/l/cwE8W"
                   target="_blank"
                   rel="nofollow noopener noreferrer"
-                  className="flex-1 bg-[#b8860b] text-[#0f1410] px-8 py-4 font-bold text-center hover:bg-[#d4a520] transition-colors"
+                  className="block w-full bg-[#b8860b] text-[#0f1410] px-8 py-4 font-bold text-center hover:bg-[#d4a520] transition-colors"
                 >
                   ARDENE SALE ON NOW!
                 </a>

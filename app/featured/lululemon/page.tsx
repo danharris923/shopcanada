@@ -51,22 +51,14 @@ export default function LululemonPage() {
                 </ul>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 pt-6">
-                <a 
-                  href="https://shop.lululemon.com/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex-1 bg-[#b8860b] text-[#0f1410] px-8 py-4 font-bold text-center hover:bg-[#d4a520] transition-colors"
+              <div className="pt-6">
+                <a
+                  href="https://shopstyle.it/l/cwE20"
+                  target="_blank"
+                  rel="nofollow noopener noreferrer"
+                  className="block w-full bg-[#b8860b] text-[#0f1410] px-8 py-4 font-bold text-center hover:bg-[#d4a520] transition-colors"
                 >
-                  VISIT LULULEMON.COM →
-                </a>
-                <a 
-                  href="https://www.amazon.ca/s?k=Lululemon&tag=promopenguin-20" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex-1 bg-[#3a4a3a] text-[#f4ede4] px-8 py-4 font-bold text-center hover:bg-[#4a5a4a] transition-colors"
-                >
-                  SHOP ON AMAZON.CA
+                  WE MADE TOO MUCH SALE!
                 </a>
               </div>
             </div>
