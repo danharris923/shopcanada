@@ -108,14 +108,24 @@ export default function StanfieldsPage() {
               <p className="text-[#b8a896] mb-4">
                 Browse the full collection of Stanfield's thermal wear, wool clothing, and workwear.
               </p>
-              <a 
-                href="https://stanfields.com" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-[#b8860b] text-[#0f1410] px-6 py-3 font-bold hover:bg-[#d4a520] transition-colors"
-              >
-                VISIT STANFIELDS.COM →
-              </a>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a
+                  href="https://amzn.to/4okYQxr"
+                  target="_blank"
+                  rel="nofollow noopener noreferrer"
+                  className="flex-1 bg-[#b8860b] text-[#0f1410] px-6 py-3 font-bold hover:bg-[#d4a520] transition-colors text-center"
+                >
+                  SHOP ON AMAZON
+                </a>
+                <a
+                  href="https://stanfields.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 bg-[#3a4a3a] text-[#f4ede4] px-6 py-3 font-bold hover:bg-[#4a5a4a] transition-colors text-center"
+                >
+                  VISIT STANFIELDS.COM →
+                </a>
+              </div>
             </div>
           </div>
         </div>
