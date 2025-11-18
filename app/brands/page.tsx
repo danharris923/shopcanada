@@ -3,34 +3,6 @@ import { BrandCard } from '@/components/brand-card'
 export default function BrandsPage() {
   const brandStories = [
     {
-      name: "Lululemon",
-      description: "Founded in Vancouver in 1998, Lululemon revolutionized athleisure with innovative fabric technology and performance design. From buttery-soft Nulu leggings to the famous ABC pants, this global icon still carries its West Coast mindful energy.",
-      established: "Est. 1998",
-      href: "/featured/lululemon",
-      image: "/lululemon-yoga-pants-athletic-wear-storefront.jpg"
-    },
-    {
-      name: "Aritzia",
-      description: "Born in Vancouver in 1984, Aritzia has become a global fashion powerhouse known for elevated everyday essentials and cult-favorite pieces. The Super Puff jacket alone has achieved iconic status worldwide.",
-      established: "Est. 1984",
-      href: "/featured/aritzia",
-      image: "/aritzia-fashion-clothing-store-super-puff-jacket.jpg"
-    },
-    {
-      name: "Ardene",
-      description: "Founded in Montreal in 1982, Ardene delivers affordable, trend-forward fashion for every Canadian. With over 250 stores, this brand makes style accessible without breaking the bank.",
-      established: "Est. 1982",
-      href: "/featured/ardene",
-      image: "/ardene-fashion-lifestyle.jpg"
-    },
-    {
-      name: "Roots",
-      description: "Canadian craftsmanship since 1973, known for premium leather goods and cozy cabin-style clothing. A heritage brand built on comfort, quality, and authenticity.",
-      established: "Est. 1973",
-      href: "/brands/roots",
-      image: "/roots-leather-goods-vintage-catalogue-style-dark-w.jpg"
-    },
-    {
       name: "Canada Goose",
       description: "Born in Toronto in 1957, Canada Goose creates world-leading cold-weather parkas engineered for Arctic conditions. Unmatched performance and Canadian manufacturing.",
       established: "Est. 1957",
@@ -71,6 +43,34 @@ export default function BrandsPage() {
       established: "Est. 1977",
       href: "/brands/marks",
       image: "/marks-work-wearhouse-winter-boots-workwear-canadia.jpg"
+    },
+    {
+      name: "Lululemon",
+      description: "Founded in Vancouver in 1998, Lululemon revolutionized athleisure with innovative fabric technology and performance design. From buttery-soft Nulu leggings to the famous ABC pants, this global icon still carries its West Coast mindful energy.",
+      established: "Est. 1998",
+      href: "/featured/lululemon",
+      image: "/lululemon-yoga-pants-athletic-wear-storefront.jpg"
+    },
+    {
+      name: "Aritzia",
+      description: "Born in Vancouver in 1984, Aritzia has become a global fashion powerhouse known for elevated everyday essentials and cult-favorite pieces. The Super Puff jacket alone has achieved iconic status worldwide.",
+      established: "Est. 1984",
+      href: "/featured/aritzia",
+      image: "/aritzia-fashion-clothing-store-super-puff-jacket.jpg"
+    },
+    {
+      name: "Ardene",
+      description: "Founded in Montreal in 1982, Ardene delivers affordable, trend-forward fashion for every Canadian. With over 250 stores, this brand makes style accessible without breaking the bank.",
+      established: "Est. 1982",
+      href: "/featured/ardene",
+      image: "/ardene-fashion-lifestyle.jpg"
+    },
+    {
+      name: "Roots",
+      description: "Canadian craftsmanship since 1973, known for premium leather goods and cozy cabin-style clothing. A heritage brand built on comfort, quality, and authenticity.",
+      established: "Est. 1973",
+      href: "/brands/roots",
+      image: "/roots-leather-goods-vintage-catalogue-style-dark-w.jpg"
     }
   ]
 
