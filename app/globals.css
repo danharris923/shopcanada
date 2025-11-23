@@ -3,37 +3,46 @@
 @theme inline {
   --font-sans: 'Georgia', ui-serif, serif;
   --font-serif: 'Georgia', ui-serif, serif;
-  
-  /* Dark, cozy Christmas catalogue palette */
-  --color-background: #0f1410;
-  --color-foreground: #f4ede4;
-  
-  --color-card: #1a3a1a;
-  --color-card-foreground: #f4ede4;
-  
-  --color-popover: #1a2a1a;
-  --color-popover-foreground: #f4ede4;
-  
-  --color-primary: #5c1a1a;
-  --color-primary-foreground: #f4ede4;
-  
-  --color-secondary: #2a4a2a;
-  --color-secondary-foreground: #f4ede4;
-  
-  --color-muted: #1a2a1a;
-  --color-muted-foreground: #b8a896;
-  
-  --color-accent: #b8860b;
-  --color-accent-foreground: #0f1410;
-  
-  --color-destructive: #7a2a2a;
-  --color-destructive-foreground: #f4ede4;
-  
-  --color-border: #3a4a3a;
-  --color-input: #2a3a2a;
-  --color-ring: #b8860b;
-  
-  --radius: 0.25rem;
+
+  /* 2025 Modern Flat Dark Theme */
+  --color-bg: #0E0E11;
+  --color-surface: #15151A;
+  --color-text: #FFFFFF;
+  --color-text-secondary: #B5B5B8;
+  --color-accent: #E10600;
+  --color-accent-hover: #C10500;
+  --color-border-subtle: rgba(255, 255, 255, 0.06);
+
+  /* Legacy compatibility mappings */
+  --color-background: #0E0E11;
+  --color-foreground: #FFFFFF;
+
+  --color-card: #15151A;
+  --color-card-foreground: #FFFFFF;
+
+  --color-popover: #15151A;
+  --color-popover-foreground: #FFFFFF;
+
+  --color-primary: #E10600;
+  --color-primary-foreground: #FFFFFF;
+
+  --color-secondary: #15151A;
+  --color-secondary-foreground: #FFFFFF;
+
+  --color-muted: #15151A;
+  --color-muted-foreground: #B5B5B8;
+
+  --color-accent: #E10600;
+  --color-accent-foreground: #FFFFFF;
+
+  --color-destructive: #E10600;
+  --color-destructive-foreground: #FFFFFF;
+
+  --color-border: rgba(255, 255, 255, 0.06);
+  --color-input: #15151A;
+  --color-ring: #E10600;
+
+  --radius: 0.5rem;
 }
 
 body {
