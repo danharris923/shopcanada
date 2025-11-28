@@ -66,27 +66,7 @@ export function Footer() {
           </div>
         </div>
         
-        <div className="pt-8 text-center text-sm text-[#b8a896] space-y-2">
-          <p>
-            More great content: {' '}
-            <a
-              href="https://ashlyfraser.ca"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#b8860b] hover:text-[#d4a520] font-medium"
-            >
-              AshlyFraser.ca
-            </a>
-            {' '} | {' '}
-            <a
-              href="https://katiebooktok.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#b8860b] hover:text-[#d4a520] font-medium"
-            >
-              KatieBookTok.com
-            </a>
-          </p>
+        <div className="pt-8 text-center text-sm text-[#b8a896]">
           <p>© 2025 Shop Canada. Supporting Canadian manufacturing and craftsmanship.</p>
         </div>
       </div>
