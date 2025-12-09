@@ -41,7 +41,7 @@ export default function Home() {
   }).filter(Boolean)
 
   return (
-    <main className="bg-[#1a3a1a] min-h-screen">
+    <main className="bg-[#f5f0e8] min-h-screen">
       {/* Hero Section */}
       <section className="bg-[#0f1410] border-b-4 border-[#3a4a3a] py-16 px-6">
         <div className="max-w-6xl mx-auto text-center">
@@ -78,10 +78,10 @@ export default function Home() {
             <div className="inline-block bg-[#5c1a1a] px-6 py-3 mb-4">
               <span className="text-[#b8860b] font-bold">🇨🇦 FEATURED CANADIAN BRANDS</span>
             </div>
-            <h2 className="text-4xl font-serif text-[#f4ede4] mb-4">
+            <h2 className="text-4xl font-serif text-[#2a2a2a] mb-4">
               Icons of Canadian Retail
             </h2>
-            <p className="text-[#b8a896] max-w-2xl mx-auto leading-relaxed">
+            <p className="text-[#5a5a5a] max-w-2xl mx-auto leading-relaxed">
               These Canadian companies have built global reputations on quality, innovation, and authenticity. Learn their stories and shop with confidence.
             </p>
           </div>

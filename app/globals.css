@@ -8,8 +8,11 @@
   --color-background: #0f1410;
   --color-foreground: #f4ede4;
   
-  --color-card: #1a3a1a;
-  --color-card-foreground: #f4ede4;
+  --color-card: #f5f0e8;
+  --color-card-foreground: #2a2a2a;
+
+  /* Cream background for featured sections */
+  --color-cream: #f5f0e8;
   
   --color-popover: #1a2a1a;
   --color-popover-foreground: #f4ede4;

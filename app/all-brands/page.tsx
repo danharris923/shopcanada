@@ -16,30 +16,34 @@ export default function AllBrandsPage() {
   const letters = Object.keys(groupedBrands).sort()
 
   return (
-    <main className="min-h-screen bg-[#0f1410]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <Breadcrumbs 
-          items={[
-            { label: 'Home', href: '/' },
-            { label: 'All Brands' }
-          ]} 
-        />
-
-        <div className="mt-8">
-          <h1 className="text-4xl md:text-5xl font-serif text-[#b8860b] mb-4">
+    <main className="min-h-screen bg-[#f5f0e8]">
+      {/* Hero Section */}
+      <div className="bg-[#0f1410] py-16 px-6 border-b-4 border-[#3a4a3a]">
+        <div className="max-w-6xl mx-auto">
+          <div className="inline-block mb-4 px-4 py-2 bg-[#5c1a1a] text-[#b8860b] text-xs tracking-widest border border-[#b8860b]">
+            COMPLETE DIRECTORY • {brands.length} BRANDS
+          </div>
+          <h1 className="text-5xl md:text-6xl font-serif mb-6 text-[#f4ede4]">
             All Canadian Brands
           </h1>
-          <p className="text-xl text-[#b8a896] mb-8">
-            Complete directory of {brands.length} authentic Canadian brands
+          <p className="text-xl text-[#b8a896] max-w-3xl leading-relaxed">
+            Browse our complete directory of {brands.length} authentic Canadian brands.
+            From heritage manufacturers to modern innovators, find the perfect Canadian
+            company to support.
           </p>
+        </div>
+      </div>
 
+      {/* Main Content */}
+      <section className="py-16 px-6">
+        <div className="max-w-6xl mx-auto">
           {/* A-Z Index */}
           <div className="flex flex-wrap gap-2 mb-12 pb-6 border-b-2 border-[#3a4a3a]">
             {letters.map(letter => (
               <a
                 key={letter}
                 href={`#${letter}`}
-                className="w-10 h-10 flex items-center justify-center bg-[#1a2a1a] border-2 border-[#3a4a3a] text-[#b8860b] hover:bg-[#2a3a2a] hover:border-[#b8860b] transition-all font-bold"
+                className="w-10 h-10 flex items-center justify-center bg-[#0f1410] border-2 border-[#3a4a3a] text-[#b8860b] hover:bg-[#1a2a1a] hover:border-[#b8860b] transition-all font-bold"
               >
                 {letter}
               </a>
@@ -49,7 +53,7 @@ export default function AllBrandsPage() {
           {/* Brand Groups */}
           {letters.map(letter => (
             <div key={letter} id={letter} className="mb-12">
-              <h2 className="text-3xl font-serif text-[#b8860b] mb-6 pb-2 border-b border-[#3a4a3a]">
+              <h2 className="text-3xl font-serif text-[#5c1a1a] mb-6 pb-2 border-b border-[#3a4a3a]">
                 {letter}
               </h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -57,16 +61,16 @@ export default function AllBrandsPage() {
                   <Link
                     key={brand.slug}
                     href={`/brand/${brand.slug}`}
-                    className="group flex items-center gap-4 p-4 bg-[#1a2a1a] border-2 border-[#3a4a3a] hover:border-[#b8860b] transition-all"
+                    className="group flex items-center gap-4 p-4 bg-white border-2 border-[#3a4a3a] hover:border-[#b8860b] transition-all"
                   >
                     <div className="w-12 h-12 bg-[#0f1410] border border-[#3a4a3a] flex items-center justify-center shrink-0">
                       <span className="text-2xl">🍁</span>
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="text-lg font-bold text-[#f4ede4] group-hover:text-[#b8860b] truncate">
+                      <h3 className="text-lg font-bold text-[#2a2a2a] group-hover:text-[#b8860b] truncate">
                         {brand.name}
                       </h3>
-                      <p className="text-sm text-[#b8a896]">{brand.category}</p>
+                      <p className="text-sm text-[#5a5a5a]">{brand.category}</p>
                     </div>
                   </Link>
                 ))}
@@ -74,7 +78,7 @@ export default function AllBrandsPage() {
             </div>
           ))}
         </div>
-      </div>
+      </section>
     </main>
   )
 }

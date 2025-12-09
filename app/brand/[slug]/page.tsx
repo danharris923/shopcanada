@@ -37,7 +37,7 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
 
           <div className="flex-1">
             {/* Brand Hero */}
-            <div className="mb-12 bg-[#1a3a1a] border-4 border-[#3a4a3a] p-12">
+            <div className="mb-12 bg-[#f5f0e8] border-4 border-[#3a4a3a] p-12">
               <div className="flex items-center gap-8 mb-8">
                 <div className="w-32 h-32 bg-[#0f1410] border-2 border-[#b8860b] flex items-center justify-center">
                   <span className="text-6xl">🍁</span>
@@ -46,14 +46,14 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
                   <div className="inline-block mb-2 px-3 py-1 bg-[#5c1a1a] text-[#b8860b] text-xs tracking-widest border border-[#b8860b]">
                     CANADIAN {brand.category.toUpperCase()}
                   </div>
-                  <h1 className="text-5xl font-serif text-[#f4ede4] mb-2">{brand.name}</h1>
-                  <p className="text-xl text-[#b8a896]">
+                  <h1 className="text-5xl font-serif text-[#2a2a2a] mb-2">{brand.name}</h1>
+                  <p className="text-xl text-[#5a5a5a]">
                     Proudly Canadian
                   </p>
                 </div>
               </div>
 
-              <p className="text-lg text-[#f4ede4] leading-relaxed mb-8">
+              <p className="text-lg text-[#2a2a2a] leading-relaxed mb-8">
                 {brand.description}
               </p>
 
@@ -98,11 +98,11 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
 
             {/* Extended Brand Story (only if available) */}
             {brand.brandStory && (
-              <div className="mb-12 p-8 bg-[#1a3a1a] border-4 border-[#b8860b]/30">
-                <h2 className="text-3xl font-serif text-[#b8860b] mb-6">The {brand.name} Story</h2>
-                <div className="prose prose-invert max-w-none">
+              <div className="mb-12 p-8 bg-[#f5f0e8] border-4 border-[#b8860b]/30">
+                <h2 className="text-3xl font-serif text-[#5c1a1a] mb-6">The {brand.name} Story</h2>
+                <div className="prose max-w-none">
                   <div
-                    className="text-[#f4ede4] leading-relaxed space-y-4"
+                    className="text-[#2a2a2a] leading-relaxed space-y-4"
                     dangerouslySetInnerHTML={{ __html: brand.brandStory }}
                   />
                 </div>

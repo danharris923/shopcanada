@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function StanfieldsPage() {
   return (
-    <main className="bg-[#1a3a1a] min-h-screen">
+    <main className="bg-[#f5f0e8] min-h-screen">
       <Breadcrumbs items={[
         { label: 'Home', href: '/' },
         { label: 'Featured Brands', href: '/#featured' },
@@ -20,10 +20,10 @@ export default function StanfieldsPage() {
           <div className="inline-block bg-[#5c1a1a] px-4 py-2 mb-4">
             <span className="text-[#b8860b] font-bold text-sm">🇨🇦 FEATURED CANADIAN BRAND</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-serif text-[#f4ede4] mb-4 text-balance">
+          <h1 className="text-4xl md:text-5xl font-serif text-[#2a2a2a] mb-4 text-balance">
             Stanfield's — A Deep Dive Into 166+ Years of Canadian Woolen Craftsmanship
           </h1>
-          <p className="text-xl text-[#b8a896] leading-relaxed">
+          <p className="text-xl text-[#5a5a5a] leading-relaxed">
             Founded in 1856 in Nova Scotia, Stanfield's is Canada's original wool and thermal clothing company. Known for warm, durable garments built to withstand real Canadian winters.
           </p>
         </div>

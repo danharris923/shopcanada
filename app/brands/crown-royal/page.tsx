@@ -48,15 +48,15 @@ export default function CrownRoyalPage() {
       </div>
 
       {/* Hero */}
-      <div className="bg-[#1a3a1a] py-16 px-6 border-b-4 border-[#3a4a3a]">
+      <div className="bg-[#f5f0e8] py-16 px-6 border-b-4 border-[#3a4a3a]">
         <div className="max-w-4xl mx-auto">
           <div className="inline-block mb-4 px-4 py-2 bg-[#5c1a1a] text-[#b8860b] text-xs tracking-widest border border-[#b8860b]">
             🇨🇦 BRAND STORY • EST. 1939
           </div>
-          <h1 className="text-5xl md:text-6xl font-serif mb-6 text-[#f4ede4] text-balance">
+          <h1 className="text-5xl md:text-6xl font-serif mb-6 text-[#2a2a2a] text-balance">
             Crown Royal — Canada's Legendary Whisky Icon
           </h1>
-          <p className="text-xl text-[#b8a896] leading-relaxed">
+          <p className="text-xl text-[#5a5a5a] leading-relaxed">
             Crafted in Manitoba as a gift for royalty, Crown Royal became one of the world's most recognized Canadian whiskies.
           </p>
         </div>

@@ -3,17 +3,17 @@ import { ProductCard } from '@/components/product-card'
 export default function GiftGuidePage() {
   return (
     <main className="min-h-screen bg-[#0f1410]">
-      <div className="bg-[#1a3a1a] py-16 px-6 border-b-4 border-[#3a4a3a]">
+      <div className="bg-[#f5f0e8] py-16 px-6 border-b-4 border-[#3a4a3a]">
         <div className="max-w-6xl mx-auto">
           <div className="inline-block mb-4 px-4 py-2 bg-[#5c1a1a] text-[#b8860b] text-xs tracking-widest border border-[#b8860b]">
             CANADIAN GIFTS • SUPPORT LOCAL
           </div>
-          <h1 className="text-5xl md:text-6xl font-serif mb-6 text-[#f4ede4]">
+          <h1 className="text-5xl md:text-6xl font-serif mb-6 text-[#2a2a2a]">
             Canadian Gift Guide 2025
           </h1>
-          <p className="text-xl text-[#b8a896] max-w-3xl leading-relaxed">
-            Quality gifts that support Canadian businesses and manufacturing. From practical 
-            essentials to special occasion pieces, these are products people will actually use 
+          <p className="text-xl text-[#5a5a5a] max-w-3xl leading-relaxed">
+            Quality gifts that support Canadian businesses and manufacturing. From practical
+            essentials to special occasion pieces, these are products people will actually use
             and appreciate—not dust collectors.
           </p>
         </div>
@@ -107,11 +107,11 @@ export default function GiftGuidePage() {
         </div>
       </section>
 
-      <section className="py-16 px-6 bg-[#1a3a1a] border-t-4 border-[#3a4a3a]">
+      <section className="py-16 px-6 bg-[#f5f0e8] border-t-4 border-[#3a4a3a]">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-serif mb-6 text-[#b8860b]">Last-Minute Canadian Gifts</h2>
-          <p className="text-xl text-[#b8a896] mb-8 leading-relaxed">
-            Need something fast? These Canadian brands offer quick shipping and digital gift cards 
+          <h2 className="text-4xl font-serif mb-6 text-[#5c1a1a]">Last-Minute Canadian Gifts</h2>
+          <p className="text-xl text-[#5a5a5a] mb-8 leading-relaxed">
+            Need something fast? These Canadian brands offer quick shipping and digital gift cards
             so you can support local even when you're running out of time.
           </p>
           <button className="px-8 py-4 bg-[#b8860b] text-[#0f1410] font-bold tracking-wide hover:bg-[#d4a520] transition-colors">

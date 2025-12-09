@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  shopcanada-cc:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: shopcanada-cc
+    ports:
+      - "3002:3000"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped

@@ -3,7 +3,7 @@ import { Breadcrumbs } from '@/components/breadcrumbs'
 
 export default function AritziaPage() {
   return (
-    <main className="bg-[#1a3a1a] min-h-screen">
+    <main className="bg-[#f5f0e8] min-h-screen">
       <Breadcrumbs items={[
         { label: 'Home', href: '/' },
         { label: 'Featured Brands', href: '/#featured' },
@@ -15,7 +15,7 @@ export default function AritziaPage() {
           <div className="inline-block bg-[#5c1a1a] px-4 py-2 mb-4">
             <span className="text-[#b8860b] font-bold text-sm">🇨🇦 FEATURED CANADIAN BRAND</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-serif text-[#f4ede4] mb-4 text-balance">
+          <h1 className="text-4xl md:text-5xl font-serif text-[#2a2a2a] mb-4 text-balance">
             Aritzia: Elevated Canadian Fashion With a Cult Following
           </h1>
         </div>

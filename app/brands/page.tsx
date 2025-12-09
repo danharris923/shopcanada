@@ -75,8 +75,8 @@ export default function BrandsPage() {
   ]
 
   return (
-    <main className="min-h-screen">
-      <div className="bg-[#1a3a1a] py-16 px-6 border-b-4 border-[#3a4a3a]">
+    <main className="min-h-screen bg-[#f5f0e8]">
+      <div className="bg-[#0f1410] py-16 px-6 border-b-4 border-[#3a4a3a]">
         <div className="max-w-6xl mx-auto">
           <div className="inline-block mb-4 px-4 py-2 bg-[#5c1a1a] text-[#b8860b] text-xs tracking-widest border border-[#b8860b]">
             HERITAGE • CRAFTSMANSHIP • CANADIAN PRIDE
@@ -85,14 +85,14 @@ export default function BrandsPage() {
             Canadian Brand Stories
           </h1>
           <p className="text-xl text-[#b8a896] max-w-3xl leading-relaxed">
-            Deep dives into the companies that built Canadian manufacturing heritage. 
-            From century-old textile mills to modern outdoor innovators, these brands 
+            Deep dives into the companies that built Canadian manufacturing heritage.
+            From century-old textile mills to modern outdoor innovators, these brands
             represent quality, durability, and keeping jobs in Canada.
           </p>
         </div>
       </div>
 
-      <section className="py-16 px-6 bg-[#0f1410]">
+      <section className="py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {brandStories.map((brand) => (

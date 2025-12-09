@@ -48,15 +48,15 @@ export default function CanadaGoosePage() {
       </div>
 
       {/* Hero */}
-      <div className="bg-[#1a3a1a] py-16 px-6 border-b-4 border-[#3a4a3a]">
+      <div className="bg-[#f5f0e8] py-16 px-6 border-b-4 border-[#3a4a3a]">
         <div className="max-w-4xl mx-auto">
           <div className="inline-block mb-4 px-4 py-2 bg-[#5c1a1a] text-[#b8860b] text-xs tracking-widest border border-[#b8860b]">
             🇨🇦 BRAND STORY • EST. 1957
           </div>
-          <h1 className="text-5xl md:text-6xl font-serif mb-6 text-[#f4ede4] text-balance">
+          <h1 className="text-5xl md:text-6xl font-serif mb-6 text-[#2a2a2a] text-balance">
             Canada Goose — From Toronto Factory Floors to the Arctic
           </h1>
-          <p className="text-xl text-[#b8a896] leading-relaxed">
+          <p className="text-xl text-[#5a5a5a] leading-relaxed">
             Few brands represent extreme weather gear the way Canada Goose does. Built on performance engineering for brutal temperatures.
           </p>
         </div>

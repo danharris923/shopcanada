@@ -1,12 +1,12 @@
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-[#0f1410]">
-      <div className="bg-[#1a3a1a] py-16 px-6 border-b-4 border-[#3a4a3a]">
+      <div className="bg-[#f5f0e8] py-16 px-6 border-b-4 border-[#3a4a3a]">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-serif mb-6 text-[#f4ede4]">
+          <h1 className="text-5xl md:text-6xl font-serif mb-6 text-[#2a2a2a]">
             About The Canadian Catalogue
           </h1>
-          <p className="text-xl text-[#b8a896] leading-relaxed">
+          <p className="text-xl text-[#5a5a5a] leading-relaxed">
             A practical guide to shopping Canadian in an era of trade uncertainty.
           </p>
         </div>
