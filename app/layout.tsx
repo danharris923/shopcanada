@@ -24,6 +24,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <script defer src="https://analytics.promopenguin.ca/script.js" data-website-id="30045994-c858-4e3a-bb6c-fc15e2471852"></script>
+      </head>
       <body className={merriweather.className}>
         <Header />
         {children}
