@@ -32,6 +32,8 @@ import { StockWarning } from '@/components/deal/StockWarning'
 import { TrustBadges, StoreBadge } from '@/components/deal/TrustBadges'
 import { Breadcrumbs } from '@/components/deal/Breadcrumbs'
 import { StickyMobileCTA } from '@/components/deal/StickyMobileCTA'
+import { Header } from '@/components/Header'
+import { Footer } from '@/components/Footer'
 
 interface PageProps {
   params: { slug: string }
@@ -108,8 +110,10 @@ export default async function DealPage({ params }: PageProps) {
         }}
       />
 
+      <Header />
+
       {/* ABOVE THE FOLD - Maximum CTR Zone */}
-      <div className="min-h-screen">
+      <div className="min-h-screen bg-cream">
         {/* Layer 1: Urgency Banner */}
         <UrgencyBanner
           hours={countdown.hours}
@@ -136,34 +140,22 @@ export default async function DealPage({ params }: PageProps) {
             <div className="relative">
               {/* Discount Badge */}
               {deal.discount_percent && deal.discount_percent > 0 && (
-                <div className="absolute top-4 right-4 z-10">
-                  <span className="
-                    bg-red-600 text-white
-                    px-4 py-2 rounded-xl
-                    font-black text-2xl
-                    shadow-lg
-                  ">
-                    -{deal.discount_percent}%
-                  </span>
+                <div className="discount-badge text-2xl px-4 py-2">
+                  -{deal.discount_percent}%
                 </div>
               )}
 
               {/* Lowest Ever Badge */}
               {urgencyData.isLowestEver && (
                 <div className="absolute top-4 left-4 z-10">
-                  <span className="
-                    bg-yellow-400 text-yellow-900
-                    px-3 py-1.5 rounded-lg
-                    font-bold text-sm
-                    shadow-md
-                  ">
+                  <span className="badge-hot px-3 py-1.5 text-sm">
                     🏆 LOWEST PRICE EVER
                   </span>
                 </div>
               )}
 
               {/* Image */}
-              <div className="relative aspect-square bg-gray-100 rounded-2xl overflow-hidden">
+              <div className="relative aspect-square bg-ivory rounded-card overflow-hidden">
                 <Image
                   src={imageUrl}
                   alt={deal.title}
@@ -180,13 +172,13 @@ export default async function DealPage({ params }: PageProps) {
               {/* Store Badge */}
               <div className="mb-3 flex items-center gap-2">
                 <StoreBadge store={deal.store} />
-                <span className="text-gray-500 text-sm">
+                <span className="text-silver text-sm">
                   at {storeName}
                 </span>
               </div>
 
               {/* Title */}
-              <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+              <h1 className="text-2xl md:text-3xl font-bold text-charcoal mb-4">
                 {deal.title}
               </h1>
 
@@ -226,24 +218,24 @@ export default async function DealPage({ params }: PageProps) {
               </div>
 
               {/* Quick Stats */}
-              <div className="grid grid-cols-3 gap-4 text-center bg-gray-50 rounded-xl p-4">
+              <div className="grid grid-cols-3 gap-4 text-center bg-ivory rounded-card p-4">
                 <div>
-                  <div className="text-2xl font-bold text-green-600">
+                  <div className="text-2xl font-bold text-maple-red">
                     {deal.discount_percent || 0}%
                   </div>
-                  <div className="text-xs text-gray-500">Discount</div>
+                  <div className="text-xs text-silver">Discount</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-gray-900">
+                  <div className="text-2xl font-bold text-charcoal">
                     ${calculateSavings(deal.original_price, deal.price)?.split('.')[0] || '0'}
                   </div>
-                  <div className="text-xs text-gray-500">You Save</div>
+                  <div className="text-xs text-silver">You Save</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-orange-600">
+                  <div className="text-2xl font-bold text-burgundy">
                     {urgencyData.purchaseCount}
                   </div>
-                  <div className="text-xs text-gray-500">Sold Today</div>
+                  <div className="text-xs text-silver">Sold Today</div>
                 </div>
               </div>
             </div>
@@ -255,26 +247,20 @@ export default async function DealPage({ params }: PageProps) {
             <div className="md:col-span-2 space-y-8">
               {/* Generated Description */}
               <section className="prose max-w-none">
-                <h2 className="text-xl font-bold text-gray-900 mb-4">
-                  About This Deal
-                </h2>
-                <p className="text-gray-600 leading-relaxed">
-                  {description}
-                </p>
+                <h2>About This Deal</h2>
+                <p>{description}</p>
                 {deal.description && (
-                  <p className="text-gray-600 leading-relaxed mt-4">
-                    {deal.description}
-                  </p>
+                  <p>{deal.description}</p>
                 )}
               </section>
 
               {/* Store Info */}
               {storeDescription && (
                 <section>
-                  <h2 className="text-xl font-bold text-gray-900 mb-4">
+                  <h2 className="text-xl font-bold text-charcoal mb-4">
                     About {storeName}
                   </h2>
-                  <p className="text-gray-600">
+                  <p className="text-slate">
                     {storeDescription}
                   </p>
                 </section>
@@ -282,16 +268,16 @@ export default async function DealPage({ params }: PageProps) {
 
               {/* FAQ Section */}
               <section>
-                <h2 className="text-xl font-bold text-gray-900 mb-4">
+                <h2 className="text-xl font-bold text-charcoal mb-4">
                   Frequently Asked Questions
                 </h2>
                 <div className="space-y-4">
                   {faqs.map((faq, index) => (
-                    <div key={index} className="border border-gray-200 rounded-lg p-4">
-                      <h3 className="font-semibold text-gray-900 mb-2">
+                    <div key={index} className="border border-silver-light rounded-card p-4">
+                      <h3 className="font-semibold text-charcoal mb-2">
                         {faq.question}
                       </h3>
-                      <p className="text-gray-600 text-sm">
+                      <p className="text-slate text-sm">
                         {faq.answer}
                       </p>
                     </div>
@@ -304,7 +290,7 @@ export default async function DealPage({ params }: PageProps) {
             <div className="space-y-6">
               {/* Sticky CTA (desktop) */}
               <div className="sticky top-4 space-y-4 hidden md:block">
-                <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+                <div className="bg-white border border-silver-light rounded-card p-4 shadow-card">
                   <PriceDisplay
                     currentPrice={deal.price}
                     originalPrice={deal.original_price}
@@ -322,8 +308,8 @@ export default async function DealPage({ params }: PageProps) {
 
                 {/* Related Deals */}
                 {relatedDeals.length > 0 && (
-                  <div className="bg-gray-50 rounded-xl p-4">
-                    <h3 className="font-bold text-gray-900 mb-3">
+                  <div className="bg-ivory rounded-card p-4">
+                    <h3 className="font-bold text-charcoal mb-3">
                       Related Deals
                     </h3>
                     <div className="space-y-3">
@@ -334,7 +320,7 @@ export default async function DealPage({ params }: PageProps) {
                           className="block group"
                         >
                           <div className="flex items-center gap-3">
-                            <div className="w-12 h-12 bg-gray-200 rounded-lg overflow-hidden flex-shrink-0">
+                            <div className="w-12 h-12 bg-warm-grey rounded-lg overflow-hidden flex-shrink-0">
                               {(related.image_blob_url || related.image_url) && (
                                 <Image
                                   src={related.image_blob_url || related.image_url || ''}
@@ -346,11 +332,11 @@ export default async function DealPage({ params }: PageProps) {
                               )}
                             </div>
                             <div className="flex-1 min-w-0">
-                              <div className="text-sm font-medium text-gray-900 truncate group-hover:text-orange-600">
+                              <div className="text-sm font-medium text-charcoal truncate group-hover:text-maple-red">
                                 {related.title}
                               </div>
                               {related.price && (
-                                <div className="text-sm text-green-600 font-bold">
+                                <div className="text-sm text-maple-red font-bold">
                                   ${formatPrice(related.price)}
                                 </div>
                               )}
@@ -373,6 +359,8 @@ export default async function DealPage({ params }: PageProps) {
           storeName={storeName}
         />
       </div>
+
+      <Footer />
     </>
   )
 }

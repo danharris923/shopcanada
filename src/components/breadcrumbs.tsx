@@ -20,16 +20,16 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
               {item.href && !isLast ? (
                 <Link
                   href={item.href}
-                  className="text-[#b8860b] hover:text-[#d4a520] transition-colors tracking-wider uppercase text-xs"
+                  className="text-maple-red hover:text-burgundy transition-colors tracking-wider uppercase text-xs"
                 >
                   {item.label}
                 </Link>
               ) : (
-                <span className="text-[#f4ede4] tracking-wider uppercase text-xs">
+                <span className="text-charcoal tracking-wider uppercase text-xs font-medium">
                   {item.label}
                 </span>
               )}
-              {!isLast && <span className="text-[#b8a896]">/</span>}
+              {!isLast && <span className="text-silver">/</span>}
             </li>
           )
         })}

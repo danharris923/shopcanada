@@ -33,16 +33,14 @@ export function CTAButton({
 
   const variantClasses = {
     primary: `
-      bg-gradient-to-r from-orange-500 to-red-600
-      hover:from-orange-400 hover:to-red-500
-      shadow-lg shadow-red-500/30
-      hover:shadow-xl hover:shadow-red-500/40
+      bg-maple-red hover:bg-burgundy
+      shadow-lg shadow-maple-red/30
+      hover:shadow-xl hover:shadow-burgundy/40
     `,
     secondary: `
-      bg-gradient-to-r from-green-500 to-green-600
-      hover:from-green-400 hover:to-green-500
-      shadow-lg shadow-green-500/30
-      hover:shadow-xl hover:shadow-green-500/40
+      bg-burgundy hover:bg-burgundy-dark
+      shadow-lg shadow-burgundy/30
+      hover:shadow-xl hover:shadow-burgundy-dark/40
     `,
   }
 
@@ -62,7 +60,7 @@ export function CTAButton({
         ${fullWidth ? 'w-full' : ''}
         ${animate ? 'animate-pulse hover:animate-none' : ''}
         text-white font-black uppercase tracking-wide
-        rounded-xl
+        rounded-button
         transition-all duration-200
         hover:scale-105 active:scale-95
       `}
@@ -99,9 +97,9 @@ export function SecondaryCTA({
       className="
         inline-flex items-center justify-center
         py-3 px-6 w-full
-        bg-gray-100 hover:bg-gray-200
-        text-gray-700 font-medium
-        rounded-xl
+        bg-ivory hover:bg-warm-grey
+        text-charcoal font-medium
+        rounded-button
         transition-colors duration-200
       "
     >

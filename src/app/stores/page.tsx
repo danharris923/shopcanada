@@ -28,14 +28,14 @@ export default function StoresPage() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-gray-50">
+      <main className="min-h-screen bg-cream">
         {/* Hero */}
-        <section className="bg-gradient-to-r from-red-600 to-orange-500 text-white py-12">
+        <section className="bg-burgundy text-white py-12">
           <div className="max-w-7xl mx-auto px-4 text-center">
             <h1 className="text-4xl font-bold mb-4">
               All Stores
             </h1>
-            <p className="text-white/90 text-lg max-w-2xl mx-auto">
+            <p className="text-silver-light text-lg max-w-2xl mx-auto">
               Browse deals from {allStores.length}+ major Canadian retailers. We track prices from
               Amazon, Walmart, Costco, Best Buy, and many more.
             </p>
@@ -43,18 +43,18 @@ export default function StoresPage() {
         </section>
 
         {/* Featured Stores */}
-        <section className="py-8 px-4 bg-white border-b">
+        <section className="py-8 px-4 bg-white border-b border-silver-light">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">Featured Stores</h2>
+            <h2 className="text-xl font-bold text-charcoal mb-4">Featured Stores</h2>
             <div className="flex flex-wrap gap-4 justify-center md:justify-start">
               {featuredStores.map((store) => (
                 <Link
                   key={store.slug}
                   href={`/stores/${store.slug}`}
-                  className="group flex items-center gap-3 bg-gray-50 hover:bg-white rounded-xl border border-gray-200 hover:border-red-500 hover:shadow-lg transition-all px-4 py-3"
+                  className="group flex items-center gap-3 bg-ivory hover:bg-white rounded-card border border-silver-light hover:border-maple-red hover:shadow-card transition-all px-4 py-3"
                 >
                   <StoreLogo src={store.logo} alt={store.name} domain={store.domain} size={40} />
-                  <span className="font-semibold text-gray-900 group-hover:text-red-600 transition-colors">
+                  <span className="font-semibold text-charcoal group-hover:text-maple-red transition-colors">
                     {store.name}
                   </span>
                 </Link>
@@ -75,9 +75,9 @@ export default function StoresPage() {
 
               return (
                 <div key={category}>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                  <h2 className="text-2xl font-bold text-charcoal mb-6 flex items-center gap-2">
                     {category}
-                    <span className="text-sm font-normal text-gray-500">
+                    <span className="text-sm font-normal text-silver">
                       ({categoryStores.length} stores)
                     </span>
                   </h2>
@@ -86,12 +86,12 @@ export default function StoresPage() {
                       <Link
                         key={store.slug}
                         href={`/stores/${store.slug}`}
-                        className="group bg-white rounded-xl border border-gray-200 p-4 hover:border-red-500 hover:shadow-lg transition-all text-center"
+                        className="store-card group"
                       >
                         <div className="flex justify-center mb-3">
                           <StoreLogo src={store.logo} alt={store.name} domain={store.domain} size={56} />
                         </div>
-                        <h3 className="text-sm font-semibold text-gray-900 group-hover:text-red-600 transition-colors line-clamp-1">
+                        <h3 className="text-sm font-semibold text-charcoal group-hover:text-maple-red transition-colors line-clamp-1">
                           {store.name}
                         </h3>
                       </Link>
@@ -104,9 +104,9 @@ export default function StoresPage() {
         </section>
 
         {/* All Stores A-Z */}
-        <section className="py-12 px-4 bg-white border-t">
+        <section className="py-12 px-4 bg-white border-t border-silver-light">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">All Stores A-Z</h2>
+            <h2 className="text-2xl font-bold text-charcoal mb-6">All Stores A-Z</h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
               {allStores
                 .sort((a, b) => a.name.localeCompare(b.name))
@@ -114,10 +114,10 @@ export default function StoresPage() {
                   <Link
                     key={store.slug}
                     href={`/stores/${store.slug}`}
-                    className="group flex items-center gap-2 bg-gray-50 hover:bg-white rounded-lg border border-gray-200 hover:border-red-400 transition-all px-3 py-2"
+                    className="group flex items-center gap-2 bg-ivory hover:bg-white rounded-lg border border-silver-light hover:border-maple-red transition-all px-3 py-2"
                   >
                     <StoreLogo src={store.logo} alt={store.name} domain={store.domain} size={24} />
-                    <span className="text-sm font-medium text-gray-700 group-hover:text-red-600 transition-colors truncate">
+                    <span className="text-sm font-medium text-slate group-hover:text-maple-red transition-colors truncate">
                       {store.name}
                     </span>
                   </Link>
@@ -127,18 +127,15 @@ export default function StoresPage() {
         </section>
 
         {/* Canadian Brands CTA */}
-        <section className="py-12 px-4 bg-gray-900">
+        <section className="py-12 px-4 bg-soft-black">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-2xl font-bold text-white mb-4">
               Support Canadian Brands
             </h2>
-            <p className="text-gray-400 mb-6">
+            <p className="text-silver mb-6">
               Discover 600+ Canadian brands and shop local
             </p>
-            <Link
-              href="/canadian"
-              className="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-lg transition-colors"
-            >
+            <Link href="/canadian" className="btn-primary">
               Explore Canadian Brands
             </Link>
           </div>

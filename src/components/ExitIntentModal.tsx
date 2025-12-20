@@ -70,7 +70,7 @@ export function ExitIntentModal({ dealTitle, dealPrice }: ExitIntentModalProps) 
       <div
         className="
           relative w-full max-w-md mx-4
-          bg-white rounded-2xl shadow-2xl
+          bg-white rounded-card shadow-strong
           overflow-hidden
           animate-slide-up
         "
@@ -79,7 +79,7 @@ export function ExitIntentModal({ dealTitle, dealPrice }: ExitIntentModalProps) 
         {/* Close Button */}
         <button
           onClick={handleClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 z-10"
+          className="absolute top-4 right-4 text-silver hover:text-charcoal z-10"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -87,10 +87,10 @@ export function ExitIntentModal({ dealTitle, dealPrice }: ExitIntentModalProps) 
         </button>
 
         {/* Header */}
-        <div className="bg-gradient-to-r from-orange-500 to-red-600 px-6 py-8 text-center">
+        <div className="bg-gradient-to-r from-maple-red to-burgundy px-6 py-8 text-center">
           <div className="text-4xl mb-2">DEAL</div>
           <h2 className="text-2xl font-bold text-white mb-1">
-            Wait! Don't Miss Out
+            Wait! Don&apos;t Miss Out
           </h2>
           <p className="text-white/90 text-sm">
             Get notified when prices drop even lower
@@ -102,36 +102,36 @@ export function ExitIntentModal({ dealTitle, dealPrice }: ExitIntentModalProps) 
           {isSubmitted ? (
             <div className="text-center py-4">
               <div className="text-4xl mb-2">OK</div>
-              <p className="text-gray-900 font-semibold">You're on the list!</p>
-              <p className="text-gray-600 text-sm">
-                We'll email you when we find better deals.
+              <p className="text-charcoal font-semibold">You&apos;re on the list!</p>
+              <p className="text-slate text-sm">
+                We&apos;ll email you when we find better deals.
               </p>
             </div>
           ) : (
             <>
               {/* Deal reminder */}
               {dealTitle && (
-                <div className="bg-gray-50 rounded-lg p-3 mb-4">
-                  <p className="text-sm text-gray-600">You were looking at:</p>
-                  <p className="font-semibold text-gray-900 truncate">{dealTitle}</p>
+                <div className="bg-ivory rounded-lg p-3 mb-4">
+                  <p className="text-sm text-slate">You were looking at:</p>
+                  <p className="font-semibold text-charcoal truncate">{dealTitle}</p>
                   {priceNum !== null && (
-                    <p className="text-green-600 font-bold">${formatPrice(priceNum)}</p>
+                    <p className="text-maple-red font-bold">${formatPrice(priceNum)}</p>
                   )}
                 </div>
               )}
 
               {/* Value Props */}
               <div className="space-y-2 mb-4">
-                <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <span className="text-green-500">Y</span>
+                <div className="flex items-center gap-2 text-sm text-slate">
+                  <span className="text-maple-red">✓</span>
                   <span>Instant price drop alerts</span>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <span className="text-green-500">Y</span>
+                <div className="flex items-center gap-2 text-sm text-slate">
+                  <span className="text-maple-red">✓</span>
                   <span>Exclusive Canadian deals</span>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <span className="text-green-500">Y</span>
+                <div className="flex items-center gap-2 text-sm text-slate">
+                  <span className="text-maple-red">✓</span>
                   <span>Unsubscribe anytime</span>
                 </div>
               </div>
@@ -145,19 +145,18 @@ export function ExitIntentModal({ dealTitle, dealPrice }: ExitIntentModalProps) 
                   placeholder="Enter your email"
                   required
                   className="
-                    w-full px-4 py-3 rounded-xl
-                    border border-gray-300
-                    focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20
+                    w-full px-4 py-3 rounded-button
+                    border border-silver-light
+                    focus:border-maple-red focus:ring-2 focus:ring-maple-red/20
                     outline-none transition-all
                   "
                 />
                 <button
                   type="submit"
                   className="
-                    w-full py-3 px-4 rounded-xl
-                    bg-gradient-to-r from-orange-500 to-red-600
+                    w-full py-3 px-4 rounded-button
+                    bg-maple-red hover:bg-burgundy
                     text-white font-bold
-                    hover:from-orange-400 hover:to-red-500
                     transition-all
                   "
                 >
@@ -168,13 +167,13 @@ export function ExitIntentModal({ dealTitle, dealPrice }: ExitIntentModalProps) 
               {/* Dismiss */}
               <button
                 onClick={handleClose}
-                className="w-full text-center text-sm text-gray-400 mt-3 hover:text-gray-600"
+                className="w-full text-center text-sm text-silver mt-3 hover:text-slate"
               >
-                No thanks, I'll pay full price
+                No thanks, I&apos;ll pay full price
               </button>
 
               {/* Social proof */}
-              <p className="text-center text-xs text-gray-400 mt-4">
+              <p className="text-center text-xs text-silver mt-4">
                 Join 47,234 Canadian deal hunters
               </p>
             </>

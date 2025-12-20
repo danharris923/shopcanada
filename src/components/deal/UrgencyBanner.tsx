@@ -44,7 +44,7 @@ export function UrgencyBanner({ hours, minutes, viewerCount }: UrgencyBannerProp
   return (
     <div className={`
       w-full py-2.5 px-4
-      bg-gradient-to-r from-red-600 via-red-500 to-orange-500
+      bg-burgundy
       text-white text-center
       ${isUrgent ? 'animate-pulse' : ''}
     `}>
@@ -53,7 +53,7 @@ export function UrgencyBanner({ hours, minutes, viewerCount }: UrgencyBannerProp
         <span>
           {isUrgent ? 'ENDING SOON' : 'LIMITED TIME'} |
         </span>
-        <span className="font-mono bg-black/20 px-2 py-0.5 rounded">
+        <span className="font-mono bg-soft-black/30 px-2 py-0.5 rounded">
           {String(timeLeft.hours).padStart(2, '0')}:
           {String(timeLeft.minutes).padStart(2, '0')}:
           {String(timeLeft.seconds).padStart(2, '0')}

@@ -36,16 +36,14 @@ export default async function HomePage() {
         <section
           className="relative min-h-[500px] md:min-h-[600px] flex items-center"
           style={{
-            backgroundImage: 'url(https://images.unsplash.com/photo-1551009175-15bdf9dcb580?w=1920&q=80)',
+            backgroundImage: 'url(/hero-canadian-flag.jpg)',
             backgroundSize: 'cover',
-            backgroundPosition: 'center left',
+            backgroundPosition: 'top left',
           }}
         >
-          {/* Dark overlay on right side for text */}
-          <div className="absolute inset-0 bg-gradient-to-l from-soft-black/95 via-soft-black/80 to-transparent" />
-
+          {/* Content positioned on right (dark area of flag) */}
           <div className="relative z-10 max-w-7xl mx-auto px-4 w-full">
-            <div className="max-w-2xl ml-auto text-right md:pr-8">
+            <div className="max-w-xl ml-auto text-right md:pr-8 py-16">
               <h1 className="hero-title mb-4">
                 Best <span className="text-maple-red">Canadian</span> Deals
               </h1>
@@ -54,16 +52,10 @@ export default async function HomePage() {
                 and more. Updated every 4 hours.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-end">
-                <Link
-                  href="/deals"
-                  className="btn-primary text-lg px-8 py-4"
-                >
+                <Link href="/deals" className="btn-primary text-lg px-8 py-4">
                   Browse All Deals
                 </Link>
-                <Link
-                  href="/canadian"
-                  className="btn-ghost text-lg px-8 py-4"
-                >
+                <Link href="/canadian" className="btn-ghost text-lg px-8 py-4">
                   Canadian Brands
                 </Link>
               </div>
@@ -144,16 +136,9 @@ export default async function HomePage() {
                 <Link
                   key={store.slug}
                   href={`/stores/${store.slug}`}
-                  className="
-                    flex flex-col items-center justify-center
-                    p-4 rounded-xl
-                    bg-white border border-silver-light
-                    hover:border-maple-red hover:shadow-md
-                    transition-all
-                    group
-                  "
+                  className="store-card group"
                 >
-                  <div className="w-12 h-12 mb-2 rounded-lg overflow-hidden bg-cream flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 mb-2 mx-auto rounded-lg overflow-hidden bg-cream flex items-center justify-center group-hover:scale-110 transition-transform">
                     <StoreLogo
                       src={store.logo}
                       alt={`${store.name} logo`}
@@ -222,13 +207,7 @@ export default async function HomePage() {
                 <Link
                   key={cat.slug}
                   href={`/category/${cat.slug}`}
-                  className="
-                    flex items-center gap-3
-                    p-4 rounded-xl
-                    bg-white border border-silver-light
-                    hover:border-maple-red hover:shadow-md
-                    transition-all
-                  "
+                  className="category-pill justify-center"
                 >
                   <span className="text-2xl">{cat.icon}</span>
                   <span className="font-semibold text-charcoal">{cat.name}</span>
@@ -248,10 +227,7 @@ export default async function HomePage() {
               Discover 600+ Canadian brands and shop local. From coast to coast,
               find quality products made right here in Canada.
             </p>
-            <Link
-              href="/canadian"
-              className="btn-primary text-lg px-8 py-4"
-            >
+            <Link href="/canadian" className="btn-primary text-lg px-8 py-4">
               Explore Canadian Brands
             </Link>
           </div>
@@ -286,7 +262,7 @@ export default async function HomePage() {
             <h3>Start Saving Today</h3>
             <p>
               Browse our latest deals, explore your favorite stores, or search by
-              category to find exactly what you're looking for. Whether you&apos;re
+              category to find exactly what you&apos;re looking for. Whether you&apos;re
               shopping for electronics, fashion, home goods, or groceries, we&apos;ve
               got deals for every Canadian shopper.
             </p>

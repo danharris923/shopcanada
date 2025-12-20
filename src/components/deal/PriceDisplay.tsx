@@ -27,10 +27,10 @@ export function PriceDisplay({
   }
 
   const classes = sizeClasses[size]
-  const originalClass = classes.original + " text-gray-400 line-through"
-  const currentClass = classes.current + " font-black text-green-600"
-  const currentClassAlt = classes.current + " font-black text-gray-800"
-  const savingsClass = classes.savings + " text-red-600 font-bold"
+  const originalClass = classes.original + " text-silver line-through"
+  const currentClass = classes.current + " font-black text-maple-red"
+  const currentClassAlt = classes.current + " font-black text-charcoal"
+  const savingsClass = classes.savings + " text-maple-red font-bold"
 
   return (
     <div className="flex flex-col items-start gap-1">
@@ -52,7 +52,7 @@ export function PriceDisplay({
         )}
 
         {discount != null && !isNaN(discount) && discount > 0 && (
-          <span className="bg-red-600 text-white px-2 py-1 rounded-lg font-bold text-sm">
+          <span className="bg-maple-red text-white px-2 py-1 rounded-lg font-bold text-sm">
             -{discount}%
           </span>
         )}

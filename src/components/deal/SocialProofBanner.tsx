@@ -34,26 +34,26 @@ export function SocialProofBanner({ viewerCount, purchaseCount }: SocialProofBan
   }, [])
 
   return (
-    <div className="w-full py-2 px-4 bg-yellow-50 border-b border-yellow-100">
+    <div className="w-full py-2 px-4 bg-ivory border-b border-silver-light">
       <div className="flex items-center justify-center gap-4 text-sm">
-        <span className="flex items-center gap-1.5 text-yellow-800">
+        <span className="flex items-center gap-1.5 text-charcoal">
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-maple-red opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-maple-red"></span>
           </span>
           <span className="font-medium">{currentViewers}</span> viewing now
         </span>
 
-        <span className="text-yellow-600">•</span>
+        <span className="text-silver">•</span>
 
         <span className={`
-          text-yellow-800 font-medium
+          text-charcoal font-medium
           transition-all duration-300
-          ${recentPurchase ? 'text-green-600 scale-110' : ''}
+          ${recentPurchase ? 'text-maple-red scale-110' : ''}
         `}>
           🛒 {purchaseCount} sold today
           {recentPurchase && (
-            <span className="ml-1 text-green-600 animate-bounce inline-block">
+            <span className="ml-1 text-maple-red animate-bounce inline-block">
               +1
             </span>
           )}

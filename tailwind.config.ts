@@ -9,14 +9,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // === PRIMARY REDS (from Canadian flag) ===
+        // === PRIMARY REDS (Canadian Flag) ===
         'maple-red': '#8F020D',
         'burgundy': {
           DEFAULT: '#4C0101',
           dark: '#350100',
         },
 
-        // === NEUTRALS (DARK) ===
+        // === DARK NEUTRALS ===
         'soft-black': '#0A0A0A',
         'charcoal': '#1E1E1E',
         'slate': '#444444',
@@ -25,17 +25,34 @@ const config: Config = {
           light: '#CBCACD',
         },
 
-        // === BACKGROUNDS (LIGHT) ===
+        // === LIGHT BACKGROUNDS ===
         'cream': '#FAF9F7',
         'ivory': '#F5F4F2',
         'warm-grey': '#EDECEA',
-
-        // === LEGACY (keep for compatibility) ===
-        'savings-green': '#22C55E',
-        'trust-blue': '#0066CC',
       },
       fontFamily: {
-        sans: ['Inter', 'Segoe UI', 'sans-serif'],
+        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+      },
+      fontSize: {
+        'xs': ['0.75rem', { lineHeight: '1.5' }],
+        'sm': ['0.875rem', { lineHeight: '1.6' }],
+        'base': ['1rem', { lineHeight: '1.75' }],
+        'lg': ['1.125rem', { lineHeight: '1.75' }],
+        'xl': ['1.25rem', { lineHeight: '1.4' }],
+        '2xl': ['1.5rem', { lineHeight: '1.3' }],
+        '3xl': ['2rem', { lineHeight: '1.25' }],
+        '4xl': ['2.5rem', { lineHeight: '1.2' }],
+        '5xl': ['3rem', { lineHeight: '1.2' }],
+      },
+      boxShadow: {
+        'subtle': '0 1px 2px rgba(10, 10, 10, 0.05)',
+        'card': '0 4px 6px rgba(10, 10, 10, 0.07)',
+        'card-hover': '0 10px 25px rgba(10, 10, 10, 0.1)',
+        'elevated': '0 20px 40px rgba(10, 10, 10, 0.15)',
+      },
+      borderRadius: {
+        'card': '12px',
+        'button': '8px',
       },
       animation: {
         'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
@@ -44,7 +61,7 @@ const config: Config = {
         'slide-up': 'slideUp 0.3s ease-out',
         'slide-down': 'slideDown 0.3s ease-out',
         'fade-in': 'fadeIn 0.2s ease-out',
-        'marquee': 'marquee 30s linear infinite',
+        'ticker': 'ticker-scroll 30s linear infinite',
       },
       keyframes: {
         glow: {
@@ -68,16 +85,10 @@ const config: Config = {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
         },
-        marquee: {
-          '0%': { transform: 'translateX(0%)' },
+        'ticker-scroll': {
+          '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-50%)' },
         },
-      },
-      boxShadow: {
-        'sm': '0 1px 2px rgba(10, 10, 10, 0.05)',
-        'md': '0 4px 6px rgba(10, 10, 10, 0.07)',
-        'lg': '0 10px 25px rgba(10, 10, 10, 0.1)',
-        'xl': '0 20px 40px rgba(10, 10, 10, 0.15)',
       },
     },
   },
