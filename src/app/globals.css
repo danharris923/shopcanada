@@ -2,15 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
-/* CTR Warfare Base Styles */
+/* Shop Canada Design System */
 :root {
-  --cta-primary: #FF6B00;
-  --cta-secondary: #FF0000;
-  --urgency-red: #FF0000;
-  --urgency-orange: #FF6B00;
-  --urgency-yellow: #FFC107;
-  --success-green: #00AA00;
-  --trust-blue: #0066CC;
+  /* === PRIMARY REDS === */
+  --color-maple-red: #8F020D;
+  --color-burgundy: #4C0101;
+  --color-burgundy-dark: #350100;
+
+  /* === NEUTRALS (DARK) === */
+  --color-soft-black: #0A0A0A;
+  --color-charcoal: #1E1E1E;
+  --color-slate: #444444;
+  --color-silver: #979799;
+  --color-silver-light: #CBCACD;
+
+  /* === BACKGROUNDS (LIGHT) === */
+  --color-white: #FFFFFF;
+  --color-cream: #FAF9F7;
+  --color-ivory: #F5F4F2;
+  --color-warm-grey: #EDECEA;
+
+  /* === SEMANTIC COLORS === */
+  --color-primary: var(--color-maple-red);
+  --color-primary-hover: var(--color-burgundy);
+  --color-primary-active: var(--color-burgundy-dark);
+
+  --color-text-primary: var(--color-charcoal);
+  --color-text-secondary: var(--color-slate);
+  --color-text-muted: var(--color-silver);
+  --color-text-on-dark: var(--color-cream);
+
+  --color-bg-page: var(--color-cream);
+  --color-bg-card: var(--color-white);
+  --color-bg-footer: var(--color-soft-black);
+  --color-bg-header: var(--color-white);
+
+  --color-border: var(--color-silver-light);
+  --color-border-hover: var(--color-slate);
+
+  /* === SPACING === */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+  /* === BORDERS === */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* === SHADOWS === */
+  --shadow-sm: 0 1px 2px rgba(10, 10, 10, 0.05);
+  --shadow-md: 0 4px 6px rgba(10, 10, 10, 0.07);
+  --shadow-lg: 0 10px 25px rgba(10, 10, 10, 0.1);
+  --shadow-xl: 0 20px 40px rgba(10, 10, 10, 0.15);
 }
 
 /* Smooth scrolling */
@@ -18,76 +67,176 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Base typography */
+/* Base body styles */
 body {
   @apply antialiased;
+  background-color: var(--color-bg-page);
+  color: var(--color-text-primary);
 }
 
-/* CTA Button Base */
 @layer components {
-  .btn-cta {
-    @apply px-6 py-4 rounded-xl font-black text-white text-lg uppercase tracking-wide;
-    @apply bg-gradient-to-r from-orange-500 to-red-600;
-    @apply shadow-lg shadow-red-500/30;
-    @apply transition-all duration-200;
-    @apply hover:scale-105 hover:shadow-xl hover:shadow-red-500/40;
-    @apply active:scale-95;
+  /* === BUTTONS === */
+  .btn-primary {
+    @apply px-6 py-3 rounded-lg font-semibold text-white;
+    background-color: var(--color-maple-red);
+    transition: all 0.2s ease;
   }
 
-  .btn-cta-pulse {
-    @apply btn-cta animate-pulse;
+  .btn-primary:hover {
+    background-color: var(--color-burgundy);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
   }
 
-  /* Urgency Banner */
-  .urgency-banner {
-    @apply bg-gradient-to-r from-red-600 to-orange-500;
-    @apply text-white text-sm font-bold text-center py-2;
-    @apply animate-pulse;
+  .btn-primary:active {
+    background-color: var(--color-burgundy-dark);
+    transform: translateY(0);
   }
 
-  /* Social Proof Banner */
-  .social-proof-banner {
-    @apply bg-yellow-100 text-yellow-800 text-sm font-medium text-center py-2;
+  .btn-secondary {
+    @apply px-6 py-3 rounded-lg font-semibold;
+    background-color: transparent;
+    color: var(--color-maple-red);
+    border: 2px solid var(--color-maple-red);
+    transition: all 0.2s ease;
   }
 
-  /* Price Display */
+  .btn-secondary:hover {
+    background-color: var(--color-maple-red);
+    color: white;
+  }
+
+  .btn-ghost {
+    @apply px-6 py-3 rounded-lg font-semibold text-white;
+    background-color: transparent;
+    border: 2px solid white;
+    transition: all 0.2s ease;
+  }
+
+  .btn-ghost:hover {
+    background-color: white;
+    color: var(--color-soft-black);
+  }
+
+  /* === DEAL CARDS === */
+  .deal-card {
+    background-color: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .deal-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .deal-card-title {
+    color: var(--color-charcoal);
+    @apply text-lg font-semibold;
+  }
+
+  .deal-card-price {
+    color: var(--color-maple-red);
+    @apply text-2xl font-bold;
+  }
+
+  .deal-card-original-price {
+    color: var(--color-silver);
+    @apply text-base line-through;
+  }
+
+  .deal-card-store {
+    color: var(--color-slate);
+    @apply text-sm;
+  }
+
+  /* === PRICE DISPLAY === */
   .price-current {
-    @apply text-4xl font-black text-green-600;
+    color: var(--color-maple-red);
+    @apply text-3xl font-bold;
   }
 
   .price-original {
-    @apply text-lg text-gray-400 line-through;
+    color: var(--color-silver);
+    @apply text-lg line-through;
   }
 
   .price-savings {
-    @apply text-red-600 font-bold;
+    color: var(--color-maple-red);
+    @apply font-bold;
   }
 
-  /* Discount Badge */
+  /* === DISCOUNT BADGE === */
   .discount-badge {
     @apply absolute top-2 right-2;
-    @apply bg-red-600 text-white;
-    @apply px-3 py-1 rounded-lg;
-    @apply font-black text-xl;
-    @apply shadow-lg;
+    background-color: var(--color-maple-red);
+    @apply text-white px-3 py-1 rounded-lg font-bold text-lg;
+    box-shadow: var(--shadow-md);
   }
 
-  /* Deal Card */
-  .deal-card {
-    @apply bg-white rounded-xl shadow-md overflow-hidden;
-    @apply transition-all duration-200;
-    @apply hover:shadow-xl hover:-translate-y-1;
-  }
-
-  /* Stock Warning */
+  /* === STOCK WARNING === */
   .stock-warning {
-    @apply bg-yellow-50 border border-yellow-200 rounded-lg;
-    @apply px-3 py-2 text-sm text-yellow-800;
-    @apply flex items-center gap-2;
+    @apply px-3 py-2 text-sm rounded-lg flex items-center gap-2;
+    background-color: #FEF3C7;
+    border: 1px solid #F59E0B;
+    color: #92400E;
   }
 
   .stock-critical {
-    @apply bg-red-50 border border-red-200 text-red-800;
+    background-color: #FEE2E2;
+    border-color: var(--color-maple-red);
+    color: var(--color-burgundy);
+  }
+
+  /* === HERO STYLES === */
+  .hero-title {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold text-white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .hero-subtitle {
+    color: var(--color-silver-light);
+    @apply text-lg md:text-xl;
+  }
+
+  .hero-accent {
+    color: var(--color-maple-red);
+  }
+
+  /* === SECTIONS === */
+  .section-cream {
+    background-color: var(--color-cream);
+  }
+
+  .section-ivory {
+    background-color: var(--color-ivory);
+  }
+
+  .section-white {
+    background-color: var(--color-white);
+  }
+
+  .section-dark {
+    background-color: var(--color-soft-black);
+    color: var(--color-silver);
+  }
+
+  /* === LINKS === */
+  .nav-link {
+    color: var(--color-charcoal);
+    @apply font-medium;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--color-maple-red);
+  }
+
+  .nav-link.active {
+    color: var(--color-maple-red);
+    border-bottom: 2px solid var(--color-maple-red);
   }
 }
 
@@ -103,15 +252,40 @@ body {
 
 /* Sticky bottom CTA (mobile) */
 .sticky-cta {
-  @apply fixed bottom-0 left-0 right-0;
-  @apply bg-white border-t border-gray-200;
-  @apply p-4 shadow-[0_-4px_12px_rgba(0,0,0,0.1)];
-  @apply z-50;
+  @apply fixed bottom-0 left-0 right-0 z-50;
+  background-color: var(--color-white);
+  border-top: 1px solid var(--color-silver-light);
+  @apply p-4;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Exit Intent Modal Overlay */
+/* Modal Overlay */
 .modal-overlay {
-  @apply fixed inset-0 bg-black/80 z-50;
-  @apply flex items-center justify-center;
+  @apply fixed inset-0 z-50 flex items-center justify-center;
+  background-color: rgba(10, 10, 10, 0.8);
   @apply animate-fade-in;
+}
+
+/* Prose styling for content */
+.prose h2 {
+  color: var(--color-charcoal);
+  @apply text-2xl font-bold mt-8 mb-4;
+}
+
+.prose h3 {
+  color: var(--color-charcoal);
+  @apply text-xl font-semibold mt-6 mb-3;
+}
+
+.prose p {
+  color: var(--color-slate);
+  @apply mb-4 leading-relaxed;
+}
+
+.prose ul {
+  @apply list-disc pl-6 mb-4 space-y-2;
+}
+
+.prose li {
+  color: var(--color-slate);
 }

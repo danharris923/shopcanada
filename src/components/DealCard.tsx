@@ -22,26 +22,14 @@ export function DealCard({
   return (
     <Link
       href={`/deals/${slug}`}
-      className="
-        group block
-        bg-white rounded-xl shadow-md overflow-hidden
-        transition-all duration-200
-        hover:shadow-xl hover:-translate-y-1
-      "
+      className="deal-card group block"
     >
       {/* Image Container */}
-      <div className="relative aspect-square bg-gray-100">
+      <div className="relative aspect-square bg-cream">
         {/* Discount Badge */}
         {discountPercent && discountPercent > 0 && (
-          <div className="absolute top-2 right-2 z-10">
-            <span className="
-              bg-red-600 text-white
-              px-2 py-1 rounded-lg
-              font-bold text-sm
-              shadow-md
-            ">
-              -{discountPercent}%
-            </span>
+          <div className="discount-badge">
+            -{discountPercent}%
           </div>
         )}
 
@@ -49,11 +37,12 @@ export function DealCard({
         {featured && (
           <div className="absolute top-2 left-2 z-10">
             <span className="
-              bg-yellow-400 text-yellow-900
+              bg-burgundy text-white
               px-2 py-1 rounded-lg
               font-bold text-xs
+              shadow-md
             ">
-              HOT
+              HOT DEAL
             </span>
           </div>
         )}
@@ -71,12 +60,12 @@ export function DealCard({
       {/* Content */}
       <div className="p-4">
         {/* Store */}
-        <div className="text-xs text-gray-500 mb-1 uppercase tracking-wide">
+        <div className="deal-card-store uppercase tracking-wide mb-1">
           {store}
         </div>
 
         {/* Title */}
-        <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2 group-hover:text-orange-600 transition-colors">
+        <h3 className="deal-card-title mb-2 line-clamp-2 group-hover:text-maple-red transition-colors">
           {title}
         </h3>
 
@@ -84,17 +73,17 @@ export function DealCard({
         <div className="flex items-baseline gap-2">
           {priceNum !== null ? (
             <>
-              <span className="text-xl font-bold text-green-600">
+              <span className="deal-card-price">
                 ${formatPrice(priceNum)}
               </span>
               {originalPriceNum !== null && (
-                <span className="text-sm text-gray-400 line-through">
+                <span className="deal-card-original-price">
                   ${formatPrice(originalPriceNum)}
                 </span>
               )}
             </>
           ) : (
-            <span className="text-lg font-semibold text-gray-800">
+            <span className="text-lg font-semibold text-charcoal">
               See Deal
             </span>
           )}
@@ -102,7 +91,7 @@ export function DealCard({
 
         {/* Savings */}
         {savings && (
-          <div className="text-sm text-red-600 font-medium mt-1">
+          <div className="text-sm text-maple-red font-semibold mt-1">
             Save ${savings}
           </div>
         )}

@@ -9,15 +9,33 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // CTR Warfare Colors
-        'cta-primary': '#FF6B00',
-        'cta-secondary': '#FF0000',
-        'urgency-red': '#FF0000',
-        'urgency-orange': '#FF6B00',
-        'urgency-yellow': '#FFC107',
-        'success-green': '#00AA00',
-        'trust-blue': '#0066CC',
+        // === PRIMARY REDS (from Canadian flag) ===
+        'maple-red': '#8F020D',
+        'burgundy': {
+          DEFAULT: '#4C0101',
+          dark: '#350100',
+        },
+
+        // === NEUTRALS (DARK) ===
+        'soft-black': '#0A0A0A',
+        'charcoal': '#1E1E1E',
+        'slate': '#444444',
+        'silver': {
+          DEFAULT: '#979799',
+          light: '#CBCACD',
+        },
+
+        // === BACKGROUNDS (LIGHT) ===
+        'cream': '#FAF9F7',
+        'ivory': '#F5F4F2',
+        'warm-grey': '#EDECEA',
+
+        // === LEGACY (keep for compatibility) ===
         'savings-green': '#22C55E',
+        'trust-blue': '#0066CC',
+      },
+      fontFamily: {
+        sans: ['Inter', 'Segoe UI', 'sans-serif'],
       },
       animation: {
         'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
@@ -30,8 +48,8 @@ const config: Config = {
       },
       keyframes: {
         glow: {
-          '0%, 100%': { boxShadow: '0 0 20px rgba(255, 107, 0, 0.5)' },
-          '50%': { boxShadow: '0 0 40px rgba(255, 107, 0, 0.8)' },
+          '0%, 100%': { boxShadow: '0 0 20px rgba(143, 2, 13, 0.5)' },
+          '50%': { boxShadow: '0 0 40px rgba(143, 2, 13, 0.8)' },
         },
         shake: {
           '0%, 100%': { transform: 'translateX(0)' },
@@ -54,6 +72,12 @@ const config: Config = {
           '0%': { transform: 'translateX(0%)' },
           '100%': { transform: 'translateX(-50%)' },
         },
+      },
+      boxShadow: {
+        'sm': '0 1px 2px rgba(10, 10, 10, 0.05)',
+        'md': '0 4px 6px rgba(10, 10, 10, 0.07)',
+        'lg': '0 10px 25px rgba(10, 10, 10, 0.1)',
+        'xl': '0 20px 40px rgba(10, 10, 10, 0.15)',
       },
     },
   },
