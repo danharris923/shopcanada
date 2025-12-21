@@ -1,8 +1,9 @@
 import Link from 'next/link'
-import { getDeals, getDealCount, getStoreStats } from '@/lib/db'
+import { getDeals, getDealCount, getStores, getCategories } from '@/lib/db'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { DealCard, DealGrid } from '@/components/DealCard'
+import { FilterSidebar } from '@/components/FilterSidebar'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -14,12 +15,17 @@ export const metadata: Metadata = {
 export const revalidate = 900
 
 export default async function DealsPage() {
-  const [deals, dealCount, storeStats] = await Promise.all([
+  const [deals, dealCount, stores, categories] = await Promise.all([
     getDeals({ limit: 100, orderBy: 'date_added', orderDir: 'DESC' }),
     getDealCount(),
-    getStoreStats(),
+    getStores(),
+    getCategories(),
   ])
-  const storeCount = storeStats.length
+  const storeCount = stores.length
+
+  // Transform for FilterSidebar
+  const filterStores = stores.map(s => ({ name: s.name, slug: s.slug, count: s.deal_count }))
+  const filterCategories = categories.map(c => ({ name: c.name, slug: c.slug, count: c.deal_count }))
 
   return (
     <>
@@ -37,29 +43,8 @@ export default async function DealsPage() {
           </div>
         </section>
 
-        {/* Filters */}
-        <section className="py-4 px-4 bg-white border-b border-silver-light">
-          <div className="max-w-7xl mx-auto flex flex-wrap gap-2 justify-center">
-            <Link href="/deals" className="px-4 py-2 rounded-full bg-maple-red text-white text-sm font-medium">
-              All Deals
-            </Link>
-            <Link href="/stores/amazon" className="px-4 py-2 rounded-full bg-ivory hover:bg-silver-light text-charcoal text-sm font-medium transition-colors">
-              Amazon.ca
-            </Link>
-            <Link href="/stores/walmart" className="px-4 py-2 rounded-full bg-ivory hover:bg-silver-light text-charcoal text-sm font-medium transition-colors">
-              Walmart
-            </Link>
-            <Link href="/stores/costco" className="px-4 py-2 rounded-full bg-ivory hover:bg-silver-light text-charcoal text-sm font-medium transition-colors">
-              Costco
-            </Link>
-            <Link href="/stores/best-buy" className="px-4 py-2 rounded-full bg-ivory hover:bg-silver-light text-charcoal text-sm font-medium transition-colors">
-              Best Buy
-            </Link>
-            <Link href="/stores" className="px-4 py-2 rounded-full bg-ivory hover:bg-silver-light text-charcoal text-sm font-medium transition-colors">
-              All Stores
-            </Link>
-          </div>
-        </section>
+        {/* Filter Sidebar */}
+        <FilterSidebar stores={filterStores} categories={filterCategories} />
 
         {/* Deals Grid */}
         <section className="py-12 px-4">

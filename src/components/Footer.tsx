@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Leaf } from 'lucide-react'
 
 export function Footer() {
   return (
@@ -7,28 +8,15 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center mb-4">
-              <span className="font-bold text-xl text-white">
-                Shop<span className="text-maple-red">Canada</span>
-              </span>
+            <Link href="/" className="font-bold text-xl text-white mb-4 inline-block">
+              Shop Canada
             </Link>
             <p className="text-sm text-silver mb-4">
-              Your destination for the best Canadian deals, discounts, and Canadian-made products.
-              Shop Canadian. Support Local.
+              Canadian sales at Canadian stores for Canadian people.
             </p>
             <p className="text-xs text-slate">
               Made for Canadian Shoppers
             </p>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h3 className="font-semibold text-white mb-4 uppercase text-sm tracking-wide">Quick Links</h3>
-            <ul className="space-y-2 text-sm">
-              <li><Link href="/deals" className="hover:text-cream transition-colors">All Deals</Link></li>
-              <li><Link href="/stores" className="hover:text-cream transition-colors">Stores</Link></li>
-              <li><Link href="/canadian" className="hover:text-cream transition-colors">Canadian Brands</Link></li>
-            </ul>
           </div>
 
           {/* Popular Stores */}
@@ -53,6 +41,29 @@ export function Footer() {
               <li><Link href="/stores/sport-chek" className="hover:text-cream transition-colors">Sport Chek</Link></li>
               <li><Link href="/stores/indigo" className="hover:text-cream transition-colors">Indigo</Link></li>
             </ul>
+          </div>
+        </div>
+
+        {/* Canadian Brand Directory Card */}
+        <div className="mt-8 p-6 bg-gradient-to-r from-burgundy to-maple-red rounded-lg">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center">
+                <Leaf className="w-8 h-8 text-white" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-white">Canadian Brand Directory</h3>
+                <p className="text-white/80 text-sm">
+                  Your destination for the best Canadian deals, discounts, and Canadian-made products. Shop Canadian. Support Local.
+                </p>
+              </div>
+            </div>
+            <Link
+              href="/canadian"
+              className="bg-white text-maple-red hover:bg-cream font-bold py-3 px-6 rounded-button transition-colors whitespace-nowrap"
+            >
+              Explore Brands
+            </Link>
           </div>
         </div>
 

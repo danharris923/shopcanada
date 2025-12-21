@@ -14,11 +14,11 @@ import { UrgencyData } from '@/types/deal'
 export function generateUrgencyData(dealId: string): UrgencyData {
   const seed = hashString(dealId + getHourSeed())
 
-  // Viewer count: 50-350, changes hourly
-  const viewerCount = 50 + (seed % 300)
+  // Viewer count: 15-75, changes hourly
+  const viewerCount = 15 + (seed % 60)
 
-  // Purchase count: based on "age" simulation
-  const purchaseCount = 5 + (seed % 50)
+  // Purchase count: realistic numbers
+  const purchaseCount = 2 + (seed % 10)
 
   // Stock level: weighted towards medium/high
   const stockRoll = seed % 100

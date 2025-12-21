@@ -113,9 +113,9 @@ export default async function BrandPage({ params }: Props) {
               </div>
 
               {/* Brand Story Section */}
-              <div className="mb-12 p-8 bg-soft-black rounded-card shadow-[0_8px_24px_rgba(0,0,0,0.25)]">
-                <h2 className="text-2xl md:text-3xl font-bold text-maple-red mb-4">Why Choose {brand.name}?</h2>
-                <div className="space-y-4 text-silver leading-relaxed">
+              <div className="mb-12 p-8 bg-white border border-silver-light rounded-card">
+                <h2 className="text-2xl md:text-3xl font-bold text-burgundy mb-4">Why Choose {brand.name}?</h2>
+                <div className="space-y-4 text-charcoal leading-relaxed">
                   <p>
                     {brand.name} represents the best of Canadian {brand.category.toLowerCase()} - combining quality
                     craftsmanship, ethical manufacturing, and a commitment to supporting local communities.

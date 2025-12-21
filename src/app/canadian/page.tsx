@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { brands, categories, getBrandBySlug } from '@/lib/brands-data'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
+import { CategoryIcon } from '@/components/CategoryIcon'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -61,20 +62,31 @@ export default function CanadianPage() {
     <>
       <Header />
       <main className="bg-cream min-h-screen">
-        {/* Hero Section */}
-        <section className="bg-soft-black py-12 px-6">
-          <div className="max-w-6xl mx-auto text-center">
-            <div className="mb-4">
-              <Link href="/" className="text-silver-light hover:text-white text-sm">
+        {/* Hero Section - matching home page style */}
+        <section className="relative">
+          <picture>
+            <source media="(min-width: 768px)" srcSet="/hero-desktop.png" />
+            <img
+              src="/hero-mobile.png"
+              alt="Canadian Brand Directory"
+              className="w-full h-auto"
+            />
+          </picture>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-full max-w-7xl mx-auto px-4 flex flex-col items-end">
+              <Link href="/" className="text-white/80 hover:text-white text-sm mb-2 drop-shadow">
                 &larr; Back to Deals
               </Link>
+              <h1 className="text-3xl md:text-5xl font-bold text-white mb-2 drop-shadow-lg text-right">
+                Canadian Brands
+              </h1>
+              <p className="text-white/90 text-sm md:text-lg drop-shadow text-right max-w-xl">
+                Your destination for the best Canadian deals, discounts, and Canadian-made products. Shop Canadian. Support Local.
+              </p>
+              <p className="text-white font-bold mt-2 drop-shadow text-right">
+                {totalBrands} Canadian brands
+              </p>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Canadian Brand Directory
-            </h1>
-            <p className="text-lg text-silver-light mb-2 max-w-2xl mx-auto">
-              {totalBrands} Canadian-owned retailers, from local favourites to national icons.
-            </p>
           </div>
         </section>
 
@@ -188,7 +200,7 @@ export default function CanadianPage() {
                         href={`/canadian/category/${category.slug}`}
                         className="flex items-center gap-2 text-sm py-2 px-2 text-slate hover:text-charcoal hover:bg-ivory rounded transition-colors"
                       >
-                        <span className="text-base">{category.icon}</span>
+                        <CategoryIcon category={category.name} size={18} className="text-maple-red" />
                         <span className="flex-1 truncate">{category.name}</span>
                         <span className="text-xs text-maple-red font-semibold">{category.brandCount}</span>
                       </Link>

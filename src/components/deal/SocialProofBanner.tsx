@@ -13,13 +13,13 @@ export function SocialProofBanner({ viewerCount, purchaseCount }: SocialProofBan
   const [recentPurchase, setRecentPurchase] = useState(false)
 
   useEffect(() => {
-    // Fluctuate viewers every 3-8 seconds
+    // Fluctuate viewers every 5-10 seconds
     const viewerInterval = setInterval(() => {
       setCurrentViewers(prev => {
-        const change = Math.floor(Math.random() * 11) - 5 // -5 to +5
-        return Math.max(20, prev + change)
+        const change = Math.floor(Math.random() * 5) - 2 // -2 to +2
+        return Math.max(10, prev + change)
       })
-    }, 3000 + Math.random() * 5000)
+    }, 5000 + Math.random() * 5000)
 
     // Flash "just purchased" occasionally
     const purchaseInterval = setInterval(() => {

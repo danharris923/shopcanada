@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { brands, categories, getCategoryBySlug } from '@/lib/brands-data'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
+import { CategoryIcon } from '@/components/CategoryIcon'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
@@ -45,26 +46,34 @@ export default async function CategoryPage({ params }: Props) {
     <>
       <Header />
       <main className="bg-cream min-h-screen">
-        {/* Header */}
-        <section className="bg-burgundy py-12 px-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="mb-4">
-              <Link href="/canadian/categories" className="text-silver-light hover:text-white text-sm">
+        {/* Hero Section - matching home page style */}
+        <section className="relative">
+          <picture>
+            <source media="(min-width: 768px)" srcSet="/hero-desktop.png" />
+            <img
+              src="/hero-mobile.png"
+              alt={`Canadian ${category.name} Brands`}
+              className="w-full h-auto"
+            />
+          </picture>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-full max-w-7xl mx-auto px-4 flex flex-col items-end">
+              <Link href="/canadian/categories" className="text-white/80 hover:text-white text-sm mb-2 drop-shadow">
                 &larr; Back to Categories
               </Link>
+              <div className="flex items-center gap-3 mb-2">
+                <CategoryIcon category={category.name} size={48} className="text-white drop-shadow" />
+                <h1 className="text-3xl md:text-5xl font-bold text-white drop-shadow-lg text-right">
+                  {category.name}
+                </h1>
+              </div>
+              <p className="text-white/90 text-sm md:text-lg drop-shadow text-right max-w-xl">
+                {category.seoBlurb || `Discover quality Canadian ${category.name.toLowerCase()} brands.`}
+              </p>
+              <p className="text-white font-bold mt-2 drop-shadow text-right">
+                {categoryBrands.length} Canadian brands
+              </p>
             </div>
-            <div className="flex items-center gap-4 mb-4">
-              <span className="text-5xl">{category.icon}</span>
-              <h1 className="text-4xl md:text-5xl font-bold text-white">
-                {category.name}
-              </h1>
-            </div>
-            <p className="text-silver-light text-lg max-w-2xl">
-              {category.seoBlurb || `Discover quality Canadian ${category.name.toLowerCase()} brands.`}
-            </p>
-            <p className="text-maple-red font-bold mt-4">
-              {categoryBrands.length} brands in this category
-            </p>
           </div>
         </section>
 

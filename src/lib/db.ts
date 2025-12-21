@@ -290,3 +290,57 @@ export async function searchDeals(searchQuery: string, limit: number = 50): Prom
     return []
   }
 }
+
+// =============================================================================
+// ADMIN FUNCTIONS
+// =============================================================================
+
+export async function getAllStoresAdmin(): Promise<Store[]> {
+  try {
+    return await query<Store>(
+      'SELECT id, name, slug, affiliate_url, deal_count FROM stores ORDER BY name ASC'
+    )
+  } catch (error) {
+    console.error('Error fetching stores for admin:', error)
+    return []
+  }
+}
+
+export async function updateStoreAffiliateUrl(id: number, affiliateUrl: string | null): Promise<boolean> {
+  try {
+    await query(
+      'UPDATE stores SET affiliate_url = $1 WHERE id = $2',
+      [affiliateUrl, id]
+    )
+    return true
+  } catch (error) {
+    console.error('Error updating store affiliate URL:', error)
+    return false
+  }
+}
+
+export async function addStore(name: string, slug: string, affiliateUrl: string | null): Promise<boolean> {
+  try {
+    await query(
+      'INSERT INTO stores (name, slug, affiliate_url, deal_count) VALUES ($1, $2, $3, 0)',
+      [name, slug, affiliateUrl]
+    )
+    return true
+  } catch (error) {
+    console.error('Error adding store:', error)
+    return false
+  }
+}
+
+export async function checkStoreSlugExists(slug: string): Promise<boolean> {
+  try {
+    const rows = await query<{ id: number }>(
+      'SELECT id FROM stores WHERE slug = $1',
+      [slug]
+    )
+    return rows.length > 0
+  } catch (error) {
+    console.error('Error checking store slug:', error)
+    return false
+  }
+}

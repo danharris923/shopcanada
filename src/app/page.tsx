@@ -3,9 +3,12 @@ import { getFeaturedDeals, getLatestDeals, getStoreStats } from '@/lib/db'
 import { generateWebsiteSchema, generateOrganizationSchema } from '@/lib/schema'
 import { DealCard, DealGrid } from '@/components/DealCard'
 import { Header } from '@/components/Header'
+import { HeroSearch } from '@/components/HeroSearch'
 import { Footer } from '@/components/Footer'
 import { StoreLogo } from '@/components/StoreLogo'
 import { featuredStores } from '@/lib/store-logos'
+import { Smartphone, Shirt, Home, ShoppingCart, Sparkles, Dumbbell } from 'lucide-react'
+import { AnimatedCounter } from '@/components/AnimatedCounter'
 
 // Revalidate every 15 minutes
 export const revalidate = 900
@@ -33,38 +36,43 @@ export default async function HomePage() {
 
       <main>
         {/* Hero Banner */}
-        <section className="relative overflow-hidden">
-          <img src="/herobanner.png" alt="Shop Canada" className="w-full h-auto" />
-          <div className="absolute inset-0 flex items-center justify-end pr-8 md:pr-16">
-            <div className="text-right">
-              <h1 className="text-2xl md:text-4xl font-bold mb-2 text-white">ShopCanada</h1>
-              <p className="text-sm md:text-base mb-4 text-white">Canadian deals for Canadians</p>
-              <Link href="/deals" className="btn-primary">Browse Deals</Link>
+        <section className="relative">
+          <picture>
+            <source media="(min-width: 768px)" srcSet="/hero-desktop.png" />
+            <img
+              src="/hero-mobile.png"
+              alt="Shop Canada"
+              className="w-full h-auto"
+            />
+          </picture>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-full max-w-7xl mx-auto px-4 flex flex-col items-end">
+              <h1 className="text-3xl md:text-5xl font-bold text-white mb-2 drop-shadow-lg text-right">
+                Shop Canada
+              </h1>
+              <p className="text-white/90 text-sm md:text-lg mb-6 drop-shadow text-right">
+                Canadian sales at Canadian stores for Canadian people
+              </p>
+              <HeroSearch />
             </div>
           </div>
         </section>
 
         {/* Stats Bar */}
-        <section className="bg-soft-black text-white py-5">
+        <section className="bg-soft-black text-white py-2">
           <div className="max-w-7xl mx-auto px-4">
-            <div className="flex justify-center gap-8 md:gap-16 text-center">
-              <div>
-                <div className="text-2xl md:text-3xl font-bold text-maple-red">
-                  {latestDeals.length + featuredDeals.length}+
-                </div>
-                <div className="text-sm text-silver">Active Deals</div>
+            <div className="flex justify-center gap-6 md:gap-12 text-center">
+              <div className="flex items-center gap-1.5">
+                <AnimatedCounter end={latestDeals.length + featuredDeals.length} suffix="+" className="text-lg md:text-xl font-bold text-maple-red" />
+                <span className="text-xs text-silver">Deals</span>
               </div>
-              <div>
-                <div className="text-2xl md:text-3xl font-bold text-maple-red">
-                  {storeStats.length}+
-                </div>
-                <div className="text-sm text-silver">Stores</div>
+              <div className="flex items-center gap-1.5">
+                <AnimatedCounter end={storeStats.length} suffix="+" className="text-lg md:text-xl font-bold text-maple-red" />
+                <span className="text-xs text-silver">Stores</span>
               </div>
-              <div>
-                <div className="text-2xl md:text-3xl font-bold text-maple-red">
-                  600+
-                </div>
-                <div className="text-sm text-silver">Canadian Brands</div>
+              <div className="flex items-center gap-1.5">
+                <AnimatedCounter end={600} suffix="+" className="text-lg md:text-xl font-bold text-maple-red" />
+                <span className="text-xs text-silver">Canadian Brands</span>
               </div>
             </div>
           </div>
@@ -178,19 +186,19 @@ export default async function HomePage() {
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
               {[
-                { slug: 'electronics', name: 'Electronics', icon: '📱' },
-                { slug: 'fashion', name: 'Fashion', icon: '👕' },
-                { slug: 'home', name: 'Home', icon: '🏠' },
-                { slug: 'grocery', name: 'Grocery', icon: '🛒' },
-                { slug: 'beauty', name: 'Beauty', icon: '💄' },
-                { slug: 'sports', name: 'Sports', icon: '⚽' },
+                { slug: 'electronics', name: 'Electronics', Icon: Smartphone },
+                { slug: 'fashion', name: 'Fashion', Icon: Shirt },
+                { slug: 'home', name: 'Home', Icon: Home },
+                { slug: 'grocery', name: 'Grocery', Icon: ShoppingCart },
+                { slug: 'beauty', name: 'Beauty', Icon: Sparkles },
+                { slug: 'sports', name: 'Sports', Icon: Dumbbell },
               ].map(cat => (
                 <Link
                   key={cat.slug}
                   href={`/category/${cat.slug}`}
                   className="category-pill justify-center"
                 >
-                  <span className="text-2xl">{cat.icon}</span>
+                  <cat.Icon size={28} className="text-maple-red" />
                   <span className="font-semibold text-charcoal">{cat.name}</span>
                 </Link>
               ))}

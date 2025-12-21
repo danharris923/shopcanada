@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { categories } from '@/lib/brands-data'
+import { CategoryIcon } from '@/components/CategoryIcon'
 
 interface CategorySidebarProps {
   activeCategory?: string
@@ -27,7 +28,7 @@ export function CategorySidebar({ activeCategory }: CategorySidebarProps) {
                       : 'text-slate hover:text-charcoal hover:bg-ivory'
                   }`}
                 >
-                  <span className="text-lg">{category.icon}</span>
+                  <CategoryIcon category={category.name} size={18} className={isActive ? 'text-white' : 'text-maple-red'} />
                   <span className="flex-1">{category.name}</span>
                   <span className={`text-xs ${isActive ? 'text-silver-light' : 'text-silver'}`}>
                     ({category.brandCount})
