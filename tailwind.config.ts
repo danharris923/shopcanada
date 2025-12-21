@@ -16,19 +16,31 @@ const config: Config = {
           dark: '#350100',
         },
 
-        // === DARK NEUTRALS ===
+        // === DARK NEUTRALS (Header/Footer) ===
         'soft-black': '#0A0A0A',
-        'charcoal': '#1E1E1E',
-        'slate': '#444444',
+
+        // === PRO TYPOGRAPHY HIERARCHY ===
+        'heading': '#1a1a1a',      // Near black for headings
+        'body': '#4a4a4a',          // Readable mid-grey for body
+        'meta': '#737373',          // Lighter grey for secondary text
+        
+        // Legacy aliases
+        'charcoal': '#1a1a1a',
+        'slate': '#4a4a4a',
         'silver': {
-          DEFAULT: '#979799',
-          light: '#CBCACD',
+          DEFAULT: '#737373',
+          light: '#a0a0a0',
         },
 
-        // === LIGHT BACKGROUNDS ===
-        'cream': '#FAF9F7',
-        'ivory': '#F5F4F2',
-        'warm-grey': '#EDECEA',
+        // === PRO LIGHT BACKGROUNDS ===
+        'page-bg': '#fafafa',       // Barely off-white page
+        'card-bg': '#f2f2f2',       // Subtle grey card
+        'card-border': '#e0e0e0',   // Crisp edge
+        
+        // Legacy aliases
+        'cream': '#fafafa',
+        'ivory': '#f5f5f5',
+        'warm-grey': '#eeeeee',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
@@ -46,7 +58,7 @@ const config: Config = {
       },
       boxShadow: {
         'subtle': '0 1px 2px rgba(10, 10, 10, 0.05)',
-        'card': '0 4px 6px rgba(10, 10, 10, 0.07)',
+        'card': '0 1px 3px rgba(0, 0, 0, 0.08)',
         'card-hover': '0 10px 25px rgba(10, 10, 10, 0.1)',
         'elevated': '0 20px 40px rgba(10, 10, 10, 0.15)',
       },

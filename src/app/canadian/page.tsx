@@ -5,7 +5,7 @@ import { Footer } from '@/components/Footer'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Canadian Brands - Shop Canadian, Support Local',
+  title: 'Canadian Brand Directory - Shop Canada',
   description: 'Discover quality Canadian-made products and support domestic businesses. Browse our curated collection of Canadian brands.',
 }
 
@@ -62,7 +62,7 @@ export default function CanadianPage() {
       <Header />
       <main className="bg-cream min-h-screen">
         {/* Hero Section */}
-        <section className="bg-burgundy py-12 px-6">
+        <section className="bg-soft-black py-12 px-6">
           <div className="max-w-6xl mx-auto text-center">
             <div className="mb-4">
               <Link href="/" className="text-silver-light hover:text-white text-sm">
@@ -70,22 +70,22 @@ export default function CanadianPage() {
               </Link>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Canadian Brands
+              Canadian Brand Directory
             </h1>
             <p className="text-lg text-silver-light mb-2 max-w-2xl mx-auto">
-              Support Canadian businesses. Browse {totalBrands} quality brands.
+              {totalBrands} Canadian-owned retailers, from local favourites to national icons.
             </p>
           </div>
         </section>
 
         {/* Icons of Canadian Retail - Featured Brands */}
-        <section className="bg-soft-black py-12 px-6">
+        <section className="bg-white py-12 px-6">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-8">
-              <div className="inline-block bg-burgundy px-4 py-2 rounded-lg mb-3">
+              <div className="inline-block bg-maple-red px-4 py-2 rounded-lg mb-3">
                 <span className="text-white font-bold text-sm">FEATURED CANADIAN BRANDS</span>
               </div>
-              <h2 className="text-3xl font-bold text-white">
+              <h2 className="text-3xl font-bold text-charcoal">
                 Icons of Canadian Retail
               </h2>
             </div>
@@ -94,7 +94,7 @@ export default function CanadianPage() {
               {featuredBrands.map((brand: any) => (
                 <div
                   key={brand.slug}
-                  className="group bg-charcoal border border-slate hover:border-maple-red transition-all overflow-hidden rounded-card"
+                  className="group bg-card-bg border border-card-border hover:border-maple-red transition-all overflow-hidden rounded-card shadow-card hover:shadow-card-hover"
                 >
                   {/* Image */}
                   <div className="relative h-40 overflow-hidden">
@@ -103,7 +103,7 @@ export default function CanadianPage() {
                       alt={`${brand.name} lifestyle`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
                     <div className="absolute top-2 left-2 bg-maple-red px-2 py-1 rounded">
                       <span className="text-white text-xs font-bold">EST. {brand.founded?.split(', ')[1]}</span>
                     </div>
@@ -124,11 +124,11 @@ export default function CanadianPage() {
                         </div>
                       )}
                       <div>
-                        <h3 className="text-lg font-bold text-white">{brand.name}</h3>
-                        <span className="text-xs text-silver">{brand.founded}</span>
+                        <h3 className="text-lg font-bold text-charcoal">{brand.name}</h3>
+                        <span className="text-xs text-slate">{brand.founded}</span>
                       </div>
                     </div>
-                    <p className="text-sm text-silver mb-4">{brand.tagline}</p>
+                    <p className="text-sm text-slate mb-4">{brand.tagline}</p>
 
                     {brand.amazonLink ? (
                       <a
@@ -209,7 +209,7 @@ export default function CanadianPage() {
                     {brandsByLetter[letter].map(brand => (
                       <div
                         key={brand.slug}
-                        className="bg-white border border-silver-light hover:border-maple-red transition-all p-4 rounded-card"
+                        className="bg-card-bg border border-card-border shadow-card hover:border-maple-red hover:shadow-card-hover transition-all p-4 rounded-card"
                       >
                         <div className="flex items-start gap-3 mb-2">
                           {brand.logo ? (

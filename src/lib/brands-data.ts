@@ -325,7 +325,6 @@ export const brands: Brand[] = [
     "category": "Grocery",
     "url": "https://www.loblaws.ca/",
     "logo": "https://www.google.com/s2/favicons?domain=loblaws.ca&sz=128",
-    "logo": "https://www.google.com/s2/favicons?domain=loblaws.ca&sz=128",
     "description": "Loblaws has been part of Canadian life for decades—where families go for fresh food, trusted brands, and everything in between."
   },
   {
@@ -390,7 +389,6 @@ export const brands: Brand[] = [
     "type": "Brand",
     "category": "Grocery",
     "url": "https://www.metro.ca/en",
-    "logo": "https://www.google.com/s2/favicons?domain=metro.ca&sz=128",
     "logo": "https://www.google.com/s2/favicons?domain=metro.ca&sz=128",
     "description": "Metro is a favourite Canadian grocery chain known for its fresh produce, carefully made meats, and all your everyday essentials."
   },
@@ -549,7 +547,6 @@ export const brands: Brand[] = [
     "category": "Coffee",
     "url": "https://secondcup.com/en/",
     "logo": "https://www.google.com/s2/favicons?domain=secondcup.com&sz=128",
-    "logo": "https://www.google.com/s2/favicons?domain=secondcup.com&sz=128",
     "description": "A Canadian coffee roaster dedicated to fresh beans, expert roasting, and exceptional flavour."
   },
   {
@@ -558,7 +555,6 @@ export const brands: Brand[] = [
     "type": "Brand",
     "category": "Pharmacy",
     "url": "https://www.shoppersdrugmart.ca/",
-    "logo": "https://www.google.com/s2/favicons?domain=shoppersdrugmart.ca&sz=128",
     "logo": "https://www.google.com/s2/favicons?domain=shoppersdrugmart.ca&sz=128",
     "description": "Since 1962, Shoppers Drug Mart is a go-to spot for Canadians looking after their health and everyday needs."
   },
@@ -695,7 +691,6 @@ export const brands: Brand[] = [
     "category": "Retail",
     "url": "https://well.ca/",
     "logo": "https://www.google.com/s2/favicons?domain=well.ca&sz=128",
-    "logo": "https://www.google.com/s2/favicons?domain=well.ca&sz=128",
     "description": "A Canadian retail chain offering diverse products, great value, and convenient shopping across the country."
   },
   {
@@ -803,7 +798,6 @@ export const brands: Brand[] = [
     "type": "Brand",
     "category": "Fitness",
     "url": "https://www.goodlifefitness.com/",
-    "logo": "https://www.google.com/s2/favicons?domain=goodlifefitness.com&sz=128",
     "logo": "https://www.google.com/s2/favicons?domain=goodlifefitness.com&sz=128",
     "description": "GoodLife Fitness is Canada’s biggest and friendliest gym, dedicated to helping Canadians live healthier, happier lives."
   },
@@ -1199,7 +1193,6 @@ export const brands: Brand[] = [
     "category": "Grocery",
     "url": "https://www.sobeys.com/en/",
     "logo": "https://www.google.com/s2/favicons?domain=sobeys.com&sz=128",
-    "logo": "https://www.google.com/s2/favicons?domain=sobeys.com&sz=128",
     "description": "Committed to sustainability and supporting Canadian farmers, it’s a grocery store that feels like part of the community."
   },
   {
@@ -1397,7 +1390,6 @@ export const brands: Brand[] = [
     "category": "Home",
     "url": "https://www.endy.com",
     "logo": "https://www.google.com/s2/favicons?domain=ca.endy.com&sz=128",
-    "logo": "https://www.google.com/s2/favicons?domain=endy.com&sz=128",
     "description": "A Canadian home goods brand creating quality products that bring style and function to your space."
   },
   {
@@ -1416,7 +1408,6 @@ export const brands: Brand[] = [
     "category": "Clothing",
     "url": "https://www.frankandoak.com/",
     "logo": "https://www.google.com/s2/favicons?domain=ca.frankandoak.com&sz=128",
-    "logo": "https://www.google.com/s2/favicons?domain=frankandoak.com&sz=128",
     "description": "A Canadian fashion brand offering quality clothing designed for style, comfort, and Canadian living."
   },
   {
@@ -2040,7 +2031,6 @@ export const brands: Brand[] = [
     "type": "Brand",
     "category": "Intimates",
     "url": "https://www.lavieenrose.com/",
-    "logo": "https://www.google.com/s2/favicons?domain=lavieenrose.com&sz=128",
     "logo": "https://www.google.com/s2/favicons?domain=lavieenrose.com&sz=128",
     "description": "Proudly Canadian, this beloved label blends elegance with everyday ease—offering pieces that range from romantic to practical, always with a perfect fit."
   },
@@ -4362,7 +4352,6 @@ export const brands: Brand[] = [
     "category": "Pharmacy",
     "url": "https://www.rexall.ca/",
     "logo": "https://www.google.com/s2/favicons?domain=rexall.ca&sz=128",
-    "logo": "https://www.google.com/s2/favicons?domain=rexall.ca&sz=128",
     "description": "With a history stretching back over 120 years, Rexall has grown from humble apothecary beginnings into one of Canada’s most trusted pharmacy brands. Today, with nearly 400 locations and thousands of passionate team members, Rexall supports the health and wellness of Canadians from coast to coast."
   },
   {
@@ -5202,7 +5191,6 @@ export const brands: Brand[] = [
     "category": "Pharmacy",
     "url": "https://www.shoppersdrugmart.ca/",
     "logo": "https://www.google.com/s2/favicons?domain=shoppersdrugmart.ca&sz=128",
-    "logo": "https://www.google.com/s2/favicons?domain=shoppersdrugmart.ca&sz=128",
     "description": "Canada's premier pharmacy and health retailer, offering prescriptions, beauty products, and wellness essentials with trusted service coast to coast."
   },
   {
@@ -5211,7 +5199,6 @@ export const brands: Brand[] = [
     "type": "Brand",
     "category": "Grocery",
     "url": "https://www.loblaws.ca/",
-    "logo": "https://www.google.com/s2/favicons?domain=loblaws.ca&sz=128",
     "logo": "https://www.google.com/s2/favicons?domain=loblaws.ca&sz=128",
     "description": "One of Canada's largest grocery retailers, providing fresh food, quality products, and convenient shopping for families nationwide."
   },
@@ -5222,7 +5209,6 @@ export const brands: Brand[] = [
     "category": "Grocery",
     "url": "https://www.sobeys.com/",
     "logo": "https://www.google.com/s2/favicons?domain=sobeys.com&sz=128",
-    "logo": "https://www.google.com/s2/favicons?domain=sobeys.com&sz=128",
     "description": "A trusted Canadian grocery chain offering fresh produce, quality meats, and everyday essentials with friendly neighbourhood service."
   },
   {
@@ -5232,7 +5218,6 @@ export const brands: Brand[] = [
     "category": "Grocery",
     "url": "https://www.metro.ca/",
     "logo": "https://www.google.com/s2/favicons?domain=metro.ca&sz=128",
-    "logo": "https://www.google.com/s2/favicons?domain=metro.ca&sz=128",
     "description": "A leading Canadian food retailer committed to fresh products, quality service, and supporting local communities."
   },
   {
@@ -5241,7 +5226,6 @@ export const brands: Brand[] = [
     "type": "Brand",
     "category": "Pharmacy",
     "url": "https://www.rexall.ca/",
-    "logo": "https://www.google.com/s2/favicons?domain=rexall.ca&sz=128",
     "logo": "https://www.google.com/s2/favicons?domain=rexall.ca&sz=128",
     "description": "A Canadian pharmacy chain providing health services, prescriptions, and wellness products with knowledgeable care."
   },
@@ -5279,7 +5263,6 @@ export const brands: Brand[] = [
     "category": "Intimates",
     "url": "https://www.lavieenrose.com/",
     "logo": "https://www.google.com/s2/favicons?domain=lavieenrose.com&sz=128",
-    "logo": "https://www.google.com/s2/favicons?domain=lavieenrose.com&sz=128",
     "description": "A Canadian intimates retailer designing comfortable, stylish lingerie, sleepwear, and swimwear for every body."
   },
   {
@@ -5289,7 +5272,6 @@ export const brands: Brand[] = [
     "category": "Fitness",
     "url": "https://www.goodlifefitness.com/",
     "logo": "https://www.google.com/s2/favicons?domain=goodlifefitness.com&sz=128",
-    "logo": "https://www.google.com/s2/favicons?domain=goodlifefitness.com&sz=128",
     "description": "Canada's largest fitness club chain helping Canadians achieve their health goals with state-of-the-art facilities."
   },
   {
@@ -5298,7 +5280,6 @@ export const brands: Brand[] = [
     "type": "Brand",
     "category": "Coffee",
     "url": "https://www.secondcup.com/",
-    "logo": "https://www.google.com/s2/favicons?domain=secondcup.com&sz=128",
     "logo": "https://www.google.com/s2/favicons?domain=secondcup.com&sz=128",
     "description": "A beloved Canadian café chain serving premium coffee, specialty drinks, and cozy gathering spaces since 1975."
   },
@@ -5318,7 +5299,6 @@ export const brands: Brand[] = [
     "category": "Health",
     "url": "https://well.ca/",
     "logo": "https://www.google.com/s2/favicons?domain=well.ca&sz=128",
-    "logo": "https://www.google.com/s2/favicons?domain=well.ca&sz=128",
     "description": "A Canadian online health and wellness retailer offering natural products, vitamins, and beauty essentials delivered to your door."
   },
   {
@@ -5328,7 +5308,6 @@ export const brands: Brand[] = [
     "category": "Clothing",
     "url": "https://ca.frankandoak.com/",
     "logo": "https://www.google.com/s2/favicons?domain=ca.frankandoak.com&sz=128",
-    "logo": "https://www.google.com/s2/favicons?domain=frankandoak.com&sz=128",
     "description": "A Montreal-based sustainable fashion brand creating modern, eco-conscious clothing for men and women."
   },
   {
@@ -5400,7 +5379,6 @@ export const brands: Brand[] = [
     "category": "Home",
     "url": "https://ca.endy.com/",
     "logo": "https://www.google.com/s2/favicons?domain=ca.endy.com&sz=128",
-    "logo": "https://www.google.com/s2/favicons?domain=endy.com&sz=128",
     "description": "A Canadian mattress company creating quality sleep products delivered in a box with risk-free trials."
   },
   {

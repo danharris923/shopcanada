@@ -18,11 +18,11 @@
   }
 
   body {
-    @apply bg-cream text-charcoal;
+    @apply bg-page-bg text-body overflow-x-hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply text-charcoal font-bold;
+    @apply text-heading font-bold;
   }
 
   a {
@@ -59,18 +59,18 @@
      CARDS
      ============================================ */
   .card {
-    @apply bg-white rounded-card shadow-card
+    @apply bg-card-bg rounded-card shadow-card border border-card-border
            hover:shadow-card-hover transition-all duration-300
            hover:-translate-y-1 overflow-hidden;
   }
 
   .deal-card {
-    @apply bg-white rounded-card shadow-card overflow-hidden
+    @apply bg-card-bg rounded-card shadow-card border border-card-border overflow-hidden
            transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover;
   }
 
   .deal-card-title {
-    @apply text-base font-semibold text-charcoal;
+    @apply text-base font-semibold text-heading;
   }
 
   .deal-card-price {
@@ -82,7 +82,7 @@
   }
 
   .deal-card-store {
-    @apply text-xs text-silver;
+    @apply text-xs text-meta;
   }
 
   /* ============================================
@@ -143,6 +143,21 @@
   /* ============================================
      HERO STYLES
      ============================================ */
+  .hero-section {
+    background-size: auto 100%;
+    background-position: right center;
+    position: relative;
+  }
+
+
+
+  @media (min-width: 768px) {
+    .hero-section {
+      background-size: cover;
+      background-position: top left;
+    }
+  }
+
   .hero-title {
     @apply text-4xl md:text-5xl lg:text-6xl font-bold text-white;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -222,7 +237,7 @@
   }
 
   .prose p {
-    @apply text-slate mb-4 leading-relaxed;
+    @apply text-body mb-4 leading-relaxed;
   }
 
   .prose ul {
@@ -230,7 +245,7 @@
   }
 
   .prose li {
-    @apply text-slate;
+    @apply text-body;
   }
 
   .prose a {
@@ -250,8 +265,8 @@
      STORE CARD
      ============================================ */
   .store-card {
-    @apply bg-white rounded-card border border-silver-light p-4
-           hover:border-maple-red hover:shadow-card transition-all text-center;
+    @apply bg-card-bg rounded-card border border-card-border p-4 shadow-card
+           hover:border-maple-red hover:shadow-card-hover transition-all text-center;
   }
 }
 
@@ -282,4 +297,18 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: #979799;
+}
+/* Mobile hero overlay - hide flag on small screens */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(30,30,30,0.95) 0%, rgba(30,30,30,0.8) 60%, transparent 100%);
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .hero-section::before {
+    display: none;
+  }
 }

@@ -32,33 +32,14 @@ export default async function HomePage() {
       <Header />
 
       <main>
-        {/* Hero Section with Canadian Flag */}
-        <section
-          className="relative min-h-[500px] md:min-h-[600px] flex items-center"
-          style={{
-            backgroundImage: 'url(/hero-canadian-flag.jpg)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'top left',
-          }}
-        >
-          {/* Content positioned on right (dark area of flag) */}
-          <div className="relative z-10 max-w-7xl mx-auto px-4 w-full">
-            <div className="max-w-xl ml-auto text-right md:pr-8 py-16">
-              <h1 className="hero-title mb-4">
-                Best <span className="text-maple-red">Canadian</span> Deals
-              </h1>
-              <p className="hero-subtitle mb-8">
-                Find the hottest deals from Amazon.ca, Walmart, Costco, Best Buy
-                and more. Updated every 4 hours.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-end">
-                <Link href="/deals" className="btn-primary text-lg px-8 py-4">
-                  Browse All Deals
-                </Link>
-                <Link href="/canadian" className="btn-ghost text-lg px-8 py-4">
-                  Canadian Brands
-                </Link>
-              </div>
+        {/* Hero Banner */}
+        <section className="relative overflow-hidden">
+          <img src="/herobanner.png" alt="Shop Canada" className="w-full h-auto" />
+          <div className="absolute inset-0 flex items-center justify-end pr-8 md:pr-16">
+            <div className="text-right">
+              <h1 className="text-2xl md:text-4xl font-bold mb-2 text-white">ShopCanada</h1>
+              <p className="text-sm md:text-base mb-4 text-white">Canadian deals for Canadians</p>
+              <Link href="/deals" className="btn-primary">Browse Deals</Link>
             </div>
           </div>
         </section>

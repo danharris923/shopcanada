@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { StoreLogo } from '@/components/StoreLogo'
-import { storeLogos, getAllStores, featuredStores } from '@/lib/store-logos'
+import { storeLogos, getAllStores } from '@/lib/store-logos'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -30,36 +30,15 @@ export default function StoresPage() {
       <Header />
       <main className="min-h-screen bg-cream">
         {/* Hero */}
-        <section className="bg-burgundy text-white py-12">
+        <section className="bg-soft-black py-12">
           <div className="max-w-7xl mx-auto px-4 text-center">
-            <h1 className="text-4xl font-bold mb-4">
+            <h1 className="text-4xl font-bold text-white mb-4">
               All Stores
             </h1>
             <p className="text-silver-light text-lg max-w-2xl mx-auto">
               Browse deals from {allStores.length}+ major Canadian retailers. We track prices from
               Amazon, Walmart, Costco, Best Buy, and many more.
             </p>
-          </div>
-        </section>
-
-        {/* Featured Stores */}
-        <section className="py-8 px-4 bg-white border-b border-silver-light">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-xl font-bold text-charcoal mb-4">Featured Stores</h2>
-            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-              {featuredStores.map((store) => (
-                <Link
-                  key={store.slug}
-                  href={`/stores/${store.slug}`}
-                  className="group flex items-center gap-3 bg-ivory hover:bg-white rounded-card border border-silver-light hover:border-maple-red hover:shadow-card transition-all px-4 py-3"
-                >
-                  <StoreLogo src={store.logo} alt={store.name} domain={store.domain} size={40} />
-                  <span className="font-semibold text-charcoal group-hover:text-maple-red transition-colors">
-                    {store.name}
-                  </span>
-                </Link>
-              ))}
-            </div>
           </div>
         </section>
 
@@ -114,7 +93,7 @@ export default function StoresPage() {
                   <Link
                     key={store.slug}
                     href={`/stores/${store.slug}`}
-                    className="group flex items-center gap-2 bg-ivory hover:bg-white rounded-lg border border-silver-light hover:border-maple-red transition-all px-3 py-2"
+                    className="group flex items-center gap-2 bg-card-bg rounded-lg border border-card-border shadow-card hover:border-maple-red hover:shadow-card-hover transition-all px-3 py-2"
                   >
                     <StoreLogo src={store.logo} alt={store.name} domain={store.domain} size={24} />
                     <span className="text-sm font-medium text-slate group-hover:text-maple-red transition-colors truncate">

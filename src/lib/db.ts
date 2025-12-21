@@ -266,3 +266,27 @@ export async function getStoreStats(): Promise<{ store: string; count: number }[
     return []
   }
 }
+
+// =============================================================================
+// SEARCH
+// =============================================================================
+
+export async function searchDeals(searchQuery: string, limit: number = 50): Promise<Deal[]> {
+  if (!searchQuery || searchQuery.trim().length < 2) return []
+
+  try {
+    const searchTerm = `%${searchQuery.trim().toLowerCase()}%`
+    const rows = await query<Deal>(
+      `SELECT * FROM deals
+       WHERE is_active = TRUE
+       AND (LOWER(title) LIKE $1 OR LOWER(store) LIKE $1 OR LOWER(category) LIKE $1)
+       ORDER BY featured DESC, date_added DESC
+       LIMIT $2`,
+      [searchTerm, limit]
+    )
+    return rows
+  } catch (error) {
+    console.error('Search error:', error)
+    return []
+  }
+}

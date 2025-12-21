@@ -7,8 +7,7 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <span className="text-2xl">🍁</span>
+            <Link href="/" className="flex items-center mb-4">
               <span className="font-bold text-xl text-white">
                 Shop<span className="text-maple-red">Canada</span>
               </span>
@@ -28,7 +27,6 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               <li><Link href="/deals" className="hover:text-cream transition-colors">All Deals</Link></li>
               <li><Link href="/stores" className="hover:text-cream transition-colors">Stores</Link></li>
-              <li><Link href="/category" className="hover:text-cream transition-colors">Categories</Link></li>
               <li><Link href="/canadian" className="hover:text-cream transition-colors">Canadian Brands</Link></li>
             </ul>
           </div>
@@ -45,15 +43,15 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Categories */}
+          {/* More Stores */}
           <div>
-            <h3 className="font-semibold text-white mb-4 uppercase text-sm tracking-wide">Categories</h3>
+            <h3 className="font-semibold text-white mb-4 uppercase text-sm tracking-wide">More Stores</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/category/electronics" className="hover:text-cream transition-colors">Electronics</Link></li>
-              <li><Link href="/category/fashion" className="hover:text-cream transition-colors">Fashion</Link></li>
-              <li><Link href="/category/home" className="hover:text-cream transition-colors">Home</Link></li>
-              <li><Link href="/category/grocery" className="hover:text-cream transition-colors">Grocery</Link></li>
-              <li><Link href="/category/beauty" className="hover:text-cream transition-colors">Beauty</Link></li>
+              <li><Link href="/stores/shoppers" className="hover:text-cream transition-colors">Shoppers Drug Mart</Link></li>
+              <li><Link href="/stores/home-depot" className="hover:text-cream transition-colors">Home Depot</Link></li>
+              <li><Link href="/stores/the-bay" className="hover:text-cream transition-colors">The Bay</Link></li>
+              <li><Link href="/stores/sport-chek" className="hover:text-cream transition-colors">Sport Chek</Link></li>
+              <li><Link href="/stores/indigo" className="hover:text-cream transition-colors">Indigo</Link></li>
             </ul>
           </div>
         </div>
