@@ -35,8 +35,8 @@ export function DealCard({
           </div>
         )}
 
-        {/* Featured Badge */}
-        {featured && (
+        {/* Featured Badge - Only show for deals with admin-set affiliate links */}
+        {affiliateUrl && (
           <div className="absolute top-2 left-2 z-10">
             <span className="
               bg-burgundy text-white

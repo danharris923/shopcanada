@@ -73,6 +73,9 @@ export default function StoresPage() {
                         <h3 className="text-sm font-semibold text-charcoal group-hover:text-maple-red transition-colors line-clamp-1">
                           {store.name}
                         </h3>
+                        <p className="text-xs text-slate mt-1 line-clamp-2">
+                          {store.tagline}
+                        </p>
                       </Link>
                     ))}
                   </div>
@@ -109,10 +112,10 @@ export default function StoresPage() {
         <section className="py-12 px-4 bg-soft-black">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-2xl font-bold text-white mb-4">
-              Support Canadian Brands
+              Discover Canadian Brands
             </h2>
             <p className="text-silver mb-6">
-              Discover 600+ Canadian brands and shop local
+              Browse 600+ Canadian-owned stores and brands available to shoppers
             </p>
             <Link href="/canadian" className="btn-primary">
               Explore Canadian Brands

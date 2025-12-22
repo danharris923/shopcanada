@@ -3,6 +3,13 @@ import { categories } from '@/lib/brands-data'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import type { Metadata } from 'next'
+import * as LucideIcons from 'lucide-react'
+
+// Dynamic icon component that renders Lucide icons by name
+function CategoryIcon({ name, className }: { name: string; className?: string }) {
+  const Icon = (LucideIcons as Record<string, React.ComponentType<{ className?: string; size?: number }>>)[name] || LucideIcons.Leaf
+  return <Icon className={className} size={32} />
+}
 
 export const metadata: Metadata = {
   title: 'Canadian Brand Categories',
@@ -14,8 +21,8 @@ export default function CategoriesPage() {
     <>
       <Header />
       <main className="bg-cream min-h-screen">
-        {/* Header */}
-        <section className="bg-burgundy py-12 px-6">
+        {/* Hero */}
+        <section className="bg-soft-black py-12 px-6">
           <div className="max-w-6xl mx-auto">
             <div className="mb-4">
               <Link href="/canadian" className="text-silver-light hover:text-white text-sm">
@@ -39,9 +46,11 @@ export default function CategoriesPage() {
                 <Link
                   key={category.slug}
                   href={`/canadian/category/${category.slug}`}
-                  className="group bg-white border border-silver-light hover:border-maple-red transition-all p-6 rounded-card"
+                  className="group bg-card-bg border border-card-border shadow-card hover:shadow-card-hover hover:border-maple-red hover:-translate-y-1 transition-all p-6 rounded-card"
                 >
-                  <div className="text-4xl mb-4">{category.icon}</div>
+                  <div className="mb-4">
+                    <CategoryIcon name={category.icon} className="text-maple-red" />
+                  </div>
                   <h2 className="text-2xl font-bold text-charcoal mb-2 group-hover:text-maple-red transition-colors">
                     {category.name}
                   </h2>

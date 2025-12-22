@@ -12,7 +12,7 @@ export function Footer() {
               Shop Canada
             </Link>
             <p className="text-sm text-silver mb-4">
-              Canadian sales at Canadian stores for Canadian people.
+              Great deals from stores Canadians love.
             </p>
             <p className="text-xs text-slate">
               Made for Canadian Shoppers
@@ -54,7 +54,7 @@ export function Footer() {
               <div>
                 <h3 className="text-xl font-bold text-white">Canadian Retailer Directory</h3>
                 <p className="text-white/80 text-sm">
-                  Your destination for the best Canadian sales, clearance items, and locally-made products. Shop Canadian. Support Local.
+                  Featuring 600+ Canadian brands plus deals from the stores Canadians shop most.
                 </p>
               </div>
             </div>

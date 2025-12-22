@@ -51,7 +51,7 @@ export default async function HomePage() {
                 Shop Canada
               </h1>
               <p className="text-white/90 text-sm md:text-lg mb-6 drop-shadow text-right">
-                Canadian sales at Canadian stores for Canadian people
+                The best deals for Canadian shoppers
               </p>
               <HeroSearch />
             </div>
@@ -83,13 +83,13 @@ export default async function HomePage() {
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-4 text-white">
-                <Leaf size={40} className="text-maple-red" />
+                <Leaf size={40} className="text-white" />
                 <div>
                   <h2 className="text-xl md:text-2xl font-bold">
-                    Shop Canadian First
+                    Discover Canadian Brands
                   </h2>
                   <p className="text-white/80 text-sm md:text-base">
-                    Discover 600+ proudly Canadian retailers and local favorites
+                    Plus 600+ homegrown Canadian brands worth knowing
                   </p>
                 </div>
               </div>
@@ -243,11 +243,11 @@ export default async function HomePage() {
         <section className="py-16 section-dark">
           <div className="max-w-4xl mx-auto text-center px-4">
             <h2 className="text-3xl font-bold text-white mb-4">
-              Support <span className="text-maple-red">Local</span> Business
+              Discover <span className="text-maple-red">Canadian</span> Brands
             </h2>
             <p className="text-silver mb-8 text-lg">
-              Browse 600+ Canadian retailers and shop local. From coast to coast,
-              find quality products made right here in Canada.
+              Explore our directory of 600+ Canadian brands. From coast to coast,
+              discover quality products made right here in Canada.
             </p>
             <Link href="/canadian" className="btn-primary text-lg px-8 py-4">
               Explore Canadian Brands
@@ -258,36 +258,31 @@ export default async function HomePage() {
         {/* SEO Content */}
         <section className="py-12 section-white">
           <div className="max-w-4xl mx-auto px-4 prose">
-            <h2>About Shop Canada - Your Canadian Savings Destination</h2>
+            <h2>About Shop Canada – Deals for Canadian Shoppers</h2>
             <p>
-              Shop Canada is your go-to destination for finding the best sales, markdowns,
-              and discounts from top Canadian retailers. We scour the web to bring you
-              verified price drops from Amazon.ca, Walmart Canada, Costco, Best Buy, Canadian
-              Tire, and dozens more stores.
+              Shop Canada helps Canadians find the best deals available in Canada — including sales, markdowns,
+              and verified discounts from Canadian brands and major retailers that serve Canadian shoppers.
+            </p>
+            <p>
+              We track real price drops from trusted stores like Amazon.ca, Walmart Canada, Costco, Best Buy,
+              Canadian Tire, and dozens more, so you can shop confidently knowing the deals are current and
+              available in Canada.
             </p>
 
             <h3>How We Find Savings</h3>
             <p>
-              Our automated price-tracking system monitors major Canadian retailers and
-              savings sites around the clock. We update our listings every 4 hours
-              to ensure you always have access to the latest savings opportunities.
+              Our automated price-tracking system monitors retailers and savings sources serving Canada
+              around the clock. Listings are refreshed every 15 minutes, allowing us to surface new price
+              drops, active promotions, and limited-time discounts shortly after they appear.
             </p>
 
             <h3>Why Canadian Shoppers Trust Us</h3>
             <ul>
-              <li>Real-time price tracking from major Canadian retailers</li>
-              <li>Verified savings - we only list active promotions</li>
-              <li>600+ Canadian retailer directory</li>
-              <li>Easy-to-use interface designed for quick bargain hunting</li>
+              <li>Near real-time price tracking from retailers serving Canada</li>
+              <li>Verified savings — only active, live promotions are listed</li>
+              <li>Directory of 600+ stores and brands available to Canadian shoppers</li>
+              <li>Simple, fast interface designed for efficient deal hunting</li>
             </ul>
-
-            <h3>Start Saving Today</h3>
-            <p>
-              Browse our latest markdowns, explore your favorite stores, or search by
-              category to find exactly what you&apos;re looking for. Whether you&apos;re
-              shopping for electronics, fashion, home goods, or groceries, we&apos;ve
-              got savings for every Canadian shopper.
-            </p>
           </div>
         </section>
       </main>

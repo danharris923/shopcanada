@@ -6739,26 +6739,43 @@ export const brands: Brand[] = [
 ]
 
 // Generate categories with actual counts
+// Using Lucide icon names
 const categoryIcons: Record<string, string> = {
-  'Clothing': '👕',
-  'Beauty': '💄',
-  'Jewellery': '💎',
-  'Shoes': '👟',
-  'Health': '💪',
-  'Coffee': '☕',
-  'Home': '🏠',
-  'Food': '🍁',
-  'Restaurant': '🍽️',
-  'Accessories': '👜',
-  'Intimates': '👙',
-  'Keto': '🥑',
-  'Snacks': '🍿',
-  'Haircare': '💇',
-  'Pets': '🐾',
-  'Retail': '🛒',
-  'Eyewear': '👓',
-  'Baby': '👶',
-  'Electronics': '💻'
+  'Clothing': 'Shirt',
+  'Beauty': 'Sparkles',
+  'Jewellery': 'Gem',
+  'Shoes': 'Footprints',
+  'Health': 'Heart',
+  'Coffee': 'Coffee',
+  'Home': 'Home',
+  'Food': 'Utensils',
+  'Restaurant': 'UtensilsCrossed',
+  'Accessories': 'Briefcase',
+  'Intimates': 'Heart',
+  'Keto': 'Salad',
+  'Snacks': 'Cookie',
+  'Haircare': 'Scissors',
+  'Pets': 'PawPrint',
+  'Retail': 'ShoppingCart',
+  'Eyewear': 'Glasses',
+  'Baby': 'Baby',
+  'Electronics': 'Monitor',
+  'Grocery': 'ShoppingBasket',
+  'Beverages': 'Wine',
+  'Travel': 'Plane',
+  'Telecom': 'Smartphone',
+  'Automotive': 'Car',
+  'Fitness': 'Dumbbell',
+  'Pharmacy': 'Pill',
+  'Wedding': 'Heart',
+  'Hotels': 'Hotel',
+  'Entertainment': 'Tv',
+  'Services': 'Wrench',
+  'Tech': 'Cpu',
+  'Cleaning': 'SprayCan',
+  'Indigenous': 'Leaf',
+  'Loyalty': 'Award',
+  'Meal Delivery': 'Truck'
 }
 
 const categoryBlurbs: Record<string, string> = {
@@ -6825,7 +6842,7 @@ export const categories: Category[] = Object.entries(categoryCounts)
   .map(([name, count]) => ({
     slug: name.toLowerCase().replace(/\s+/g, '-'),
     name,
-    icon: categoryIcons[name] || '🍁',
+    icon: categoryIcons[name] || 'Leaf',
     brandCount: count,
     seoBlurb: categoryBlurbs[name]
   }))
