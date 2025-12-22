@@ -7,7 +7,8 @@ import * as LucideIcons from 'lucide-react'
 
 // Dynamic icon component that renders Lucide icons by name
 function CategoryIcon({ name, className }: { name: string; className?: string }) {
-  const Icon = (LucideIcons as Record<string, React.ComponentType<{ className?: string; size?: number }>>)[name] || LucideIcons.Leaf
+  const icons = LucideIcons as unknown as Record<string, React.ComponentType<{ className?: string; size?: number }>>
+  const Icon = icons[name] || LucideIcons.Leaf
   return <Icon className={className} size={32} />
 }
 
