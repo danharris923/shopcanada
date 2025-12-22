@@ -1,3 +1,4 @@
+import { Leaf } from 'lucide-react'
 import Link from 'next/link'
 import { brands, categories, getBrandBySlug } from '@/lib/brands-data'
 import { Header } from '@/components/Header'
@@ -132,7 +133,7 @@ export default function CanadianPage() {
                         />
                       ) : (
                         <div className="w-10 h-10 rounded bg-cream flex items-center justify-center flex-shrink-0 text-xl">
-                          🍁
+                          
                         </div>
                       )}
                       <div>
@@ -232,7 +233,7 @@ export default function CanadianPage() {
                             />
                           ) : (
                             <div className="w-10 h-10 rounded bg-cream flex items-center justify-center flex-shrink-0 text-xl">
-                              🍁
+                              
                             </div>
                           )}
                           <div className="flex-1 min-w-0">

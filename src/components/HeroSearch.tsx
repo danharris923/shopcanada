@@ -21,7 +21,7 @@ export function HeroSearch() {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search deals..."
+          placeholder="Search products or stores..."
           className="w-full px-5 py-3 pl-12 rounded-full bg-white/10 text-white placeholder-white/60 border border-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white"
         />
         <svg

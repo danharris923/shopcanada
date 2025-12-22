@@ -7,7 +7,7 @@ import { HeroSearch } from '@/components/HeroSearch'
 import { Footer } from '@/components/Footer'
 import { StoreLogo } from '@/components/StoreLogo'
 import { featuredStores } from '@/lib/store-logos'
-import { Smartphone, Shirt, Home, ShoppingCart, Sparkles, Dumbbell } from 'lucide-react'
+import { Smartphone, Shirt, Home, ShoppingCart, Sparkles, Dumbbell, Leaf } from 'lucide-react'
 import { AnimatedCounter } from '@/components/AnimatedCounter'
 
 // Revalidate every 15 minutes
@@ -64,7 +64,7 @@ export default async function HomePage() {
             <div className="flex justify-center gap-6 md:gap-12 text-center">
               <div className="flex items-center gap-1.5">
                 <AnimatedCounter end={latestDeals.length + featuredDeals.length} suffix="+" className="text-lg md:text-xl font-bold text-maple-red" />
-                <span className="text-xs text-silver">Deals</span>
+                <span className="text-xs text-silver">Sales</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <AnimatedCounter end={storeStats.length} suffix="+" className="text-lg md:text-xl font-bold text-maple-red" />
@@ -72,19 +72,52 @@ export default async function HomePage() {
               </div>
               <div className="flex items-center gap-1.5">
                 <AnimatedCounter end={600} suffix="+" className="text-lg md:text-xl font-bold text-maple-red" />
-                <span className="text-xs text-silver">Canadian Brands</span>
+                <span className="text-xs text-silver">Local Shops</span>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Featured Deals */}
+        {/* Canadian Picks - Above the Fold CTA */}
+        <section className="py-6 bg-gradient-to-r from-maple-red to-burgundy">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-4 text-white">
+                <Leaf size={40} className="text-maple-red" />
+                <div>
+                  <h2 className="text-xl md:text-2xl font-bold">
+                    Shop Canadian First
+                  </h2>
+                  <p className="text-white/80 text-sm md:text-base">
+                    Discover 600+ proudly Canadian retailers and local favorites
+                  </p>
+                </div>
+              </div>
+              <div className="flex gap-3">
+                <Link
+                  href="/canadian"
+                  className="bg-white text-maple-red hover:bg-cream font-bold py-3 px-6 rounded-lg transition-colors"
+                >
+                  Explore Canadian Brands
+                </Link>
+                <Link
+                  href="/canadian/categories"
+                  className="bg-transparent text-white border-2 border-white hover:bg-white hover:text-maple-red font-semibold py-3 px-6 rounded-lg transition-colors hidden md:inline-block"
+                >
+                  Browse Categories
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Hot Sales */}
         {featuredDeals.length > 0 && (
           <section className="py-12 section-ivory">
             <div className="max-w-7xl mx-auto px-4">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-2xl md:text-3xl font-bold text-charcoal">
-                  Featured Deals
+                  Hot Sales
                 </h2>
                 <Link
                   href="/deals"
@@ -144,12 +177,12 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* Latest Deals */}
+        {/* Fresh Markdowns */}
         <section className="py-12 section-cream">
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl md:text-3xl font-bold text-charcoal">
-                Latest Deals
+                Fresh Markdowns
               </h2>
               <Link
                 href="/deals"
@@ -210,10 +243,10 @@ export default async function HomePage() {
         <section className="py-16 section-dark">
           <div className="max-w-4xl mx-auto text-center px-4">
             <h2 className="text-3xl font-bold text-white mb-4">
-              Support <span className="text-maple-red">Canadian</span> Brands
+              Support <span className="text-maple-red">Local</span> Business
             </h2>
             <p className="text-silver mb-8 text-lg">
-              Discover 600+ Canadian brands and shop local. From coast to coast,
+              Browse 600+ Canadian retailers and shop local. From coast to coast,
               find quality products made right here in Canada.
             </p>
             <Link href="/canadian" className="btn-primary text-lg px-8 py-4">
@@ -225,35 +258,35 @@ export default async function HomePage() {
         {/* SEO Content */}
         <section className="py-12 section-white">
           <div className="max-w-4xl mx-auto px-4 prose">
-            <h2>About Shop Canada - Your Canadian Deals Destination</h2>
+            <h2>About Shop Canada - Your Canadian Savings Destination</h2>
             <p>
-              Shop Canada is your go-to destination for finding the best deals, sales,
+              Shop Canada is your go-to destination for finding the best sales, markdowns,
               and discounts from top Canadian retailers. We scour the web to bring you
-              verified deals from Amazon.ca, Walmart Canada, Costco, Best Buy, Canadian
+              verified price drops from Amazon.ca, Walmart Canada, Costco, Best Buy, Canadian
               Tire, and dozens more stores.
             </p>
 
-            <h3>How We Find Deals</h3>
+            <h3>How We Find Savings</h3>
             <p>
-              Our automated deal-finding system monitors major Canadian retailers and
-              deal aggregators around the clock. We update our listings every 4 hours
+              Our automated price-tracking system monitors major Canadian retailers and
+              savings sites around the clock. We update our listings every 4 hours
               to ensure you always have access to the latest savings opportunities.
             </p>
 
             <h3>Why Canadian Shoppers Trust Us</h3>
             <ul>
               <li>Real-time price tracking from major Canadian retailers</li>
-              <li>Verified deals - we only list active promotions</li>
-              <li>600+ Canadian brands directory</li>
-              <li>Easy-to-use interface designed for quick deal hunting</li>
+              <li>Verified savings - we only list active promotions</li>
+              <li>600+ Canadian retailer directory</li>
+              <li>Easy-to-use interface designed for quick bargain hunting</li>
             </ul>
 
             <h3>Start Saving Today</h3>
             <p>
-              Browse our latest deals, explore your favorite stores, or search by
+              Browse our latest markdowns, explore your favorite stores, or search by
               category to find exactly what you&apos;re looking for. Whether you&apos;re
               shopping for electronics, fashion, home goods, or groceries, we&apos;ve
-              got deals for every Canadian shopper.
+              got savings for every Canadian shopper.
             </p>
           </div>
         </section>

@@ -19,9 +19,9 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Popular Stores */}
+          {/* Top Retailers */}
           <div>
-            <h3 className="font-semibold text-white mb-4 uppercase text-sm tracking-wide">Popular Stores</h3>
+            <h3 className="font-semibold text-white mb-4 uppercase text-sm tracking-wide">Top Retailers</h3>
             <ul className="space-y-2 text-sm">
               <li><Link href="/stores/amazon" className="hover:text-cream transition-colors">Amazon.ca</Link></li>
               <li><Link href="/stores/walmart" className="hover:text-cream transition-colors">Walmart Canada</Link></li>
@@ -31,9 +31,9 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* More Stores */}
+          {/* More Retailers */}
           <div>
-            <h3 className="font-semibold text-white mb-4 uppercase text-sm tracking-wide">More Stores</h3>
+            <h3 className="font-semibold text-white mb-4 uppercase text-sm tracking-wide">More Retailers</h3>
             <ul className="space-y-2 text-sm">
               <li><Link href="/stores/shoppers" className="hover:text-cream transition-colors">Shoppers Drug Mart</Link></li>
               <li><Link href="/stores/home-depot" className="hover:text-cream transition-colors">Home Depot</Link></li>
@@ -44,7 +44,7 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Canadian Brand Directory Card */}
+        {/* Canadian Retailer Directory Card */}
         <div className="mt-8 p-6 bg-gradient-to-r from-burgundy to-maple-red rounded-lg">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-4">
@@ -52,9 +52,9 @@ export function Footer() {
                 <Leaf className="w-8 h-8 text-white" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-white">Canadian Brand Directory</h3>
+                <h3 className="text-xl font-bold text-white">Canadian Retailer Directory</h3>
                 <p className="text-white/80 text-sm">
-                  Your destination for the best Canadian deals, discounts, and Canadian-made products. Shop Canadian. Support Local.
+                  Your destination for the best Canadian sales, clearance items, and locally-made products. Shop Canadian. Support Local.
                 </p>
               </div>
             </div>

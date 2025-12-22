@@ -57,6 +57,7 @@ export interface DealCardProps {
   store: string
   affiliateUrl: string
   featured?: boolean
+  isCanadian?: boolean
 }
 
 /**

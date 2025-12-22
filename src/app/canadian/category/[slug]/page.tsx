@@ -1,3 +1,4 @@
+import { Leaf } from 'lucide-react'
 import Link from 'next/link'
 import { brands, categories, getCategoryBySlug } from '@/lib/brands-data'
 import { Header } from '@/components/Header'
@@ -95,7 +96,7 @@ export default async function CategoryPage({ params }: Props) {
                       />
                     ) : (
                       <div className="w-12 h-12 rounded bg-cream flex items-center justify-center flex-shrink-0 text-2xl">
-                        🍁
+                        
                       </div>
                     )}
                     <h3 className="text-xl font-bold text-charcoal">

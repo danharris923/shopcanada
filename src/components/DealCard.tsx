@@ -1,3 +1,4 @@
+import { Leaf } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { DealCardProps } from '@/types/deal'
@@ -14,6 +15,7 @@ export function DealCard({
   store,
   affiliateUrl,
   featured,
+  isCanadian,
 }: DealCardProps) {
   const priceNum = toNumber(price)
   const originalPriceNum = toNumber(originalPrice)
@@ -43,6 +45,21 @@ export function DealCard({
               shadow-md
             ">
               HOT DEAL
+            </span>
+          </div>
+        )}
+
+        {/* Canadian Badge */}
+        {isCanadian && (
+          <div className="absolute bottom-2 left-2 z-10">
+            <span className="
+              bg-white text-maple-red
+              px-2 py-1 rounded-lg
+              font-bold text-xs
+              shadow-md border border-maple-red
+              flex items-center gap-1
+            " className="flex items-center gap-1">
+              <Leaf size={12} className="text-maple-red" /> Canadian
             </span>
           </div>
         )}

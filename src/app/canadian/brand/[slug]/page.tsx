@@ -1,3 +1,4 @@
+import { Leaf } from 'lucide-react'
 import Link from 'next/link'
 import { brands, getBrandBySlug, getRelatedBrands, getCategoryBySlug } from '@/lib/brands-data'
 import { Breadcrumbs } from '@/components/breadcrumbs'
@@ -70,7 +71,7 @@ export default async function BrandPage({ params }: Props) {
                         className="w-full h-full object-contain p-2"
                       />
                     ) : (
-                      <span className="text-5xl md:text-6xl">🍁</span>
+                      <span className="text-5xl md:text-6xl"></span>
                     )}
                   </div>
                   <div className="flex-1">
@@ -195,7 +196,7 @@ export default async function BrandPage({ params }: Props) {
                               className="max-h-full max-w-full object-contain"
                             />
                           ) : (
-                            <span className="text-4xl">🍁</span>
+                            <span className="text-4xl"></span>
                           )}
                         </div>
                         <h3 className="text-lg font-bold text-charcoal mb-2 group-hover:text-maple-red">
