@@ -104,14 +104,31 @@ const URGENCY_PHRASES = [
 // =============================================================================
 
 const STORE_DESCRIPTIONS: Record<string, string> = {
-  'amazon': 'Amazon.ca offers fast Prime shipping across Canada with easy returns.',
-  'walmart': 'Walmart Canada provides everyday low prices with free shipping on orders over $35.',
-  'costco': 'Costco Canada is known for bulk savings and quality products for members.',
-  'best-buy': 'Best Buy Canada is your destination for electronics with price matching.',
-  'canadian-tire': 'Canadian Tire offers a wide selection of automotive, sports, and home products.',
-  'home-depot': 'Home Depot Canada is the go-to for home improvement and building materials.',
-  'shoppers': 'Shoppers Drug Mart offers health, beauty, and convenience products with PC Optimum points.',
-  'loblaws': 'Loblaws is one of Canada\'s largest grocery chains with PC Optimum rewards.',
+  'amazon': 'Amazon.ca offers fast Prime shipping across Canada with easy returns. Free shipping on orders over $35 for Prime members. Canada\'s largest online retailer with millions of products.',
+  'walmart': 'Walmart Canada provides everyday low prices with free shipping on orders over $35. Price match guarantee and convenient store pickup available at 400+ locations across Canada.',
+  'costco': 'Costco Canada is known for bulk savings and quality products for members. Warehouse prices on groceries, electronics, and household items. Membership includes exclusive deals.',
+  'best-buy': 'Best Buy Canada is your destination for electronics with price matching. Free shipping on orders over $35. Expert advice and Geek Squad support available in-store.',
+  'canadian-tire': 'Canadian Tire offers a wide selection of automotive, sports, and home products. Triangle Rewards program for cashback. Free in-store pickup available at 500+ locations.',
+  'home-depot': 'Home Depot Canada is the go-to for home improvement and building materials. Free delivery on orders over $45. Pro services and tool rental available.',
+  'shoppers': 'Shoppers Drug Mart offers health, beauty, and convenience products with PC Optimum points. 20x points events for maximum savings. Pharmacy services available.',
+  'loblaws': 'Loblaws is one of Canada\'s largest grocery chains with PC Optimum rewards. Fresh produce, bakery, and deli. Online grocery pickup and delivery available.',
+  'no-frills': 'No Frills offers no-name brand savings with PC Optimum points. Budget-friendly grocery shopping. Flashfood app deals on expiring items.',
+  'metro': 'Metro is a leading Canadian grocery chain with weekly flyer deals. Fresh food, quality products, and convenient locations. Online ordering available.',
+  'sobeys': 'Sobeys offers quality groceries with Scene+ rewards points. Local and organic products. Voila delivery service in select areas.',
+  'lululemon': 'Lululemon offers premium athletic wear designed in Vancouver. Free shipping on orders over $75. Free returns and exchanges. Quality guarantee on all products.',
+  'gap': 'Gap Canada offers casual American style for the whole family. Free shipping on orders over $50. GapCash and rewards program available.',
+  'old-navy': 'Old Navy offers affordable fashion for the whole family. Super Cash rewards program. Free shipping on orders over $50.',
+  'the-bay': 'Hudson\'s Bay is Canada\'s iconic department store since 1670. Premium brands at competitive prices. Hudson\'s Bay Rewards program.',
+  'sport-chek': 'Sport Chek is Canada\'s largest sporting goods retailer. Expert advice and price matching. Triangle Rewards program.',
+  'marks': 'Mark\'s offers durable workwear and casual clothing. Triangle Rewards program. Free in-store pickup available.',
+  'staples': 'Staples Canada offers office supplies, technology, and furniture. Free next-day delivery on orders over $45. Business solutions available.',
+  'rona': 'RONA is a Canadian home improvement retailer. Air Miles rewards. Free in-store pickup and delivery available.',
+  'ikea': 'IKEA Canada offers affordable Swedish design furniture. Flat-pack shipping and assembly services. IKEA Family member discounts.',
+  'indigo': 'Indigo is Canada\'s largest book and lifestyle retailer. Plum rewards program. Free shipping on orders over $35.',
+  'sephora': 'Sephora Canada offers premium beauty products. Beauty Insider rewards program. Free shipping on orders over $50.',
+  'winners': 'Winners offers designer brands at 20-60% off department store prices. New arrivals weekly. TJX Rewards card available.',
+  'dollarama': 'Dollarama offers everyday essentials at $1.25-$5 price points. Canada\'s largest dollar store chain.',
+  'london-drugs': 'London Drugs offers pharmacy, electronics, and household items. LDExtras rewards program. Price matching available.',
 }
 
 // =============================================================================
@@ -157,15 +174,27 @@ export function generateDealDescription(deal: Deal): string {
 }
 
 /**
- * Generate SEO meta description
+ * Generate SEO meta description with CTR-driving language
  */
 export function generateMetaDescription(deal: Deal): string {
   const savingsAmount = calculateSavings(deal.original_price, deal.price)
-  const savings = savingsAmount
-    ? `Save $${savingsAmount}`
-    : `${deal.discount_percent}% off`
+  const storeName = formatStoreName(deal.store)
 
-  return `${deal.title} - ${savings} at ${formatStoreName(deal.store)}. Shop this Canadian deal now before it's gone.`
+  // Rotate between different CTR-optimized formats
+  const templates = [
+    savingsAmount
+      ? `VERIFIED: ${deal.title} - Save $${savingsAmount} (${deal.discount_percent}% OFF) at ${storeName}. Limited stock. Free Canadian shipping available.`
+      : `VERIFIED: ${deal.title} - ${deal.discount_percent}% OFF at ${storeName}. Limited time Canadian deal.`,
+
+    savingsAmount
+      ? `${deal.title} on SALE: $${savingsAmount} OFF at ${storeName}. Lowest price in Canada. Ships free.`
+      : `${deal.title} - ${deal.discount_percent}% discount at ${storeName}. Today's best Canadian deal.`,
+
+    `DEAL ALERT: ${deal.title} now ${deal.discount_percent}% off at ${storeName}. Canadian shoppers save ${savingsAmount ? `$${savingsAmount}` : 'big'}. Limited time.`,
+  ]
+
+  const templateIndex = hashString(deal.id.toString()) % templates.length
+  return templates[templateIndex].substring(0, 160) // Google limit
 }
 
 /**

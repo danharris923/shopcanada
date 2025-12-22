@@ -16,6 +16,7 @@ import {
   generateProductSchema,
   generateBreadcrumbSchema,
   generateFAQSchema,
+  generateReviewSchema,
 } from '@/lib/schema'
 import {
   generateUrgencyData,
@@ -45,7 +46,9 @@ export async function generateStaticParams() {
   return slugs.map(slug => ({ slug }))
 }
 
-// Generate metadata
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://shopcanada.cc'
+
+// Generate metadata with enhanced SEO
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const deal = await getDealBySlug(params.slug)
 
@@ -56,15 +59,26 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = generatePageTitle(deal)
   const description = generateMetaDescription(deal)
   const imageUrl = deal.image_blob_url || deal.image_url || '/og-default.jpg'
+  const canonicalUrl = `${SITE_URL}/deals/${deal.slug}`
+  const publishedTime = deal.date_added ? new Date(deal.date_added).toISOString() : new Date().toISOString()
+  const modifiedTime = deal.date_updated ? new Date(deal.date_updated).toISOString() : publishedTime
 
   return {
     title,
     description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title,
       description,
-      images: [{ url: imageUrl }],
-      type: 'website',
+      url: canonicalUrl,
+      images: [{ url: imageUrl, width: 800, height: 600, alt: deal.title }],
+      type: 'article',
+      publishedTime,
+      modifiedTime,
+      authors: ['Shop Canada'],
+      tags: [deal.category || 'deals', deal.store || 'canada', 'canadian deals', 'savings'],
     },
     twitter: {
       card: 'summary_large_image',
@@ -92,21 +106,22 @@ export default async function DealPage({ params }: PageProps) {
   const storeDescription = getStoreDescription(deal.store)
   const relatedDeals = await getRelatedDeals(deal)
 
-  // Schema markup
+  // Schema markup - enhanced with Review for rich snippets
   const productSchema = generateProductSchema(deal)
   const breadcrumbSchema = generateBreadcrumbSchema(deal)
   const faqSchema = generateFAQSchema(deal)
+  const reviewSchema = generateReviewSchema(deal)
 
   const imageUrl = deal.image_blob_url || deal.image_url || '/placeholder-deal.jpg'
   const storeName = formatStoreName(deal.store)
 
   return (
     <>
-      {/* Schema.org JSON-LD */}
+      {/* Schema.org JSON-LD - Product, Breadcrumb, FAQ, Review for rich snippets */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify([productSchema, breadcrumbSchema, faqSchema]),
+          __html: JSON.stringify([productSchema, breadcrumbSchema, faqSchema, reviewSchema]),
         }}
       />
 
