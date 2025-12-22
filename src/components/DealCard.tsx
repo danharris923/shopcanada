@@ -58,7 +58,7 @@ export function DealCard({
               font-bold text-xs
               shadow-md border border-maple-red
               flex items-center gap-1
-            " className="flex items-center gap-1">
+            ">
               <Leaf size={12} className="text-maple-red" /> Canadian
             </span>
           </div>
