@@ -88,46 +88,44 @@ export default async function BrandPage({ params }: Props) {
                   {brand.description}
                 </p>
 
-                {/* External Links */}
-                <div className="flex flex-col sm:flex-row gap-4">
+                {brand.amazonLink && (
+                  <a
+                    href={brand.amazonLink}
+                    target="_blank"
+                    rel="nofollow noopener noreferrer"
+                    className="btn-secondary text-center inline-block"
+                  >
+                    {brand.buttonText || 'Shop Now 🛒'}
+                  </a>
+                )}
+              </div>
+
+              {/* Website Screenshot with Visit Button */}
+              {brand.screenshot && (
+                <div className="mb-12 relative group">
                   <a
                     href={brand.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-primary text-center"
+                    className="block relative overflow-hidden rounded-card border border-silver-light hover:border-maple-red transition-all"
                   >
-                    Visit {brand.name} →
+                    <img
+                      src={brand.screenshot}
+                      alt={`${brand.name} website preview`}
+                      className="w-full h-auto"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform">
+                      <span className="btn-primary inline-block">
+                        Visit {brand.name} →
+                      </span>
+                    </div>
                   </a>
-
-                  {brand.amazonLink && (
-                    <a
-                      href={brand.amazonLink}
-                      target="_blank"
-                      rel="nofollow noopener noreferrer"
-                      className="btn-secondary text-center"
-                    >
-                      {brand.buttonText || 'Shop Now 🛒'}
-                    </a>
-                  )}
                 </div>
-              </div>
+              )}
 
-              {/* Brand Story Section */}
-              <div className="mb-12 p-8 bg-white border border-silver-light rounded-card">
-                <h2 className="text-2xl md:text-3xl font-bold text-burgundy mb-4">Why Choose {brand.name}?</h2>
-                <div className="space-y-4 text-charcoal leading-relaxed">
-                  <p>
-                    {brand.name} represents the best of Canadian {brand.category.toLowerCase()} - combining quality
-                    craftsmanship, ethical manufacturing, and a commitment to supporting local communities.
-                  </p>
-                  <p>
-                    By choosing {brand.name}, you&apos;re not just buying a product - you&apos;re supporting Canadian jobs,
-                    manufacturing expertise, and the economic stability of our communities.
-                  </p>
-                </div>
-              </div>
 
-              {/* Extended Brand Story (only if available) */}
+              {/* Brand Story (only if available) */}
               {brand.brandStory && (
                 <div className="mb-12 p-8 bg-ivory rounded-card border border-maple-red/30">
                   <h2 className="text-2xl md:text-3xl font-bold text-burgundy mb-6">The {brand.name} Story</h2>

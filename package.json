@@ -26,6 +26,7 @@
   },
   "private": "true",
   "devDependencies": {
-    "@types/pg": "^8.15.6"
+    "@types/pg": "^8.15.6",
+    "playwright": "^1.57.0"
   }
 }
