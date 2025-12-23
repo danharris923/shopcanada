@@ -6,7 +6,7 @@ import { Menu, X, Leaf, Home, ShoppingBag, Store, Grid3X3 } from 'lucide-react'
 
 const navLinks = [
   { href: '/', label: 'Home', icon: Home },
-  { href: '/canadian', label: 'Canadian Brands', icon: Leaf, highlight: true },
+  { href: '/canadian', label: 'Canadian Retailers', icon: Leaf, highlight: true },
   { href: '/deals', label: 'Sales', icon: ShoppingBag },
   { href: '/stores', label: 'Stores', icon: Store },
   { href: '/canadian/categories', label: 'Categories', icon: Grid3X3 },

@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { StoreLogo } from '@/components/StoreLogo'
-import { storeLogos, getAllStores } from '@/lib/store-logos'
+import { storeLogos, getAllStores, getTopBadges } from '@/lib/store-logos'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -61,23 +61,40 @@ export default function StoresPage() {
                     </span>
                   </h2>
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                    {categoryStores.map((store) => (
-                      <Link
-                        key={store.slug}
-                        href={`/stores/${store.slug}`}
-                        className="store-card group"
-                      >
-                        <div className="flex justify-center mb-3">
-                          <StoreLogo src={store.logo} alt={store.name} domain={store.domain} size={56} />
-                        </div>
-                        <h3 className="text-sm font-semibold text-charcoal group-hover:text-maple-red transition-colors line-clamp-1">
-                          {store.name}
-                        </h3>
-                        <p className="text-xs text-slate mt-1 line-clamp-2">
-                          {store.tagline}
-                        </p>
-                      </Link>
-                    ))}
+                    {categoryStores.map((store) => {
+                      const badges = getTopBadges(store, 2)
+                      return (
+                        <Link
+                          key={store.slug}
+                          href={`/stores/${store.slug}`}
+                          className="store-card group"
+                        >
+                          <div className="flex justify-center mb-3">
+                            <StoreLogo src={store.logo} alt={store.name} domain={store.domain} size={56} />
+                          </div>
+                          <h3 className="text-sm font-semibold text-charcoal group-hover:text-maple-red transition-colors line-clamp-1">
+                            {store.name}
+                          </h3>
+                          <p className="text-xs text-slate mt-1 line-clamp-2">
+                            {store.tagline}
+                          </p>
+                          {badges.length > 0 && (
+                            <div className="flex flex-wrap justify-center gap-1 mt-2">
+                              {badges.map((badge) => (
+                                <span
+                                  key={badge.label}
+                                  className="inline-flex items-center gap-0.5 text-[10px] text-slate bg-cream px-1.5 py-0.5 rounded-full"
+                                  title={badge.label}
+                                >
+                                  <span>{badge.emoji}</span>
+                                  <span className="hidden sm:inline">{badge.label}</span>
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                        </Link>
+                      )
+                    })}
                   </div>
                 </div>
               )

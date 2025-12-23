@@ -10,22 +10,122 @@ export type StoreBadge =
   | 'ships-from-canada'   // 🚚 Ships from Canada
   | 'made-in-canada'      // 🏭 Made in Canada
 
+// Badge display configuration - priority order (highest first)
+export const BADGE_CONFIG: Record<StoreBadge, { emoji: string; label: string; priority: number }> = {
+  'canadian-owned': { emoji: '🇨🇦', label: 'Canadian-Owned', priority: 1 },
+  'made-in-canada': { emoji: '🏭', label: 'Made in Canada', priority: 2 },
+  'canadian-retailer': { emoji: '🏬', label: 'Canadian Retailer', priority: 3 },
+  'international': { emoji: '🌍', label: 'International', priority: 4 },
+  'ships-from-canada': { emoji: '🚚', label: 'Ships from Canada', priority: 5 },
+}
+
+/**
+ * Get top N badges for a store, sorted by priority
+ * Returns badges with emoji and label for display
+ */
+export function getTopBadges(store: StoreInfo, maxBadges: number = 2): { emoji: string; label: string }[] {
+  if (!store.badges || store.badges.length === 0) return []
+
+  return store.badges
+    .map(badge => ({ ...BADGE_CONFIG[badge], badge }))
+    .sort((a, b) => a.priority - b.priority)
+    .slice(0, maxBadges)
+    .map(({ emoji, label }) => ({ emoji, label }))
+}
+
 export interface StoreInfo {
   slug: string
   name: string
   domain: string
   logo: string
   color: string
-  tagline: string           // Short descriptive line for store cards
+  tagline: string           // SEO-optimized microcopy (auto-generated or manual)
   badges?: StoreBadge[]     // Optional informational badges
   isCanadian?: boolean      // Canadian-owned flag
+  // SEO fields for microcopy generation
+  topCategories?: string[]  // Max 3 categories for SEO (e.g., ['electronics', 'home', 'fashion'])
+  province?: string         // For small Canadian brands (e.g., 'Saskatchewan')
 }
 
 // Helper to generate Google favicon URL (most reliable)
 const gfav = (domain: string) => `https://www.google.com/s2/favicons?domain=${domain}&sz=128`
 
-// Default tagline for stores without specific microcopy
-const DEFAULT_TAGLINE = 'Deals available to Canadian shoppers'
+/**
+ * Generate SEO-optimized microcopy for store cards
+ * Format: "{Brand Name} Canada deals on {categories}"
+ * Leverages brand search equity + Canada modifiers for organic traffic
+ */
+export function generateSeoTagline(store: StoreInfo): string {
+  const { name, topCategories, province, isCanadian } = store
+
+  // Small Canadian brand with province
+  if (province && isCanadian && topCategories?.length) {
+    return `${topCategories[0]} made in ${province}`
+  }
+
+  // Has categories - use SEO format
+  if (topCategories && topCategories.length > 0) {
+    const brandName = name.replace(/\.ca$/, '').replace(/ Canada$/, '')
+    const categories = formatCategories(topCategories)
+    return `${brandName} Canada deals on ${categories}`
+  }
+
+  // Fallback
+  return `Shop ${name} deals available in Canada`
+}
+
+/**
+ * Format categories array into readable string
+ * ['electronics', 'home', 'fashion'] -> "electronics, home, and fashion"
+ */
+function formatCategories(categories: string[]): string {
+  if (categories.length === 1) return categories[0]
+  if (categories.length === 2) return `${categories[0]} and ${categories[1]}`
+  return `${categories.slice(0, -1).join(', ')}, and ${categories[categories.length - 1]}`
+}
+
+/**
+ * Format category slug to display name
+ * 'home-decor' -> 'Home Decor'
+ */
+export function formatCategoryName(slug: string): string {
+  return slug
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ')
+}
+
+/**
+ * Generate SEO-optimized H2 for category section on store page
+ * Template: "{Category Name} Deals at {Store Name} Canada"
+ * For Canadian brands or brands with "Canada" in name, omits extra "Canada"
+ */
+export function generateCategoryH2(categorySlug: string, store: StoreInfo): string {
+  const categoryName = formatCategoryName(categorySlug)
+  const brandName = store.name.replace(/\.ca$/, '').replace(/ Canada$/, '')
+
+  // Small Canadian brand with province - use province instead of "Canada"
+  if (store.province && store.isCanadian) {
+    return `${categoryName} Deals Made in ${store.province}`
+  }
+
+  // Check if brand already has "Canada" or "Canadian" in the name
+  const hasCanadaInName = /canad/i.test(store.name)
+
+  if (hasCanadaInName) {
+    return `${categoryName} Deals at ${brandName}`
+  }
+
+  return `${categoryName} Deals at ${brandName} Canada`
+}
+
+/**
+ * Get store page H1 - returns tagline verbatim (matches store card microcopy)
+ * This ensures H1 = store card microcopy for SEO consistency
+ */
+export function getStorePageH1(store: StoreInfo): string {
+  return store.tagline
+}
 
 // Map store slugs to domains and logos
 export const storeLogos: Record<string, StoreInfo> = {
@@ -36,7 +136,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'amazon.ca',
     logo: gfav('amazon.ca'),
     color: 'bg-[#FF9900]',
-    tagline: 'International retailer with Canadian pricing and fulfillment',
+    tagline: 'Amazon Canada deals on electronics, home, and everyday essentials',
+    topCategories: ['electronics', 'home', 'everyday essentials'],
     badges: ['international', 'ships-from-canada'],
   },
   'walmart': {
@@ -45,7 +146,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'walmart.ca',
     logo: gfav('walmart.ca'),
     color: 'bg-[#0071CE]',
-    tagline: 'International retailer with stores across Canada',
+    tagline: 'Walmart Canada deals on groceries, electronics, and home goods',
+    topCategories: ['groceries', 'electronics', 'home goods'],
     badges: ['international', 'ships-from-canada'],
   },
   'costco': {
@@ -54,7 +156,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'costco.ca',
     logo: gfav('costco.ca'),
     color: 'bg-[#E31837]',
-    tagline: 'Membership retailer with Canadian warehouses and pricing',
+    tagline: 'Costco Canada deals on bulk groceries, electronics, and home goods',
+    topCategories: ['bulk groceries', 'electronics', 'home goods'],
     badges: ['international', 'ships-from-canada'],
   },
   'best-buy': {
@@ -63,7 +166,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'bestbuy.ca',
     logo: gfav('bestbuy.ca'),
     color: 'bg-[#0046BE]',
-    tagline: 'Electronics retailer serving Canadian shoppers nationwide',
+    tagline: 'Best Buy Canada deals on electronics, TVs, and appliances',
+    topCategories: ['electronics', 'TVs', 'appliances'],
     badges: ['international', 'ships-from-canada'],
   },
   'canadian-tire': {
@@ -72,7 +176,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'canadiantire.ca',
     logo: gfav('canadiantire.ca'),
     color: 'bg-[#D52B1E]',
-    tagline: 'Canadian retailer serving shoppers coast to coast',
+    tagline: 'Canadian Tire deals on automotive, tools, and outdoor gear',
+    topCategories: ['automotive', 'tools', 'outdoor gear'],
     badges: ['canadian-owned', 'canadian-retailer', 'ships-from-canada'],
     isCanadian: true,
   },
@@ -82,7 +187,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'shoppersdrugmart.ca',
     logo: gfav('shoppersdrugmart.ca'),
     color: 'bg-[#E31837]',
-    tagline: 'Canadian pharmacy chain with nationwide locations',
+    tagline: 'Shoppers Drug Mart deals on beauty, pharmacy, and wellness',
+    topCategories: ['beauty', 'pharmacy', 'wellness'],
     badges: ['canadian-retailer', 'ships-from-canada'],
     isCanadian: true,
   },
@@ -92,7 +198,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'homedepot.ca',
     logo: gfav('homedepot.ca'),
     color: 'bg-[#F96302]',
-    tagline: 'Home improvement retailer with Canadian stores and delivery',
+    tagline: 'Home Depot Canada deals on tools, lumber, and appliances',
+    topCategories: ['tools', 'lumber', 'appliances'],
     badges: ['international', 'ships-from-canada'],
   },
   'lowes': {
@@ -101,7 +208,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'lowes.ca',
     logo: gfav('lowes.ca'),
     color: 'bg-[#004990]',
-    tagline: 'Home improvement retailer serving Canadian homeowners',
+    tagline: "Lowe's Canada deals on tools, appliances, and building materials",
+    topCategories: ['tools', 'appliances', 'building materials'],
     badges: ['international', 'ships-from-canada'],
   },
   'staples': {
@@ -110,7 +218,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'staples.ca',
     logo: gfav('staples.ca'),
     color: 'bg-[#CC0000]',
-    tagline: 'Office supplies retailer with Canadian locations',
+    tagline: 'Staples Canada deals on office supplies, tech, and furniture',
+    topCategories: ['office supplies', 'tech', 'furniture'],
     badges: ['international', 'ships-from-canada'],
   },
   'sport-chek': {
@@ -119,7 +228,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'sportchek.ca',
     logo: gfav('sportchek.ca'),
     color: 'bg-[#00529B]',
-    tagline: 'Canadian sporting goods retailer nationwide',
+    tagline: 'Sport Chek Canada deals on athletic gear, footwear, and apparel',
+    topCategories: ['athletic gear', 'footwear', 'apparel'],
     badges: ['canadian-retailer', 'ships-from-canada'],
     isCanadian: true,
   },
@@ -129,7 +239,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'thebay.com',
     logo: gfav('thebay.com'),
     color: 'bg-[#000000]',
-    tagline: 'Historic Canadian department store chain',
+    tagline: "Hudson's Bay Canada deals on fashion, home, and beauty",
+    topCategories: ['fashion', 'home', 'beauty'],
     badges: ['canadian-retailer', 'ships-from-canada'],
     isCanadian: true,
   },
@@ -139,7 +250,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'indigo.ca',
     logo: gfav('indigo.ca'),
     color: 'bg-[#5C2D91]',
-    tagline: 'Canadian-owned bookstore with nationwide shipping',
+    tagline: 'Indigo Canada deals on books, gifts, and home decor',
+    topCategories: ['books', 'gifts', 'home decor'],
     badges: ['canadian-owned', 'canadian-retailer', 'ships-from-canada'],
     isCanadian: true,
   },
@@ -149,7 +261,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'well.ca',
     logo: gfav('well.ca'),
     color: 'bg-[#7AB800]',
-    tagline: 'Canadian online retailer shipping from Ontario',
+    tagline: 'Well.ca deals on natural health, baby, and beauty products',
+    topCategories: ['natural health', 'baby', 'beauty products'],
     badges: ['canadian-owned', 'ships-from-canada'],
     isCanadian: true,
   },
@@ -159,7 +272,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'londondrugs.com',
     logo: gfav('londondrugs.com'),
     color: 'bg-[#003DA5]',
-    tagline: 'Canadian-owned retailer based in Western Canada',
+    tagline: 'London Drugs Canada deals on electronics, pharmacy, and photo',
+    topCategories: ['electronics', 'pharmacy', 'photo'],
     badges: ['canadian-owned', 'canadian-retailer', 'ships-from-canada'],
     isCanadian: true,
   },
@@ -169,7 +283,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'realcanadiansuperstore.ca',
     logo: gfav('realcanadiansuperstore.ca'),
     color: 'bg-[#E31837]',
-    tagline: 'Canadian grocery chain with locations nationwide',
+    tagline: 'Real Canadian Superstore deals on groceries, home, and apparel',
+    topCategories: ['groceries', 'home', 'apparel'],
     badges: ['canadian-retailer', 'ships-from-canada'],
     isCanadian: true,
   },
@@ -179,7 +294,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'loblaws.ca',
     logo: gfav('loblaws.ca'),
     color: 'bg-[#E31837]',
-    tagline: 'Canadian-owned grocery retailer nationwide',
+    tagline: 'Loblaws Canada deals on groceries, pharmacy, and PC products',
+    topCategories: ['groceries', 'pharmacy', 'PC products'],
     badges: ['canadian-owned', 'canadian-retailer'],
     isCanadian: true,
   },
@@ -191,7 +307,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'newegg.ca',
     logo: gfav('newegg.ca'),
     color: 'bg-[#FF6600]',
-    tagline: 'Tech retailer with Canadian site and shipping',
+    tagline: 'Newegg Canada deals on PC components, laptops, and gaming',
+    topCategories: ['PC components', 'laptops', 'gaming'],
     badges: ['international', 'ships-from-canada'],
   },
   'the-source': {
@@ -200,7 +317,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'thesource.ca',
     logo: gfav('thesource.ca'),
     color: 'bg-[#E4002B]',
-    tagline: 'Canadian electronics retailer with nationwide stores',
+    tagline: 'The Source Canada deals on electronics, phones, and accessories',
+    topCategories: ['electronics', 'phones', 'accessories'],
     badges: ['canadian-retailer', 'ships-from-canada'],
     isCanadian: true,
   },
@@ -210,7 +328,7 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'bedbathandbeyond.ca',
     logo: gfav('bedbathandbeyond.ca'),
     color: 'bg-[#003399]',
-    tagline: DEFAULT_TAGLINE,
+    tagline: 'Shop Bed Bath & Beyond deals available in Canada',
     badges: ['international'],
   },
   'ikea': {
@@ -219,7 +337,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'ikea.ca',
     logo: gfav('ikea.ca'),
     color: 'bg-[#0051BA]',
-    tagline: 'International brand with stores and delivery across Canada',
+    tagline: 'IKEA Canada deals on furniture, storage, and home decor',
+    topCategories: ['furniture', 'storage', 'home decor'],
     badges: ['international', 'ships-from-canada'],
   },
   'marks': {
@@ -228,7 +347,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'marks.com',
     logo: gfav('marks.com'),
     color: 'bg-[#D52B1E]',
-    tagline: 'Canadian workwear and apparel retailer',
+    tagline: "Mark's Canada deals on workwear, boots, and casual apparel",
+    topCategories: ['workwear', 'boots', 'casual apparel'],
     badges: ['canadian-retailer', 'ships-from-canada'],
     isCanadian: true,
   },
@@ -238,7 +358,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'atmosphere.ca',
     logo: gfav('atmosphere.ca'),
     color: 'bg-[#00529B]',
-    tagline: 'Canadian outdoor gear retailer',
+    tagline: 'Atmosphere Canada deals on outdoor gear, camping, and hiking',
+    topCategories: ['outdoor gear', 'camping', 'hiking'],
     badges: ['canadian-retailer', 'ships-from-canada'],
     isCanadian: true,
   },
@@ -248,7 +369,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'winners.ca',
     logo: gfav('winners.ca'),
     color: 'bg-[#E31837]',
-    tagline: 'Off-price retailer with Canadian locations',
+    tagline: 'Winners Canada deals on designer fashion, home, and beauty',
+    topCategories: ['designer fashion', 'home', 'beauty'],
     badges: ['canadian-retailer', 'ships-from-canada'],
     isCanadian: true,
   },
@@ -258,7 +380,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'homesense.ca',
     logo: gfav('homesense.ca'),
     color: 'bg-[#00529B]',
-    tagline: 'Home decor retailer with Canadian stores',
+    tagline: 'HomeSense Canada deals on home decor, furniture, and kitchenware',
+    topCategories: ['home decor', 'furniture', 'kitchenware'],
     badges: ['canadian-retailer'],
     isCanadian: true,
   },
@@ -268,7 +391,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'marshalls.ca',
     logo: gfav('marshalls.ca'),
     color: 'bg-[#000000]',
-    tagline: 'Off-price fashion retailer across Canada',
+    tagline: 'Marshalls Canada deals on fashion, shoes, and accessories',
+    topCategories: ['fashion', 'shoes', 'accessories'],
     badges: ['canadian-retailer'],
     isCanadian: true,
   },
@@ -278,7 +402,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'oldnavy.ca',
     logo: gfav('oldnavy.ca'),
     color: 'bg-[#003E7E]',
-    tagline: 'Family apparel with Canadian stores and shipping',
+    tagline: 'Old Navy Canada deals on family apparel, kids, and activewear',
+    topCategories: ['family apparel', 'kids', 'activewear'],
     badges: ['international', 'ships-from-canada'],
   },
   'gap': {
@@ -287,7 +412,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'gapcanada.ca',
     logo: gfav('gap.com'),
     color: 'bg-[#000000]',
-    tagline: 'Global brand with Canadian site and stores',
+    tagline: 'Gap Canada deals on casual wear, denim, and basics',
+    topCategories: ['casual wear', 'denim', 'basics'],
     badges: ['international', 'ships-from-canada'],
   },
   'h-m': {
@@ -296,7 +422,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'hm.com',
     logo: gfav('hm.com'),
     color: 'bg-[#E50010]',
-    tagline: 'International fashion with Canadian locations',
+    tagline: 'H&M Canada deals on fashion, home, and sustainable styles',
+    topCategories: ['fashion', 'home', 'sustainable styles'],
     badges: ['international', 'ships-from-canada'],
   },
   'zara': {
@@ -305,7 +432,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'zara.com',
     logo: gfav('zara.com'),
     color: 'bg-[#000000]',
-    tagline: 'International fashion with Canadian stores',
+    tagline: 'Zara Canada deals on women, men, and kids fashion',
+    topCategories: ['women', 'men', 'kids fashion'],
     badges: ['international', 'ships-from-canada'],
   },
   'uniqlo': {
@@ -314,7 +442,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'uniqlo.com',
     logo: gfav('uniqlo.com'),
     color: 'bg-[#FF0000]',
-    tagline: 'Japanese brand with Canadian locations',
+    tagline: 'Uniqlo Canada deals on basics, outerwear, and essentials',
+    topCategories: ['basics', 'outerwear', 'essentials'],
     badges: ['international', 'ships-from-canada'],
   },
   'lululemon': {
@@ -323,7 +452,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'lululemon.com',
     logo: gfav('lululemon.com'),
     color: 'bg-[#D31334]',
-    tagline: 'Canadian-founded athletic apparel brand',
+    tagline: 'lululemon Canada deals on yoga, running, and athletic wear',
+    topCategories: ['yoga', 'running', 'athletic wear'],
     badges: ['canadian-owned', 'ships-from-canada'],
     isCanadian: true,
   },
@@ -333,7 +463,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'aritzia.com',
     logo: gfav('aritzia.com'),
     color: 'bg-[#000000]',
-    tagline: 'Canadian fashion retailer based in Vancouver',
+    tagline: 'Aritzia Canada deals on everyday luxury and womens fashion',
+    topCategories: ['everyday luxury', 'womens fashion'],
     badges: ['canadian-owned', 'canadian-retailer', 'ships-from-canada'],
     isCanadian: true,
   },
@@ -343,7 +474,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'roots.com',
     logo: gfav('roots.com'),
     color: 'bg-[#8B4513]',
-    tagline: 'Canadian-owned lifestyle brand',
+    tagline: 'Roots Canada deals on leather goods, sweats, and Canadiana',
+    topCategories: ['leather goods', 'sweats', 'Canadiana'],
     badges: ['canadian-owned', 'made-in-canada', 'ships-from-canada'],
     isCanadian: true,
   },
@@ -353,7 +485,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'canadagoose.com',
     logo: gfav('canadagoose.com'),
     color: 'bg-[#000000]',
-    tagline: 'Canadian luxury outerwear brand',
+    tagline: 'Canada Goose deals on parkas, outerwear, and cold weather gear',
+    topCategories: ['parkas', 'outerwear', 'cold weather gear'],
     badges: ['canadian-owned', 'made-in-canada'],
     isCanadian: true,
   },
@@ -363,7 +496,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'sephora.com',
     logo: gfav('sephora.com'),
     color: 'bg-[#000000]',
-    tagline: 'Beauty retailer with Canadian stores and shipping',
+    tagline: 'Sephora Canada deals on makeup, skincare, and fragrance',
+    topCategories: ['makeup', 'skincare', 'fragrance'],
     badges: ['international', 'ships-from-canada'],
   },
   'bath-body-works': {
@@ -372,7 +506,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'bathandbodyworks.ca',
     logo: gfav('bathandbodyworks.com'),
     color: 'bg-[#004C91]',
-    tagline: 'Body care retailer with Canadian locations',
+    tagline: 'Bath & Body Works Canada deals on body care, candles, and fragrance',
+    topCategories: ['body care', 'candles', 'fragrance'],
     badges: ['international', 'ships-from-canada'],
   },
   'petsmart': {
@@ -381,7 +516,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'petsmart.ca',
     logo: gfav('petsmart.ca'),
     color: 'bg-[#0054A4]',
-    tagline: 'Pet supplies retailer with Canadian stores',
+    tagline: 'PetSmart Canada deals on pet food, supplies, and grooming',
+    topCategories: ['pet food', 'supplies', 'grooming'],
     badges: ['international', 'ships-from-canada'],
   },
   'pet-valu': {
@@ -390,7 +526,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'petvalu.ca',
     logo: gfav('petvalu.ca'),
     color: 'bg-[#E31837]',
-    tagline: 'Canadian-owned pet specialty retailer',
+    tagline: 'Pet Valu Canada deals on pet food, treats, and accessories',
+    topCategories: ['pet food', 'treats', 'accessories'],
     badges: ['canadian-owned', 'canadian-retailer', 'ships-from-canada'],
     isCanadian: true,
   },
@@ -400,7 +537,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'michaels.com',
     logo: gfav('michaels.com'),
     color: 'bg-[#D52B1E]',
-    tagline: 'Arts and crafts retailer with Canadian stores',
+    tagline: 'Michaels Canada deals on arts, crafts, and framing',
+    topCategories: ['arts', 'crafts', 'framing'],
     badges: ['international', 'ships-from-canada'],
   },
   'foot-locker': {
@@ -409,7 +547,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'footlocker.ca',
     logo: gfav('footlocker.ca'),
     color: 'bg-[#000000]',
-    tagline: 'Athletic footwear with Canadian locations',
+    tagline: 'Foot Locker Canada deals on sneakers, Jordan, and sportswear',
+    topCategories: ['sneakers', 'Jordan', 'sportswear'],
     badges: ['international', 'ships-from-canada'],
   },
   'nike': {
@@ -418,7 +557,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'nike.com',
     logo: gfav('nike.com'),
     color: 'bg-[#000000]',
-    tagline: 'Global brand with official Canadian store',
+    tagline: 'Nike Canada deals on running shoes, apparel, and Jordan',
+    topCategories: ['running shoes', 'apparel', 'Jordan'],
     badges: ['international', 'ships-from-canada'],
   },
   'adidas': {
@@ -427,7 +567,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'adidas.ca',
     logo: gfav('adidas.ca'),
     color: 'bg-[#000000]',
-    tagline: 'Global brand with Canadian site and stores',
+    tagline: 'Adidas Canada deals on sneakers, sportswear, and Originals',
+    topCategories: ['sneakers', 'sportswear', 'Originals'],
     badges: ['international', 'ships-from-canada'],
   },
   'apple': {
@@ -436,7 +577,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'apple.com',
     logo: gfav('apple.com'),
     color: 'bg-[#000000]',
-    tagline: 'Global brand with official Canadian store and pricing',
+    tagline: 'Apple Canada deals on iPhone, Mac, and iPad',
+    topCategories: ['iPhone', 'Mac', 'iPad'],
     badges: ['international', 'ships-from-canada'],
   },
   'microsoft': {
@@ -445,7 +587,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'microsoft.com',
     logo: gfav('microsoft.com'),
     color: 'bg-[#00A4EF]',
-    tagline: 'Global tech brand with Canadian pricing',
+    tagline: 'Microsoft Canada deals on Surface, Xbox, and software',
+    topCategories: ['Surface', 'Xbox', 'software'],
     badges: ['international', 'ships-from-canada'],
   },
   'dell': {
@@ -454,7 +597,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'dell.ca',
     logo: gfav('dell.ca'),
     color: 'bg-[#007DB8]',
-    tagline: 'PC manufacturer with Canadian site and support',
+    tagline: 'Dell Canada deals on laptops, desktops, and monitors',
+    topCategories: ['laptops', 'desktops', 'monitors'],
     badges: ['international', 'ships-from-canada'],
   },
   'lenovo': {
@@ -463,7 +607,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'lenovo.com',
     logo: gfav('lenovo.com'),
     color: 'bg-[#E2231A]',
-    tagline: 'Global PC brand with Canadian site and shipping',
+    tagline: 'Lenovo Canada deals on ThinkPad, laptops, and tablets',
+    topCategories: ['ThinkPad', 'laptops', 'tablets'],
     badges: ['international', 'ships-from-canada'],
   },
   'wayfair': {
@@ -472,7 +617,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'wayfair.ca',
     logo: gfav('wayfair.ca'),
     color: 'bg-[#7B189F]',
-    tagline: 'Home goods retailer serving Canadian shoppers',
+    tagline: 'Wayfair Canada deals on furniture, rugs, and lighting',
+    topCategories: ['furniture', 'rugs', 'lighting'],
     badges: ['international', 'ships-from-canada'],
   },
   'structube': {
@@ -481,7 +627,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'structube.com',
     logo: gfav('structube.com'),
     color: 'bg-[#000000]',
-    tagline: 'Canadian furniture retailer based in Montreal',
+    tagline: 'Structube Canada deals on modern furniture and home decor',
+    topCategories: ['modern furniture', 'home decor'],
     badges: ['canadian-owned', 'canadian-retailer', 'ships-from-canada'],
     isCanadian: true,
   },
@@ -491,7 +638,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'article.com',
     logo: gfav('article.com'),
     color: 'bg-[#000000]',
-    tagline: 'Canadian furniture company based in Vancouver',
+    tagline: 'Article Canada deals on sofas, beds, and dining furniture',
+    topCategories: ['sofas', 'beds', 'dining furniture'],
     badges: ['canadian-owned', 'ships-from-canada'],
     isCanadian: true,
   },
@@ -501,7 +649,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'sobeys.com',
     logo: gfav('sobeys.com'),
     color: 'bg-[#00843D]',
-    tagline: 'Canadian-owned grocery chain',
+    tagline: 'Sobeys Canada deals on groceries, fresh food, and pharmacy',
+    topCategories: ['groceries', 'fresh food', 'pharmacy'],
     badges: ['canadian-owned', 'canadian-retailer'],
     isCanadian: true,
   },
@@ -511,7 +660,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'metro.ca',
     logo: gfav('metro.ca'),
     color: 'bg-[#E31837]',
-    tagline: 'Canadian grocery retailer in Ontario and Quebec',
+    tagline: 'Metro Canada deals on groceries, produce, and pharmacy',
+    topCategories: ['groceries', 'produce', 'pharmacy'],
     badges: ['canadian-owned', 'canadian-retailer'],
     isCanadian: true,
   },
@@ -521,7 +671,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'nofrills.ca',
     logo: gfav('nofrills.ca'),
     color: 'bg-[#FFD100]',
-    tagline: 'Canadian discount grocery chain',
+    tagline: 'No Frills Canada deals on discount groceries and essentials',
+    topCategories: ['discount groceries', 'essentials'],
     badges: ['canadian-retailer'],
     isCanadian: true,
   },
@@ -531,7 +682,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'foodbasics.ca',
     logo: gfav('foodbasics.ca'),
     color: 'bg-[#FF6600]',
-    tagline: 'Canadian discount grocery chain',
+    tagline: 'Food Basics Canada deals on discount groceries and produce',
+    topCategories: ['discount groceries', 'produce'],
     badges: ['canadian-retailer'],
     isCanadian: true,
   },
@@ -541,7 +693,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'freshco.com',
     logo: gfav('freshco.com'),
     color: 'bg-[#00843D]',
-    tagline: 'Canadian value grocery from Sobeys',
+    tagline: 'FreshCo Canada deals on fresh groceries and everyday savings',
+    topCategories: ['fresh groceries', 'everyday savings'],
     badges: ['canadian-retailer'],
     isCanadian: true,
   },
@@ -551,7 +704,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'dollarama.com',
     logo: gfav('dollarama.com'),
     color: 'bg-[#FFD100]',
-    tagline: 'Canadian-owned dollar store chain',
+    tagline: 'Dollarama Canada deals on household, party, and seasonal items',
+    topCategories: ['household', 'party', 'seasonal items'],
     badges: ['canadian-owned', 'canadian-retailer'],
     isCanadian: true,
   },
@@ -561,7 +715,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'gianttiger.com',
     logo: gfav('gianttiger.com'),
     color: 'bg-[#FF6600]',
-    tagline: 'Canadian-owned discount retailer',
+    tagline: 'Giant Tiger Canada deals on apparel, groceries, and home',
+    topCategories: ['apparel', 'groceries', 'home'],
     badges: ['canadian-owned', 'canadian-retailer'],
     isCanadian: true,
   },
@@ -571,7 +726,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'toysrus.ca',
     logo: gfav('toysrus.ca'),
     color: 'bg-[#004990]',
-    tagline: 'Toy retailer with Canadian stores',
+    tagline: 'Toys R Us Canada deals on toys, games, and baby gear',
+    topCategories: ['toys', 'games', 'baby gear'],
     badges: ['canadian-retailer', 'ships-from-canada'],
     isCanadian: true,
   },
@@ -581,7 +737,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'mastermindtoys.com',
     logo: gfav('mastermindtoys.com'),
     color: 'bg-[#FF0000]',
-    tagline: 'Canadian-owned toy specialty retailer',
+    tagline: 'Mastermind Toys Canada deals on educational toys, games, and puzzles',
+    topCategories: ['educational toys', 'games', 'puzzles'],
     badges: ['canadian-owned', 'canadian-retailer', 'ships-from-canada'],
     isCanadian: true,
   },
@@ -591,7 +748,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'ebgames.ca',
     logo: gfav('ebgames.ca'),
     color: 'bg-[#FF0000]',
-    tagline: 'Video game retailer with Canadian stores',
+    tagline: 'EB Games Canada deals on video games, consoles, and collectibles',
+    topCategories: ['video games', 'consoles', 'collectibles'],
     badges: ['canadian-retailer'],
     isCanadian: true,
   },
@@ -601,7 +759,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'canadacomputers.com',
     logo: gfav('canadacomputers.com'),
     color: 'bg-[#E31837]',
-    tagline: 'Canadian-owned tech retailer',
+    tagline: 'Canada Computers deals on PC parts, laptops, and peripherals',
+    topCategories: ['PC parts', 'laptops', 'peripherals'],
     badges: ['canadian-owned', 'canadian-retailer', 'ships-from-canada'],
     isCanadian: true,
   },
@@ -611,7 +770,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'memoryexpress.com',
     logo: gfav('memoryexpress.com'),
     color: 'bg-[#003DA5]',
-    tagline: 'Canadian computer retailer based in Calgary',
+    tagline: 'Memory Express Canada deals on PC components, GPUs, and gaming',
+    topCategories: ['PC components', 'GPUs', 'gaming'],
     badges: ['canadian-owned', 'canadian-retailer', 'ships-from-canada'],
     isCanadian: true,
   },
@@ -621,7 +781,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'rona.ca',
     logo: gfav('rona.ca'),
     color: 'bg-[#003DA5]',
-    tagline: 'Canadian home improvement retailer',
+    tagline: 'RONA Canada deals on building materials, tools, and hardware',
+    topCategories: ['building materials', 'tools', 'hardware'],
     badges: ['canadian-retailer', 'ships-from-canada'],
     isCanadian: true,
   },
@@ -631,7 +792,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'princessauto.com',
     logo: gfav('princessauto.com'),
     color: 'bg-[#E31837]',
-    tagline: 'Canadian-owned tools and equipment retailer',
+    tagline: 'Princess Auto Canada deals on tools, automotive, and farm supplies',
+    topCategories: ['tools', 'automotive', 'farm supplies'],
     badges: ['canadian-owned', 'canadian-retailer', 'ships-from-canada'],
     isCanadian: true,
   },
@@ -641,7 +803,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'sail.ca',
     logo: gfav('sail.ca'),
     color: 'bg-[#00843D]',
-    tagline: 'Canadian outdoor and hunting retailer',
+    tagline: 'SAIL Canada deals on outdoor gear, hunting, and fishing',
+    topCategories: ['outdoor gear', 'hunting', 'fishing'],
     badges: ['canadian-owned', 'canadian-retailer', 'ships-from-canada'],
     isCanadian: true,
   },
@@ -651,7 +814,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'mec.ca',
     logo: gfav('mec.ca'),
     color: 'bg-[#00843D]',
-    tagline: 'Canadian outdoor gear retailer',
+    tagline: 'MEC Canada deals on camping, hiking, and cycling gear',
+    topCategories: ['camping', 'hiking', 'cycling gear'],
     badges: ['canadian-retailer', 'ships-from-canada'],
     isCanadian: true,
   },
@@ -661,7 +825,8 @@ export const storeLogos: Record<string, StoreInfo> = {
     domain: 'sportium.ca',
     logo: gfav('sportium.ca'),
     color: 'bg-[#00529B]',
-    tagline: 'Canadian sporting goods retailer in Quebec',
+    tagline: 'Sportium Canada deals on hockey, soccer, and team sports',
+    topCategories: ['hockey', 'soccer', 'team sports'],
     badges: ['canadian-retailer'],
     isCanadian: true,
   },

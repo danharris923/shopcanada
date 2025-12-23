@@ -6,7 +6,7 @@ import { Header } from '@/components/Header'
 import { HeroSearch } from '@/components/HeroSearch'
 import { Footer } from '@/components/Footer'
 import { StoreLogo } from '@/components/StoreLogo'
-import { featuredStores } from '@/lib/store-logos'
+import { featuredStores, getTopBadges } from '@/lib/store-logos'
 import { Smartphone, Shirt, Home, ShoppingCart, Sparkles, Dumbbell, Leaf } from 'lucide-react'
 import { AnimatedCounter } from '@/components/AnimatedCounter'
 
@@ -154,25 +154,33 @@ export default async function HomePage() {
               Shop by Store
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
-              {featuredStores.map(store => (
-                <Link
-                  key={store.slug}
-                  href={`/stores/${store.slug}`}
-                  className="store-card group"
-                >
-                  <div className="w-12 h-12 mb-2 mx-auto rounded-lg overflow-hidden bg-cream flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <StoreLogo
-                      src={store.logo}
-                      alt={`${store.name} logo`}
-                      domain={store.domain}
-                      size={40}
-                    />
-                  </div>
-                  <span className="font-semibold text-charcoal text-sm text-center group-hover:text-maple-red transition-colors">
-                    {store.name}
-                  </span>
-                </Link>
-              ))}
+              {featuredStores.map(store => {
+                const badges = getTopBadges(store, 1)
+                return (
+                  <Link
+                    key={store.slug}
+                    href={`/stores/${store.slug}`}
+                    className="store-card group"
+                  >
+                    <div className="w-12 h-12 mb-2 mx-auto rounded-lg overflow-hidden bg-cream flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <StoreLogo
+                        src={store.logo}
+                        alt={`${store.name} logo`}
+                        domain={store.domain}
+                        size={40}
+                      />
+                    </div>
+                    <span className="font-semibold text-charcoal text-sm text-center group-hover:text-maple-red transition-colors">
+                      {store.name}
+                    </span>
+                    {badges.length > 0 && (
+                      <span className="block text-[10px] text-slate mt-1" title={badges[0].label}>
+                        {badges[0].emoji} {badges[0].label}
+                      </span>
+                    )}
+                  </Link>
+                )
+              })}
             </div>
           </div>
         </section>

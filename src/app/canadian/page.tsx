@@ -7,8 +7,8 @@ import { CategoryIcon } from '@/components/CategoryIcon'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Canadian Brand Directory - Shop Canada',
-  description: 'Discover quality Canadian-made products and support domestic businesses. Browse our curated collection of Canadian brands.',
+  title: 'Canadian Retailers - Shop Canada',
+  description: 'Discover quality Canadian-made products from coast to coast. Browse our directory of Canadian retailers.',
 }
 
 export default function CanadianPage() {
@@ -79,13 +79,13 @@ export default function CanadianPage() {
                 &larr; Back to Deals
               </Link>
               <h1 className="text-3xl md:text-5xl font-bold text-white mb-2 drop-shadow-lg text-right">
-                Canadian Brands
+                Canadian Retailers
               </h1>
               <p className="text-white/90 text-sm md:text-lg drop-shadow text-right max-w-xl">
-                Your destination for the best Canadian deals, discounts, and Canadian-made products. Shop Canadian. Support Local.
+                Discover quality Canadian-made products from coast to coast.
               </p>
               <p className="text-white font-bold mt-2 drop-shadow text-right">
-                {totalBrands} Canadian brands
+                {totalBrands} Canadian retailers
               </p>
             </div>
           </div>

@@ -1,14 +1,23 @@
 import { Metadata } from 'next'
 
 import { getDealsByStore, getStores } from '@/lib/db'
-import { formatStoreName, getStoreDescription } from '@/lib/content-generator'
+import { formatStoreName } from '@/lib/content-generator'
 import { generateItemListSchema } from '@/lib/schema'
 import { DealCard, DealGrid } from '@/components/DealCard'
 import { Breadcrumbs } from '@/components/deal/Breadcrumbs'
 import { StoreLogo } from '@/components/StoreLogo'
-import { getStoreLogo, generateLogoUrl } from '@/lib/store-logos'
+import {
+  getStoreLogo,
+  generateLogoUrl,
+  getStorePageH1,
+  generateCategoryH2,
+  formatCategoryName,
+} from '@/lib/store-logos'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
+
+// Max H2 categories per store page (SEO best practice)
+const MAX_H2_CATEGORIES = 5
 
 interface PageProps {
   params: { slug: string }
@@ -26,16 +35,20 @@ export async function generateStaticParams() {
 // Allow dynamic params (new stores added by scraper)
 export const dynamicParams = true
 
-// Generate metadata
+// Generate metadata - uses store tagline for SEO consistency
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const storeName = formatStoreName(params.slug)
+  const storeInfo = getStoreLogo(params.slug)
+
+  // H1/title uses the store tagline verbatim for SEO
+  const seoTitle = storeInfo ? getStorePageH1(storeInfo) : `${storeName} Deals in Canada`
 
   return {
-    title: `${storeName} Deals & Sales in Canada`,
-    description: `Find the best ${storeName} deals, sales, and discounts in Canada. Save money on your ${storeName} purchases with verified deals.`,
+    title: seoTitle,
+    description: `${seoTitle}. Find verified deals, sales, and discounts. Updated daily.`,
     openGraph: {
-      title: `${storeName} Deals & Sales in Canada`,
-      description: `Save money at ${storeName} with verified Canadian deals.`,
+      title: seoTitle,
+      description: `${seoTitle}. Find verified deals and discounts.`,
     },
   }
 }
@@ -43,15 +56,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function StorePage({ params }: PageProps) {
   const storeSlug = params.slug
   const storeName = formatStoreName(storeSlug)
-  const storeDescription = getStoreDescription(storeSlug)
   const storeInfo = getStoreLogo(storeSlug)
   const logoUrl = storeInfo?.logo || generateLogoUrl(storeSlug.replace(/-/g, '') + '.ca')
+
+  // H1 = store card microcopy verbatim (SEO requirement)
+  const pageH1 = storeInfo ? getStorePageH1(storeInfo) : `${storeName} deals in Canada`
 
   const deals = await getDealsByStore(storeSlug)
 
   // Schema markup (only if we have deals)
   const itemListSchema = deals.length > 0
-    ? generateItemListSchema(deals, `${storeName} Deals`)
+    ? generateItemListSchema(deals, pageH1)
     : null
 
   // Breadcrumbs
@@ -61,13 +76,21 @@ export default async function StorePage({ params }: PageProps) {
     { label: storeName, href: `/stores/${storeSlug}` },
   ]
 
-  // Group deals by category for better UX
+  // Group deals by category for SEO H2 sections
   const dealsByCategory = deals.reduce((acc, deal) => {
     const cat = deal.category || 'general'
     if (!acc[cat]) acc[cat] = []
     acc[cat].push(deal)
     return acc
   }, {} as Record<string, typeof deals>)
+
+  // Sort categories by deal count (most deals first)
+  const sortedCategories = Object.entries(dealsByCategory)
+    .sort((a, b) => b[1].length - a[1].length)
+
+  // Split into H2 categories (top 5) and overflow (rest)
+  const h2Categories = sortedCategories.slice(0, MAX_H2_CATEGORIES)
+  const overflowCategories = sortedCategories.slice(MAX_H2_CATEGORIES)
 
   return (
     <>
@@ -87,7 +110,7 @@ export default async function StorePage({ params }: PageProps) {
             <Breadcrumbs items={breadcrumbs} />
           </div>
 
-          {/* Header with Logo */}
+          {/* Header with Logo + SEO H1 (matches store card microcopy verbatim) */}
           <div className="mb-8 flex items-center gap-4">
             <div className="w-16 h-16 rounded-card bg-ivory border border-silver-light flex items-center justify-center overflow-hidden">
               <StoreLogo
@@ -98,26 +121,12 @@ export default async function StorePage({ params }: PageProps) {
               />
             </div>
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold text-charcoal mb-1">
-                {storeName} Deals
+              <h1 className="text-2xl md:text-3xl font-bold text-charcoal mb-1">
+                {pageH1}
               </h1>
-              <p className="text-slate">
-                {deals.length} active deals in Canada
+              <p className="text-slate text-sm">
+                {deals.length} active deals
               </p>
-            </div>
-          </div>
-
-          {/* Store Info */}
-          <div className="bg-ivory rounded-card p-6 mb-8">
-            <div className="flex flex-col md:flex-row md:items-center gap-4">
-              <div className="flex-1">
-                <h2 className="font-bold text-charcoal mb-2">
-                  About {storeName}
-                </h2>
-                <p className="text-slate text-sm">
-                  {storeDescription || `Shop the best deals at ${storeName} in Canada.`}
-                </p>
-              </div>
             </div>
           </div>
 
@@ -159,8 +168,71 @@ export default async function StorePage({ params }: PageProps) {
             </div>
           )}
 
-          {/* Deals Grid */}
-          {deals.length > 0 && (
+          {/* Deals by Category with SEO H2 Headings (max 5 H2s) */}
+          {deals.length > 0 && storeInfo && (
+            <div className="space-y-10">
+              {h2Categories.map(([categorySlug, categoryDeals]) => (
+                <section key={categorySlug} id={categorySlug}>
+                  <h2 className="text-xl md:text-2xl font-bold text-charcoal mb-4">
+                    {generateCategoryH2(categorySlug, storeInfo)}
+                  </h2>
+                  <DealGrid>
+                    {categoryDeals.map(deal => (
+                      <DealCard
+                        key={deal.id}
+                        id={deal.id}
+                        title={deal.title}
+                        slug={deal.slug}
+                        imageUrl={deal.image_blob_url || deal.image_url || '/placeholder-deal.jpg'}
+                        price={deal.price}
+                        originalPrice={deal.original_price}
+                        discountPercent={deal.discount_percent}
+                        store={deal.store || 'Unknown'}
+                        affiliateUrl={deal.affiliate_url}
+                        featured={deal.featured}
+                      />
+                    ))}
+                  </DealGrid>
+                </section>
+              ))}
+
+              {/* Overflow categories use H3 (not H2) */}
+              {overflowCategories.length > 0 && (
+                <section>
+                  <h3 className="text-lg font-bold text-charcoal mb-4">
+                    More {storeName} Deals
+                  </h3>
+                  {overflowCategories.map(([categorySlug, categoryDeals]) => (
+                    <div key={categorySlug} className="mb-8" id={categorySlug}>
+                      <h4 className="text-base font-semibold text-slate mb-3">
+                        {formatCategoryName(categorySlug)}
+                      </h4>
+                      <DealGrid>
+                        {categoryDeals.map(deal => (
+                          <DealCard
+                            key={deal.id}
+                            id={deal.id}
+                            title={deal.title}
+                            slug={deal.slug}
+                            imageUrl={deal.image_blob_url || deal.image_url || '/placeholder-deal.jpg'}
+                            price={deal.price}
+                            originalPrice={deal.original_price}
+                            discountPercent={deal.discount_percent}
+                            store={deal.store || 'Unknown'}
+                            affiliateUrl={deal.affiliate_url}
+                            featured={deal.featured}
+                          />
+                        ))}
+                      </DealGrid>
+                    </div>
+                  ))}
+                </section>
+              )}
+            </div>
+          )}
+
+          {/* Fallback: All deals if no storeInfo */}
+          {deals.length > 0 && !storeInfo && (
             <DealGrid>
               {deals.map(deal => (
                 <DealCard
@@ -179,38 +251,6 @@ export default async function StorePage({ params }: PageProps) {
               ))}
             </DealGrid>
           )}
-
-          {/* Bottom SEO Content */}
-          <div className="mt-12 prose max-w-none">
-            <h2>Shopping at {storeName} in Canada</h2>
-            <p>
-              {storeName} is a popular destination for Canadian shoppers looking for quality
-              products at competitive prices. We track all the latest {storeName} deals,
-              sales, and promotions to help you save money on your purchases.
-            </p>
-
-            <h3>Why Shop at {storeName}?</h3>
-            <ul>
-              <li>Competitive prices on a wide selection of products</li>
-              <li>Convenient shopping options for Canadian customers</li>
-              <li>Regular sales and promotional events</li>
-              <li>Easy returns and customer support</li>
-            </ul>
-
-            <h3>How to Save at {storeName}</h3>
-            <p>
-              To maximize your savings at {storeName}, check this page regularly for the
-              latest deals. We update our listings multiple times per day to ensure you
-              never miss a sale.
-            </p>
-
-            <h3>{storeName} Shipping to Canada</h3>
-            <p>
-              {storeName} offers various shipping options for Canadian customers.
-              Many orders qualify for free shipping when you spend above a certain
-              threshold.
-            </p>
-          </div>
         </div>
       </main>
 
