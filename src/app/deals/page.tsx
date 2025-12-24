@@ -16,10 +16,10 @@ export const revalidate = 900
 
 export default async function DealsPage() {
   const [deals, dealCount, stores, categories] = await Promise.all([
-    getDeals({ limit: 100, orderBy: 'date_added', orderDir: 'DESC' }).catch(() => []),
-    getDealCount().catch(() => 0),
-    getStores().catch(() => []),
-    getCategories().catch(() => []),
+    getDeals({ limit: 100, orderBy: 'date_added', orderDir: 'DESC' }),
+    getDealCount(),
+    getStores(),
+    getCategories(),
   ])
   const storeCount = stores.length
 
