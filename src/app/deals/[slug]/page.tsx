@@ -40,10 +40,15 @@ interface PageProps {
   params: { slug: string }
 }
 
-// Generate static pages for all deals
+// Generate static pages for all deals - fallback to empty if no database
 export async function generateStaticParams() {
-  const slugs = await getAllDealSlugs()
-  return slugs.map(slug => ({ slug }))
+  try {
+    const slugs = await getAllDealSlugs()
+    return slugs.map(slug => ({ slug }))
+  } catch (error) {
+    console.log('No database available for static generation, returning empty params')
+    return []
+  }
 }
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://shopcanada.cc'

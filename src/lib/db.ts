@@ -12,21 +12,33 @@ const pool = new Pool({
   ssl: { rejectUnauthorized: false }
 })
 
-// Helper to run queries
+// Helper to run queries with fallback for no database
 async function query<T>(queryText: string, values?: unknown[]): Promise<T[]> {
   try {
+    // If no database URL, return empty array
+    if (!process.env.POSTGRES_URL) {
+      console.log('No database configured, returning empty results')
+      return []
+    }
+
     const result = await pool.query(queryText, values)
     return result.rows as T[]
   } catch (error) {
     console.error('Query error:', error)
-    throw error
+    // Return empty array instead of throwing to prevent 404s
+    return []
   }
 }
 
-// Helper for single row queries
+// Helper for single row queries with fallback
 async function queryOne<T>(queryText: string, values?: unknown[]): Promise<T | null> {
-  const rows = await query<T>(queryText, values)
-  return rows[0] || null
+  try {
+    const rows = await query<T>(queryText, values)
+    return rows[0] || null
+  } catch (error) {
+    console.error('QueryOne error:', error)
+    return null
+  }
 }
 
 // =============================================================================

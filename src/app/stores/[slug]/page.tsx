@@ -28,8 +28,13 @@ export const revalidate = 900
 
 // Generate static pages for all stores
 export async function generateStaticParams() {
-  const stores = await getStores()
-  return stores.map(store => ({ slug: store.slug }))
+  try {
+    const stores = await getStores()
+    return stores.map(store => ({ slug: store.slug }))
+  } catch (error) {
+    console.log('No database available for stores static generation, returning empty params')
+    return []
+  }
 }
 
 // Allow dynamic params (new stores added by scraper)
