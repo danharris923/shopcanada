@@ -113,8 +113,8 @@ export function FlippDealCard({ deal, directAffiliate = false }: FlippDealCardPr
     </>
   )
 
-  // Conditional rendering based on directAffiliate prop
-  if (directAffiliate && affiliateUrl) {
+  // For Flipp deals, ALWAYS use affiliate link - never internal deal pages
+  if (affiliateUrl) {
     return (
       <a
         href={affiliateUrl}
@@ -127,33 +127,7 @@ export function FlippDealCard({ deal, directAffiliate = false }: FlippDealCardPr
     )
   }
 
-  // If has slug, navigate to deal page, otherwise use affiliate link
-  if (deal.slug) {
-    return (
-      <Link
-        href={`/deals/${deal.slug}`}
-        className="deal-card group block"
-      >
-        {cardContent}
-      </Link>
-    )
-  }
-
-  // Fallback to affiliate link if no slug
-  if (affiliateUrl) {
-    return (
-      <a
-        href={affiliateUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="deal-card group block"
-      >
-        {cardContent}
-      </a>
-    )
-  }
-
-  // No link available
+  // No affiliate link available - just display without link
   return (
     <div className="deal-card group block">
       {cardContent}
