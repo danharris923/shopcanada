@@ -24,6 +24,30 @@ export function DealCard({
   const originalPriceNum = toNumber(originalPrice)
   const savings = calculateSavings(originalPrice, price)
 
+  // Random highlight tags for affiliated deals only
+  const highlightTags = [
+    { text: 'HOT DEAL', color: 'bg-red-600' },
+    { text: 'BEST PRICE', color: 'bg-orange-600' },
+    { text: 'LIMITED TIME', color: 'bg-purple-600' },
+    { text: 'TRENDING', color: 'bg-pink-600' },
+    { text: 'POPULAR', color: 'bg-blue-600' },
+    { text: 'FLASH SALE', color: 'bg-green-600' },
+    { text: 'EXCLUSIVE', color: 'bg-indigo-600' },
+    { text: 'TOP PICK', color: 'bg-yellow-600' },
+  ]
+
+  // Generate consistent random tag based on deal ID
+  const getRandomTag = (dealId: string) => {
+    const hash = dealId.split('').reduce((a, b) => {
+      a = ((a << 5) - a) + b.charCodeAt(0)
+      return a & a
+    }, 0)
+    return highlightTags[Math.abs(hash) % highlightTags.length]
+  }
+
+  const shouldShowHighlight = affiliateUrl && !directAffiliate
+  const randomTag = shouldShowHighlight ? getRandomTag(id) : null
+
   const cardContent = (
     <>
       {/* Image Container */}
@@ -35,16 +59,17 @@ export function DealCard({
           </div>
         )}
 
-        {/* Featured Badge - Only show for deals with admin-set affiliate links */}
-        {affiliateUrl && (
+        {/* Highlight Badge - Only show for affiliate deals with random tags */}
+        {randomTag && (
           <div className="absolute top-2 left-2 z-10">
-            <span className="
-              bg-burgundy text-white
+            <span className={`
+              ${randomTag.color} text-white
               px-2 py-1 rounded-lg
               font-bold text-xs
               shadow-md
-            ">
-              HOT DEAL
+              animate-pulse
+            `}>
+              {randomTag.text}
             </span>
           </div>
         )}
