@@ -47,10 +47,10 @@ export default async function HomePage() {
           </picture>
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-full max-w-7xl mx-auto px-4 flex flex-col items-end">
-              <h1 className="text-3xl md:text-5xl font-bold text-white mb-2 drop-shadow-lg text-right">
+              <h1 className="text-3xl md:text-5xl font-bold text-white mb-2 text-right" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
                 Shop Canada
               </h1>
-              <p className="text-white/90 text-sm md:text-lg mb-6 drop-shadow text-right">
+              <p className="text-white/90 text-sm md:text-lg mb-6 text-right" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}>
                 The best deals for Canadian shoppers
               </p>
               <HeroSearch />

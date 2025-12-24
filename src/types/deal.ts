@@ -58,6 +58,7 @@ export interface DealCardProps {
   affiliateUrl: string
   featured?: boolean
   isCanadian?: boolean
+  directAffiliate?: boolean  // If true, click goes directly to affiliate link
 }
 
 /**

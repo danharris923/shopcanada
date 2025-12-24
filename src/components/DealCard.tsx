@@ -1,8 +1,9 @@
-import { Leaf } from 'lucide-react'
+import { Leaf, ExternalLink } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { DealCardProps } from '@/types/deal'
 import { toNumber, formatPrice, calculateSavings } from '@/lib/price-utils'
+import { useAffiliateClick } from '@/hooks/useAffiliateClick'
 
 export function DealCard({
   id,
@@ -16,16 +17,31 @@ export function DealCard({
   affiliateUrl,
   featured,
   isCanadian,
+  directAffiliate = false,
 }: DealCardProps) {
   const priceNum = toNumber(price)
   const originalPriceNum = toNumber(originalPrice)
   const savings = calculateSavings(originalPrice, price)
+  const { handleClick, isLoading } = useAffiliateClick()
 
-  return (
-    <Link
-      href={`/deals/${slug}`}
-      className="deal-card group block"
-    >
+  const handleCardClick = async (e: React.MouseEvent) => {
+    if (directAffiliate) {
+      e.preventDefault()
+      e.stopPropagation()
+
+      await handleClick({
+        dealId: id,
+        title,
+        storeSlug: store?.toLowerCase().replace(/\s+/g, '-'),
+        existingAffiliateUrl: affiliateUrl,
+        price
+      })
+    }
+    // If not directAffiliate, let Link handle navigation normally
+  }
+
+  const cardContent = (
+    <>
       {/* Image Container */}
       <div className="relative aspect-square bg-cream">
         {/* Discount Badge */}
@@ -49,6 +65,21 @@ export function DealCard({
           </div>
         )}
 
+        {/* Direct Affiliate Badge */}
+        {directAffiliate && (
+          <div className="absolute top-2 right-2 z-10">
+            <span className="
+              bg-maple-red text-white
+              px-2 py-1 rounded-lg
+              font-bold text-xs
+              shadow-md
+              flex items-center gap-1
+            ">
+              <ExternalLink size={10} /> Direct
+            </span>
+          </div>
+        )}
+
         {/* Canadian Badge */}
         {isCanadian && (
           <div className="absolute bottom-2 left-2 z-10">
@@ -61,6 +92,13 @@ export function DealCard({
             ">
               <Leaf size={12} className="text-maple-red" /> Canadian
             </span>
+          </div>
+        )}
+
+        {/* Loading overlay */}
+        {isLoading && (
+          <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center z-20">
+            <div className="w-8 h-8 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
           </div>
         )}
 
@@ -113,6 +151,29 @@ export function DealCard({
           </div>
         )}
       </div>
+    </>
+  )
+
+  // Conditional rendering based on directAffiliate prop
+  if (directAffiliate) {
+    return (
+      <div
+        onClick={handleCardClick}
+        className={`deal-card group block cursor-pointer ${isLoading ? 'pointer-events-none' : ''}`}
+      >
+        {cardContent}
+      </div>
+    )
+  }
+
+  // Default behavior - navigate to deal page
+  return (
+    <Link
+      href={`/deals/${slug}`}
+      className="deal-card group block"
+      onClick={handleCardClick}
+    >
+      {cardContent}
     </Link>
   )
 }
