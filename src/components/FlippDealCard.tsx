@@ -43,16 +43,16 @@ export function FlippDealCard({ deal, directAffiliate = false }: FlippDealCardPr
   const shouldShowHighlight = affiliateUrl && !directAffiliate
   const randomTag = shouldShowHighlight ? getRandomTag(deal.title) : null
 
-  // Random CTR-focused button phrases and colors
+  // CTR-focused button phrases with consistent site colors
   const buttonVariations = [
-    { text: 'Get Deal Now', color: 'bg-maple-red hover:bg-red-700' },
-    { text: 'Shop Now', color: 'bg-green-600 hover:bg-green-700' },
-    { text: 'Claim Offer', color: 'bg-blue-600 hover:bg-blue-700' },
-    { text: 'View Deal', color: 'bg-purple-600 hover:bg-purple-700' },
-    { text: 'Save Now', color: 'bg-orange-600 hover:bg-orange-700' },
-    { text: 'Buy Now', color: 'bg-indigo-600 hover:bg-indigo-700' },
-    { text: 'See Offer', color: 'bg-pink-600 hover:bg-pink-700' },
-    { text: 'Get Discount', color: 'bg-teal-600 hover:bg-teal-700' },
+    { text: 'Get Deal Now', style: 'primary' },
+    { text: 'Shop Now', style: 'secondary' },
+    { text: 'Claim Offer', style: 'primary' },
+    { text: 'View Deal', style: 'secondary' },
+    { text: 'Save Now', style: 'primary' },
+    { text: 'Buy Now', style: 'secondary' },
+    { text: 'See Offer', style: 'primary' },
+    { text: 'Get Discount', style: 'secondary' },
   ]
 
   // Generate consistent random button based on deal title
@@ -173,12 +173,14 @@ export function FlippDealCard({ deal, directAffiliate = false }: FlippDealCardPr
 
         {/* CTA Button */}
         <button className={`
-          w-full py-2 px-4 rounded-lg
-          ${randomButton.color}
-          text-white font-semibold text-sm
+          w-full py-2 px-4 rounded-lg font-semibold text-sm
           transition-all duration-200
           transform hover:scale-105 hover:shadow-lg
-          focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-opacity-50
+          focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-maple-red
+          ${randomButton.style === 'primary'
+            ? 'bg-maple-red hover:bg-burgundy text-white'
+            : 'bg-white hover:bg-cream text-maple-red border-2 border-maple-red hover:border-burgundy'
+          }
         `}>
           {randomButton.text}
         </button>
