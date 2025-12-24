@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 
 import { getDealsByStore, getStores } from '@/lib/db'
+import { Deal } from '@/types/deal'
 import { formatStoreName } from '@/lib/content-generator'
 import { generateItemListSchema } from '@/lib/schema'
 import { DealCard, DealGrid } from '@/components/DealCard'
@@ -67,7 +68,14 @@ export default async function StorePage({ params }: PageProps) {
   // H1 = store card microcopy verbatim (SEO requirement)
   const pageH1 = storeInfo ? getStorePageH1(storeInfo) : `${storeName} deals in Canada`
 
-  const deals = await getDealsByStore(storeSlug)
+  // Get deals with error handling for build time
+  let deals: Deal[] = []
+  try {
+    deals = await getDealsByStore(storeSlug)
+  } catch (error) {
+    console.log(`Database error for store ${storeSlug} during build, using empty deals:`, error instanceof Error ? error.message : 'Unknown error')
+    deals = []
+  }
 
   // Schema markup (only if we have deals)
   const itemListSchema = deals.length > 0
