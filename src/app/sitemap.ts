@@ -5,9 +5,9 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://shopcanada.cc'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [dealSlugs, stores, categories] = await Promise.all([
-    getAllDealSlugs(),
-    getStores(),
-    getCategories(),
+    getAllDealSlugs().catch(() => []),
+    getStores().catch(() => []),
+    getCategories().catch(() => []),
   ])
 
   const now = new Date()

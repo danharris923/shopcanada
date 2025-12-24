@@ -15,9 +15,9 @@ export const revalidate = 900
 
 export default async function HomePage() {
   const [featuredDeals, latestDeals, storeStats] = await Promise.all([
-    getFeaturedDeals(8),
-    getLatestDeals(16),
-    getStoreStats(),
+    getFeaturedDeals(8).catch(() => []),
+    getLatestDeals(16).catch(() => []),
+    getStoreStats().catch(() => []),
   ])
 
   const websiteSchema = generateWebsiteSchema()
