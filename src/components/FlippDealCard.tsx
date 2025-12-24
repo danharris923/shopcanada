@@ -43,6 +43,29 @@ export function FlippDealCard({ deal, directAffiliate = false }: FlippDealCardPr
   const shouldShowHighlight = affiliateUrl && !directAffiliate
   const randomTag = shouldShowHighlight ? getRandomTag(deal.title) : null
 
+  // Random CTR-focused button phrases and colors
+  const buttonVariations = [
+    { text: 'Get Deal Now', color: 'bg-maple-red hover:bg-red-700' },
+    { text: 'Shop Now', color: 'bg-green-600 hover:bg-green-700' },
+    { text: 'Claim Offer', color: 'bg-blue-600 hover:bg-blue-700' },
+    { text: 'View Deal', color: 'bg-purple-600 hover:bg-purple-700' },
+    { text: 'Save Now', color: 'bg-orange-600 hover:bg-orange-700' },
+    { text: 'Buy Now', color: 'bg-indigo-600 hover:bg-indigo-700' },
+    { text: 'See Offer', color: 'bg-pink-600 hover:bg-pink-700' },
+    { text: 'Get Discount', color: 'bg-teal-600 hover:bg-teal-700' },
+  ]
+
+  // Generate consistent random button based on deal title
+  const getRandomButton = (dealTitle: string) => {
+    const hash = dealTitle.split('').reduce((a, b) => {
+      a = ((a << 5) - a) + b.charCodeAt(0)
+      return a & a
+    }, 0)
+    return buttonVariations[Math.abs(hash) % buttonVariations.length]
+  }
+
+  const randomButton = getRandomButton(deal.title)
+
   const cardContent = (
     <>
       {/* Image Container */}
@@ -120,7 +143,7 @@ export function FlippDealCard({ deal, directAffiliate = false }: FlippDealCardPr
         </h3>
 
         {/* Price */}
-        <div className="flex items-baseline gap-2">
+        <div className="flex items-baseline gap-2 mb-3">
           {hasPriceData ? (
             <>
               <span className="deal-card-price">
@@ -138,15 +161,27 @@ export function FlippDealCard({ deal, directAffiliate = false }: FlippDealCardPr
             </span>
           ) : (
             <span className="text-lg font-semibold text-charcoal">
-              See Flyer
+              Check Flyer
             </span>
           )}
         </div>
 
         {/* Valid dates */}
-        <div className="text-sm text-meta mt-1">
+        <div className="text-sm text-meta mb-3">
           Valid until {new Date(deal.validTo).toLocaleDateString()}
         </div>
+
+        {/* CTA Button */}
+        <button className={`
+          w-full py-2 px-4 rounded-lg
+          ${randomButton.color}
+          text-white font-semibold text-sm
+          transition-all duration-200
+          transform hover:scale-105 hover:shadow-lg
+          focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-opacity-50
+        `}>
+          {randomButton.text}
+        </button>
       </div>
     </>
   )

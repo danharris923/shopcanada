@@ -48,6 +48,29 @@ export function DealCard({
   const shouldShowHighlight = affiliateUrl && !directAffiliate
   const randomTag = shouldShowHighlight ? getRandomTag(id) : null
 
+  // Random CTR-focused button phrases and colors
+  const buttonVariations = [
+    { text: 'Get Deal Now', color: 'bg-maple-red hover:bg-red-700' },
+    { text: 'Shop Now', color: 'bg-green-600 hover:bg-green-700' },
+    { text: 'Claim Offer', color: 'bg-blue-600 hover:bg-blue-700' },
+    { text: 'View Deal', color: 'bg-purple-600 hover:bg-purple-700' },
+    { text: 'Save Now', color: 'bg-orange-600 hover:bg-orange-700' },
+    { text: 'Buy Now', color: 'bg-indigo-600 hover:bg-indigo-700' },
+    { text: 'See Offer', color: 'bg-pink-600 hover:bg-pink-700' },
+    { text: 'Get Discount', color: 'bg-teal-600 hover:bg-teal-700' },
+  ]
+
+  // Generate consistent random button based on deal ID
+  const getRandomButton = (dealId: string) => {
+    const hash = dealId.split('').reduce((a, b) => {
+      a = ((a << 5) - a) + b.charCodeAt(0)
+      return a & a
+    }, 0)
+    return buttonVariations[Math.abs(hash) % buttonVariations.length]
+  }
+
+  const randomButton = getRandomButton(id)
+
   const cardContent = (
     <>
       {/* Image Container */}
@@ -128,7 +151,7 @@ export function DealCard({
         </h3>
 
         {/* Price */}
-        <div className="flex items-baseline gap-2">
+        <div className="flex items-baseline gap-2 mb-3">
           {priceNum !== null ? (
             <>
               <span className="deal-card-price">
@@ -142,17 +165,29 @@ export function DealCard({
             </>
           ) : (
             <span className="text-lg font-semibold text-charcoal">
-              See Deal
+              Price varies
             </span>
           )}
         </div>
 
         {/* Savings */}
         {savings && (
-          <div className="text-sm text-maple-red font-semibold mt-1">
+          <div className="text-sm text-maple-red font-semibold mb-3">
             Save ${savings}
           </div>
         )}
+
+        {/* CTA Button */}
+        <button className={`
+          w-full py-2 px-4 rounded-lg
+          ${randomButton.color}
+          text-white font-semibold text-sm
+          transition-all duration-200
+          transform hover:scale-105 hover:shadow-lg
+          focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-opacity-50
+        `}>
+          {randomButton.text}
+        </button>
       </div>
     </>
   )
