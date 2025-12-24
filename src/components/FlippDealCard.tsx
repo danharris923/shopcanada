@@ -5,7 +5,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FlippDeal } from '@/lib/flipp'
 import { getAffiliateSearchUrl } from '@/lib/affiliates'
-import { useAffiliateClick } from '@/hooks/useAffiliateClick'
 
 interface FlippDealCardProps {
   deal: FlippDeal
@@ -16,26 +15,9 @@ interface FlippDealCardProps {
 export function FlippDealCard({ deal, directAffiliate = false }: FlippDealCardProps) {
   const hasDiscount = deal.discountPercent !== null && deal.discountPercent > 0
   const hasPriceData = deal.price !== null && deal.price > 0
-  const { handleClick, isLoading } = useAffiliateClick()
 
   // Check if this store has an affiliate link
   const affiliateUrl = getAffiliateSearchUrl(deal.storeSlug, deal.title)
-
-  const handleCardClick = async (e: React.MouseEvent) => {
-    if (directAffiliate && affiliateUrl) {
-      e.preventDefault()
-      e.stopPropagation()
-
-      await handleClick({
-        dealId: deal.id,
-        title: deal.title,
-        storeSlug: deal.storeSlug,
-        existingAffiliateUrl: affiliateUrl,
-        price: deal.price
-      })
-    }
-    // If not directAffiliate, let Link handle navigation normally
-  }
 
   const cardContent = (
     <>
@@ -75,12 +57,6 @@ export function FlippDealCard({ deal, directAffiliate = false }: FlippDealCardPr
           </div>
         )}
 
-        {/* Loading overlay */}
-        {isLoading && (
-          <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center z-20">
-            <div className="w-8 h-8 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-          </div>
-        )}
 
         {/* Image */}
         <Image
@@ -140,12 +116,14 @@ export function FlippDealCard({ deal, directAffiliate = false }: FlippDealCardPr
   // Conditional rendering based on directAffiliate prop
   if (directAffiliate && affiliateUrl) {
     return (
-      <div
-        onClick={handleCardClick}
-        className={`deal-card group block cursor-pointer ${isLoading ? 'pointer-events-none' : ''}`}
+      <a
+        href={affiliateUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="deal-card group block cursor-pointer"
       >
         {cardContent}
-      </div>
+      </a>
     )
   }
 
@@ -155,7 +133,6 @@ export function FlippDealCard({ deal, directAffiliate = false }: FlippDealCardPr
       <Link
         href={`/deals/${deal.slug}`}
         className="deal-card group block"
-        onClick={handleCardClick}
       >
         {cardContent}
       </Link>

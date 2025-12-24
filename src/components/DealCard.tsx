@@ -1,9 +1,10 @@
+'use client'
+
 import { Leaf, ExternalLink } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { DealCardProps } from '@/types/deal'
 import { toNumber, formatPrice, calculateSavings } from '@/lib/price-utils'
-import { useAffiliateClick } from '@/hooks/useAffiliateClick'
 
 export function DealCard({
   id,
@@ -22,23 +23,6 @@ export function DealCard({
   const priceNum = toNumber(price)
   const originalPriceNum = toNumber(originalPrice)
   const savings = calculateSavings(originalPrice, price)
-  const { handleClick, isLoading } = useAffiliateClick()
-
-  const handleCardClick = async (e: React.MouseEvent) => {
-    if (directAffiliate) {
-      e.preventDefault()
-      e.stopPropagation()
-
-      await handleClick({
-        dealId: id,
-        title,
-        storeSlug: store?.toLowerCase().replace(/\s+/g, '-'),
-        existingAffiliateUrl: affiliateUrl,
-        price
-      })
-    }
-    // If not directAffiliate, let Link handle navigation normally
-  }
 
   const cardContent = (
     <>
@@ -95,12 +79,6 @@ export function DealCard({
           </div>
         )}
 
-        {/* Loading overlay */}
-        {isLoading && (
-          <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center z-20">
-            <div className="w-8 h-8 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-          </div>
-        )}
 
         {/* Image */}
         <Image
@@ -155,14 +133,16 @@ export function DealCard({
   )
 
   // Conditional rendering based on directAffiliate prop
-  if (directAffiliate) {
+  if (directAffiliate && affiliateUrl) {
     return (
-      <div
-        onClick={handleCardClick}
-        className={`deal-card group block cursor-pointer ${isLoading ? 'pointer-events-none' : ''}`}
+      <a
+        href={affiliateUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="deal-card group block cursor-pointer"
       >
         {cardContent}
-      </div>
+      </a>
     )
   }
 
@@ -171,7 +151,6 @@ export function DealCard({
     <Link
       href={`/deals/${slug}`}
       className="deal-card group block"
-      onClick={handleCardClick}
     >
       {cardContent}
     </Link>

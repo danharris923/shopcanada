@@ -12,7 +12,7 @@ import type {
  * Custom hook for smart affiliate click handling
  * Implements the one-click experience with affiliate routing
  */
-export function useAffiliateClick(): UseAffiliateClickReturn {
+export default function useAffiliateClick(): UseAffiliateClickReturn {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
