@@ -14,12 +14,13 @@ const pool = new Pool({
 
 // Helper to run queries
 async function query<T>(queryText: string, values?: unknown[]): Promise<T[]> {
-  if (!process.env.POSTGRES_URL) {
-    throw new Error('Database connection string not configured')
+  try {
+    const result = await pool.query(queryText, values)
+    return result.rows as T[]
+  } catch (error) {
+    console.error('Query error:', error)
+    throw error
   }
-
-  const result = await pool.query(queryText, values)
-  return result.rows as T[]
 }
 
 // Helper for single row queries
