@@ -1,109 +1,193 @@
 'use client'
 
+import { Leaf, ExternalLink } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { FlippDeal } from '@/lib/flipp'
 import { getAffiliateSearchUrl } from '@/lib/affiliates'
+import { useAffiliateClick } from '@/hooks/useAffiliateClick'
 
 interface FlippDealCardProps {
   deal: FlippDeal
+  directAffiliate?: boolean  // If true, click goes directly to affiliate link
 }
 
-// Compact horizontal bar style for flyer deals
-export function FlippDealCard({ deal }: FlippDealCardProps) {
+// Full size card style matching regular DealCard
+export function FlippDealCard({ deal, directAffiliate = false }: FlippDealCardProps) {
   const hasDiscount = deal.discountPercent !== null && deal.discountPercent > 0
   const hasPriceData = deal.price !== null && deal.price > 0
+  const { handleClick, isLoading } = useAffiliateClick()
 
   // Check if this store has an affiliate link
   const affiliateUrl = getAffiliateSearchUrl(deal.storeSlug, deal.title)
 
-  const cardClasses = `
-    group flex items-center gap-3
-    bg-card-bg rounded-lg shadow-card overflow-hidden
-    p-2 pr-4
-    transition-all duration-200
-    hover:shadow-card-hover hover:bg-cream
-    ${affiliateUrl ? 'cursor-pointer' : ''}
-  `
+  const handleCardClick = async (e: React.MouseEvent) => {
+    if (directAffiliate && affiliateUrl) {
+      e.preventDefault()
+      e.stopPropagation()
+
+      await handleClick({
+        dealId: deal.id,
+        title: deal.title,
+        storeSlug: deal.storeSlug,
+        existingAffiliateUrl: affiliateUrl,
+        price: deal.price
+      })
+    }
+    // If not directAffiliate, let Link handle navigation normally
+  }
 
   const cardContent = (
     <>
-      {/* Thumbnail - small square */}
-      <div className="relative w-16 h-16 flex-shrink-0 bg-cream rounded-md overflow-hidden">
-        {/* Trending badge overlay */}
-        {affiliateUrl && (
-          <div className="absolute top-0 left-0 z-10">
-            <span className="bg-burgundy text-white px-1 py-0.5 text-[10px] font-bold rounded-br">
-              Trending
+      {/* Image Container */}
+      <div className="relative aspect-square bg-cream">
+        {/* Discount Badge */}
+        {hasDiscount && (
+          <div className="discount-badge">
+            -{deal.discountPercent}%
+          </div>
+        )}
+
+        {/* Flyer Badge */}
+        <div className="absolute top-2 left-2 z-10">
+          <span className="
+            bg-orange-600 text-white
+            px-2 py-1 rounded-lg
+            font-bold text-xs
+            shadow-md
+          ">
+            FLYER
+          </span>
+        </div>
+
+        {/* Direct Affiliate Badge */}
+        {directAffiliate && affiliateUrl && (
+          <div className="absolute top-2 right-2 z-10">
+            <span className="
+              bg-maple-red text-white
+              px-2 py-1 rounded-lg
+              font-bold text-xs
+              shadow-md
+              flex items-center gap-1
+            ">
+              <ExternalLink size={10} /> Direct
             </span>
           </div>
         )}
+
+        {/* Loading overlay */}
+        {isLoading && (
+          <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center z-20">
+            <div className="w-8 h-8 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        )}
+
+        {/* Image */}
         <Image
           src={deal.imageUrl || '/placeholder-deal.jpg'}
           alt={deal.title}
           fill
-          className="object-cover scale-110"
-          sizes="64px"
+          className="object-contain p-4 group-hover:scale-105 transition-transform duration-200"
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
           unoptimized
         />
       </div>
 
-      {/* Content - title and store */}
-      <div className="flex-1 min-w-0">
-        <div className="text-xs text-meta uppercase tracking-wide">
+      {/* Content */}
+      <div className="p-4">
+        {/* Store */}
+        <div className="deal-card-store uppercase tracking-wide mb-1">
           {deal.store}
         </div>
-        <h3 className="font-medium text-heading text-sm line-clamp-1 group-hover:text-maple-red transition-colors">
+
+        {/* Title */}
+        <h3 className="deal-card-title mb-2 line-clamp-2 group-hover:text-maple-red transition-colors">
           {deal.title}
         </h3>
-      </div>
 
-      {/* Price/Discount - right side */}
-      <div className="flex-shrink-0 text-right">
-        {hasDiscount ? (
-          <span className="bg-maple-red text-white px-2 py-1 rounded font-bold text-sm">
-            -{deal.discountPercent}%
-          </span>
-        ) : hasPriceData ? (
-          <span className="text-maple-red font-bold">
-            ${deal.price?.toFixed(2)}
-          </span>
-        ) : deal.saleStory ? (
-          <span className="text-maple-red font-medium text-sm">
-            {deal.saleStory.length > 12 ? deal.saleStory.slice(0, 12) + '...' : deal.saleStory}
-          </span>
-        ) : (
-          <span className="text-slate-600 text-xs font-medium">
-            Flyer
-          </span>
-        )}
+        {/* Price */}
+        <div className="flex items-baseline gap-2">
+          {hasPriceData ? (
+            <>
+              <span className="deal-card-price">
+                ${deal.price?.toFixed(2)}
+              </span>
+              {deal.originalPrice && deal.originalPrice > (deal.price || 0) && (
+                <span className="deal-card-original-price">
+                  ${deal.originalPrice.toFixed(2)}
+                </span>
+              )}
+            </>
+          ) : deal.saleStory ? (
+            <span className="text-lg font-semibold text-maple-red">
+              {deal.saleStory}
+            </span>
+          ) : (
+            <span className="text-lg font-semibold text-charcoal">
+              See Flyer
+            </span>
+          )}
+        </div>
+
+        {/* Valid dates */}
+        <div className="text-sm text-meta mt-1">
+          Valid until {new Date(deal.validTo).toLocaleDateString()}
+        </div>
       </div>
     </>
   )
 
+  // Conditional rendering based on directAffiliate prop
+  if (directAffiliate && affiliateUrl) {
+    return (
+      <div
+        onClick={handleCardClick}
+        className={`deal-card group block cursor-pointer ${isLoading ? 'pointer-events-none' : ''}`}
+      >
+        {cardContent}
+      </div>
+    )
+  }
+
+  // If has slug, navigate to deal page, otherwise use affiliate link
+  if (deal.slug) {
+    return (
+      <Link
+        href={`/deals/${deal.slug}`}
+        className="deal-card group block"
+        onClick={handleCardClick}
+      >
+        {cardContent}
+      </Link>
+    )
+  }
+
+  // Fallback to affiliate link if no slug
   if (affiliateUrl) {
     return (
       <a
         href={affiliateUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className={cardClasses}
+        className="deal-card group block"
       >
         {cardContent}
       </a>
     )
   }
 
+  // No link available
   return (
-    <div className={cardClasses}>
+    <div className="deal-card group block">
       {cardContent}
     </div>
   )
 }
 
-// 2-column grid on desktop, single column on mobile
+// Grid wrapper for flipp deal cards - matches regular DealGrid
 export function FlippDealGrid({ children }: { children: React.ReactNode }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
       {children}
     </div>
   )
