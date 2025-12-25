@@ -7,10 +7,9 @@ import { Menu, X, Leaf, Home, ShoppingBag, Store, Grid3X3, Search } from 'lucide
 
 const navLinks = [
   { href: '/', label: 'Home', icon: Home },
-  { href: '/canadian', label: 'Canadian Retailers', icon: Leaf, highlight: true },
-  { href: '/deals', label: 'Sales', icon: ShoppingBag },
-  { href: '/stores', label: 'Stores', icon: Store },
-  { href: '/canadian/categories', label: 'Categories', icon: Grid3X3 },
+  { href: '/stores', label: 'Browse Stores', icon: Store },
+  { href: '/deals', label: "Today's Deals", icon: ShoppingBag },
+  { href: '/categories', label: 'Categories', icon: Grid3X3 },
 ]
 
 export function Header() {
@@ -78,21 +77,10 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className={`
-                  flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all
-                  ${link.highlight
-                    ? 'bg-maple-red/10 text-maple-red hover:bg-maple-red hover:text-white'
-                    : 'text-silver hover:text-white hover:bg-white/10'
-                  }
-                `}
+                className="flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all text-silver hover:text-white hover:bg-white/10"
               >
                 <link.icon size={20} />
                 {link.label}
-                {link.highlight && (
-                  <span className="ml-auto text-xs bg-maple-red text-white px-2 py-0.5 rounded-full">
-                    600+ retailers
-                  </span>
-                )}
               </Link>
             ))}
           </nav>

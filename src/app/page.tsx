@@ -305,7 +305,7 @@ export default async function HomePage() {
               Explore our directory of 600+ Canadian brands. From coast to coast,
               discover quality products made right here in Canada.
             </p>
-            <Link href="/canadian" className="btn-primary text-lg px-8 py-4">
+            <Link href="/stores?filter=canadian" className="btn-primary text-lg px-8 py-4">
               Explore Canadian Brands
             </Link>
           </div>

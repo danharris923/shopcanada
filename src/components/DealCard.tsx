@@ -194,8 +194,8 @@ export function DealCard({
     </>
   )
 
-  // Conditional rendering based on directAffiliate prop
-  if (directAffiliate && affiliateUrl) {
+  // Always go direct to retailer if affiliateUrl exists
+  if (affiliateUrl) {
     return (
       <a
         href={affiliateUrl}
@@ -208,7 +208,7 @@ export function DealCard({
     )
   }
 
-  // Default behavior - navigate to deal page
+  // Fallback - navigate to deal page if no affiliate URL
   return (
     <Link
       href={`/deals/${slug}`}
