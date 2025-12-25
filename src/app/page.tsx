@@ -99,13 +99,13 @@ export default async function HomePage() {
               </div>
               <div className="flex gap-3">
                 <Link
-                  href="/canadian"
+                  href="/stores?filter=canadian"
                   className="bg-white text-maple-red hover:bg-cream font-bold py-3 px-6 rounded-lg transition-colors"
                 >
                   Explore Canadian Brands
                 </Link>
                 <Link
-                  href="/canadian/categories"
+                  href="/categories"
                   className="bg-transparent text-white border-2 border-white hover:bg-white hover:text-maple-red font-semibold py-3 px-6 rounded-lg transition-colors hidden md:inline-block"
                 >
                   Browse Categories
