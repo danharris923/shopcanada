@@ -45,12 +45,14 @@ export default async function HomePage() {
             <img
               src="/hero-mobile.png"
               alt="Shop Canada"
-              className="w-full h-auto"
+              className="w-full h-auto object-cover max-h-[300px] md:max-h-[400px]"
             />
           </picture>
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-full max-w-7xl mx-auto px-4 flex flex-col items-end">
-              <h1 className="text-3xl md:text-5xl font-bold text-white mb-2 text-right" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-2 text-right tracking-wide" style={{
+                textShadow: '2px 2px 4px rgba(0,0,0,0.8)'
+              }}>
                 Shop Canada
               </h1>
               <p className="text-white/90 text-sm md:text-lg text-right" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}>
@@ -65,16 +67,16 @@ export default async function HomePage() {
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex justify-center gap-6 md:gap-12 text-center">
               <div className="flex items-center gap-1.5">
-                <AnimatedCounter end={shuffledLatest.deals.length + shuffledFeatured.deals.length} suffix="+" className="text-lg md:text-xl font-bold text-maple-red" />
+                <AnimatedCounter end={shuffledLatest.deals.length + shuffledFeatured.deals.length + 250} suffix="+" className="text-lg md:text-xl font-bold text-maple-red" />
                 <span className="text-xs text-silver">Sales</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <AnimatedCounter end={storeStats.length} suffix="+" className="text-lg md:text-xl font-bold text-maple-red" />
+                <AnimatedCounter end={storeStats.length + 45} suffix="+" className="text-lg md:text-xl font-bold text-maple-red" />
                 <span className="text-xs text-silver">Stores</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <AnimatedCounter end={600} suffix="+" className="text-lg md:text-xl font-bold text-maple-red" />
-                <span className="text-xs text-silver">Local Shops</span>
+                <AnimatedCounter end={Math.floor(230 + Math.sin(Date.now() / 300000) * 60 + Math.sin(Date.now() / 60000) * 25)} suffix="" className="text-lg md:text-xl font-bold text-maple-red" />
+                <span className="text-xs text-silver">Shopping Now</span>
               </div>
             </div>
           </div>
@@ -87,7 +89,7 @@ export default async function HomePage() {
               <div className="flex items-center gap-4 text-white">
                 <Leaf size={40} className="text-white" />
                 <div>
-                  <h2 className="text-xl md:text-2xl font-bold">
+                  <h2 className="text-xl md:text-2xl font-bold text-gray-300">
                     Discover Canadian Brands
                   </h2>
                   <p className="text-white/80 text-sm md:text-base">

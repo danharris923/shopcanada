@@ -29,9 +29,11 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16 gap-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 font-bold text-xl text-white shrink-0">
+          <Link href="/" className="flex items-center gap-2 text-white shrink-0">
             <Leaf size={24} className="text-maple-red" />
-            <span className="hidden sm:inline">Shop Canada</span>
+            <span className="hidden sm:inline text-2xl font-bold tracking-wide">
+              Shop Canada
+            </span>
           </Link>
 
           {/* Search Bar - Center */}
