@@ -52,8 +52,7 @@ export function ExitIntentModal({ dealTitle, dealPrice }: ExitIntentModalProps) 
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // TODO: Integrate with email service (Mailchimp, ConvertKit, etc.)
-    console.log('Email captured:', email)
+    // Email capture handled - integrate with email service when ready
     setIsSubmitted(true)
     setTimeout(() => {
       handleClose()

@@ -148,9 +148,7 @@ export async function getShuffledDeals(
       }
     }
   } catch (error) {
-    console.error('Error in getShuffledDeals:', error)
-
-    // Fallback to database deals only
+    // Error in getShuffledDeals - fallback to database deals only
     const fallbackDeals = await getDeals({ limit, orderBy: 'date_added', orderDir: 'DESC' })
     const shuffled = shuffleArray(fallbackDeals, seed)
 
@@ -215,9 +213,7 @@ export async function getShuffledFeaturedDeals(
       }
     }
   } catch (error) {
-    console.error('Error in getShuffledFeaturedDeals:', error)
-
-    // Fallback to regular featured deals
+    // Error in getShuffledFeaturedDeals - fallback to regular featured deals
     const fallbackDeals = await getFeaturedDeals(limit)
     const shuffled = shuffleArray(fallbackDeals, seed)
 

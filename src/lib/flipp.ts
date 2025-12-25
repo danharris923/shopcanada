@@ -247,7 +247,7 @@ export async function getFlippStoreDeals(
     )
     return transformFlippItems(filteredItems)
   } catch (error) {
-    console.error(`Error fetching Flipp deals for ${storeName}:`, error)
+    // Error fetching Flipp deals for store
     return []
   }
 }
@@ -265,7 +265,7 @@ export async function searchFlippDeals(
     const deals = transformFlippItems(response.items)
     return deals.slice(0, limit)
   } catch (error) {
-    console.error(`Error searching Flipp for ${query}:`, error)
+    // Error searching Flipp for query
     return []
   }
 }

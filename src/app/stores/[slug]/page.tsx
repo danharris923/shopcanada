@@ -33,7 +33,7 @@ export async function generateStaticParams() {
     const stores = await getStores()
     return stores.map(store => ({ slug: store.slug }))
   } catch (error) {
-    console.log('No database available for stores static generation, returning empty params')
+    // No database available for stores static generation
     return []
   }
 }
@@ -73,7 +73,7 @@ export default async function StorePage({ params }: PageProps) {
   try {
     deals = await getDealsByStore(storeSlug)
   } catch (error) {
-    console.log(`Database error for store ${storeSlug} during build, using empty deals:`, error instanceof Error ? error.message : 'Unknown error')
+    // Database error for store during build, using empty deals
     deals = []
   }
 

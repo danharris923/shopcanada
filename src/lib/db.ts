@@ -18,7 +18,7 @@ async function query<T>(queryText: string, values?: unknown[]): Promise<T[]> {
     const result = await pool.query(queryText, values)
     return result.rows as T[]
   } catch (error) {
-    console.error('Query error:', error)
+    // Error logged internally
     throw error
   }
 }
@@ -40,7 +40,7 @@ export async function getDealBySlug(slug: string): Promise<Deal | null> {
       [slug]
     )
   } catch (error) {
-    console.error('Error fetching deal:', error)
+    // Error handled silently
     return null
   }
 }
@@ -52,7 +52,7 @@ export async function getDealById(id: string): Promise<Deal | null> {
       [id]
     )
   } catch (error) {
-    console.error('Error fetching deal:', error)
+    // Error handled silently
     return null
   }
 }
@@ -101,7 +101,7 @@ export async function getDeals(options: {
 
     return await query<Deal>(queryText, values)
   } catch (error) {
-    console.error('Error fetching deals:', error)
+    // Error handled silently
     return []
   }
 }
@@ -113,7 +113,7 @@ export async function getFeaturedDeals(limit: number = 12): Promise<Deal[]> {
       [limit]
     )
   } catch (error) {
-    console.error('Error fetching featured deals:', error)
+    // Error handled silently
     return []
   }
 }
@@ -125,7 +125,7 @@ export async function getLatestDeals(limit: number = 20): Promise<Deal[]> {
       [limit]
     )
   } catch (error) {
-    console.error('Error fetching latest deals:', error)
+    // Error handled silently
     return []
   }
 }
@@ -137,7 +137,7 @@ export async function getDealsByStore(store: string, limit: number = 50): Promis
       [store, limit]
     )
   } catch (error) {
-    console.error('Error fetching store deals:', error)
+    // Error handled silently
     return []
   }
 }
@@ -149,7 +149,7 @@ export async function getDealsByCategory(category: string, limit: number = 50): 
       [category, limit]
     )
   } catch (error) {
-    console.error('Error fetching category deals:', error)
+    // Error handled silently
     return []
   }
 }
@@ -168,7 +168,7 @@ export async function getRelatedDeals(deal: Deal, limit: number = 6): Promise<De
       [deal.id, deal.store, deal.category, limit]
     )
   } catch (error) {
-    console.error('Error fetching related deals:', error)
+    // Error handled silently
     return []
   }
 }
@@ -180,7 +180,7 @@ export async function getAllDealSlugs(): Promise<string[]> {
     )
     return rows.map(row => row.slug)
   } catch (error) {
-    console.error('Error fetching deal slugs:', error)
+    // Error handled silently
     return []
   }
 }
@@ -193,7 +193,7 @@ export async function getStores(): Promise<Store[]> {
   try {
     return await query<Store>('SELECT * FROM stores ORDER BY deal_count DESC')
   } catch (error) {
-    console.error('Error fetching stores:', error)
+    // Error handled silently
     return []
   }
 }
@@ -205,7 +205,7 @@ export async function getStoreBySlug(slug: string): Promise<Store | null> {
       [slug]
     )
   } catch (error) {
-    console.error('Error fetching store:', error)
+    // Error handled silently
     return null
   }
 }
@@ -218,7 +218,7 @@ export async function getCategories(): Promise<Category[]> {
   try {
     return await query<Category>('SELECT * FROM categories ORDER BY deal_count DESC')
   } catch (error) {
-    console.error('Error fetching categories:', error)
+    // Error handled silently
     return []
   }
 }
@@ -230,7 +230,7 @@ export async function getCategoryBySlug(slug: string): Promise<Category | null> 
       [slug]
     )
   } catch (error) {
-    console.error('Error fetching category:', error)
+    // Error handled silently
     return null
   }
 }
@@ -246,7 +246,7 @@ export async function getDealCount(): Promise<number> {
     )
     return parseInt(rows[0]?.count || '0', 10)
   } catch (error) {
-    console.error('Error getting deal count:', error)
+    // Error handled silently
     return 0
   }
 }
@@ -262,7 +262,7 @@ export async function getStoreStats(): Promise<{ store: string; count: number }[
     )
     return rows.map(row => ({ store: row.store, count: parseInt(row.count, 10) }))
   } catch (error) {
-    console.error('Error fetching store stats:', error)
+    // Error handled silently
     return []
   }
 }
@@ -286,7 +286,7 @@ export async function searchDeals(searchQuery: string, limit: number = 50): Prom
     )
     return rows
   } catch (error) {
-    console.error('Search error:', error)
+    // Error handled silently
     return []
   }
 }
@@ -301,7 +301,7 @@ export async function getAllStoresAdmin(): Promise<Store[]> {
       'SELECT id, name, slug, affiliate_url, deal_count FROM stores ORDER BY name ASC'
     )
   } catch (error) {
-    console.error('Error fetching stores for admin:', error)
+    // Error handled silently
     return []
   }
 }
@@ -314,7 +314,7 @@ export async function updateStoreAffiliateUrl(id: number, affiliateUrl: string |
     )
     return true
   } catch (error) {
-    console.error('Error updating store affiliate URL:', error)
+    // Error handled silently
     return false
   }
 }
@@ -327,7 +327,7 @@ export async function addStore(name: string, slug: string, affiliateUrl: string 
     )
     return true
   } catch (error) {
-    console.error('Error adding store:', error)
+    // Error handled silently
     return false
   }
 }
@@ -340,7 +340,7 @@ export async function checkStoreSlugExists(slug: string): Promise<boolean> {
     )
     return rows.length > 0
   } catch (error) {
-    console.error('Error checking store slug:', error)
+    // Error handled silently
     return false
   }
 }

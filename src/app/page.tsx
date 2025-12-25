@@ -21,9 +21,7 @@ export default async function HomePage() {
     getStoreStats(),
   ])
 
-  // Log distribution for debugging
-  console.log('Featured deals:', getDistributionSummary(shuffledFeatured.distribution))
-  console.log('Latest deals:', getDistributionSummary(shuffledLatest.distribution))
+  // Distribution logging removed for production
 
   const websiteSchema = generateWebsiteSchema()
   const orgSchema = generateOrganizationSchema()

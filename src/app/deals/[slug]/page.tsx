@@ -47,7 +47,7 @@ export async function generateStaticParams() {
     const slugs = await getAllDealSlugs()
     return slugs.map(slug => ({ slug }))
   } catch (error) {
-    console.log('No database available for static generation, returning empty params')
+    // No database available for static generation
     return []
   }
 }
@@ -100,7 +100,7 @@ export default async function DealPage({ params }: PageProps) {
   try {
     deal = await getDealBySlug(params.slug)
   } catch (error) {
-    console.log(`Database error for deal ${params.slug} during build:`, error instanceof Error ? error.message : 'Unknown error')
+    // Database error for deal during build
     notFound()
   }
 
@@ -121,7 +121,7 @@ export default async function DealPage({ params }: PageProps) {
   try {
     relatedDeals = await getRelatedDeals(deal)
   } catch (error) {
-    console.log(`Database error for related deals during build:`, error instanceof Error ? error.message : 'Unknown error')
+    // Database error for related deals during build
     relatedDeals = []
   }
 

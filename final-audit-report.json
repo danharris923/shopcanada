@@ -1,0 +1,781 @@
+{
+  "project": "/home/ren/Desktop/shopcanada/newshopcanada",
+  "timestamp": "2025-12-25T05:03:50.369289",
+  "summary": {
+    "WARNING": 51,
+    "INFO": 41,
+    "ERROR": 4,
+    "CRITICAL": 0
+  },
+  "total_issues": 96,
+  "findings": [
+    {
+      "severity": "WARNING",
+      "file": "<project_root>/public/robots.txt",
+      "line": "N/A",
+      "description": "Missing robots.txt (tells search engines what to crawl)",
+      "matched": "File not found: robots.txt",
+      "pattern_name": "missing_robots_txt"
+    },
+    {
+      "severity": "INFO",
+      "file": "<project_root>/public/sitemap.xml",
+      "line": "N/A",
+      "description": "Missing sitemap.xml (helps search engines index your site)",
+      "matched": "File not found: sitemap.xml",
+      "pattern_name": "missing_sitemap_xml"
+    },
+    {
+      "severity": "INFO",
+      "file": "<project_root>/public/favicon.ico",
+      "line": "N/A",
+      "description": "Missing favicon.ico (the little icon in browser tabs)",
+      "matched": "File not found: favicon.ico",
+      "pattern_name": "missing_favicon_ico"
+    },
+    {
+      "severity": "INFO",
+      "file": "package.json",
+      "line": "N/A",
+      "description": "No SEO meta tag package found (react-helmet recommended)",
+      "matched": "Consider adding react-helmet-async for dynamic meta tags",
+      "pattern_name": "missing_seo_package"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/app/canadian/page.tsx",
+      "line": 150,
+      "description": "External link without rel=\"noopener\" (security & performance)",
+      "matched": "target=\"_blank\"",
+      "pattern_name": "missing_noopener"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/app/canadian/page.tsx",
+      "line": 262,
+      "description": "External link without rel=\"noopener\" (security & performance)",
+      "matched": "target=\"_blank\"",
+      "pattern_name": "missing_noopener"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/app/canadian/brand/[slug]/page.tsx",
+      "line": 95,
+      "description": "External link without rel=\"noopener\" (security & performance)",
+      "matched": "target=\"_blank\"",
+      "pattern_name": "missing_noopener"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/app/canadian/brand/[slug]/page.tsx",
+      "line": 109,
+      "description": "External link without rel=\"noopener\" (security & performance)",
+      "matched": "target=\"_blank\"",
+      "pattern_name": "missing_noopener"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/app/canadian/brand/[slug]/page.tsx",
+      "line": 153,
+      "description": "External link without rel=\"noopener\" (security & performance)",
+      "matched": "target=\"_blank\"",
+      "pattern_name": "missing_noopener"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/app/canadian/brands/page.tsx",
+      "line": 110,
+      "description": "External link without rel=\"noopener\" (security & performance)",
+      "matched": "target=\"_blank\"",
+      "pattern_name": "missing_noopener"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/app/canadian/category/[slug]/page.tsx",
+      "line": 119,
+      "description": "External link without rel=\"noopener\" (security & performance)",
+      "matched": "target=\"_blank\"",
+      "pattern_name": "missing_noopener"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/components/FlippDealCard.tsx",
+      "line": 196,
+      "description": "External link without rel=\"noopener\" (security & performance)",
+      "matched": "target=\"_blank\"",
+      "pattern_name": "missing_noopener"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/components/website-preview.tsx",
+      "line": 23,
+      "description": "External link without rel=\"noopener\" (security & performance)",
+      "matched": "target=\"_blank\"",
+      "pattern_name": "missing_noopener"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/components/DealCard.tsx",
+      "line": 202,
+      "description": "External link without rel=\"noopener\" (security & performance)",
+      "matched": "target=\"_blank\"",
+      "pattern_name": "missing_noopener"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/components/deal/CTAButton.tsx",
+      "line": 54,
+      "description": "External link without rel=\"noopener\" (security & performance)",
+      "matched": "target=\"_blank\"",
+      "pattern_name": "missing_noopener"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/components/canadian/brand-card.tsx",
+      "line": 43,
+      "description": "External link without rel=\"noopener\" (security & performance)",
+      "matched": "target=\"_blank\"",
+      "pattern_name": "missing_noopener"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/components/canadian/brand-card.tsx",
+      "line": 53,
+      "description": "External link without rel=\"noopener\" (security & performance)",
+      "matched": "target=\"_blank\"",
+      "pattern_name": "missing_noopener"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/brands-data.backup.ts",
+      "line": 2177,
+      "description": "Non-secure HTTP URL found (should be HTTPS)",
+      "matched": "http://w",
+      "pattern_name": "http_not_https"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/brands-data.ts",
+      "line": 428,
+      "description": "Non-secure HTTP URL found (should be HTTPS)",
+      "matched": "http://j",
+      "pattern_name": "http_not_https"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/brands-data.ts",
+      "line": 1083,
+      "description": "Non-secure HTTP URL found (should be HTTPS)",
+      "matched": "http://w",
+      "pattern_name": "http_not_https"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/brands-data.ts",
+      "line": 2568,
+      "description": "Non-secure HTTP URL found (should be HTTPS)",
+      "matched": "http://w",
+      "pattern_name": "http_not_https"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/brands-data.backup2.ts",
+      "line": 2177,
+      "description": "Non-secure HTTP URL found (should be HTTPS)",
+      "matched": "http://w",
+      "pattern_name": "http_not_https"
+    },
+    {
+      "severity": "ERROR",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/app/page.tsx",
+      "line": 33,
+      "description": "dangerouslySetInnerHTML usage (XSS vulnerability risk!)",
+      "matched": "dangerouslySetInnerHTML",
+      "pattern_name": "dangerous_innerhtml"
+    },
+    {
+      "severity": "ERROR",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/app/canadian/brand/[slug]/page.tsx",
+      "line": 136,
+      "description": "dangerouslySetInnerHTML usage (XSS vulnerability risk!)",
+      "matched": "dangerouslySetInnerHTML",
+      "pattern_name": "dangerous_innerhtml"
+    },
+    {
+      "severity": "ERROR",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/app/stores/[slug]/page.tsx",
+      "line": 113,
+      "description": "dangerouslySetInnerHTML usage (XSS vulnerability risk!)",
+      "matched": "dangerouslySetInnerHTML",
+      "pattern_name": "dangerous_innerhtml"
+    },
+    {
+      "severity": "ERROR",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/app/deals/[slug]/page.tsx",
+      "line": 142,
+      "description": "dangerouslySetInnerHTML usage (XSS vulnerability risk!)",
+      "matched": "dangerouslySetInnerHTML",
+      "pattern_name": "dangerous_innerhtml"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/init-db.js",
+      "line": 87,
+      "description": "Console statement (remove before production!)",
+      "matched": "console.log(",
+      "pattern_name": "console_log"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/init-db.js",
+      "line": 90,
+      "description": "Console statement (remove before production!)",
+      "matched": "console.log(",
+      "pattern_name": "console_log"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/init-db.js",
+      "line": 97,
+      "description": "Console statement (remove before production!)",
+      "matched": "console.log(",
+      "pattern_name": "console_log"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/init-db.js",
+      "line": 99,
+      "description": "Console statement (remove before production!)",
+      "matched": "console.error(",
+      "pattern_name": "console_log"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/scrape-logos.js",
+      "line": 37,
+      "description": "Commented out code block (dead code)",
+      "matched": "// Check if URL return",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/scrape-logos.js",
+      "line": 25,
+      "description": "Console statement (remove before production!)",
+      "matched": "console.log(",
+      "pattern_name": "console_log"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/scrape-brands-playwright.js",
+      "line": 17,
+      "description": "Commented out code block (dead code)",
+      "matched": "// Import",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/scrape-brands-playwright.js",
+      "line": 284,
+      "description": "Commented out code block (dead code)",
+      "matched": "// Main scraping function",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/scrape-brands-playwright.js",
+      "line": 316,
+      "description": "Commented out code block (dead code)",
+      "matched": "// Filter out already complet",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/scrape-brands-playwright.js",
+      "line": 76,
+      "description": "Console statement (remove before production!)",
+      "matched": "console.log(",
+      "pattern_name": "console_log"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/scrape-brands-playwright.js",
+      "line": 77,
+      "description": "Console statement (remove before production!)",
+      "matched": "console.log(",
+      "pattern_name": "console_log"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/scrape-brands-playwright.js",
+      "line": 78,
+      "description": "Console statement (remove before production!)",
+      "matched": "console.log(",
+      "pattern_name": "console_log"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/scrape-brands-playwright.js",
+      "line": 79,
+      "description": "Console statement (remove before production!)",
+      "matched": "console.log(",
+      "pattern_name": "console_log"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/merge-scraped-data.js",
+      "line": 20,
+      "description": "Commented out code block (dead code)",
+      "matched": "// Remove carriage return",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/merge-scraped-data.js",
+      "line": 10,
+      "description": "Console statement (remove before production!)",
+      "matched": "console.log(",
+      "pattern_name": "console_log"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/merge-scraped-data.js",
+      "line": 11,
+      "description": "Console statement (remove before production!)",
+      "matched": "console.log(",
+      "pattern_name": "console_log"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/merge-scraped-safe.js",
+      "line": 10,
+      "description": "Console statement (remove before production!)",
+      "matched": "console.log(",
+      "pattern_name": "console_log"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/merge-scraped-safe.js",
+      "line": 11,
+      "description": "Console statement (remove before production!)",
+      "matched": "console.log(",
+      "pattern_name": "console_log"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/merge-scraped-safe.js",
+      "line": 12,
+      "description": "Console statement (remove before production!)",
+      "matched": "console.log(",
+      "pattern_name": "console_log"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/merge-scraped-safe.js",
+      "line": 61,
+      "description": "Console statement (remove before production!)",
+      "matched": "console.error(",
+      "pattern_name": "console_log"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/merge-scraped-safe.js",
+      "line": 94,
+      "description": "Console statement (remove before production!)",
+      "matched": "console.error(",
+      "pattern_name": "console_log"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/merge-scraped-safe.js",
+      "line": 103,
+      "description": "Console statement (remove before production!)",
+      "matched": "console.error(",
+      "pattern_name": "console_log"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/merge-scraped-safe.js",
+      "line": 104,
+      "description": "Console statement (remove before production!)",
+      "matched": "console.error(",
+      "pattern_name": "console_log"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/test-parse.js",
+      "line": 7,
+      "description": "Console statement (remove before production!)",
+      "matched": "console.log(",
+      "pattern_name": "console_log"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/test-parse.js",
+      "line": 33,
+      "description": "Console statement (remove before production!)",
+      "matched": "console.log(",
+      "pattern_name": "console_log"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/test-parse.js",
+      "line": 35,
+      "description": "Console statement (remove before production!)",
+      "matched": "console.log(",
+      "pattern_name": "console_log"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/test-parse.js",
+      "line": 39,
+      "description": "Console statement (remove before production!)",
+      "matched": "console.log(",
+      "pattern_name": "console_log"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/test-parse.js",
+      "line": 40,
+      "description": "Console statement (remove before production!)",
+      "matched": "console.log(",
+      "pattern_name": "console_log"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/test-parse.js",
+      "line": 42,
+      "description": "Console statement (remove before production!)",
+      "matched": "console.log(",
+      "pattern_name": "console_log"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/scrape-brands-reverse.js",
+      "line": 36,
+      "description": "Console statement (remove before production!)",
+      "matched": "console.log(",
+      "pattern_name": "console_log"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/scrape-brands-reverse.js",
+      "line": 58,
+      "description": "Console statement (remove before production!)",
+      "matched": "console.log(",
+      "pattern_name": "console_log"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/scrape-brands-reverse.js",
+      "line": 59,
+      "description": "Console statement (remove before production!)",
+      "matched": "console.log(",
+      "pattern_name": "console_log"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/scrape-brands-reverse.js",
+      "line": 60,
+      "description": "Console statement (remove before production!)",
+      "matched": "console.log(",
+      "pattern_name": "console_log"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/scrape-brands-reverse.js",
+      "line": 61,
+      "description": "Console statement (remove before production!)",
+      "matched": "console.log(",
+      "pattern_name": "console_log"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/scrape-brands-reverse.js",
+      "line": 69,
+      "description": "Empty catch block (swallowing errors silently)",
+      "matched": "catch (e) {}",
+      "pattern_name": "empty_catch"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/scrape-brands-reverse.js",
+      "line": 160,
+      "description": "Empty catch block (swallowing errors silently)",
+      "matched": "catch (e) {}",
+      "pattern_name": "empty_catch"
+    },
+    {
+      "severity": "WARNING",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/scripts/scrape-brands-reverse.js",
+      "line": 185,
+      "description": "Empty catch block (swallowing errors silently)",
+      "matched": "catch (e) {}",
+      "pattern_name": "empty_catch"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/app/canadian/page.tsx",
+      "line": 53,
+      "description": "Commented out code block (dead code)",
+      "matched": "// Group brands by first let",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/app/canadian/page.tsx",
+      "line": 171,
+      "description": "Commented out code block (dead code)",
+      "matched": "/* Letter Navigation - Sticky */",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/app/canadian/brands/page.tsx",
+      "line": 14,
+      "description": "Commented out code block (dead code)",
+      "matched": "// Group brands by first let",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/app/canadian/brands/page.tsx",
+      "line": 45,
+      "description": "Commented out code block (dead code)",
+      "matched": "/* Letter Navigation */",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/components/CategoryIcon.tsx",
+      "line": 55,
+      "description": "Commented out code block (dead code)",
+      "matched": "// Export",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/components/AnimatedCounter.tsx",
+      "line": 45,
+      "description": "Commented out code block (dead code)",
+      "matched": "// Easing function",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/deal-shuffle.ts",
+      "line": 118,
+      "description": "Commented out code block (dead code)",
+      "matched": "// Select deals with distribution const",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/brands-data.backup.ts",
+      "line": 620,
+      "description": "Commented out code block (dead code)",
+      "matched": "//www.swisschalet",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/brands-data.backup.ts",
+      "line": 621,
+      "description": "Commented out code block (dead code)",
+      "matched": "//www.google.com/s2/favicons?domain=swisschalet",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/brands-data.backup.ts",
+      "line": 1274,
+      "description": "Commented out code block (dead code)",
+      "matched": "//boulet",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/brands-data.backup.ts",
+      "line": 1275,
+      "description": "Commented out code block (dead code)",
+      "matched": "//www.google.com/s2/favicons?domain=boulet",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/brands-data.backup.ts",
+      "line": 5559,
+      "description": "Commented out code block (dead code)",
+      "matched": "// Helper function",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/affiliates.ts",
+      "line": 51,
+      "description": "Commented out code block (dead code)",
+      "matched": "// Your Rakuten publisher ID (const",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/affiliates.ts",
+      "line": 171,
+      "description": "Commented out code block (dead code)",
+      "matched": "// Common RFD store name var",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/affiliates.ts",
+      "line": 259,
+      "description": "Commented out code block (dead code)",
+      "matched": "// Check Rakuten (return",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/brands-data.ts",
+      "line": 713,
+      "description": "Commented out code block (dead code)",
+      "matched": "//www.swisschalet",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/brands-data.ts",
+      "line": 714,
+      "description": "Commented out code block (dead code)",
+      "matched": "//www.google.com/s2/favicons?domain=swisschalet",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/brands-data.ts",
+      "line": 1489,
+      "description": "Commented out code block (dead code)",
+      "matched": "//boulet",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/brands-data.ts",
+      "line": 1490,
+      "description": "Commented out code block (dead code)",
+      "matched": "//www.google.com/s2/favicons?domain=boulet",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/brands-data.ts",
+      "line": 6851,
+      "description": "Commented out code block (dead code)",
+      "matched": "// Helper function",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/flipp.ts",
+      "line": 200,
+      "description": "Commented out code block (dead code)",
+      "matched": "// API FUNCTION",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/flipp.ts",
+      "line": 242,
+      "description": "Commented out code block (dead code)",
+      "matched": "// (Flipp search can return",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/flipp.ts",
+      "line": 297,
+      "description": "Commented out code block (dead code)",
+      "matched": "// TRANSFORM FUNCTION",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/db.ts",
+      "line": 295,
+      "description": "Commented out code block (dead code)",
+      "matched": "// ADMIN FUNCTION",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/schema.ts",
+      "line": 17,
+      "description": "Commented out code block (dead code)",
+      "matched": "// Use deal ID to create deterministic but var",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/brands-data.backup2.ts",
+      "line": 620,
+      "description": "Commented out code block (dead code)",
+      "matched": "//www.swisschalet",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/brands-data.backup2.ts",
+      "line": 621,
+      "description": "Commented out code block (dead code)",
+      "matched": "//www.google.com/s2/favicons?domain=swisschalet",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/brands-data.backup2.ts",
+      "line": 1274,
+      "description": "Commented out code block (dead code)",
+      "matched": "//boulet",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/brands-data.backup2.ts",
+      "line": 1275,
+      "description": "Commented out code block (dead code)",
+      "matched": "//www.google.com/s2/favicons?domain=boulet",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/brands-data.backup2.ts",
+      "line": 5559,
+      "description": "Commented out code block (dead code)",
+      "matched": "// Helper function",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/content-generator.ts",
+      "line": 12,
+      "description": "Commented out code block (dead code)",
+      "matched": "// DESCRIPTION TEMPLATES (8 var",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "/home/ren/Desktop/shopcanada/newshopcanada/src/lib/content-generator.ts",
+      "line": 135,
+      "description": "Commented out code block (dead code)",
+      "matched": "// MAIN GENERATOR FUNCTION",
+      "pattern_name": "commented_code_block"
+    },
+    {
+      "severity": "INFO",
+      "file": "<project>",
+      "line": "N/A",
+      "description": "No React Router patterns found (using different routing?)",
+      "matched": "Could not locate route definitions",
+      "pattern_name": "no_routes_found"
+    }
+  ]
+}

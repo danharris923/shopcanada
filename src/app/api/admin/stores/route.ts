@@ -14,7 +14,7 @@ export async function GET() {
     const stores = await getAllStoresAdmin()
     return NextResponse.json({ stores })
   } catch (error) {
-    console.error('Error fetching stores:', error)
+    // Error fetching stores
     return NextResponse.json({ error: 'Failed to fetch stores' }, { status: 500 })
   }
 }
@@ -39,7 +39,7 @@ export async function PUT(request: Request) {
 
     return NextResponse.json({ success: true })
   } catch (error) {
-    console.error('Error updating store:', error)
+    // Error updating store
     return NextResponse.json({ error: 'Failed to update store' }, { status: 500 })
   }
 }
@@ -70,7 +70,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ success: true })
   } catch (error) {
-    console.error('Error adding store:', error)
+    // Error adding store
     return NextResponse.json({ error: 'Failed to add store' }, { status: 500 })
   }
 }

@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { brands, categories, getBrandBySlug } from '@/lib/brands-data'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
+import { ScrollToTopButton } from '@/components/ScrollToTopButton'
 import { CategoryIcon } from '@/components/CategoryIcon'
 import type { Metadata } from 'next'
 
@@ -278,12 +279,7 @@ export default function CanadianPage() {
         {/* Back to Top */}
         <section className="bg-soft-black py-8 px-6">
           <div className="max-w-6xl mx-auto text-center">
-            <a
-              href="#"
-              className="btn-primary"
-            >
-              Back to Top
-            </a>
+            <ScrollToTopButton />
           </div>
         </section>
       </main>
