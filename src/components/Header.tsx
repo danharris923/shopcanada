@@ -2,7 +2,8 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { Menu, X, Leaf, Home, ShoppingBag, Store, Grid3X3 } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { Menu, X, Leaf, Home, ShoppingBag, Store, Grid3X3, Search } from 'lucide-react'
 
 const navLinks = [
   { href: '/', label: 'Home', icon: Home },
@@ -13,53 +14,62 @@ const navLinks = [
 ]
 
 export function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
+  const router = useRouter()
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (searchQuery.trim()) {
+      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`)
+    }
+  }
 
   return (
     <header className="bg-soft-black sticky top-0 z-50 shadow-md">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-16 gap-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 font-bold text-xl text-white">
+          <Link href="/" className="flex items-center gap-2 font-bold text-xl text-white shrink-0">
             <Leaf size={24} className="text-maple-red" />
-            Shop Canada
+            <span className="hidden sm:inline">Shop Canada</span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`
-                  flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all
-                  ${link.highlight
-                    ? 'bg-maple-red/10 text-maple-red hover:bg-maple-red hover:text-white'
-                    : 'text-silver hover:text-white hover:bg-white/10'
-                  }
-                `}
+          {/* Search Bar - Center */}
+          <form onSubmit={handleSearchSubmit} className="flex-1 max-w-xl">
+            <div className="relative">
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search products or stores..."
+                className="w-full px-4 py-2 pl-10 pr-20 rounded-full bg-white/10 text-white placeholder-white/60 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white text-sm"
+              />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/60" />
+              <button
+                type="submit"
+                className="absolute right-1 top-1/2 -translate-y-1/2 px-3 py-1 bg-white/20 text-white rounded-full text-sm font-medium border border-white/30 hover:bg-white/30 transition-colors"
               >
-                <link.icon size={18} />
-                {link.label}
-              </Link>
-            ))}
-          </nav>
+                Search
+              </button>
+            </div>
+          </form>
 
-          {/* Mobile Menu Button */}
+          {/* Hamburger Menu Button - Now for both desktop and mobile */}
           <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-white hover:bg-white/10 rounded-lg transition-colors"
-            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="p-2 text-white hover:bg-white/10 rounded-lg transition-colors shrink-0"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {menuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Navigation Menu - Slide out for both desktop and mobile */}
         <div
           className={`
-            md:hidden overflow-hidden transition-all duration-300 ease-in-out
-            ${mobileMenuOpen ? 'max-h-96 pb-4' : 'max-h-0'}
+            overflow-hidden transition-all duration-300 ease-in-out
+            ${menuOpen ? 'max-h-96 pb-4' : 'max-h-0'}
           `}
         >
           <nav className="flex flex-col gap-1 pt-2 border-t border-white/10">
@@ -67,11 +77,11 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => setMenuOpen(false)}
                 className={`
                   flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all
                   ${link.highlight
-                    ? 'bg-maple-red/10 text-maple-red'
+                    ? 'bg-maple-red/10 text-maple-red hover:bg-maple-red hover:text-white'
                     : 'text-silver hover:text-white hover:bg-white/10'
                   }
                 `}

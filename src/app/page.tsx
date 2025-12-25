@@ -4,7 +4,6 @@ import { generateWebsiteSchema, generateOrganizationSchema } from '@/lib/schema'
 import { DealCard, DealGrid } from '@/components/DealCard'
 import { FlippDealCard, FlippDealGrid } from '@/components/FlippDealCard'
 import { Header } from '@/components/Header'
-import { HeroSearch } from '@/components/HeroSearch'
 import { Footer } from '@/components/Footer'
 import { StoreLogo } from '@/components/StoreLogo'
 import { featuredStores, getTopBadges } from '@/lib/store-logos'
@@ -56,10 +55,9 @@ export default async function HomePage() {
               <h1 className="text-3xl md:text-5xl font-bold text-white mb-2 text-right" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
                 Shop Canada
               </h1>
-              <p className="text-white/90 text-sm md:text-lg mb-6 text-right" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}>
+              <p className="text-white/90 text-sm md:text-lg text-right" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}>
                 The best deals for Canadian shoppers
               </p>
-              <HeroSearch />
             </div>
           </div>
         </section>
