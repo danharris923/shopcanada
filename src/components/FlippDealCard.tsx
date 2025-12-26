@@ -172,18 +172,17 @@ export function FlippDealCard({ deal, directAffiliate = false }: FlippDealCardPr
         </div>
 
         {/* CTA Button */}
-        <button className={`
-          w-full py-2 px-4 rounded-lg font-semibold text-sm
+        <div className={`
+          w-full py-2 px-4 rounded-lg font-semibold text-sm text-center
           transition-all duration-200
           transform hover:scale-105 hover:shadow-lg
-          focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-maple-red
           ${randomButton.style === 'primary'
             ? 'bg-maple-red hover:bg-burgundy text-white'
             : 'bg-white hover:bg-cream text-maple-red border-2 border-maple-red hover:border-burgundy'
           }
         `}>
           {randomButton.text}
-        </button>
+        </div>
       </div>
     </>
   )
