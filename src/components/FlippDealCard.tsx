@@ -43,28 +43,12 @@ export function FlippDealCard({ deal, directAffiliate = false }: FlippDealCardPr
   const shouldShowHighlight = affiliateUrl && !directAffiliate
   const randomTag = shouldShowHighlight ? getRandomTag(deal.title) : null
 
-  // CTR-focused button phrases with consistent site colors
-  const buttonVariations = [
-    { text: 'Get Deal Now', style: 'primary' },
-    { text: 'Shop Now', style: 'secondary' },
-    { text: 'Claim Offer', style: 'primary' },
-    { text: 'View Deal', style: 'secondary' },
-    { text: 'Save Now', style: 'primary' },
-    { text: 'Buy Now', style: 'secondary' },
-    { text: 'See Offer', style: 'primary' },
-    { text: 'Get Discount', style: 'secondary' },
-  ]
-
-  // Generate consistent random button based on deal title
-  const getRandomButton = (dealTitle: string) => {
-    const hash = dealTitle.split('').reduce((a, b) => {
-      a = ((a << 5) - a) + b.charCodeAt(0)
-      return a & a
-    }, 0)
-    return buttonVariations[Math.abs(hash) % buttonVariations.length]
+  // Function to handle Read more click for Flipp deals
+  const handleReadMoreClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    window.location.href = `/deals/${deal.slug}`
   }
-
-  const randomButton = getRandomButton(deal.title)
 
   const cardContent = (
     <>
@@ -171,18 +155,17 @@ export function FlippDealCard({ deal, directAffiliate = false }: FlippDealCardPr
           Valid until {new Date(deal.validTo).toLocaleDateString()}
         </div>
 
-        {/* CTA Button */}
-        <div className={`
-          w-full py-2 px-4 rounded-lg font-semibold text-sm text-center
-          transition-all duration-200
-          transform hover:scale-105 hover:shadow-lg
-          ${randomButton.style === 'primary'
-            ? 'bg-maple-red hover:bg-burgundy text-white'
-            : 'bg-white hover:bg-cream text-maple-red border-2 border-maple-red hover:border-burgundy'
-          }
-        `}>
-          {randomButton.text}
-        </div>
+        {/* Read more link - only show if there's an affiliate URL (main card is clickable) */}
+        {affiliateUrl && (
+          <div className="mt-3 pt-2 border-t border-gray-100">
+            <button
+              onClick={handleReadMoreClick}
+              className="text-xs text-gray-500 hover:text-gray-700 transition-colors duration-200"
+            >
+              Read more →
+            </button>
+          </div>
+        )}
       </div>
     </>
   )
@@ -194,7 +177,7 @@ export function FlippDealCard({ deal, directAffiliate = false }: FlippDealCardPr
         href={affiliateUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="deal-card group block cursor-pointer"
+        className="deal-card group block cursor-pointer hover:no-underline"
       >
         {cardContent}
       </a>
