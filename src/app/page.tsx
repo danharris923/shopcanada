@@ -10,15 +10,18 @@ import { featuredStores, getTopBadges } from '@/lib/store-logos'
 import { Smartphone, Shirt, Home, ShoppingCart, Sparkles, Dumbbell, Leaf } from 'lucide-react'
 import { StatsBar } from '@/components/StatsBar'
 import { getShuffledFeaturedDeals, getShuffledDeals, getDistributionSummary } from '@/lib/deal-shuffle'
+import { getLatestVideos } from '@/lib/youtube'
+import { VideoGrid } from '@/components/YouTubeEmbed'
 
 // Revalidate every 15 minutes
 export const revalidate = 900
 
 export default async function HomePage() {
-  const [shuffledFeatured, shuffledLatest, storeStats] = await Promise.all([
+  const [shuffledFeatured, shuffledLatest, storeStats, latestVideos] = await Promise.all([
     getShuffledFeaturedDeals(8),
     getShuffledDeals(16),
     getStoreStats(),
+    getLatestVideos(6),
   ])
 
   // Distribution logging removed for production
@@ -198,8 +201,59 @@ export default async function HomePage() {
           </div>
         </section>
 
+        {/* Store Tours - YouTube Videos */}
+        {latestVideos.length > 0 && (
+          <section className="py-12 section-cream">
+            <div className="max-w-7xl mx-auto px-4">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl md:text-3xl font-bold text-charcoal">
+                  Store Tours
+                </h2>
+                <a
+                  href="https://www.youtube.com/@ShopCanada-cc"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-maple-red hover:text-burgundy font-semibold transition-colors"
+                >
+                  Watch More →
+                </a>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {latestVideos.slice(0, 6).map((video) => (
+                  <div key={video.id} className="relative aspect-video rounded-lg overflow-hidden bg-black group cursor-pointer">
+                    <a
+                      href={`https://www.youtube.com/watch?v=${video.id}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-full h-full"
+                    >
+                      <img
+                        src={video.thumbnail}
+                        alt={video.title}
+                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
+                        <div className="w-14 h-14 rounded-full bg-maple-red flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                          <svg className="w-6 h-6 text-white ml-1" fill="white" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                          </svg>
+                        </div>
+                      </div>
+                      <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
+                        <p className="text-white text-sm font-medium line-clamp-2">
+                          {video.title}
+                        </p>
+                      </div>
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* Fresh Markdowns */}
-        <section className="py-12 section-cream">
+        <section className="py-12 section-ivory">
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl md:text-3xl font-bold text-charcoal">

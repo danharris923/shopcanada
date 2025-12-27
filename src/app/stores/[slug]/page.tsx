@@ -18,6 +18,8 @@ import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { StatsBar } from '@/components/StatsBar'
 import { ExternalLink } from 'lucide-react'
+import { getVideosForStore } from '@/lib/youtube'
+import { StoreVideos } from '@/components/YouTubeEmbed'
 
 interface PageProps {
   params: { slug: string }
@@ -70,6 +72,9 @@ export default async function StorePage({ params }: PageProps) {
   } catch (error) {
     deals = []
   }
+
+  // Get YouTube videos for this store
+  const videos = await getVideosForStore(storeSlug, 3)
 
   // Schema markup
   const itemListSchema = deals.length > 0
@@ -183,6 +188,15 @@ export default async function StorePage({ params }: PageProps) {
                 Browse All Deals
               </Link>
             </div>
+          )}
+
+          {/* YOUTUBE VIDEOS SECTION */}
+          {videos.length > 0 && (
+            <StoreVideos
+              storeSlug={storeSlug}
+              storeName={storeName}
+              videos={videos}
+            />
           )}
 
           {/* ABOUT SECTION - BELOW DEALS */}
