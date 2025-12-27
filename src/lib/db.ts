@@ -12,22 +12,41 @@ const pool = new Pool({
   ssl: { rejectUnauthorized: false }
 })
 
-// Transform PostgreSQL row data to serializable format
-// PostgreSQL returns Date objects and DECIMAL as strings - we need to convert them
+// Transform PostgreSQL row data to serializable format for React Server Components
+// RSC is stricter than JSON.stringify - we need to ensure only primitives are passed
 function transformRow<T>(row: Record<string, unknown>): T {
   const transformed: Record<string, unknown> = {}
   for (const [key, value] of Object.entries(row)) {
-    if (value instanceof Date) {
-      // Convert Date objects to ISO strings for JSON serialization
+    if (value === null || value === undefined) {
+      transformed[key] = null
+    } else if (value instanceof Date) {
+      // Convert Date objects to ISO strings
       transformed[key] = value.toISOString()
+    } else if (typeof value === 'object' && value !== null && 'toISOString' in value) {
+      // Duck-type check for Date-like objects from different realms
+      transformed[key] = (value as { toISOString: () => string }).toISOString()
     } else if (key === 'price' || key === 'original_price') {
       // Convert DECIMAL strings to numbers
-      transformed[key] = value !== null ? parseFloat(value as string) : null
+      transformed[key] = value !== null ? parseFloat(String(value)) : null
     } else if (key === 'discount_percent' || key === 'deal_count') {
       // Convert integer strings to numbers
-      transformed[key] = value !== null ? parseInt(value as string, 10) : null
-    } else {
+      transformed[key] = value !== null ? parseInt(String(value), 10) : null
+    } else if (typeof value === 'bigint') {
+      // Convert BigInt to number (or string if too large)
+      transformed[key] = Number(value)
+    } else if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') {
+      // Primitives pass through
       transformed[key] = value
+    } else if (Buffer.isBuffer(value)) {
+      // Convert Buffer to base64 string
+      transformed[key] = value.toString('base64')
+    } else {
+      // For any other type, stringify it
+      try {
+        transformed[key] = JSON.parse(JSON.stringify(value))
+      } catch {
+        transformed[key] = String(value)
+      }
     }
   }
   return transformed as T
