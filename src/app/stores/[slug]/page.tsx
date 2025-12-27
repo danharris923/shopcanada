@@ -18,7 +18,7 @@ import {
 import { getBrandBySlug } from '@/lib/brands-data'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
-import { RefreshCountdown } from '@/components/deal/RefreshCountdown'
+import { StatsBar } from '@/components/StatsBar'
 
 // Max H2 categories per store page (SEO best practice)
 const MAX_H2_CATEGORIES = 5
@@ -121,7 +121,7 @@ export default async function StorePage({ params }: PageProps) {
       )}
 
       <Header />
-      <RefreshCountdown />
+      <StatsBar dealCount={deals.length} />
 
       <main className="min-h-screen bg-cream">
         <div className="max-w-7xl mx-auto px-4 py-6">

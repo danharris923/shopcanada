@@ -4,7 +4,7 @@ import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { DealCard, DealGrid } from '@/components/DealCard'
 import { FilterSidebar } from '@/components/FilterSidebar'
-import { RefreshCountdown } from '@/components/deal/RefreshCountdown'
+import { StatsBar } from '@/components/StatsBar'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -44,8 +44,8 @@ export default async function DealsPage() {
           </div>
         </section>
 
-        {/* Refresh Countdown */}
-        <RefreshCountdown />
+        {/* Stats Bar */}
+        <StatsBar dealCount={dealCount} storeCount={storeCount} />
 
         {/* Filter Sidebar */}
         <FilterSidebar stores={filterStores} categories={filterCategories} />

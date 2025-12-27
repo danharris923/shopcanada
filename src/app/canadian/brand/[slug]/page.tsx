@@ -5,7 +5,7 @@ import { Breadcrumbs } from '@/components/breadcrumbs'
 import { CategorySidebar } from '@/components/category-sidebar'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
-import { RefreshCountdown } from '@/components/deal/RefreshCountdown'
+import { StatsBar } from '@/components/StatsBar'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 
@@ -48,7 +48,7 @@ export default async function BrandPage({ params }: Props) {
   return (
     <>
       <Header />
-      <RefreshCountdown />
+      <StatsBar />
       <main className="min-h-screen bg-cream">
         <div className="max-w-7xl mx-auto px-6 py-8">
           <Breadcrumbs items={[

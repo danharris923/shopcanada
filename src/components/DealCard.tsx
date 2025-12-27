@@ -174,26 +174,15 @@ export function DealCard({
           </div>
         )}
 
-        {/* Shop button when no price */}
-        {priceNum === null && (
-          <div className="mb-3">
-            <span className="inline-block px-4 py-2 bg-white border border-charcoal text-charcoal text-sm font-medium rounded-lg hover:shadow-md transition-shadow">
-              Shop Now
-            </span>
-          </div>
-        )}
-
-        {/* Read more link - only show if there's an affiliate URL (main card is clickable) */}
-        {affiliateUrl && (
-          <div className="mt-3 pt-2 border-t border-gray-100">
-            <button
-              onClick={handleReadMoreClick}
-              className="text-xs text-gray-500 hover:text-gray-700 transition-colors duration-200"
-            >
-              Read more →
-            </button>
-          </div>
-        )}
+        {/* Read More button */}
+        <div className="mt-3">
+          <button
+            onClick={handleReadMoreClick}
+            className="inline-block px-4 py-2 bg-white border border-charcoal text-charcoal text-sm font-medium rounded-lg hover:shadow-md transition-shadow"
+          >
+            Read More
+          </button>
+        </div>
       </div>
     </>
   )

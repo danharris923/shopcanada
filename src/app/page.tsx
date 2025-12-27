@@ -8,8 +8,7 @@ import { Footer } from '@/components/Footer'
 import { StoreLogo } from '@/components/StoreLogo'
 import { featuredStores, getTopBadges } from '@/lib/store-logos'
 import { Smartphone, Shirt, Home, ShoppingCart, Sparkles, Dumbbell, Leaf } from 'lucide-react'
-import { AnimatedCounter } from '@/components/AnimatedCounter'
-import { RefreshCountdown } from '@/components/deal/RefreshCountdown'
+import { StatsBar } from '@/components/StatsBar'
 import { getShuffledFeaturedDeals, getShuffledDeals, getDistributionSummary } from '@/lib/deal-shuffle'
 
 // Revalidate every 15 minutes
@@ -64,21 +63,10 @@ export default async function HomePage() {
         </section>
 
         {/* Stats Bar */}
-        <section className="bg-soft-black text-white py-2">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="flex justify-center gap-6 md:gap-12 text-center items-center">
-              <div className="flex items-center gap-1.5">
-                <AnimatedCounter end={shuffledLatest.deals.length + shuffledFeatured.deals.length + 250} suffix="+" className="text-lg md:text-xl font-bold text-maple-red" />
-                <span className="text-xs text-silver">Sales</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <AnimatedCounter end={storeStats.length + 45} suffix="+" className="text-lg md:text-xl font-bold text-maple-red" />
-                <span className="text-xs text-silver">Stores</span>
-              </div>
-              <RefreshCountdown inline />
-            </div>
-          </div>
-        </section>
+        <StatsBar
+          dealCount={shuffledLatest.deals.length + shuffledFeatured.deals.length + 250}
+          storeCount={storeStats.length + 45}
+        />
 
         {/* Canadian Picks - Above the Fold CTA */}
         <section className="py-6 bg-gradient-to-r from-maple-red to-burgundy">

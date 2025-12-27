@@ -4,7 +4,7 @@ import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { CategoryIcon } from '@/components/CategoryIcon'
 import { Smartphone, Shirt, Home, ShoppingCart, Sparkles, Dumbbell, BookOpen, Baby, Gamepad2, Wrench, Heart, Package, ArrowLeft, Filter } from 'lucide-react'
-import { RefreshCountdown } from '@/components/deal/RefreshCountdown'
+import { StatsBar } from '@/components/StatsBar'
 import type { Metadata } from 'next'
 
 const categories = [
@@ -116,8 +116,8 @@ export default function CategoryPage({ params }: CategoryPageProps) {
           </div>
         </section>
 
-        {/* Refresh Countdown */}
-        <RefreshCountdown />
+        {/* Stats Bar */}
+        <StatsBar />
 
         {/* Coming Soon Notice */}
         <section className="py-12 px-4">

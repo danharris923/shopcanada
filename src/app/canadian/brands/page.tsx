@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { brands, categories } from '@/lib/brands-data'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
-import { RefreshCountdown } from '@/components/deal/RefreshCountdown'
+import { StatsBar } from '@/components/StatsBar'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -25,7 +25,7 @@ export default function AllBrandsPage() {
   return (
     <>
       <Header />
-      <RefreshCountdown />
+      <StatsBar />
       <main className="bg-cream min-h-screen">
         {/* Hero */}
         <section className="bg-burgundy py-12 px-6">

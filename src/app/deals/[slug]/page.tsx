@@ -22,7 +22,7 @@ import {
 import { getStockWarning, generateUrgencyData } from '@/lib/urgency'
 import { toNumber, formatPrice, calculateSavings } from '@/lib/price-utils'
 
-import { RefreshCountdown } from '@/components/deal/RefreshCountdown'
+import { StatsBar } from '@/components/StatsBar'
 import { PriceDisplay } from '@/components/deal/PriceDisplay'
 import { CTAButton } from '@/components/deal/CTAButton'
 import { StockWarning } from '@/components/deal/StockWarning'
@@ -142,8 +142,8 @@ export default async function DealPage({ params }: PageProps) {
 
       {/* ABOVE THE FOLD - Maximum CTR Zone */}
       <div className="min-h-screen bg-cream">
-        {/* Refresh Countdown - Real countdown to next deal update */}
-        <RefreshCountdown />
+        {/* Stats Bar */}
+        <StatsBar />
 
         {/* Main Content */}
         <main className="max-w-7xl mx-auto px-4 py-4">
