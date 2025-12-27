@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { notFound } from 'next/navigation'
 
 import { getDealBySlug, getRelatedDeals, getAllDealSlugs } from '@/lib/db'
+import { Deal } from '@/types/deal'
 import {
   generateDealDescription,
   generateMetaDescription,
@@ -46,7 +47,7 @@ export async function generateStaticParams() {
     const slugs = await getAllDealSlugs()
     return slugs.map(slug => ({ slug }))
   } catch (error) {
-    console.log('No database available for static generation, returning empty params')
+    // No database available for static generation
     return []
   }
 }
@@ -95,7 +96,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function DealPage({ params }: PageProps) {
-  const deal = await getDealBySlug(params.slug)
+  let deal = null
+  try {
+    deal = await getDealBySlug(params.slug)
+  } catch (error) {
+    // Database error for deal during build
+    notFound()
+  }
 
   if (!deal) {
     notFound()
@@ -109,7 +116,14 @@ export default async function DealPage({ params }: PageProps) {
   const description = generateDealDescription(deal)
   const faqs = generateFAQ(deal)
   const storeDescription = getStoreDescription(deal.store)
-  const relatedDeals = await getRelatedDeals(deal)
+
+  let relatedDeals: Deal[] = []
+  try {
+    relatedDeals = await getRelatedDeals(deal)
+  } catch (error) {
+    // Database error for related deals during build
+    relatedDeals = []
+  }
 
   // Schema markup - enhanced with Review for rich snippets
   const productSchema = generateProductSchema(deal)

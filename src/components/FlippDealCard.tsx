@@ -5,7 +5,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FlippDeal } from '@/lib/flipp'
 import { getAffiliateSearchUrl } from '@/lib/affiliates'
-import { useAffiliateClick } from '@/hooks/useAffiliateClick'
 
 interface FlippDealCardProps {
   deal: FlippDeal
@@ -16,25 +15,39 @@ interface FlippDealCardProps {
 export function FlippDealCard({ deal, directAffiliate = false }: FlippDealCardProps) {
   const hasDiscount = deal.discountPercent !== null && deal.discountPercent > 0
   const hasPriceData = deal.price !== null && deal.price > 0
-  const { handleClick, isLoading } = useAffiliateClick()
 
   // Check if this store has an affiliate link
   const affiliateUrl = getAffiliateSearchUrl(deal.storeSlug, deal.title)
 
-  const handleCardClick = async (e: React.MouseEvent) => {
-    if (directAffiliate && affiliateUrl) {
-      e.preventDefault()
-      e.stopPropagation()
+  // Random highlight tags for affiliated Flipp deals
+  const highlightTags = [
+    { text: 'HOT DEAL', color: 'bg-red-600' },
+    { text: 'BEST PRICE', color: 'bg-orange-600' },
+    { text: 'LIMITED TIME', color: 'bg-purple-600' },
+    { text: 'TRENDING', color: 'bg-pink-600' },
+    { text: 'POPULAR', color: 'bg-blue-600' },
+    { text: 'FLASH SALE', color: 'bg-green-600' },
+    { text: 'EXCLUSIVE', color: 'bg-indigo-600' },
+    { text: 'TOP PICK', color: 'bg-yellow-600' },
+  ]
 
-      await handleClick({
-        dealId: deal.id,
-        title: deal.title,
-        storeSlug: deal.storeSlug,
-        existingAffiliateUrl: affiliateUrl,
-        price: deal.price
-      })
-    }
-    // If not directAffiliate, let Link handle navigation normally
+  // Generate consistent random tag based on deal title
+  const getRandomTag = (dealTitle: string) => {
+    const hash = dealTitle.split('').reduce((a, b) => {
+      a = ((a << 5) - a) + b.charCodeAt(0)
+      return a & a
+    }, 0)
+    return highlightTags[Math.abs(hash) % highlightTags.length]
+  }
+
+  const shouldShowHighlight = affiliateUrl && !directAffiliate
+  const randomTag = shouldShowHighlight ? getRandomTag(deal.title) : null
+
+  // Function to handle Read more click for Flipp deals
+  const handleReadMoreClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    window.location.href = `/deals/${deal.slug}`
   }
 
   const cardContent = (
@@ -48,17 +61,31 @@ export function FlippDealCard({ deal, directAffiliate = false }: FlippDealCardPr
           </div>
         )}
 
-        {/* Flyer Badge */}
-        <div className="absolute top-2 left-2 z-10">
-          <span className="
-            bg-orange-600 text-white
-            px-2 py-1 rounded-lg
-            font-bold text-xs
-            shadow-md
-          ">
-            FLYER
-          </span>
-        </div>
+        {/* Highlight Badge - Only show for affiliate deals with random tags */}
+        {randomTag ? (
+          <div className="absolute top-2 left-2 z-10">
+            <span className={`
+              ${randomTag.color} text-white
+              px-2 py-1 rounded-lg
+              font-bold text-xs
+              shadow-md
+              animate-pulse
+            `}>
+              {randomTag.text}
+            </span>
+          </div>
+        ) : (
+          <div className="absolute top-2 left-2 z-10">
+            <span className="
+              bg-orange-600 text-white
+              px-2 py-1 rounded-lg
+              font-bold text-xs
+              shadow-md
+            ">
+              FLYER
+            </span>
+          </div>
+        )}
 
         {/* Direct Affiliate Badge */}
         {directAffiliate && affiliateUrl && (
@@ -75,12 +102,6 @@ export function FlippDealCard({ deal, directAffiliate = false }: FlippDealCardPr
           </div>
         )}
 
-        {/* Loading overlay */}
-        {isLoading && (
-          <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center z-20">
-            <div className="w-8 h-8 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-          </div>
-        )}
 
         {/* Image */}
         <Image
@@ -106,7 +127,7 @@ export function FlippDealCard({ deal, directAffiliate = false }: FlippDealCardPr
         </h3>
 
         {/* Price */}
-        <div className="flex items-baseline gap-2">
+        <div className="flex items-baseline gap-2 mb-3">
           {hasPriceData ? (
             <>
               <span className="deal-card-price">
@@ -124,59 +145,46 @@ export function FlippDealCard({ deal, directAffiliate = false }: FlippDealCardPr
             </span>
           ) : (
             <span className="text-lg font-semibold text-charcoal">
-              See Flyer
+              Check Flyer
             </span>
           )}
         </div>
 
         {/* Valid dates */}
-        <div className="text-sm text-meta mt-1">
+        <div className="text-sm text-meta mb-3">
           Valid until {new Date(deal.validTo).toLocaleDateString()}
         </div>
+
+        {/* Read more link - only show if there's an affiliate URL (main card is clickable) */}
+        {affiliateUrl && (
+          <div className="mt-3 pt-2 border-t border-gray-100">
+            <button
+              onClick={handleReadMoreClick}
+              className="text-xs text-gray-500 hover:text-gray-700 transition-colors duration-200"
+            >
+              Read more →
+            </button>
+          </div>
+        )}
       </div>
     </>
   )
 
-  // Conditional rendering based on directAffiliate prop
-  if (directAffiliate && affiliateUrl) {
-    return (
-      <div
-        onClick={handleCardClick}
-        className={`deal-card group block cursor-pointer ${isLoading ? 'pointer-events-none' : ''}`}
-      >
-        {cardContent}
-      </div>
-    )
-  }
-
-  // If has slug, navigate to deal page, otherwise use affiliate link
-  if (deal.slug) {
-    return (
-      <Link
-        href={`/deals/${deal.slug}`}
-        className="deal-card group block"
-        onClick={handleCardClick}
-      >
-        {cardContent}
-      </Link>
-    )
-  }
-
-  // Fallback to affiliate link if no slug
+  // For Flipp deals, ALWAYS use affiliate link - never internal deal pages
   if (affiliateUrl) {
     return (
       <a
         href={affiliateUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="deal-card group block"
+        className="deal-card group block cursor-pointer hover:no-underline"
       >
         {cardContent}
       </a>
     )
   }
 
-  // No link available
+  // No affiliate link available - just display without link
   return (
     <div className="deal-card group block">
       {cardContent}

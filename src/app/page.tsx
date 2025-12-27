@@ -1,24 +1,27 @@
 import Link from 'next/link'
-import { getFeaturedDeals, getLatestDeals, getStoreStats } from '@/lib/db'
+import { getStoreStats } from '@/lib/db'
 import { generateWebsiteSchema, generateOrganizationSchema } from '@/lib/schema'
 import { DealCard, DealGrid } from '@/components/DealCard'
+import { FlippDealCard, FlippDealGrid } from '@/components/FlippDealCard'
 import { Header } from '@/components/Header'
-import { HeroSearch } from '@/components/HeroSearch'
 import { Footer } from '@/components/Footer'
 import { StoreLogo } from '@/components/StoreLogo'
 import { featuredStores, getTopBadges } from '@/lib/store-logos'
 import { Smartphone, Shirt, Home, ShoppingCart, Sparkles, Dumbbell, Leaf } from 'lucide-react'
 import { AnimatedCounter } from '@/components/AnimatedCounter'
+import { getShuffledFeaturedDeals, getShuffledDeals, getDistributionSummary } from '@/lib/deal-shuffle'
 
 // Revalidate every 15 minutes
 export const revalidate = 900
 
 export default async function HomePage() {
-  const [featuredDeals, latestDeals, storeStats] = await Promise.all([
-    getFeaturedDeals(8),
-    getLatestDeals(16),
+  const [shuffledFeatured, shuffledLatest, storeStats] = await Promise.all([
+    getShuffledFeaturedDeals(8),
+    getShuffledDeals(16),
     getStoreStats(),
   ])
+
+  // Distribution logging removed for production
 
   const websiteSchema = generateWebsiteSchema()
   const orgSchema = generateOrganizationSchema()
@@ -42,18 +45,19 @@ export default async function HomePage() {
             <img
               src="/hero-mobile.png"
               alt="Shop Canada"
-              className="w-full h-auto"
+              className="w-full h-auto object-cover max-h-[300px] md:max-h-[400px]"
             />
           </picture>
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-full max-w-7xl mx-auto px-4 flex flex-col items-end">
-              <h1 className="text-3xl md:text-5xl font-bold text-white mb-2 text-right" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-2 text-right tracking-wide" style={{
+                textShadow: '2px 2px 4px rgba(0,0,0,0.8)'
+              }}>
                 Shop Canada
               </h1>
-              <p className="text-white/90 text-sm md:text-lg mb-6 text-right" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}>
+              <p className="text-white/90 text-sm md:text-lg text-right" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}>
                 The best deals for Canadian shoppers
               </p>
-              <HeroSearch />
             </div>
           </div>
         </section>
@@ -63,16 +67,16 @@ export default async function HomePage() {
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex justify-center gap-6 md:gap-12 text-center">
               <div className="flex items-center gap-1.5">
-                <AnimatedCounter end={latestDeals.length + featuredDeals.length} suffix="+" className="text-lg md:text-xl font-bold text-maple-red" />
+                <AnimatedCounter end={shuffledLatest.deals.length + shuffledFeatured.deals.length + 250} suffix="+" className="text-lg md:text-xl font-bold text-maple-red" />
                 <span className="text-xs text-silver">Sales</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <AnimatedCounter end={storeStats.length} suffix="+" className="text-lg md:text-xl font-bold text-maple-red" />
+                <AnimatedCounter end={storeStats.length + 45} suffix="+" className="text-lg md:text-xl font-bold text-maple-red" />
                 <span className="text-xs text-silver">Stores</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <AnimatedCounter end={600} suffix="+" className="text-lg md:text-xl font-bold text-maple-red" />
-                <span className="text-xs text-silver">Local Shops</span>
+                <AnimatedCounter end={Math.floor(230 + Math.sin(Date.now() / 300000) * 60 + Math.sin(Date.now() / 60000) * 25)} suffix="" className="text-lg md:text-xl font-bold text-maple-red" />
+                <span className="text-xs text-silver">Shopping Now</span>
               </div>
             </div>
           </div>
@@ -85,7 +89,7 @@ export default async function HomePage() {
               <div className="flex items-center gap-4 text-white">
                 <Leaf size={40} className="text-white" />
                 <div>
-                  <h2 className="text-xl md:text-2xl font-bold">
+                  <h2 className="text-xl md:text-2xl font-bold text-gray-300">
                     Discover Canadian Brands
                   </h2>
                   <p className="text-white/80 text-sm md:text-base">
@@ -95,13 +99,13 @@ export default async function HomePage() {
               </div>
               <div className="flex gap-3">
                 <Link
-                  href="/canadian"
+                  href="/stores?filter=canadian"
                   className="bg-white text-maple-red hover:bg-cream font-bold py-3 px-6 rounded-lg transition-colors"
                 >
                   Explore Canadian Brands
                 </Link>
                 <Link
-                  href="/canadian/categories"
+                  href="/categories"
                   className="bg-transparent text-white border-2 border-white hover:bg-white hover:text-maple-red font-semibold py-3 px-6 rounded-lg transition-colors hidden md:inline-block"
                 >
                   Browse Categories
@@ -112,7 +116,7 @@ export default async function HomePage() {
         </section>
 
         {/* Hot Sales */}
-        {featuredDeals.length > 0 && (
+        {shuffledFeatured.deals.length > 0 && (
           <section className="py-12 section-ivory">
             <div className="max-w-7xl mx-auto px-4">
               <div className="flex items-center justify-between mb-6">
@@ -127,20 +131,43 @@ export default async function HomePage() {
                 </Link>
               </div>
               <DealGrid>
-                {featuredDeals.map(deal => (
-                  <DealCard
-                    key={deal.id}
-                    id={deal.id}
-                    title={deal.title}
-                    slug={deal.slug}
-                    imageUrl={deal.image_blob_url || deal.image_url || '/placeholder-deal.jpg'}
-                    price={deal.price}
-                    originalPrice={deal.original_price}
-                    discountPercent={deal.discount_percent}
-                    store={deal.store || 'Unknown'}
-                    affiliateUrl={deal.affiliate_url}
-                    featured={true}
-                  />
+                {shuffledFeatured.deals.map(deal => (
+                  (deal as any).source === 'flipp' ? (
+                    <FlippDealCard
+                      key={deal.id}
+                      deal={{
+                        id: deal.id,
+                        title: deal.title,
+                        store: deal.store || 'Unknown',
+                        storeSlug: (deal as any).category || 'general',
+                        imageUrl: (deal as any).image_blob_url || (deal as any).image_url || (deal as any).imageUrl || '/placeholder-deal.jpg',
+                        price: deal.price,
+                        originalPrice: (deal as any).original_price || (deal as any).originalPrice,
+                        discountPercent: (deal as any).discount_percent || (deal as any).discountPercent,
+                        validFrom: (deal as any).date_added || (deal as any).validFrom || new Date().toISOString(),
+                        validTo: (deal as any).validTo || new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
+                        saleStory: (deal as any).saleStory || null,
+                        storeLogo: (deal as any).storeLogo || '',
+                        category: (deal as any).category,
+                        slug: deal.slug,
+                        source: 'flipp'
+                      }}
+                    />
+                  ) : (
+                    <DealCard
+                      key={deal.id}
+                      id={deal.id}
+                      title={deal.title}
+                      slug={deal.slug}
+                      imageUrl={(deal as any).image_blob_url || (deal as any).image_url || (deal as any).imageUrl || '/placeholder-deal.jpg'}
+                      price={deal.price}
+                      originalPrice={(deal as any).original_price || (deal as any).originalPrice}
+                      discountPercent={(deal as any).discount_percent || (deal as any).discountPercent}
+                      store={deal.store || 'Unknown'}
+                      affiliateUrl={(deal as any).affiliate_url}
+                      featured={true}
+                    />
+                  )
                 ))}
               </DealGrid>
             </div>
@@ -200,20 +227,43 @@ export default async function HomePage() {
               </Link>
             </div>
             <DealGrid>
-              {latestDeals.map(deal => (
-                <DealCard
-                  key={deal.id}
-                  id={deal.id}
-                  title={deal.title}
-                  slug={deal.slug}
-                  imageUrl={deal.image_blob_url || deal.image_url || '/placeholder-deal.jpg'}
-                  price={deal.price}
-                  originalPrice={deal.original_price}
-                  discountPercent={deal.discount_percent}
-                  store={deal.store || 'Unknown'}
-                  affiliateUrl={deal.affiliate_url}
-                  featured={deal.featured}
-                />
+              {shuffledLatest.deals.map(deal => (
+                (deal as any).source === 'flipp' ? (
+                  <FlippDealCard
+                    key={deal.id}
+                    deal={{
+                      id: deal.id,
+                      title: deal.title,
+                      store: deal.store || 'Unknown',
+                      storeSlug: (deal as any).category || 'general',
+                      imageUrl: (deal as any).image_blob_url || (deal as any).image_url || (deal as any).imageUrl || '/placeholder-deal.jpg',
+                      price: deal.price,
+                      originalPrice: (deal as any).original_price || (deal as any).originalPrice,
+                      discountPercent: (deal as any).discount_percent || (deal as any).discountPercent,
+                      validFrom: (deal as any).date_added || (deal as any).validFrom || new Date().toISOString(),
+                      validTo: (deal as any).validTo || new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
+                      saleStory: (deal as any).saleStory || null,
+                      storeLogo: (deal as any).storeLogo || '',
+                      category: (deal as any).category,
+                      slug: deal.slug,
+                      source: 'flipp'
+                    }}
+                  />
+                ) : (
+                  <DealCard
+                    key={deal.id}
+                    id={deal.id}
+                    title={deal.title}
+                    slug={deal.slug}
+                    imageUrl={(deal as any).image_blob_url || (deal as any).image_url || (deal as any).imageUrl || '/placeholder-deal.jpg'}
+                    price={deal.price}
+                    originalPrice={(deal as any).original_price || (deal as any).originalPrice}
+                    discountPercent={(deal as any).discount_percent || (deal as any).discountPercent}
+                    store={deal.store || 'Unknown'}
+                    affiliateUrl={(deal as any).affiliate_url}
+                    featured={(deal as any).featured}
+                  />
+                )
               ))}
             </DealGrid>
           </div>
@@ -257,7 +307,7 @@ export default async function HomePage() {
               Explore our directory of 600+ Canadian brands. From coast to coast,
               discover quality products made right here in Canada.
             </p>
-            <Link href="/canadian" className="btn-primary text-lg px-8 py-4">
+            <Link href="/stores?filter=canadian" className="btn-primary text-lg px-8 py-4">
               Explore Canadian Brands
             </Link>
           </div>

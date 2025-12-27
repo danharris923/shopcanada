@@ -5,7 +5,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { DealCardProps } from '@/types/deal'
 import { toNumber, formatPrice, calculateSavings } from '@/lib/price-utils'
-import { useAffiliateClick } from '@/hooks/useAffiliateClick'
 
 export function DealCard({
   id,
@@ -24,22 +23,36 @@ export function DealCard({
   const priceNum = toNumber(price)
   const originalPriceNum = toNumber(originalPrice)
   const savings = calculateSavings(originalPrice, price)
-  const { handleClick, isLoading } = useAffiliateClick()
 
-  const handleCardClick = async (e: React.MouseEvent) => {
-    if (directAffiliate) {
-      e.preventDefault()
-      e.stopPropagation()
+  // Random highlight tags for affiliated deals only
+  const highlightTags = [
+    { text: 'HOT DEAL', color: 'bg-red-600' },
+    { text: 'BEST PRICE', color: 'bg-orange-600' },
+    { text: 'LIMITED TIME', color: 'bg-purple-600' },
+    { text: 'TRENDING', color: 'bg-pink-600' },
+    { text: 'POPULAR', color: 'bg-blue-600' },
+    { text: 'FLASH SALE', color: 'bg-green-600' },
+    { text: 'EXCLUSIVE', color: 'bg-indigo-600' },
+    { text: 'TOP PICK', color: 'bg-yellow-600' },
+  ]
 
-      await handleClick({
-        dealId: id,
-        title,
-        storeSlug: store?.toLowerCase().replace(/\s+/g, '-'),
-        existingAffiliateUrl: affiliateUrl,
-        price
-      })
-    }
-    // If not directAffiliate, let Link handle navigation normally
+  // Generate consistent random tag based on deal ID
+  const getRandomTag = (dealId: string) => {
+    const hash = dealId.split('').reduce((a, b) => {
+      a = ((a << 5) - a) + b.charCodeAt(0)
+      return a & a
+    }, 0)
+    return highlightTags[Math.abs(hash) % highlightTags.length]
+  }
+
+  const shouldShowHighlight = affiliateUrl && !directAffiliate
+  const randomTag = shouldShowHighlight ? getRandomTag(id) : null
+
+  // Function to handle Read more click
+  const handleReadMoreClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    window.location.href = `/deals/${slug}`
   }
 
   const cardContent = (
@@ -53,16 +66,17 @@ export function DealCard({
           </div>
         )}
 
-        {/* Featured Badge - Only show for deals with admin-set affiliate links */}
-        {affiliateUrl && (
+        {/* Highlight Badge - Only show for affiliate deals with random tags */}
+        {randomTag && (
           <div className="absolute top-2 left-2 z-10">
-            <span className="
-              bg-burgundy text-white
+            <span className={`
+              ${randomTag.color} text-white
               px-2 py-1 rounded-lg
               font-bold text-xs
               shadow-md
-            ">
-              HOT DEAL
+              animate-pulse
+            `}>
+              {randomTag.text}
             </span>
           </div>
         )}
@@ -97,12 +111,6 @@ export function DealCard({
           </div>
         )}
 
-        {/* Loading overlay */}
-        {isLoading && (
-          <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center z-20">
-            <div className="w-8 h-8 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-          </div>
-        )}
 
         {/* Image */}
         <Image
@@ -127,7 +135,7 @@ export function DealCard({
         </h3>
 
         {/* Price */}
-        <div className="flex items-baseline gap-2">
+        <div className="flex items-baseline gap-2 mb-3">
           {priceNum !== null ? (
             <>
               <span className="deal-card-price">
@@ -141,39 +149,52 @@ export function DealCard({
             </>
           ) : (
             <span className="text-lg font-semibold text-charcoal">
-              See Deal
+              Price varies
             </span>
           )}
         </div>
 
         {/* Savings */}
         {savings && (
-          <div className="text-sm text-maple-red font-semibold mt-1">
+          <div className="text-sm text-maple-red font-semibold mb-3">
             Save ${savings}
+          </div>
+        )}
+
+        {/* Read more link - only show if there's an affiliate URL (main card is clickable) */}
+        {affiliateUrl && (
+          <div className="mt-3 pt-2 border-t border-gray-100">
+            <button
+              onClick={handleReadMoreClick}
+              className="text-xs text-gray-500 hover:text-gray-700 transition-colors duration-200"
+            >
+              Read more →
+            </button>
           </div>
         )}
       </div>
     </>
   )
 
-  // Conditional rendering based on directAffiliate prop
-  if (directAffiliate) {
+  // Always go direct to retailer if affiliateUrl exists
+  if (affiliateUrl) {
     return (
-      <div
-        onClick={handleCardClick}
-        className={`deal-card group block cursor-pointer ${isLoading ? 'pointer-events-none' : ''}`}
+      <a
+        href={affiliateUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="deal-card group block cursor-pointer hover:no-underline"
       >
         {cardContent}
-      </div>
+      </a>
     )
   }
 
-  // Default behavior - navigate to deal page
+  // Fallback - navigate to deal page if no affiliate URL
   return (
     <Link
       href={`/deals/${slug}`}
       className="deal-card group block"
-      onClick={handleCardClick}
     >
       {cardContent}
     </Link>
