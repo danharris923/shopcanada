@@ -1,12 +1,13 @@
 'use client'
 
-import { Leaf, ExternalLink } from 'lucide-react'
+import { Leaf, ExternalLink, RotateCcw, Truck, Crown, Scale } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { DealCardProps } from '@/types/deal'
 import { toNumber, formatPrice, calculateSavings } from '@/lib/price-utils'
 import { getStoreLogo, generateLogoUrl } from '@/lib/store-logos'
 import { getBrandBySlug } from '@/lib/brands-data'
+import { getStoreInfo } from '@/lib/store-info'
 
 export function DealCard({
   id,
@@ -28,10 +29,28 @@ export function DealCard({
 
   // Get store info from brand data
   const storeSlug = store?.toLowerCase().replace(/\s+/g, '-') || ''
-  const storeInfo = getStoreLogo(storeSlug)
+  const storeLogoInfo = getStoreLogo(storeSlug)
   const brand = getBrandBySlug(storeSlug)
-  const storeLogo = storeInfo?.logo || brand?.logo || generateLogoUrl(storeSlug.replace(/-/g, '') + '.ca')
-  const storeName = storeInfo?.name || brand?.name || store
+  const storeLogo = storeLogoInfo?.logo || brand?.logo || generateLogoUrl(storeSlug.replace(/-/g, '') + '.ca')
+  const storeName = storeLogoInfo?.name || brand?.name || store
+
+  // Get store policies for SEO badges
+  const storeData = getStoreInfo(storeSlug)
+
+  // Parse return days from policy text
+  const getReturnDays = (policy: string): string | null => {
+    const match = policy.match(/(\d+)\s*day/i)
+    return match ? `${match[1]}-day returns` : null
+  }
+
+  // Parse free shipping threshold
+  const getShipThreshold = (shipping: string): string | null => {
+    const match = shipping.match(/\$(\d+)/i)
+    if (shipping.toLowerCase().includes('free') && match) {
+      return `Free ship $${match[1]}+`
+    }
+    return null
+  }
 
   // Random highlight tags for affiliated deals only
   const highlightTags = [
@@ -169,13 +188,43 @@ export function DealCard({
 
         {/* Savings */}
         {savings && (
-          <div className="text-sm text-maple-red font-semibold mb-3">
+          <div className="text-sm text-maple-red font-semibold mb-2">
             Save ${savings}
           </div>
         )}
 
+        {/* Store Info Badges - Real SEO data */}
+        {storeData && (
+          <div className="flex flex-wrap gap-1 mb-3">
+            {storeData.returnPolicy && getReturnDays(storeData.returnPolicy) && (
+              <span className="inline-flex items-center gap-0.5 text-[10px] text-slate bg-cream px-1.5 py-0.5 rounded">
+                <RotateCcw size={10} />
+                {getReturnDays(storeData.returnPolicy)}
+              </span>
+            )}
+            {storeData.loyaltyProgram && (
+              <span className="inline-flex items-center gap-0.5 text-[10px] text-slate bg-cream px-1.5 py-0.5 rounded">
+                <Crown size={10} />
+                {storeData.loyaltyProgram.name}
+              </span>
+            )}
+            {storeData.shippingInfo && getShipThreshold(storeData.shippingInfo) && (
+              <span className="inline-flex items-center gap-0.5 text-[10px] text-slate bg-cream px-1.5 py-0.5 rounded">
+                <Truck size={10} />
+                {getShipThreshold(storeData.shippingInfo)}
+              </span>
+            )}
+            {storeData.priceMatch && (
+              <span className="inline-flex items-center gap-0.5 text-[10px] text-slate bg-cream px-1.5 py-0.5 rounded">
+                <Scale size={10} />
+                Price Match
+              </span>
+            )}
+          </div>
+        )}
+
         {/* Read More button */}
-        <div className="mt-3">
+        <div className="mt-2">
           <button
             onClick={handleReadMoreClick}
             className="inline-block px-4 py-2 bg-white border border-charcoal text-charcoal text-sm font-medium rounded-lg hover:shadow-md transition-shadow"
