@@ -19,15 +19,10 @@ import {
   generateFAQSchema,
   generateReviewSchema,
 } from '@/lib/schema'
-import {
-  generateUrgencyData,
-  generateCountdown,
-  getStockWarning,
-} from '@/lib/urgency'
+import { getStockWarning, generateUrgencyData } from '@/lib/urgency'
 import { toNumber, formatPrice, calculateSavings } from '@/lib/price-utils'
 
-import { UrgencyBanner } from '@/components/deal/UrgencyBanner'
-import { SocialProofBanner } from '@/components/deal/SocialProofBanner'
+import { RefreshCountdown } from '@/components/deal/RefreshCountdown'
 import { PriceDisplay } from '@/components/deal/PriceDisplay'
 import { CTAButton } from '@/components/deal/CTAButton'
 import { StockWarning } from '@/components/deal/StockWarning'
@@ -108,9 +103,8 @@ export default async function DealPage({ params }: PageProps) {
     notFound()
   }
 
-  // Generate all the psychological warfare data
+  // Generate urgency data for stock warning only
   const urgencyData = generateUrgencyData(deal.id)
-  const countdown = generateCountdown(deal.id)
   const stockWarning = getStockWarning(urgencyData)
   const breadcrumbs = generateBreadcrumbs(deal)
   const description = generateDealDescription(deal)
@@ -148,18 +142,8 @@ export default async function DealPage({ params }: PageProps) {
 
       {/* ABOVE THE FOLD - Maximum CTR Zone */}
       <div className="min-h-screen bg-cream">
-        {/* Layer 1: Urgency Banner */}
-        <UrgencyBanner
-          hours={countdown.hours}
-          minutes={countdown.minutes}
-          viewerCount={urgencyData.viewerCount}
-        />
-
-        {/* Layer 2: Social Proof */}
-        <SocialProofBanner
-          viewerCount={urgencyData.viewerCount}
-          purchaseCount={urgencyData.purchaseCount}
-        />
+        {/* Refresh Countdown - Real countdown to next deal update */}
+        <RefreshCountdown />
 
         {/* Main Content */}
         <main className="max-w-7xl mx-auto px-4 py-4">
@@ -176,15 +160,6 @@ export default async function DealPage({ params }: PageProps) {
               {deal.discount_percent && deal.discount_percent > 0 && (
                 <div className="discount-badge text-2xl px-4 py-2">
                   -{deal.discount_percent}%
-                </div>
-              )}
-
-              {/* Lowest Ever Badge */}
-              {urgencyData.isLowestEver && (
-                <div className="absolute top-4 left-4 z-10">
-                  <span className="badge-hot px-3 py-1.5 text-sm">
-                    🏆 LOWEST PRICE EVER
-                  </span>
                 </div>
               )}
 
@@ -252,7 +227,7 @@ export default async function DealPage({ params }: PageProps) {
               </div>
 
               {/* Quick Stats */}
-              <div className="grid grid-cols-3 gap-4 text-center bg-ivory rounded-card p-4">
+              <div className="grid grid-cols-2 gap-4 text-center bg-ivory rounded-card p-4">
                 <div>
                   <div className="text-2xl font-bold text-maple-red">
                     {deal.discount_percent || 0}%
@@ -264,12 +239,6 @@ export default async function DealPage({ params }: PageProps) {
                     ${calculateSavings(deal.original_price, deal.price)?.split('.')[0] || '0'}
                   </div>
                   <div className="text-xs text-silver">You Save</div>
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-burgundy">
-                    {urgencyData.purchaseCount}
-                  </div>
-                  <div className="text-xs text-silver">Sold Today</div>
                 </div>
               </div>
             </div>
