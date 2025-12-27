@@ -197,26 +197,26 @@ export function DealCard({
         {storeData && (
           <div className="flex flex-wrap gap-1 mb-3">
             {storeData.returnPolicy && getReturnDays(storeData.returnPolicy) && (
-              <span className="inline-flex items-center gap-0.5 text-[10px] text-slate bg-cream px-1.5 py-0.5 rounded">
-                <RotateCcw size={10} />
+              <span className="inline-flex items-center gap-0.5 text-[10px] text-charcoal bg-cream px-1.5 py-0.5 rounded">
+                <RotateCcw size={10} className="text-maple-red" />
                 {getReturnDays(storeData.returnPolicy)}
               </span>
             )}
             {storeData.loyaltyProgram && (
-              <span className="inline-flex items-center gap-0.5 text-[10px] text-slate bg-cream px-1.5 py-0.5 rounded">
-                <Crown size={10} />
+              <span className="inline-flex items-center gap-0.5 text-[10px] text-charcoal bg-cream px-1.5 py-0.5 rounded">
+                <Crown size={10} className="text-maple-red" />
                 {storeData.loyaltyProgram.name}
               </span>
             )}
             {storeData.shippingInfo && getShipThreshold(storeData.shippingInfo) && (
-              <span className="inline-flex items-center gap-0.5 text-[10px] text-slate bg-cream px-1.5 py-0.5 rounded">
-                <Truck size={10} />
+              <span className="inline-flex items-center gap-0.5 text-[10px] text-charcoal bg-cream px-1.5 py-0.5 rounded">
+                <Truck size={10} className="text-maple-red" />
                 {getShipThreshold(storeData.shippingInfo)}
               </span>
             )}
             {storeData.priceMatch && (
-              <span className="inline-flex items-center gap-0.5 text-[10px] text-slate bg-cream px-1.5 py-0.5 rounded">
-                <Scale size={10} />
+              <span className="inline-flex items-center gap-0.5 text-[10px] text-charcoal bg-cream px-1.5 py-0.5 rounded">
+                <Scale size={10} className="text-maple-red" />
                 Price Match
               </span>
             )}
