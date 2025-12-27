@@ -6765,7 +6765,6 @@ export const brands: Brand[] = [
     "category": "Retail",
     "url": "https://www.costco.ca/",
     "logo": "https://www.google.com/s2/favicons?domain=costco.ca&sz=128",
-    "screenshot": "/brand-screenshots/costco.png",
     "description": "Costco is a members-only warehouse club offering bulk products, groceries, electronics, and services at wholesale prices across Canada.",
     "brandStory": "<h3>The Costco Experience</h3><p>Costco opened its first Canadian warehouse in 1985. Today, with over 100 locations across the country, Costco is known for its treasure-hunt shopping experience, Kirkland Signature products, and legendary $1.50 hot dog combo.</p><h3>Membership Has Its Privileges</h3><p>Costco members enjoy exclusive access to warehouse prices, Costco Travel, auto buying programs, and the Executive Membership 2% annual reward. The company's no-questions-asked return policy builds customer loyalty.</p>"
   },
@@ -6787,7 +6786,6 @@ export const brands: Brand[] = [
     "category": "Home",
     "url": "https://www.homedepot.ca/",
     "logo": "https://www.google.com/s2/favicons?domain=homedepot.ca&sz=128",
-    "screenshot": "/brand-screenshots/home-depot.png",
     "description": "Home Depot Canada is the nation's largest home improvement retailer, offering tools, building materials, appliances, and garden supplies.",
     "brandStory": "<h3>Home Depot's Canadian Expansion</h3><p>Home Depot entered Canada in 1994 and now operates over 180 stores from coast to coast. The retailer serves both DIY homeowners and professional contractors with quality products and expert advice.</p><h3>More Saving. More Doing.</h3><p>Home Depot Canada offers free workshops, tool rental, truck rental, and installation services. The Pro Xtra loyalty program provides exclusive benefits for contractors and tradespeople.</p>"
   },
@@ -6864,7 +6862,6 @@ export const brands: Brand[] = [
     "category": "Sports",
     "url": "https://www.adidas.ca/",
     "logo": "https://www.google.com/s2/favicons?domain=adidas.ca&sz=128",
-    "screenshot": "/brand-screenshots/adidas.png",
     "description": "Adidas offers athletic footwear, apparel, and accessories featuring iconic three stripes, from performance gear to lifestyle fashion.",
     "brandStory": "<h3>Impossible Is Nothing</h3><p>Adidas has deep roots in sport, from World Cup soccer to NBA basketball. The brand's Originals line brings classic designs like Stan Smith and Superstar to street fashion.</p><h3>Sustainability Focus</h3><p>Adidas partners with Parley for the Oceans to create products from recycled ocean plastic. The adiClub rewards program offers points, exclusive products, and member-only experiences.</p>"
   },
@@ -6886,7 +6883,6 @@ export const brands: Brand[] = [
     "category": "Home",
     "url": "https://www.lowes.ca/",
     "logo": "https://www.google.com/s2/favicons?domain=lowes.ca&sz=128",
-    "screenshot": "/brand-screenshots/lowes.png",
     "description": "Lowe's Canada operates home improvement stores under the Lowe's and RONA banners, offering tools, building materials, and appliances.",
     "brandStory": "<h3>Home Improvement Leader</h3><p>Lowe's acquired RONA in 2016, creating a powerful Canadian home improvement network. The combined company offers diverse store formats from urban locations to traditional warehouses.</p><h3>Pro Services</h3><p>Lowe's serves contractors through dedicated Pro desks, bulk pricing, and job-site delivery. DIY customers benefit from installation services and how-to workshops.</p>"
   },
@@ -6985,7 +6981,6 @@ export const brands: Brand[] = [
     "category": "Books",
     "url": "https://www.indigo.ca/",
     "logo": "https://www.google.com/s2/favicons?domain=indigo.ca&sz=128",
-    "screenshot": "/brand-screenshots/indigo.png",
     "description": "Indigo is Canada's largest book retailer, also offering lifestyle products, toys, gifts, and home décor in beautifully designed stores.",
     "brandStory": "<h3>Canada's Bookstore</h3><p>Indigo, including Chapters and Coles banners, is a cultural destination for Canadian readers. The retailer has expanded beyond books into lifestyle products while maintaining its literary heart.</p><h3>Plum Rewards</h3><p>The Plum rewards program and Plum Plus membership offer points, exclusive discounts, and free shipping. Heather Reisman's curated Heather's Picks drive bestseller lists.</p>"
   },
@@ -6996,7 +6991,6 @@ export const brands: Brand[] = [
     "category": "Department Store",
     "url": "https://www.thebay.com/",
     "logo": "https://www.google.com/s2/favicons?domain=thebay.com&sz=128",
-    "screenshot": "/brand-screenshots/the-bay.png",
     "description": "Hudson's Bay is Canada's iconic department store, offering fashion, beauty, home goods, and the famous striped blankets since 1670.",
     "brandStory": "<h3>Canada's Store Since 1670</h3><p>Hudson's Bay Company is the oldest company in North America, with a history intertwined with Canada itself. The iconic stripes appear on blankets, bags, and Olympic apparel.</p><h3>Premium Retail</h3><p>The Bay offers designer fashion, exclusive beauty brands, and home goods across flagship downtown stores. The Hudson's Bay Rewards program and credit card offer points on purchases.</p>"
   },
