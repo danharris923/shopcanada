@@ -8,7 +8,22 @@ import { Footer } from '@/components/Footer'
 import { StoreLogo } from '@/components/StoreLogo'
 import { storeLogos, getAllStores, getTopBadges } from '@/lib/store-logos'
 import { brands } from '@/lib/brands-data'
-import { Leaf, Store, Globe, Package, Search } from 'lucide-react'
+import { Leaf, Store, Globe, Package, Search, Smartphone, Shirt, Home, ShoppingCart, Sparkles, Dumbbell, BookOpen, Baby, Gamepad2, Wrench, Heart } from 'lucide-react'
+
+// Product categories for deals
+const productCategories = [
+  { slug: 'electronics', name: 'Electronics', icon: Smartphone },
+  { slug: 'fashion', name: 'Fashion', icon: Shirt },
+  { slug: 'home', name: 'Home & Garden', icon: Home },
+  { slug: 'grocery', name: 'Grocery', icon: ShoppingCart },
+  { slug: 'beauty', name: 'Beauty', icon: Sparkles },
+  { slug: 'sports', name: 'Sports', icon: Dumbbell },
+  { slug: 'books', name: 'Books', icon: BookOpen },
+  { slug: 'baby', name: 'Baby & Kids', icon: Baby },
+  { slug: 'toys', name: 'Toys & Games', icon: Gamepad2 },
+  { slug: 'tools', name: 'Tools', icon: Wrench },
+  { slug: 'health', name: 'Health', icon: Heart },
+]
 
 // Group stores by category
 const storeCategories = {
@@ -113,6 +128,30 @@ function StoresContent() {
             <p className="text-silver-light text-lg max-w-2xl mx-auto">
               Discover {filteredRetailers.length}+ retailers serving Canada, from homegrown brands to international favorites
             </p>
+          </div>
+        </section>
+
+        {/* Product Categories */}
+        <section className="py-6 bg-white border-b border-silver-light">
+          <div className="max-w-7xl mx-auto px-4">
+            <h2 className="text-lg font-bold text-charcoal mb-4">Shop by Category</h2>
+            <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+              {productCategories.map(cat => {
+                const Icon = cat.icon
+                return (
+                  <Link
+                    key={cat.slug}
+                    href={`/category/${cat.slug}`}
+                    className="flex flex-col items-center min-w-[80px] p-3 bg-cream rounded-lg hover:bg-maple-red/10 transition-colors group"
+                  >
+                    <Icon size={24} className="text-maple-red mb-1" />
+                    <span className="text-xs font-medium text-charcoal group-hover:text-maple-red whitespace-nowrap">
+                      {cat.name}
+                    </span>
+                  </Link>
+                )
+              })}
+            </div>
           </div>
         </section>
 

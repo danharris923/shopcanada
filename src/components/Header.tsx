@@ -7,9 +7,8 @@ import { Menu, X, Leaf, Home, ShoppingBag, Store, Grid3X3, Search } from 'lucide
 
 const navLinks = [
   { href: '/', label: 'Home', icon: Home },
-  { href: '/stores', label: 'Browse Stores', icon: Store },
   { href: '/deals', label: "Today's Deals", icon: ShoppingBag },
-  { href: '/categories', label: 'Categories', icon: Grid3X3 },
+  { href: '/stores', label: 'Stores & Categories', icon: Store },
 ]
 
 export function Header() {

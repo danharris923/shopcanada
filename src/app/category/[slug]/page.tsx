@@ -88,11 +88,11 @@ export default function CategoryPage({ params }: CategoryPageProps) {
         <section className="bg-soft-black py-8">
           <div className="max-w-7xl mx-auto px-4">
             <Link
-              href="/categories"
+              href="/stores"
               className="inline-flex items-center gap-2 text-silver hover:text-white transition-colors mb-4"
             >
               <ArrowLeft size={16} />
-              Back to Categories
+              Back to Stores
             </Link>
 
             <div className="flex items-center gap-4 mb-4">

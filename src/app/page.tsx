@@ -105,10 +105,10 @@ export default async function HomePage() {
                   Explore Canadian Brands
                 </Link>
                 <Link
-                  href="/categories"
+                  href="/stores"
                   className="bg-transparent text-white border-2 border-white hover:bg-white hover:text-maple-red font-semibold py-3 px-6 rounded-lg transition-colors hidden md:inline-block"
                 >
-                  Browse Categories
+                  Browse Stores
                 </Link>
               </div>
             </div>
