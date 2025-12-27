@@ -154,29 +154,32 @@ export function DealCard({
         </h3>
 
         {/* Price */}
-        <div className="flex items-baseline gap-2 mb-3">
-          {priceNum !== null ? (
-            <>
-              <span className="deal-card-price">
-                ${formatPrice(priceNum)}
-              </span>
-              {originalPriceNum !== null && (
-                <span className="deal-card-original-price">
-                  ${formatPrice(originalPriceNum)}
-                </span>
-              )}
-            </>
-          ) : (
-            <span className="text-lg font-semibold text-charcoal">
-              Price varies
+        {priceNum !== null && (
+          <div className="flex items-baseline gap-2 mb-3">
+            <span className="deal-card-price">
+              ${formatPrice(priceNum)}
             </span>
-          )}
-        </div>
+            {originalPriceNum !== null && (
+              <span className="deal-card-original-price">
+                ${formatPrice(originalPriceNum)}
+              </span>
+            )}
+          </div>
+        )}
 
         {/* Savings */}
         {savings && (
           <div className="text-sm text-maple-red font-semibold mb-3">
             Save ${savings}
+          </div>
+        )}
+
+        {/* Shop button when no price */}
+        {priceNum === null && (
+          <div className="mb-3">
+            <span className="inline-block px-4 py-2 bg-white border border-charcoal text-charcoal text-sm font-medium rounded-lg hover:shadow-md transition-shadow">
+              Shop Now
+            </span>
           </div>
         )}
 
