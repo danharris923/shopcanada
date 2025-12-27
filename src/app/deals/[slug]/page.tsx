@@ -31,6 +31,7 @@ import { Breadcrumbs } from '@/components/deal/Breadcrumbs'
 import { StickyMobileCTA } from '@/components/deal/StickyMobileCTA'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
+import { DealCard, DealGrid } from '@/components/DealCard'
 
 interface PageProps {
   params: { slug: string }
@@ -119,22 +120,28 @@ export default async function DealPage({ params }: PageProps) {
     relatedDeals = []
   }
 
+  // Filter to only affiliated deals (have affiliate_url)
+  const affiliatedRelatedDeals = relatedDeals.filter(d => d.affiliate_url)
+
   // Schema markup - enhanced with Review for rich snippets
   const productSchema = generateProductSchema(deal)
   const breadcrumbSchema = generateBreadcrumbSchema(deal)
-  const faqSchema = generateFAQSchema(deal)
+  const faqSchema = generateFAQSchema(deal) // Returns null if no real FAQs
   const reviewSchema = generateReviewSchema(deal)
+
+  // Filter out null schemas
+  const schemas = [productSchema, breadcrumbSchema, faqSchema, reviewSchema].filter(Boolean)
 
   const imageUrl = deal.image_blob_url || deal.image_url || '/placeholder-deal.jpg'
   const storeName = formatStoreName(deal.store)
 
   return (
     <>
-      {/* Schema.org JSON-LD - Product, Breadcrumb, FAQ, Review for rich snippets */}
+      {/* Schema.org JSON-LD - Product, Breadcrumb, FAQ (if real), Review for rich snippets */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify([productSchema, breadcrumbSchema, faqSchema, reviewSchema]),
+          __html: JSON.stringify(schemas),
         }}
       />
 
@@ -226,21 +233,27 @@ export default async function DealPage({ params }: PageProps) {
                 <TrustBadges storeName={storeName} />
               </div>
 
-              {/* Quick Stats */}
-              <div className="grid grid-cols-2 gap-4 text-center bg-ivory rounded-card p-4">
-                <div>
-                  <div className="text-2xl font-bold text-maple-red">
-                    {deal.discount_percent || 0}%
-                  </div>
-                  <div className="text-xs text-silver">Discount</div>
+              {/* Quick Stats - only show if we have real data */}
+              {(deal.discount_percent && deal.discount_percent > 0) || (calculateSavings(deal.original_price, deal.price) && parseFloat(calculateSavings(deal.original_price, deal.price) || '0') > 0) ? (
+                <div className="grid grid-cols-2 gap-4 text-center bg-ivory rounded-card p-4">
+                  {deal.discount_percent && deal.discount_percent > 0 && (
+                    <div>
+                      <div className="text-2xl font-bold text-maple-red">
+                        {deal.discount_percent}%
+                      </div>
+                      <div className="text-xs text-silver">Discount</div>
+                    </div>
+                  )}
+                  {calculateSavings(deal.original_price, deal.price) && parseFloat(calculateSavings(deal.original_price, deal.price) || '0') > 0 && (
+                    <div>
+                      <div className="text-2xl font-bold text-charcoal">
+                        ${calculateSavings(deal.original_price, deal.price)?.split('.')[0]}
+                      </div>
+                      <div className="text-xs text-silver">You Save</div>
+                    </div>
+                  )}
                 </div>
-                <div>
-                  <div className="text-2xl font-bold text-charcoal">
-                    ${calculateSavings(deal.original_price, deal.price)?.split('.')[0] || '0'}
-                  </div>
-                  <div className="text-xs text-silver">You Save</div>
-                </div>
-              </div>
+              ) : null}
             </div>
           </div>
 
@@ -248,14 +261,16 @@ export default async function DealPage({ params }: PageProps) {
           <div className="grid md:grid-cols-3 gap-8">
             {/* Main Content (2 cols) */}
             <div className="md:col-span-2 space-y-8">
-              {/* Generated Description */}
-              <section className="prose max-w-none">
-                <h2>About This Deal</h2>
-                <p>{description}</p>
-                {deal.description && (
-                  <p>{deal.description}</p>
-                )}
-              </section>
+              {/* Generated Description - only show if we have real data */}
+              {(description || deal.description) && (
+                <section className="prose max-w-none">
+                  <h2>About This Deal</h2>
+                  {description && <p>{description}</p>}
+                  {deal.description && (
+                    <p>{deal.description}</p>
+                  )}
+                </section>
+              )}
 
               {/* Store Info */}
               {storeDescription && (
@@ -269,24 +284,51 @@ export default async function DealPage({ params }: PageProps) {
                 </section>
               )}
 
-              {/* FAQ Section */}
-              <section>
-                <h2 className="text-xl font-bold text-charcoal mb-4">
-                  Frequently Asked Questions
-                </h2>
-                <div className="space-y-4">
-                  {faqs.map((faq, index) => (
-                    <div key={index} className="border border-silver-light rounded-card p-4">
-                      <h3 className="font-semibold text-charcoal mb-2">
-                        {faq.question}
-                      </h3>
-                      <p className="text-slate text-sm">
-                        {faq.answer}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </section>
+              {/* FAQ Section - only show if we have REAL store-specific FAQs */}
+              {faqs.length > 0 && (
+                <section>
+                  <h2 className="text-xl font-bold text-charcoal mb-4">
+                    Frequently Asked Questions
+                  </h2>
+                  <div className="space-y-4">
+                    {faqs.map((faq, index) => (
+                      <div key={index} className="border border-silver-light rounded-card p-4">
+                        <h3 className="font-semibold text-charcoal mb-2">
+                          {faq.question}
+                        </h3>
+                        <p className="text-slate text-sm">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+
+              {/* Related Deals Grid - show when no other content OR always show affiliated deals */}
+              {affiliatedRelatedDeals.length > 0 && (
+                <section>
+                  <h2 className="text-xl font-bold text-charcoal mb-4">
+                    More Deals You Might Like
+                  </h2>
+                  <DealGrid>
+                    {affiliatedRelatedDeals.slice(0, 8).map(related => (
+                      <DealCard
+                        key={related.id}
+                        id={related.id}
+                        title={related.title}
+                        slug={related.slug}
+                        imageUrl={related.image_blob_url || related.image_url || '/placeholder-deal.jpg'}
+                        price={related.price}
+                        originalPrice={related.original_price}
+                        discountPercent={related.discount_percent}
+                        store={related.store}
+                        affiliateUrl={related.affiliate_url}
+                      />
+                    ))}
+                  </DealGrid>
+                </section>
+              )}
             </div>
 
             {/* Sidebar (1 col) */}
@@ -309,17 +351,19 @@ export default async function DealPage({ params }: PageProps) {
                   </div>
                 </div>
 
-                {/* Related Deals */}
-                {relatedDeals.length > 0 && (
+                {/* Related Deals - only affiliated */}
+                {affiliatedRelatedDeals.length > 0 && (
                   <div className="bg-ivory rounded-card p-4">
                     <h3 className="font-bold text-charcoal mb-3">
                       Related Deals
                     </h3>
                     <div className="space-y-3">
-                      {relatedDeals.slice(0, 4).map(related => (
+                      {affiliatedRelatedDeals.slice(0, 4).map(related => (
                         <a
                           key={related.id}
-                          href={`/deals/${related.slug}`}
+                          href={related.affiliate_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="block group"
                         >
                           <div className="flex items-center gap-3">
@@ -338,7 +382,7 @@ export default async function DealPage({ params }: PageProps) {
                               <div className="text-sm font-medium text-charcoal truncate group-hover:text-maple-red">
                                 {related.title}
                               </div>
-                              {related.price && (
+                              {related.price && related.price > 0 && (
                                 <div className="text-sm text-maple-red font-bold">
                                   ${formatPrice(related.price)}
                                 </div>

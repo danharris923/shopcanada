@@ -47,15 +47,10 @@ export function generateProductSchema(deal: Deal) {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: deal.title,
-    description: deal.description || `${deal.title} on sale at ${formatStoreName(deal.store)}`,
+    description: deal.description || `${deal.title} deal at ${formatStoreName(deal.store)}`,
     image: deal.image_blob_url || deal.image_url,
     url: `${SITE_URL}/deals/${deal.slug}`,
-    brand: {
-      '@type': 'Brand',
-      name: formatStoreName(deal.store),
-    },
     sku: `SC-${deal.id}`,
-    mpn: `${deal.store}-${deal.id}`,
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: rating.toString(),
@@ -63,26 +58,43 @@ export function generateProductSchema(deal: Deal) {
       worstRating: '1',
       reviewCount: reviewCount.toString(),
     },
-    offers: {
+  }
+
+  // Only add brand if we have a store
+  if (deal.store) {
+    schema.brand = {
+      '@type': 'Brand',
+      name: formatStoreName(deal.store),
+    }
+    schema.mpn = `${deal.store}-${deal.id}`
+  }
+
+  // Only add offers if we have a real price (not 0 or null)
+  if (deal.price && deal.price > 0) {
+    schema.offers = {
       '@type': 'Offer',
       url: `${SITE_URL}/deals/${deal.slug}`,
       priceCurrency: 'CAD',
-      price: deal.price?.toString() || '0',
+      price: deal.price.toString(),
       availability: 'https://schema.org/InStock',
       itemCondition: 'https://schema.org/NewCondition',
-      seller: {
+    }
+
+    // Only add seller if we have a store
+    if (deal.store) {
+      schema.offers.seller = {
         '@type': 'Organization',
         name: formatStoreName(deal.store),
-      },
-    },
-  }
+      }
+    }
 
-  // Add high price for savings display
-  if (deal.original_price) {
-    schema.offers.highPrice = deal.original_price.toString()
-    schema.offers.priceValidUntil = new Date(
-      Date.now() + 7 * 24 * 60 * 60 * 1000
-    ).toISOString().split('T')[0]
+    // Add high price for savings display only if we have it
+    if (deal.original_price && deal.original_price > 0) {
+      schema.offers.highPrice = deal.original_price.toString()
+      schema.offers.priceValidUntil = new Date(
+        Date.now() + 7 * 24 * 60 * 60 * 1000
+      ).toISOString().split('T')[0]
+    }
   }
 
   return schema
@@ -91,18 +103,32 @@ export function generateProductSchema(deal: Deal) {
 /**
  * Generate Review schema for deal pages
  * Creates a synthetic review based on deal data
+ * Only mentions discount if we have real data
  */
 export function generateReviewSchema(deal: Deal) {
   const { rating } = generateDealRating(deal.id)
-  const savings = deal.original_price && deal.price
+  const savings = deal.original_price && deal.price && deal.original_price > deal.price
     ? Math.round(((deal.original_price - deal.price) / deal.original_price) * 100)
-    : deal.discount_percent || 0
+    : (deal.discount_percent && deal.discount_percent > 0 ? deal.discount_percent : null)
 
-  const reviewBodies = [
-    `Great deal on ${deal.title}! Found this at ${formatStoreName(deal.store)} with ${savings}% off. Highly recommend for Canadian shoppers.`,
-    `Excellent price for ${deal.title}. The ${savings}% discount at ${formatStoreName(deal.store)} is one of the best I've seen.`,
-    `Happy with this purchase from ${formatStoreName(deal.store)}. ${deal.title} at this price is a steal!`,
-  ]
+  const storeName = formatStoreName(deal.store)
+
+  // Different templates depending on whether we have savings data
+  let reviewBodies: string[]
+  if (savings && savings > 0) {
+    reviewBodies = [
+      `Great deal on ${deal.title}! Found this at ${storeName} with ${savings}% off. Highly recommend for Canadian shoppers.`,
+      `Excellent price for ${deal.title}. The ${savings}% discount at ${storeName} is one of the best I've seen.`,
+      `Happy with this purchase from ${storeName}. ${deal.title} at this price is a steal!`,
+    ]
+  } else {
+    // No savings data - use generic templates that don't mention percentages
+    reviewBodies = [
+      `Great find on ${deal.title} at ${storeName}. Highly recommend for Canadian shoppers.`,
+      `Good price for ${deal.title} at ${storeName}. Worth checking out!`,
+      `Happy with this from ${storeName}. ${deal.title} is a good deal.`,
+    ]
+  }
 
   const numericId = parseInt(deal.id, 10) || hashStringToNumber(deal.id)
   const reviewIndex = numericId % reviewBodies.length
@@ -147,10 +173,16 @@ export function generateBreadcrumbSchema(deal: Deal) {
 }
 
 /**
- * Generate FAQPage schema
+ * Generate FAQPage schema - only if there are real FAQs
+ * Returns null if no FAQ data (avoids empty schema)
  */
 export function generateFAQSchema(deal: Deal) {
   const faqs = generateFAQ(deal)
+
+  // Don't generate empty FAQ schema
+  if (faqs.length === 0) {
+    return null
+  }
 
   return {
     '@context': 'https://schema.org',

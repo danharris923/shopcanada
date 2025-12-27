@@ -127,7 +127,7 @@ export default async function HomePage() {
                       deal={{
                         id: deal.id,
                         title: deal.title,
-                        store: deal.store || 'Unknown',
+                        store: deal.store || '',
                         storeSlug: (deal as any).category || 'general',
                         imageUrl: (deal as any).image_blob_url || (deal as any).image_url || (deal as any).imageUrl || '/placeholder-deal.jpg',
                         price: deal.price,
@@ -152,7 +152,7 @@ export default async function HomePage() {
                       price={deal.price}
                       originalPrice={(deal as any).original_price || (deal as any).originalPrice}
                       discountPercent={(deal as any).discount_percent || (deal as any).discountPercent}
-                      store={deal.store || 'Unknown'}
+                      store={deal.store || null}
                       affiliateUrl={(deal as any).affiliate_url}
                       featured={true}
                     />
@@ -297,7 +297,7 @@ export default async function HomePage() {
                     deal={{
                       id: deal.id,
                       title: deal.title,
-                      store: deal.store || 'Unknown',
+                      store: deal.store || '',
                       storeSlug: (deal as any).category || 'general',
                       imageUrl: (deal as any).image_blob_url || (deal as any).image_url || (deal as any).imageUrl || '/placeholder-deal.jpg',
                       price: deal.price,
@@ -322,7 +322,7 @@ export default async function HomePage() {
                     price={deal.price}
                     originalPrice={(deal as any).original_price || (deal as any).originalPrice}
                     discountPercent={(deal as any).discount_percent || (deal as any).discountPercent}
-                    store={deal.store || 'Unknown'}
+                    store={deal.store || null}
                     affiliateUrl={(deal as any).affiliate_url}
                     featured={(deal as any).featured}
                   />

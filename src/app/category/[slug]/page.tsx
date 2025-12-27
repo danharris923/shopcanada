@@ -113,7 +113,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                     price={deal.price}
                     originalPrice={(deal as any).original_price}
                     discountPercent={(deal as any).discount_percent}
-                    store={deal.store || 'Unknown'}
+                    store={deal.store || null}
                     affiliateUrl={(deal as any).affiliate_url}
                   />
                 ))}

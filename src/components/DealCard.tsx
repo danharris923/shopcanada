@@ -152,20 +152,22 @@ export function DealCard({
 
       {/* Content */}
       <div className="p-4">
-        {/* Store with Logo */}
-        <div className="flex items-center gap-1.5 mb-1">
-          {storeLogo && (
-            <img
-              src={storeLogo}
-              alt=""
-              className="w-4 h-4 rounded-sm object-contain"
-              onError={(e) => { e.currentTarget.style.display = 'none' }}
-            />
-          )}
-          <span className="deal-card-store uppercase tracking-wide">
-            {storeName}
-          </span>
-        </div>
+        {/* Store with Logo - only show if we have a store */}
+        {store && storeName && (
+          <div className="flex items-center gap-1.5 mb-1">
+            {storeLogo && (
+              <img
+                src={storeLogo}
+                alt=""
+                className="w-4 h-4 rounded-sm object-contain"
+                onError={(e) => { e.currentTarget.style.display = 'none' }}
+              />
+            )}
+            <span className="deal-card-store uppercase tracking-wide">
+              {storeName}
+            </span>
+          </div>
+        )}
 
         {/* Title */}
         <h3 className="deal-card-title mb-2 line-clamp-2 group-hover:text-maple-red transition-colors">

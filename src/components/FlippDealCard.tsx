@@ -135,24 +135,26 @@ export function FlippDealCard({ deal, directAffiliate = false }: FlippDealCardPr
 
       {/* Content */}
       <div className="p-4">
-        {/* Store with Logo - Clickable */}
-        <Link
-          href={`/stores/${deal.storeSlug}`}
-          onClick={(e) => e.stopPropagation()}
-          className="flex items-center gap-1.5 mb-1 hover:text-maple-red transition-colors"
-        >
-          {deal.storeLogo && (
-            <img
-              src={deal.storeLogo}
-              alt=""
-              className="w-4 h-4 rounded-sm object-contain"
-              onError={(e) => { e.currentTarget.style.display = 'none' }}
-            />
-          )}
-          <span className="deal-card-store uppercase tracking-wide">
-            {deal.store}
-          </span>
-        </Link>
+        {/* Store with Logo - Clickable - only show if we have a store */}
+        {deal.store && (
+          <Link
+            href={`/stores/${deal.storeSlug}`}
+            onClick={(e) => e.stopPropagation()}
+            className="flex items-center gap-1.5 mb-1 hover:text-maple-red transition-colors"
+          >
+            {deal.storeLogo && (
+              <img
+                src={deal.storeLogo}
+                alt=""
+                className="w-4 h-4 rounded-sm object-contain"
+                onError={(e) => { e.currentTarget.style.display = 'none' }}
+              />
+            )}
+            <span className="deal-card-store uppercase tracking-wide">
+              {deal.store}
+            </span>
+          </Link>
+        )}
 
         {/* Title */}
         <h3 className="deal-card-title mb-2 line-clamp-2 group-hover:text-maple-red transition-colors">

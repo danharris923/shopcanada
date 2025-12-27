@@ -15,9 +15,10 @@ export function PriceDisplay({
   const original = originalPrice != null ? Number(originalPrice) : null
   const discount = discountPercent != null ? Number(discountPercent) : null
 
-  const savings = original && current && !isNaN(original) && !isNaN(current)
-    ? (original - current).toFixed(2)
+  const savingsAmount = original && current && !isNaN(original) && !isNaN(current) && original > current
+    ? original - current
     : null
+  const savings = savingsAmount && savingsAmount > 0 ? savingsAmount.toFixed(2) : null
 
   const sizeClasses = {
     sm: { current: "text-2xl", original: "text-sm", savings: "text-xs" },
@@ -34,14 +35,14 @@ export function PriceDisplay({
 
   return (
     <div className="flex flex-col items-start gap-1">
-      {original != null && !isNaN(original) && (
+      {original != null && !isNaN(original) && original > 0 && (
         <div className={originalClass}>
           ${original.toFixed(2)}
         </div>
       )}
 
       <div className="flex items-baseline gap-3">
-        {current != null && !isNaN(current) ? (
+        {current != null && !isNaN(current) && current > 0 ? (
           <span className={currentClass}>
             ${current.toFixed(2)}
           </span>

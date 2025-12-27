@@ -71,7 +71,7 @@ export default async function DealsPage() {
                       price={deal.price}
                       originalPrice={deal.original_price}
                       discountPercent={deal.discount_percent}
-                      store={deal.store || 'Unknown'}
+                      store={deal.store || null}
                       affiliateUrl={deal.affiliate_url}
                       featured={deal.featured}
                     />

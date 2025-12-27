@@ -138,8 +138,28 @@ const STORE_DESCRIPTIONS: Record<string, string> = {
 
 /**
  * Generate a unique description for a deal
+ * Returns null if we don't have enough real data (no slop!)
  */
-export function generateDealDescription(deal: Deal): string {
+export function generateDealDescription(deal: Deal): string | null {
+  // Calculate savings - need REAL numbers
+  const savings = calculateSavings(deal.original_price, deal.price)
+  const savingsNum = parseFloat(savings || '0')
+  const hasRealSavings = savingsNum > 0
+  const hasRealPercent = deal.discount_percent && deal.discount_percent > 0
+  const hasRealPrice = deal.price && deal.price > 0
+  const hasRealOriginalPrice = deal.original_price && deal.original_price > 0
+
+  // Don't generate slop - need at least savings OR discount percent with real prices
+  // Also need a store name (not "this retailer")
+  if (!deal.store) {
+    return null
+  }
+
+  // Need at least one of: real savings, real discount percent, or real price info
+  if (!hasRealSavings && !hasRealPercent && !hasRealPrice) {
+    return null
+  }
+
   const category = deal.category || 'general'
   const templates = DESCRIPTION_TEMPLATES.default
 
@@ -156,58 +176,90 @@ export function generateDealDescription(deal: Deal): string {
   const urgencyIndex = hashString(deal.id + 'urgency') % URGENCY_PHRASES.length
   const urgency = URGENCY_PHRASES[urgencyIndex]
 
-  // Calculate savings
-  const savings = calculateSavings(deal.original_price, deal.price) || '0'
-
-  // Replace placeholders
+  // Replace placeholders - use empty string if no real data (not slop!)
   const description = template
     .replace(/{product}/g, deal.title)
     .replace(/{store}/g, formatStoreName(deal.store))
     .replace(/{category}/g, category)
-    .replace(/{original_price}/g, formatPrice(deal.original_price) || 'regular price')
-    .replace(/{current_price}/g, formatPrice(deal.price) || 'sale price')
-    .replace(/{savings}/g, savings)
-    .replace(/{percent}/g, deal.discount_percent?.toString() || '??')
+    .replace(/{original_price}/g, hasRealOriginalPrice ? formatPrice(deal.original_price)! : '')
+    .replace(/{current_price}/g, hasRealPrice ? formatPrice(deal.price)! : '')
+    .replace(/{savings}/g, hasRealSavings ? savings! : '')
+    .replace(/{percent}/g, hasRealPercent ? deal.discount_percent!.toString() : '')
     .replace(/{benefits}/g, benefit)
     .replace(/{urgency}/g, urgency)
 
-  return description.trim()
+  // Clean up any double spaces or orphaned punctuation from empty replacements
+  const cleanedDescription = description
+    .replace(/\s+/g, ' ')
+    .replace(/\(\s*%\s*off\)/gi, '')
+    .replace(/\$\s+/g, '$')
+    .replace(/\s+,/g, ',')
+    .replace(/\s+\./g, '.')
+    .trim()
+
+  return cleanedDescription
 }
 
 /**
  * Generate SEO meta description with CTR-driving language
+ * Only includes real data - no slop!
  */
 export function generateMetaDescription(deal: Deal): string {
   const savingsAmount = calculateSavings(deal.original_price, deal.price)
+  const hasSavings = savingsAmount && parseFloat(savingsAmount) > 0
+  const hasDiscount = deal.discount_percent && deal.discount_percent > 0
   const storeName = formatStoreName(deal.store)
 
-  // Rotate between different CTR-optimized formats
-  const templates = [
-    savingsAmount
-      ? `VERIFIED: ${deal.title} - Save $${savingsAmount} (${deal.discount_percent}% OFF) at ${storeName}. Limited stock. Free Canadian shipping available.`
-      : `VERIFIED: ${deal.title} - ${deal.discount_percent}% OFF at ${storeName}. Limited time Canadian deal.`,
+  // Build description based on what real data we have
+  let templates: string[]
 
-    savingsAmount
-      ? `${deal.title} on SALE: $${savingsAmount} OFF at ${storeName}. Lowest price in Canada. Ships free.`
-      : `${deal.title} - ${deal.discount_percent}% discount at ${storeName}. Today's best Canadian deal.`,
-
-    `DEAL ALERT: ${deal.title} now ${deal.discount_percent}% off at ${storeName}. Canadian shoppers save ${savingsAmount ? `$${savingsAmount}` : 'big'}. Limited time.`,
-  ]
+  if (hasSavings && hasDiscount) {
+    // Best case: we have both savings and discount
+    templates = [
+      `VERIFIED: ${deal.title} - Save $${savingsAmount} (${deal.discount_percent}% OFF) at ${storeName}. Limited stock.`,
+      `${deal.title} on SALE: $${savingsAmount} OFF at ${storeName}. Lowest price in Canada.`,
+      `DEAL ALERT: ${deal.title} now ${deal.discount_percent}% off at ${storeName}. Save $${savingsAmount}!`,
+    ]
+  } else if (hasDiscount) {
+    // We have discount percent only
+    templates = [
+      `VERIFIED: ${deal.title} - ${deal.discount_percent}% OFF at ${storeName}. Limited time Canadian deal.`,
+      `${deal.title} - ${deal.discount_percent}% discount at ${storeName}. Great Canadian deal.`,
+      `DEAL ALERT: ${deal.title} now ${deal.discount_percent}% off at ${storeName}.`,
+    ]
+  } else if (hasSavings) {
+    // We have savings amount only
+    templates = [
+      `VERIFIED: ${deal.title} - Save $${savingsAmount} at ${storeName}. Limited stock.`,
+      `${deal.title} on SALE: $${savingsAmount} OFF at ${storeName}. Great value.`,
+      `DEAL ALERT: ${deal.title} at ${storeName}. Save $${savingsAmount}!`,
+    ]
+  } else {
+    // No price data - just mention the deal exists
+    templates = [
+      `${deal.title} available at ${storeName}. Check current price.`,
+      `${deal.title} at ${storeName}. See today's price.`,
+      `Find ${deal.title} at ${storeName}.`,
+    ]
+  }
 
   const templateIndex = hashString(deal.id.toString()) % templates.length
   return templates[templateIndex].substring(0, 160) // Google limit
 }
 
 /**
- * Generate page title
+ * Generate page title - only include real data
  */
 export function generatePageTitle(deal: Deal): string {
+  // Only show discount if it's meaningful (>= 20%)
   if (deal.discount_percent && deal.discount_percent >= 20) {
     return `${deal.title} - ${deal.discount_percent}% OFF`
   }
-  if (deal.price) {
+  // Only show price if it's real (> 0)
+  if (deal.price && deal.price > 0) {
     return `${deal.title} - $${formatPrice(deal.price)}`
   }
+  // Just use the title if no price data
   return deal.title
 }
 
@@ -251,7 +303,8 @@ export function getStoreDescription(storeSlug: string | null): string {
 }
 
 /**
- * Generate FAQ items for a deal - uses real store-specific info
+ * Generate FAQ items for a deal - uses real store-specific info ONLY
+ * Returns empty array if no real info available (no generic slop!)
  */
 export function generateFAQ(deal: Deal): { question: string; answer: string }[] {
   const storeName = formatStoreName(deal.store)
@@ -260,7 +313,10 @@ export function generateFAQ(deal: Deal): { question: string; answer: string }[] 
 
   const faqs: { question: string; answer: string }[] = []
 
-  // Return policy - always include if we have info
+  // Only include FAQs if we have REAL store-specific info
+  // No generic fallback - if we don't have real info, return empty array
+
+  // Return policy - only if we have real info
   if (info?.returnPolicy) {
     faqs.push({
       question: `What is ${storeName}'s return policy?`,
@@ -268,7 +324,7 @@ export function generateFAQ(deal: Deal): { question: string; answer: string }[] 
     })
   }
 
-  // Loyalty program - include if store has one
+  // Loyalty program - only if store has one
   if (info?.loyaltyProgram) {
     faqs.push({
       question: `Does ${storeName} have a loyalty program?`,
@@ -276,7 +332,7 @@ export function generateFAQ(deal: Deal): { question: string; answer: string }[] 
     })
   }
 
-  // Shipping info
+  // Shipping info - only if we have real info
   if (info?.shippingInfo) {
     faqs.push({
       question: `Does ${storeName} offer free shipping to Canada?`,
@@ -284,7 +340,7 @@ export function generateFAQ(deal: Deal): { question: string; answer: string }[] 
     })
   }
 
-  // Price match - if available
+  // Price match - only if available
   if (info?.priceMatch) {
     faqs.push({
       question: `Does ${storeName} price match?`,
@@ -292,17 +348,8 @@ export function generateFAQ(deal: Deal): { question: string; answer: string }[] 
     })
   }
 
-  // If no store-specific info, provide generic but useful FAQs
-  if (faqs.length === 0) {
-    faqs.push({
-      question: `Is this deal available in Canada?`,
-      answer: `Yes, this deal is available to Canadian shoppers through ${storeName}. Check the retailer's website for shipping details.`,
-    })
-    faqs.push({
-      question: `What is the return policy?`,
-      answer: `Return policies vary by retailer. Check ${storeName}'s website for their current return and refund policies.`,
-    })
-  }
+  // NO GENERIC FALLBACK - if we don't have real info, return empty array
+  // The page will hide the FAQ section entirely
 
   return faqs
 }

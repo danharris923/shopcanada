@@ -54,7 +54,7 @@ export interface DealCardProps {
   price: number | null
   originalPrice: number | null
   discountPercent: number | null
-  store: string
+  store: string | null  // Can be null - component should handle gracefully
   affiliateUrl: string
   featured?: boolean
   isCanadian?: boolean
