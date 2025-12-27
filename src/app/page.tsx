@@ -231,7 +231,7 @@ export default async function HomePage() {
 
                 {/* TikTok */}
                 <a
-                  href="https://www.tiktok.com/@shopcanada.cc"
+                  href="https://www.tiktok.com/@shopcanada1"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex flex-col items-center justify-center p-6 bg-white rounded-lg border-2 border-transparent hover:border-black transition-all group shadow-sm hover:shadow-md"
@@ -259,7 +259,7 @@ export default async function HomePage() {
 
                 {/* Bluesky */}
                 <a
-                  href="https://bsky.app/profile/shopcanada.cc"
+                  href="https://bsky.app/profile/shopcanada.bsky.social"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex flex-col items-center justify-center p-6 bg-white rounded-lg border-2 border-transparent hover:border-[#0085FF] transition-all group shadow-sm hover:shadow-md"
