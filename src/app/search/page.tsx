@@ -7,6 +7,7 @@ import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { DealCard, DealGrid } from '@/components/DealCard'
 import { FlippDealCard, FlippDealGrid } from '@/components/FlippDealCard'
+import { RefreshCountdown } from '@/components/deal/RefreshCountdown'
 
 export const revalidate = 0 // Don't cache search results
 
@@ -67,6 +68,9 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             )}
           </div>
         </section>
+
+        {/* Refresh Countdown */}
+        <RefreshCountdown />
 
         {/* Results */}
         <section className="py-12 px-4">

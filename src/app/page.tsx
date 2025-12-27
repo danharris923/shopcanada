@@ -8,7 +8,7 @@ import { Footer } from '@/components/Footer'
 import { StoreLogo } from '@/components/StoreLogo'
 import { featuredStores, getTopBadges } from '@/lib/store-logos'
 import { Smartphone, Shirt, Home, ShoppingCart, Sparkles, Dumbbell, Leaf } from 'lucide-react'
-import { AnimatedCounter } from '@/components/AnimatedCounter'
+import { RefreshCountdown } from '@/components/deal/RefreshCountdown'
 import { getShuffledFeaturedDeals, getShuffledDeals, getDistributionSummary } from '@/lib/deal-shuffle'
 
 // Revalidate every 15 minutes
@@ -62,25 +62,8 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* Stats Bar */}
-        <section className="bg-soft-black text-white py-2">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="flex justify-center gap-6 md:gap-12 text-center">
-              <div className="flex items-center gap-1.5">
-                <AnimatedCounter end={shuffledLatest.deals.length + shuffledFeatured.deals.length + 250} suffix="+" className="text-lg md:text-xl font-bold text-maple-red" />
-                <span className="text-xs text-silver">Sales</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <AnimatedCounter end={storeStats.length + 45} suffix="+" className="text-lg md:text-xl font-bold text-maple-red" />
-                <span className="text-xs text-silver">Stores</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <AnimatedCounter end={Math.floor(230 + Math.sin(Date.now() / 300000) * 60 + Math.sin(Date.now() / 60000) * 25)} suffix="" className="text-lg md:text-xl font-bold text-maple-red" />
-                <span className="text-xs text-silver">Shopping Now</span>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Refresh Countdown */}
+        <RefreshCountdown />
 
         {/* Canadian Picks - Above the Fold CTA */}
         <section className="py-6 bg-gradient-to-r from-maple-red to-burgundy">

@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { brands, categories, getCategoryBySlug } from '@/lib/brands-data'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
+import { RefreshCountdown } from '@/components/deal/RefreshCountdown'
 import { CategoryIcon } from '@/components/CategoryIcon'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
@@ -46,6 +47,7 @@ export default async function CategoryPage({ params }: Props) {
   return (
     <>
       <Header />
+      <RefreshCountdown />
       <main className="bg-cream min-h-screen">
         {/* Hero Section - matching home page style */}
         <section className="relative">

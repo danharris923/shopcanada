@@ -9,6 +9,7 @@ import { StoreLogo } from '@/components/StoreLogo'
 import { storeLogos, getAllStores, getTopBadges } from '@/lib/store-logos'
 import { brands } from '@/lib/brands-data'
 import { Leaf, Store, Globe, Package, Search, Smartphone, Shirt, Home, ShoppingCart, Sparkles, Dumbbell, BookOpen, Baby, Gamepad2, Wrench, Heart } from 'lucide-react'
+import { RefreshCountdown } from '@/components/deal/RefreshCountdown'
 
 // Product categories for deals
 const productCategories = [
@@ -130,6 +131,9 @@ function StoresContent() {
             </p>
           </div>
         </section>
+
+        {/* Refresh Countdown */}
+        <RefreshCountdown />
 
         {/* Product Categories */}
         <section className="py-6 bg-white border-b border-silver-light">

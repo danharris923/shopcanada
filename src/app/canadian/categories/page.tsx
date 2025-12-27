@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { categories } from '@/lib/brands-data'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
+import { RefreshCountdown } from '@/components/deal/RefreshCountdown'
 import type { Metadata } from 'next'
 import * as LucideIcons from 'lucide-react'
 
@@ -21,6 +22,7 @@ export default function CategoriesPage() {
   return (
     <>
       <Header />
+      <RefreshCountdown />
       <main className="bg-cream min-h-screen">
         {/* Hero */}
         <section className="bg-soft-black py-12 px-6">
