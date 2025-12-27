@@ -245,7 +245,7 @@ export default async function HomePage() {
 
                 {/* Facebook */}
                 <a
-                  href="https://www.facebook.com/shopcanada.cc"
+                  href="https://www.facebook.com/profile.php?id=100079001052299"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex flex-col items-center justify-center p-6 bg-white rounded-lg border-2 border-transparent hover:border-[#1877F2] transition-all group shadow-sm hover:shadow-md"
