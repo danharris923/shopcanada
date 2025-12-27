@@ -12,6 +12,27 @@ const pool = new Pool({
   ssl: { rejectUnauthorized: false }
 })
 
+// Transform PostgreSQL row data to serializable format
+// PostgreSQL returns Date objects and DECIMAL as strings - we need to convert them
+function transformRow<T>(row: Record<string, unknown>): T {
+  const transformed: Record<string, unknown> = {}
+  for (const [key, value] of Object.entries(row)) {
+    if (value instanceof Date) {
+      // Convert Date objects to ISO strings for JSON serialization
+      transformed[key] = value.toISOString()
+    } else if (key === 'price' || key === 'original_price') {
+      // Convert DECIMAL strings to numbers
+      transformed[key] = value !== null ? parseFloat(value as string) : null
+    } else if (key === 'discount_percent' || key === 'deal_count') {
+      // Convert integer strings to numbers
+      transformed[key] = value !== null ? parseInt(value as string, 10) : null
+    } else {
+      transformed[key] = value
+    }
+  }
+  return transformed as T
+}
+
 // Helper to run queries with fallback for no database
 async function query<T>(queryText: string, values?: unknown[]): Promise<T[]> {
   try {
@@ -22,7 +43,7 @@ async function query<T>(queryText: string, values?: unknown[]): Promise<T[]> {
     }
 
     const result = await pool.query(queryText, values)
-    return result.rows as T[]
+    return result.rows.map(row => transformRow<T>(row))
   } catch (error) {
     console.error('Query error:', error)
     // Return empty array instead of throwing to prevent 404s
