@@ -11,7 +11,7 @@ import { Smartphone, Shirt, Home, ShoppingCart, Sparkles, Dumbbell, Leaf } from 
 import { StatsBar } from '@/components/StatsBar'
 import { getShuffledFeaturedDeals, getShuffledDeals, getDistributionSummary } from '@/lib/deal-shuffle'
 import { getLatestVideos } from '@/lib/youtube'
-import { VideoGrid } from '@/components/YouTubeEmbed'
+import { VideoCarousel } from '@/components/VideoCarousel'
 
 // Revalidate every 15 minutes
 export const revalidate = 900
@@ -201,56 +201,79 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* Store Tours - YouTube Videos */}
-        {latestVideos.length > 0 && (
-          <section className="py-12 section-cream">
-            <div className="max-w-7xl mx-auto px-4">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl md:text-3xl font-bold text-charcoal">
-                  Store Tours
-                </h2>
+        {/* Store Tours + Social */}
+        <section className="py-12 section-cream">
+          <div className="max-w-7xl mx-auto px-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-charcoal mb-6">
+              Follow Along
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Auto-playing Video Carousel */}
+              {latestVideos.length > 0 && (
+                <VideoCarousel videos={latestVideos.slice(0, 6)} />
+              )}
+
+              {/* Social Buttons Grid */}
+              <div className="grid grid-cols-2 gap-4">
+                {/* YouTube */}
                 <a
                   href="https://www.youtube.com/@ShopCanada-cc"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-maple-red hover:text-burgundy font-semibold transition-colors"
+                  className="flex flex-col items-center justify-center p-6 bg-white rounded-lg border-2 border-transparent hover:border-[#FF0000] transition-all group shadow-sm hover:shadow-md"
                 >
-                  Watch More →
+                  <svg className="w-12 h-12 mb-3 text-[#FF0000]" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  </svg>
+                  <span className="font-bold text-charcoal group-hover:text-[#FF0000] transition-colors">YouTube</span>
+                  <span className="text-xs text-slate">Store Tours</span>
+                </a>
+
+                {/* TikTok */}
+                <a
+                  href="https://www.tiktok.com/@shopcanada.cc"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center justify-center p-6 bg-white rounded-lg border-2 border-transparent hover:border-black transition-all group shadow-sm hover:shadow-md"
+                >
+                  <svg className="w-12 h-12 mb-3" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                  </svg>
+                  <span className="font-bold text-charcoal group-hover:text-black transition-colors">TikTok</span>
+                  <span className="text-xs text-slate">Quick Clips</span>
+                </a>
+
+                {/* Facebook */}
+                <a
+                  href="https://www.facebook.com/shopcanada.cc"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center justify-center p-6 bg-white rounded-lg border-2 border-transparent hover:border-[#1877F2] transition-all group shadow-sm hover:shadow-md"
+                >
+                  <svg className="w-12 h-12 mb-3 text-[#1877F2]" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                  </svg>
+                  <span className="font-bold text-charcoal group-hover:text-[#1877F2] transition-colors">Facebook</span>
+                  <span className="text-xs text-slate">Community</span>
+                </a>
+
+                {/* Bluesky */}
+                <a
+                  href="https://bsky.app/profile/shopcanada.cc"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center justify-center p-6 bg-white rounded-lg border-2 border-transparent hover:border-[#0085FF] transition-all group shadow-sm hover:shadow-md"
+                >
+                  <svg className="w-12 h-12 mb-3 text-[#0085FF]" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.206-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z"/>
+                  </svg>
+                  <span className="font-bold text-charcoal group-hover:text-[#0085FF] transition-colors">Bluesky</span>
+                  <span className="text-xs text-slate">Updates</span>
                 </a>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {latestVideos.slice(0, 6).map((video) => (
-                  <div key={video.id} className="relative aspect-video rounded-lg overflow-hidden bg-black group cursor-pointer">
-                    <a
-                      href={`https://www.youtube.com/watch?v=${video.id}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block w-full h-full"
-                    >
-                      <img
-                        src={video.thumbnail}
-                        alt={video.title}
-                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                      <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
-                        <div className="w-14 h-14 rounded-full bg-maple-red flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                          <svg className="w-6 h-6 text-white ml-1" fill="white" viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z"/>
-                          </svg>
-                        </div>
-                      </div>
-                      <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
-                        <p className="text-white text-sm font-medium line-clamp-2">
-                          {video.title}
-                        </p>
-                      </div>
-                    </a>
-                  </div>
-                ))}
-              </div>
             </div>
-          </section>
-        )}
+          </div>
+        </section>
 
         {/* Fresh Markdowns */}
         <section className="py-12 section-ivory">
