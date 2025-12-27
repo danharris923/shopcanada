@@ -12,8 +12,8 @@ export interface YouTubeVideo {
   storeSlug: string | null  // Matched store, null if no match
 }
 
-// Your YouTube Channel ID - UPDATE THIS
-const CHANNEL_ID = process.env.YOUTUBE_CHANNEL_ID || 'YOUR_CHANNEL_ID_HERE'
+// Your YouTube Channel ID
+const CHANNEL_ID = process.env.YOUTUBE_CHANNEL_ID || 'UCgx2hLwR8-Ec_B0btTmk0yQ'
 
 // Store name patterns to match in video titles
 const STORE_PATTERNS: Record<string, string[]> = {
