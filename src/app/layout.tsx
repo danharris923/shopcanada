@@ -91,7 +91,7 @@ export default function RootLayout({
 
         {/* Umami Analytics */}
         <script
-          async
+          defer
           src="https://analytics.promopenguin.ca/script.js"
           data-website-id="30045994-c858-4e3a-bb6c-fc15e2471852"
         />
