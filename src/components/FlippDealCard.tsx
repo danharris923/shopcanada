@@ -1,10 +1,11 @@
 'use client'
 
-import { Leaf, ExternalLink } from 'lucide-react'
+import { ExternalLink, RotateCcw, Crown, Truck, Scale } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FlippDeal } from '@/lib/flipp'
 import { getAffiliateSearchUrl } from '@/lib/affiliates'
+import { getStoreInfo } from '@/lib/store-info'
 
 interface FlippDealCardProps {
   deal: FlippDeal
@@ -18,6 +19,24 @@ export function FlippDealCard({ deal, directAffiliate = false }: FlippDealCardPr
 
   // Check if this store has an affiliate link
   const affiliateUrl = getAffiliateSearchUrl(deal.storeSlug, deal.title)
+
+  // Get store policies for SEO badges
+  const storeData = getStoreInfo(deal.storeSlug)
+
+  // Parse return days from policy text
+  const getReturnDays = (policy: string): string | null => {
+    const match = policy.match(/(\d+)\s*day/i)
+    return match ? `${match[1]}-day returns` : null
+  }
+
+  // Parse free shipping threshold
+  const getShipThreshold = (shipping: string): string | null => {
+    const match = shipping.match(/\$(\d+)/i)
+    if (shipping.toLowerCase().includes('free') && match) {
+      return `Free ship $${match[1]}+`
+    }
+    return null
+  }
 
   // Random highlight tags for affiliated Flipp deals
   const highlightTags = [
@@ -116,10 +135,24 @@ export function FlippDealCard({ deal, directAffiliate = false }: FlippDealCardPr
 
       {/* Content */}
       <div className="p-4">
-        {/* Store */}
-        <div className="deal-card-store uppercase tracking-wide mb-1">
-          {deal.store}
-        </div>
+        {/* Store with Logo - Clickable */}
+        <Link
+          href={`/stores/${deal.storeSlug}`}
+          onClick={(e) => e.stopPropagation()}
+          className="flex items-center gap-1.5 mb-1 hover:text-maple-red transition-colors"
+        >
+          {deal.storeLogo && (
+            <img
+              src={deal.storeLogo}
+              alt=""
+              className="w-4 h-4 rounded-sm object-contain"
+              onError={(e) => { e.currentTarget.style.display = 'none' }}
+            />
+          )}
+          <span className="deal-card-store uppercase tracking-wide">
+            {deal.store}
+          </span>
+        </Link>
 
         {/* Title */}
         <h3 className="deal-card-title mb-2 line-clamp-2 group-hover:text-maple-red transition-colors">
@@ -151,19 +184,37 @@ export function FlippDealCard({ deal, directAffiliate = false }: FlippDealCardPr
         </div>
 
         {/* Valid dates */}
-        <div className="text-sm text-meta mb-3">
+        <div className="text-sm text-meta mb-2">
           Valid until {new Date(deal.validTo).toLocaleDateString()}
         </div>
 
-        {/* Read more link - only show if there's an affiliate URL (main card is clickable) */}
-        {affiliateUrl && (
-          <div className="mt-3 pt-2 border-t border-gray-100">
-            <button
-              onClick={handleReadMoreClick}
-              className="text-xs text-gray-500 hover:text-gray-700 transition-colors duration-200"
-            >
-              Read more →
-            </button>
+        {/* Store Info Badges - Real SEO data */}
+        {storeData && (
+          <div className="flex flex-wrap gap-1 mb-2">
+            {storeData.returnPolicy && getReturnDays(storeData.returnPolicy) && (
+              <span className="inline-flex items-center gap-0.5 text-[10px] text-charcoal bg-cream px-1.5 py-0.5 rounded">
+                <RotateCcw size={10} className="text-maple-red" />
+                {getReturnDays(storeData.returnPolicy)}
+              </span>
+            )}
+            {storeData.loyaltyProgram && (
+              <span className="inline-flex items-center gap-0.5 text-[10px] text-charcoal bg-cream px-1.5 py-0.5 rounded">
+                <Crown size={10} className="text-maple-red" />
+                {storeData.loyaltyProgram.name}
+              </span>
+            )}
+            {storeData.shippingInfo && getShipThreshold(storeData.shippingInfo) && (
+              <span className="inline-flex items-center gap-0.5 text-[10px] text-charcoal bg-cream px-1.5 py-0.5 rounded">
+                <Truck size={10} className="text-maple-red" />
+                {getShipThreshold(storeData.shippingInfo)}
+              </span>
+            )}
+            {storeData.priceMatch && (
+              <span className="inline-flex items-center gap-0.5 text-[10px] text-charcoal bg-cream px-1.5 py-0.5 rounded">
+                <Scale size={10} className="text-maple-red" />
+                Price Match
+              </span>
+            )}
           </div>
         )}
       </div>
