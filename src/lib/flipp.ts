@@ -276,7 +276,6 @@ const STORE_SLUGS: Record<string, string> = {
   'Dollar Tree': 'dollar-tree',
   'Dollar General': 'dollar-general',
   'Bargain Shop': 'bargain-shop',
-  'Dollarama': 'dollarama',
   'Buck or Two': 'buck-or-two',
   'Everything for a Dollar': 'everything-dollar',
   // Grocery Chains
@@ -313,7 +312,6 @@ const STORE_SLUGS: Record<string, string> = {
   'Sunny Foodmart': 'sunny-foodmart',
   'FoodyMart': 'foodymart',
   'Ample Food Market': 'ample-food',
-  'No Frills': 'no-frills',
   'Food 4 Less': 'food-4-less',
   'Marche Adonis': 'adonis',
   'Akhavan': 'akhavan',
@@ -347,8 +345,6 @@ const STORE_SLUGS: Record<string, string> = {
   'O\'Reilly': 'oreilly',
   'AutoZone': 'autozone',
   // Furniture & Mattress
-  'The Brick': 'the-brick',
-  'Leon\'s': 'leons',
   'Bad Boy': 'bad-boy',
   'Lastman\'s Bad Boy': 'bad-boy',
   'Dufresne': 'dufresne',
@@ -396,7 +392,6 @@ const STORE_SLUGS: Record<string, string> = {
   'Play It Again Sports': 'play-it-again',
   // Outdoor & Camping
   'Campers Village': 'campers-village',
-  'Atmosphere': 'atmosphere',
   'Cabela\'s Canada': 'cabelas',
   'Bass Pro': 'bass-pro',
   'Fishing World': 'fishing-world',
@@ -414,7 +409,6 @@ const STORE_SLUGS: Record<string, string> = {
   'Jean Coutu Beauty': 'jean-coutu',
   'Ulta': 'ulta',
   // Pet Stores
-  'Pet Valu': 'pet-valu',
   'PetSmart Canada': 'petsmart',
   'Petland': 'petland',
   'Ren\'s Pets': 'rens-pets',
