@@ -2,10 +2,14 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
-import { CategoryIcon } from '@/components/CategoryIcon'
-import { Smartphone, Shirt, Home, ShoppingCart, Sparkles, Dumbbell, BookOpen, Baby, Gamepad2, Wrench, Heart, Package, ArrowLeft, Filter } from 'lucide-react'
+import { DealCard, DealGrid } from '@/components/DealCard'
+import { Smartphone, Shirt, Home, ShoppingCart, Sparkles, Dumbbell, ArrowLeft } from 'lucide-react'
 import { StatsBar } from '@/components/StatsBar'
+import { getDealsByCategory } from '@/lib/db'
 import type { Metadata } from 'next'
+
+// Revalidate every 15 minutes
+export const revalidate = 900
 
 const categories = [
   { slug: 'electronics', name: 'Electronics', icon: Smartphone, description: 'Find the latest electronics, computers, phones, tablets, gaming gear, and tech accessories from top Canadian retailers.', keywords: 'electronics, computers, phones, tablets, gaming' },
@@ -44,7 +48,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   }
 }
 
-export default function CategoryPage({ params }: CategoryPageProps) {
+export default async function CategoryPage({ params }: CategoryPageProps) {
   const category = categories.find(cat => cat.slug === params.slug)
 
   if (!category) {
@@ -53,33 +57,8 @@ export default function CategoryPage({ params }: CategoryPageProps) {
 
   const Icon = category.icon
 
-  // Mock deals data for the category
-  const mockDeals = [
-    {
-      title: `Best ${category.name} Deals`,
-      store: 'Amazon.ca',
-      discount: '25% off',
-      originalPrice: '$199.99',
-      salePrice: '$149.99',
-      image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=300&h=200&fit=crop'
-    },
-    {
-      title: `${category.name} Sale`,
-      store: 'Best Buy',
-      discount: '30% off',
-      originalPrice: '$299.99',
-      salePrice: '$209.99',
-      image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=300&h=200&fit=crop'
-    },
-    {
-      title: `${category.name} Clearance`,
-      store: 'Canadian Tire',
-      discount: '40% off',
-      originalPrice: '$79.99',
-      salePrice: '$47.99',
-      image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=300&h=200&fit=crop'
-    },
-  ]
+  // Fetch deals for this category
+  const deals = await getDealsByCategory(category.slug, 50)
 
   return (
     <>
@@ -105,7 +84,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                   {category.name}
                 </h1>
                 <p className="text-silver-light">
-                  Best deals from Canadian retailers
+                  {deals.length} deals from Canadian retailers
                 </p>
               </div>
             </div>
@@ -117,39 +96,44 @@ export default function CategoryPage({ params }: CategoryPageProps) {
         </section>
 
         {/* Stats Bar */}
-        <StatsBar />
+        <StatsBar dealCount={deals.length} />
 
-        {/* Coming Soon Notice */}
+        {/* Deals Grid */}
         <section className="py-12 px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="bg-white rounded-card p-8 border border-maple-red/20">
-              <div className="mb-6">
+          <div className="max-w-7xl mx-auto">
+            {deals.length > 0 ? (
+              <DealGrid>
+                {deals.map(deal => (
+                  <DealCard
+                    key={deal.id}
+                    id={deal.id}
+                    title={deal.title}
+                    slug={deal.slug}
+                    imageUrl={(deal as any).image_blob_url || (deal as any).image_url || '/placeholder-deal.jpg'}
+                    price={deal.price}
+                    originalPrice={(deal as any).original_price}
+                    discountPercent={(deal as any).discount_percent}
+                    store={deal.store || 'Unknown'}
+                    affiliateUrl={(deal as any).affiliate_url}
+                  />
+                ))}
+              </DealGrid>
+            ) : (
+              <div className="text-center py-12">
                 <div className="w-16 h-16 bg-maple-red/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Icon size={32} className="text-maple-red" />
                 </div>
                 <h2 className="text-2xl font-bold text-charcoal mb-2">
-                  {category.name} Categories Coming Soon
+                  No {category.name} Deals Right Now
                 </h2>
-                <p className="text-slate">
-                  We're working on organizing deals by category to make it easier for you to find what you're looking for.
+                <p className="text-slate mb-6">
+                  Check back soon - new deals are added every 15 minutes!
                 </p>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href="/deals"
-                  className="btn-primary"
-                >
+                <Link href="/deals" className="btn-primary">
                   Browse All Deals
                 </Link>
-                <Link
-                  href="/stores"
-                  className="btn-secondary"
-                >
-                  Browse Stores
-                </Link>
               </div>
-            </div>
+            )}
           </div>
         </section>
 
