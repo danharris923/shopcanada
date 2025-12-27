@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Image from 'next/image'
 
 import { getDealsByStore, getStores } from '@/lib/db'
 import { Deal } from '@/types/deal'
@@ -14,6 +15,7 @@ import {
   generateCategoryH2,
   formatCategoryName,
 } from '@/lib/store-logos'
+import { getBrandBySlug } from '@/lib/brands-data'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 
@@ -64,6 +66,9 @@ export default async function StorePage({ params }: PageProps) {
   const storeName = formatStoreName(storeSlug)
   const storeInfo = getStoreLogo(storeSlug)
   const logoUrl = storeInfo?.logo || generateLogoUrl(storeSlug.replace(/-/g, '') + '.ca')
+
+  // Get brand data if it exists (has description, screenshot, story)
+  const brand = getBrandBySlug(storeSlug)
 
   // H1 = store card microcopy verbatim (SEO requirement)
   const pageH1 = storeInfo ? getStorePageH1(storeInfo) : `${storeName} deals in Canada`
@@ -142,6 +147,50 @@ export default async function StorePage({ params }: PageProps) {
               </p>
             </div>
           </div>
+
+          {/* Brand About Section - from /canadian/brand data */}
+          {brand && (
+            <div className="mb-8 bg-white border border-silver-light rounded-card p-6 md:p-8">
+              <p className="text-base md:text-lg text-charcoal leading-relaxed mb-6">
+                {brand.description}
+              </p>
+
+              {/* Website Screenshot */}
+              {brand.screenshot && (
+                <div className="mb-6 relative group">
+                  <a
+                    href={brand.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block relative overflow-hidden rounded-lg border border-silver-light hover:border-maple-red transition-all"
+                  >
+                    <img
+                      src={brand.screenshot}
+                      alt={`${brand.name} website preview`}
+                      className="w-full h-auto"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform">
+                      <span className="btn-primary inline-block text-sm">
+                        Visit {brand.name} →
+                      </span>
+                    </div>
+                  </a>
+                </div>
+              )}
+
+              {/* Brand Story */}
+              {brand.brandStory && (
+                <div className="p-6 bg-ivory rounded-lg border border-maple-red/30">
+                  <h2 className="text-xl font-bold text-burgundy mb-4">The {brand.name} Story</h2>
+                  <div
+                    className="text-charcoal leading-relaxed text-sm prose max-w-none"
+                    dangerouslySetInnerHTML={{ __html: brand.brandStory }}
+                  />
+                </div>
+              )}
+            </div>
+          )}
 
           {/* Quick Stats */}
           {deals.length > 0 && (

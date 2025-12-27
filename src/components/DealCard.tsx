@@ -5,6 +5,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { DealCardProps } from '@/types/deal'
 import { toNumber, formatPrice, calculateSavings } from '@/lib/price-utils'
+import { getStoreLogo, generateLogoUrl } from '@/lib/store-logos'
+import { getBrandBySlug } from '@/lib/brands-data'
 
 export function DealCard({
   id,
@@ -23,6 +25,13 @@ export function DealCard({
   const priceNum = toNumber(price)
   const originalPriceNum = toNumber(originalPrice)
   const savings = calculateSavings(originalPrice, price)
+
+  // Get store info from brand data
+  const storeSlug = store?.toLowerCase().replace(/\s+/g, '-') || ''
+  const storeInfo = getStoreLogo(storeSlug)
+  const brand = getBrandBySlug(storeSlug)
+  const storeLogo = storeInfo?.logo || brand?.logo || generateLogoUrl(storeSlug.replace(/-/g, '') + '.ca')
+  const storeName = storeInfo?.name || brand?.name || store
 
   // Random highlight tags for affiliated deals only
   const highlightTags = [
@@ -124,9 +133,19 @@ export function DealCard({
 
       {/* Content */}
       <div className="p-4">
-        {/* Store */}
-        <div className="deal-card-store uppercase tracking-wide mb-1">
-          {store}
+        {/* Store with Logo */}
+        <div className="flex items-center gap-1.5 mb-1">
+          {storeLogo && (
+            <img
+              src={storeLogo}
+              alt=""
+              className="w-4 h-4 rounded-sm object-contain"
+              onError={(e) => { e.currentTarget.style.display = 'none' }}
+            />
+          )}
+          <span className="deal-card-store uppercase tracking-wide">
+            {storeName}
+          </span>
         </div>
 
         {/* Title */}
