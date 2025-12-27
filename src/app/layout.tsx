@@ -90,13 +90,11 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Shop Canada" />
 
         {/* Umami Analytics */}
-        {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
-          <script
-            async
-            src={process.env.NEXT_PUBLIC_UMAMI_URL || "https://analytics.shopcanada.cc/script.js"}
-            data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
-          />
-        )}
+        <script
+          async
+          src="https://analytics.promopenguin.ca/script.js"
+          data-website-id="30045994-c858-4e3a-bb6c-fc15e2471852"
+        />
       </head>
       <body className={inter.className}>
         {children}
