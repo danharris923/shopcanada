@@ -7,6 +7,7 @@
 
 import { Deal, ContentContext } from '@/types/deal'
 import { toNumber, formatPrice, calculateSavings } from '@/lib/price-utils'
+import { getStoreInfo } from '@/lib/store-info'
 
 // =============================================================================
 // DESCRIPTION TEMPLATES (8 variations per category)
@@ -250,30 +251,56 @@ export function getStoreDescription(storeSlug: string | null): string {
 }
 
 /**
- * Generate FAQ items for a deal
+ * Generate FAQ items for a deal - uses real store-specific info
  */
 export function generateFAQ(deal: Deal): { question: string; answer: string }[] {
-  const faqs = [
-    {
-      question: `Is this ${deal.title} deal available in Canada?`,
-      answer: `Yes, this deal is available to Canadian shoppers through ${formatStoreName(deal.store)}. Shipping is available across Canada.`,
-    },
-    {
-      question: `How much can I save on this deal?`,
-      answer: deal.original_price && deal.price
-        ? `You save $${calculateSavings(deal.original_price, deal.price)} (${deal.discount_percent}% off) compared to the regular price of $${formatPrice(deal.original_price)}.`
-        : `This deal offers ${deal.discount_percent}% off the regular price.`,
-    },
-    {
-      question: `How long will this deal last?`,
-      answer: `Deal availability varies. We recommend purchasing soon as prices and stock can change at any time.`,
-    },
-  ]
+  const storeName = formatStoreName(deal.store)
+  const storeSlug = deal.store?.toLowerCase().replace(/\s+/g, '-') || ''
+  const info = getStoreInfo(storeSlug)
 
-  if (deal.store) {
+  const faqs: { question: string; answer: string }[] = []
+
+  // Return policy - always include if we have info
+  if (info?.returnPolicy) {
     faqs.push({
-      question: `Does ${formatStoreName(deal.store)} offer free shipping?`,
-      answer: getStoreDescription(deal.store),
+      question: `What is ${storeName}'s return policy?`,
+      answer: info.returnPolicy,
+    })
+  }
+
+  // Loyalty program - include if store has one
+  if (info?.loyaltyProgram) {
+    faqs.push({
+      question: `Does ${storeName} have a loyalty program?`,
+      answer: `Yes, ${info.loyaltyProgram.name}. ${info.loyaltyProgram.description}`,
+    })
+  }
+
+  // Shipping info
+  if (info?.shippingInfo) {
+    faqs.push({
+      question: `Does ${storeName} offer free shipping to Canada?`,
+      answer: info.shippingInfo,
+    })
+  }
+
+  // Price match - if available
+  if (info?.priceMatch) {
+    faqs.push({
+      question: `Does ${storeName} price match?`,
+      answer: info.priceMatch,
+    })
+  }
+
+  // If no store-specific info, provide generic but useful FAQs
+  if (faqs.length === 0) {
+    faqs.push({
+      question: `Is this deal available in Canada?`,
+      answer: `Yes, this deal is available to Canadian shoppers through ${storeName}. Check the retailer's website for shipping details.`,
+    })
+    faqs.push({
+      question: `What is the return policy?`,
+      answer: `Return policies vary by retailer. Check ${storeName}'s website for their current return and refund policies.`,
     })
   }
 
