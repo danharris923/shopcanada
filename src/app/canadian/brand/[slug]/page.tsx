@@ -6,6 +6,8 @@ import { CategorySidebar } from '@/components/category-sidebar'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { StatsBar } from '@/components/StatsBar'
+import { DealCard, DealGrid } from '@/components/DealCard'
+import { getDealsByStore } from '@/lib/db'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 
@@ -44,6 +46,16 @@ export default async function BrandPage({ params }: Props) {
   const relatedBrands = getRelatedBrands(brand, 6)
   const categorySlug = brand.category.toLowerCase().replace(/\s+/g, '-')
   const category = getCategoryBySlug(categorySlug)
+
+  // Fetch deals for this brand
+  let deals: any[] = []
+  try {
+    deals = await getDealsByStore(slug)
+  } catch (error) {
+    deals = []
+  }
+  const previewDeals = deals.slice(0, 4)
+  const hasMoreDeals = deals.length > 4
 
   return (
     <>
@@ -102,6 +114,52 @@ export default async function BrandPage({ params }: Props) {
                   </a>
                 )}
               </div>
+
+              {/* Deals Section - Only show if deals exist */}
+              {deals.length > 0 && (
+                <section className="mb-12">
+                  <div className="flex items-center justify-between mb-4">
+                    <h2 className="text-xl font-bold text-charcoal">
+                      Latest {brand.name} Deals
+                    </h2>
+                    {hasMoreDeals && (
+                      <Link
+                        href={`/stores/${slug}`}
+                        className="text-maple-red hover:text-burgundy font-semibold transition-colors"
+                      >
+                        View All {deals.length} Deals →
+                      </Link>
+                    )}
+                  </div>
+                  <DealGrid>
+                    {previewDeals.map((deal: any) => (
+                      <DealCard
+                        key={deal.id}
+                        id={deal.id}
+                        title={deal.title}
+                        slug={deal.slug}
+                        imageUrl={deal.image_blob_url || deal.image_url || '/placeholder-deal.jpg'}
+                        price={deal.price}
+                        originalPrice={deal.original_price}
+                        discountPercent={deal.discount_percent}
+                        store={deal.store || null}
+                        affiliateUrl={deal.affiliate_url}
+                        featured={deal.featured}
+                      />
+                    ))}
+                  </DealGrid>
+                  {hasMoreDeals && (
+                    <div className="mt-6 text-center">
+                      <Link
+                        href={`/stores/${slug}`}
+                        className="btn-primary inline-block"
+                      >
+                        Show All {deals.length} Deals
+                      </Link>
+                    </div>
+                  )}
+                </section>
+              )}
 
               {/* Website Screenshot with Visit Button */}
               {brand.screenshot && (

@@ -10,6 +10,7 @@ import { storeLogos, getAllStores, getTopBadges } from '@/lib/store-logos'
 import { brands } from '@/lib/brands-data'
 import { Leaf, Store, Globe, Package, Search, Smartphone, Shirt, Home, ShoppingCart, Sparkles, Dumbbell, BookOpen, Baby, Gamepad2, Wrench, Heart } from 'lucide-react'
 import { StatsBar } from '@/components/StatsBar'
+import { Breadcrumbs } from '@/components/deal/Breadcrumbs'
 
 // Product categories for deals
 const productCategories = [
@@ -26,17 +27,76 @@ const productCategories = [
   { slug: 'health', name: 'Health', icon: Heart },
 ]
 
-// Group stores by category
-const storeCategories = {
-  'Major Retailers': ['amazon', 'walmart', 'costco', 'canadian-tire', 'best-buy', 'shoppers'],
-  'Home & Hardware': ['home-depot', 'lowes', 'rona', 'ikea', 'wayfair', 'structube', 'article'],
-  'Fashion & Apparel': ['the-bay', 'winners', 'marshalls', 'old-navy', 'gap', 'h-m', 'zara', 'uniqlo', 'lululemon', 'aritzia', 'roots'],
-  'Electronics & Tech': ['the-source', 'newegg', 'canada-computers', 'memory-express', 'apple', 'microsoft', 'dell', 'lenovo'],
-  'Sports & Outdoors': ['sport-chek', 'atmosphere', 'mec', 'sail', 'nike', 'adidas', 'foot-locker'],
-  'Grocery & Pharmacy': ['loblaws', 'real-canadian-superstore', 'no-frills', 'sobeys', 'metro', 'food-basics', 'freshco', 'well-ca', 'london-drugs'],
-  'Specialty': ['indigo', 'sephora', 'bath-body-works', 'petsmart', 'pet-valu', 'michaels', 'staples', 'dollarama', 'giant-tiger'],
-  'Kids & Toys': ['toys-r-us', 'mastermind-toys', 'eb-games'],
+// Map brand categories to display categories
+const categoryMapping: Record<string, string> = {
+  // Fashion & Apparel
+  'Clothing': 'Fashion & Apparel',
+  'Intimates': 'Fashion & Apparel',
+  'Shoes': 'Fashion & Apparel',
+  'Accessories': 'Fashion & Apparel',
+  // Electronics & Tech
+  'Electronics': 'Electronics & Tech',
+  'Tech': 'Electronics & Tech',
+  'Telecom': 'Electronics & Tech',
+  // Home & Hardware
+  'Home': 'Home & Hardware',
+  // Beauty
+  'Beauty': 'Beauty & Personal Care',
+  'Haircare': 'Beauty & Personal Care',
+  // Sports & Outdoors
+  'Fitness': 'Sports & Outdoors',
+  'Sports': 'Sports & Outdoors',
+  // Grocery & Pharmacy
+  'Grocery': 'Grocery & Pharmacy',
+  'Pharmacy': 'Grocery & Pharmacy',
+  'Food': 'Grocery & Pharmacy',
+  'Snacks': 'Grocery & Pharmacy',
+  'Beverages': 'Grocery & Pharmacy',
+  'Coffee': 'Grocery & Pharmacy',
+  'Keto': 'Grocery & Pharmacy',
+  'Meal Delivery': 'Grocery & Pharmacy',
+  // Specialty
+  'Retail': 'Specialty',
+  'Pets': 'Specialty',
+  'Jewellery': 'Specialty',
+  'Baby': 'Specialty',
+  'Wedding': 'Specialty',
+  'Eyewear': 'Specialty',
+  'Office': 'Specialty',
+  'Books': 'Specialty',
+  'Entertainment': 'Specialty',
+  'Health': 'Specialty',
+  'Cleaning': 'Specialty',
+  'Loyalty': 'Specialty',
+  'Indigenous': 'Specialty',
+  'Department Store': 'Specialty',
+  'Services': 'Specialty',
+  // Skip restaurants, automotive, travel, hotels
 }
+
+// Build dynamic category groups from brands data
+const buildStoreCategories = () => {
+  const categories: Record<string, string[]> = {
+    'Fashion & Apparel': [],
+    'Electronics & Tech': [],
+    'Home & Hardware': [],
+    'Beauty & Personal Care': [],
+    'Sports & Outdoors': [],
+    'Grocery & Pharmacy': [],
+    'Specialty': [],
+  }
+
+  brands.forEach(brand => {
+    const displayCategory = categoryMapping[brand.category]
+    if (displayCategory && categories[displayCategory]) {
+      categories[displayCategory].push(brand.slug)
+    }
+  })
+
+  return categories
+}
+
+const storeCategories = buildStoreCategories()
 
 type FilterType = 'all' | 'canadian' | 'international'
 
@@ -120,8 +180,16 @@ function StoresContent() {
     <>
       <Header />
       <main className="min-h-screen bg-cream">
+        {/* Breadcrumbs */}
+        <div className="max-w-7xl mx-auto px-4 pt-4">
+          <Breadcrumbs items={[
+            { label: 'Home', href: '/' },
+            { label: 'Stores', href: '/stores' },
+          ]} />
+        </div>
+
         {/* Hero */}
-        <section className="bg-soft-black py-12">
+        <section className="bg-soft-black py-12 mt-4">
           <div className="max-w-7xl mx-auto px-4 text-center">
             <h1 className="text-4xl font-bold text-white mb-4">
               Browse All Stores

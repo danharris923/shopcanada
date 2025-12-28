@@ -5,6 +5,7 @@ import { Footer } from '@/components/Footer'
 import { DealCard, DealGrid } from '@/components/DealCard'
 import { FilterSidebar } from '@/components/FilterSidebar'
 import { StatsBar } from '@/components/StatsBar'
+import { Breadcrumbs } from '@/components/deal/Breadcrumbs'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -32,8 +33,16 @@ export default async function DealsPage() {
     <>
       <Header />
       <main className="min-h-screen bg-cream">
+        {/* Breadcrumbs */}
+        <div className="max-w-7xl mx-auto px-4 pt-4">
+          <Breadcrumbs items={[
+            { label: 'Home', href: '/' },
+            { label: 'Deals', href: '/deals' },
+          ]} />
+        </div>
+
         {/* Hero */}
-        <section className="bg-soft-black py-12">
+        <section className="bg-soft-black py-12 mt-4">
           <div className="max-w-7xl mx-auto px-4 text-center">
             <h1 className="text-4xl font-bold text-white mb-4">
               All Deals

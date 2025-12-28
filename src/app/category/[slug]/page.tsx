@@ -3,7 +3,8 @@ import Link from 'next/link'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { DealCard, DealGrid } from '@/components/DealCard'
-import { Smartphone, Shirt, Home, ShoppingCart, Sparkles, Dumbbell, ArrowLeft } from 'lucide-react'
+import { Breadcrumbs } from '@/components/deal/Breadcrumbs'
+import { Smartphone, Shirt, Home, ShoppingCart, Sparkles, Dumbbell } from 'lucide-react'
 import { StatsBar } from '@/components/StatsBar'
 import { getDealsByCategory } from '@/lib/db'
 import type { Metadata } from 'next'
@@ -64,17 +65,18 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     <>
       <Header />
       <main className="min-h-screen bg-cream">
-        {/* Breadcrumb & Hero */}
-        <section className="bg-soft-black py-8">
-          <div className="max-w-7xl mx-auto px-4">
-            <Link
-              href="/stores"
-              className="inline-flex items-center gap-2 text-silver hover:text-white transition-colors mb-4"
-            >
-              <ArrowLeft size={16} />
-              Back to Stores
-            </Link>
+        {/* Breadcrumbs */}
+        <div className="max-w-7xl mx-auto px-4 pt-4">
+          <Breadcrumbs items={[
+            { label: 'Home', href: '/' },
+            { label: 'Stores', href: '/stores' },
+            { label: category.name, href: `/category/${category.slug}` },
+          ]} />
+        </div>
 
+        {/* Hero */}
+        <section className="bg-soft-black py-8 mt-4">
+          <div className="max-w-7xl mx-auto px-4">
             <div className="flex items-center gap-4 mb-4">
               <div className="p-3 bg-maple-red rounded-lg">
                 <Icon size={32} className="text-white" />
@@ -102,7 +104,9 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         <section className="py-12 px-4">
           <div className="max-w-7xl mx-auto">
             {deals.length > 0 ? (
-              <DealGrid>
+              <>
+                <h2 className="text-2xl font-bold text-charcoal mb-6">Featured Deals</h2>
+                <DealGrid>
                 {deals.map(deal => (
                   <DealCard
                     key={deal.id}
@@ -118,6 +122,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                   />
                 ))}
               </DealGrid>
+              </>
             ) : (
               <div className="text-center py-12">
                 <div className="w-16 h-16 bg-maple-red/10 rounded-full flex items-center justify-center mx-auto mb-4">

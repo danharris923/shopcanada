@@ -3,6 +3,7 @@ import { categories } from '@/lib/brands-data'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { StatsBar } from '@/components/StatsBar'
+import { Breadcrumbs } from '@/components/deal/Breadcrumbs'
 import type { Metadata } from 'next'
 import * as LucideIcons from 'lucide-react'
 
@@ -24,14 +25,18 @@ export default function CategoriesPage() {
       <Header />
       <StatsBar />
       <main className="bg-cream min-h-screen">
+        {/* Breadcrumbs */}
+        <div className="max-w-6xl mx-auto px-6 pt-4">
+          <Breadcrumbs items={[
+            { label: 'Home', href: '/' },
+            { label: 'Stores', href: '/stores' },
+            { label: 'Categories', href: '/canadian/categories' },
+          ]} />
+        </div>
+
         {/* Hero */}
-        <section className="bg-soft-black py-12 px-6">
+        <section className="bg-soft-black py-12 px-6 mt-4">
           <div className="max-w-6xl mx-auto">
-            <div className="mb-4">
-              <Link href="/canadian" className="text-silver-light hover:text-white text-sm">
-                &larr; Back to Canadian Brands
-              </Link>
-            </div>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
               Shop by Category
             </h1>

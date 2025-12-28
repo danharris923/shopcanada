@@ -4,6 +4,7 @@ import { brands, categories, getCategoryBySlug } from '@/lib/brands-data'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { StatsBar } from '@/components/StatsBar'
+import { Breadcrumbs } from '@/components/deal/Breadcrumbs'
 import { CategoryIcon } from '@/components/CategoryIcon'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
@@ -49,8 +50,18 @@ export default async function CategoryPage({ params }: Props) {
       <Header />
       <StatsBar />
       <main className="bg-cream min-h-screen">
+        {/* Breadcrumbs */}
+        <div className="max-w-6xl mx-auto px-6 pt-4">
+          <Breadcrumbs items={[
+            { label: 'Home', href: '/' },
+            { label: 'Stores', href: '/stores' },
+            { label: 'Categories', href: '/canadian/categories' },
+            { label: category.name, href: `/canadian/category/${slug}` },
+          ]} />
+        </div>
+
         {/* Hero Section - matching home page style */}
-        <section className="relative">
+        <section className="relative mt-4">
           <picture>
             <source media="(min-width: 768px)" srcSet="/hero-desktop.png" />
             <img
@@ -61,9 +72,6 @@ export default async function CategoryPage({ params }: Props) {
           </picture>
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-full max-w-7xl mx-auto px-4 flex flex-col items-end">
-              <Link href="/canadian/categories" className="text-white/80 hover:text-white text-sm mb-2 drop-shadow">
-                &larr; Back to Categories
-              </Link>
               <div className="flex items-center gap-3 mb-2">
                 <CategoryIcon category={category.name} size={48} className="text-white drop-shadow" />
                 <h1 className="text-3xl md:text-5xl font-bold text-white drop-shadow-lg text-right">

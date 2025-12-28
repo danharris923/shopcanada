@@ -125,14 +125,16 @@ export default async function StorePage({ params }: PageProps) {
               <h1 className="text-2xl md:text-3xl font-bold text-charcoal mb-1">
                 {pageH1}
               </h1>
-              <p className="text-slate text-sm">
-                {deals.length} active deals
-              </p>
+              {deals.length > 0 && (
+                <p className="text-slate text-sm">
+                  {deals.length} active deal{deals.length !== 1 ? 's' : ''}
+                </p>
+              )}
             </div>
           </div>
 
-          {/* DEALS SECTION - FIRST */}
-          {deals.length > 0 ? (
+          {/* DEALS SECTION - Only show if deals exist */}
+          {deals.length > 0 && (
             <section className="mb-10">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-xl font-bold text-charcoal">
@@ -175,19 +177,6 @@ export default async function StorePage({ params }: PageProps) {
                 </div>
               )}
             </section>
-          ) : (
-            <div className="bg-amber-50 border border-amber-400 rounded-card p-8 text-center mb-10">
-              <div className="text-4xl mb-4">🔍</div>
-              <h2 className="text-xl font-bold text-charcoal mb-2">
-                No Active Deals Right Now
-              </h2>
-              <p className="text-slate mb-4">
-                We are constantly scanning for new {storeName} deals. Check back soon!
-              </p>
-              <Link href="/deals" className="btn-primary inline-block">
-                Browse All Deals
-              </Link>
-            </div>
           )}
 
           {/* YOUTUBE VIDEOS SECTION */}
