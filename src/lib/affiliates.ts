@@ -85,22 +85,43 @@ function buildRakutenDeepLink(merchantSlug: string, searchQuery: string): string
 }
 
 // =============================================================================
-// SHOPSTYLE CONFIG (simple URL + searchText param)
+// SHOPSTYLE CONFIG - DEPRECATED (ShopStyle shut down Dec 2024)
 // =============================================================================
 
+// ShopStyle Collective is no longer operating - all links are dead.
+// Keeping empty config for backwards compatibility. Replace with LTK or direct affiliates.
 const SHOPSTYLE_LINKS: Record<string, string> = {
-  // Fashion & Apparel
-  'lululemon': 'https://shopstyle.it/l/cwE20',
-  'roots': 'https://shopstyle.it/l/cwE2E',
-  'aritzia': 'https://shopstyle.it/l/cwE2N',
-  'ardene': 'https://shopstyle.it/l/cwE8W',
-  'michael-kors': 'https://shopstyle.it/l/cw4L3',
+  // All ShopStyle links removed - network is dead
+}
 
-  // Beauty
-  'sephora': 'https://shopstyle.it/l/cw4bZ',
+// =============================================================================
+// SEPHORA BRAND GROUPING
+// Beauty brands sold at Sephora that should use Sephora's affiliate link
+// =============================================================================
 
-  // Big Box
-  'walmart': 'https://shopstyle.it/l/cw4cc',
+const SEPHORA_BRANDS = [
+  'rare-beauty',
+  'summer-fridays',
+  'glow-recipe',
+  'laneige',
+  'charlotte-tilbury',  // Also has own site but available at Sephora
+  'tarte',              // Also has own site but available at Sephora
+  'supergoop',          // Also has own site but available at Sephora
+  'merit',              // Also has own site but available at Sephora
+] as const
+
+/**
+ * Check if a brand is sold at Sephora (use Sephora affiliate link)
+ */
+export function isSephoraBrand(slug: string): boolean {
+  return (SEPHORA_BRANDS as readonly string[]).includes(slug)
+}
+
+/**
+ * Get Sephora search URL for a brand product
+ */
+export function getSephoraSearchUrl(productTitle: string): string {
+  return `https://www.sephora.ca/search?keyword=${encodeURIComponent(productTitle)}`
 }
 
 // Direct retailer search URLs (non-affiliate fallback)
@@ -217,6 +238,49 @@ const RETAILER_SEARCH_URLS: Record<string, string> = {
   'lee-valley': 'https://www.leevalley.com/en-ca/search#q=',
   'leevalley': 'https://www.leevalley.com/en-ca/search#q=',
   'lee-valley-tools': 'https://www.leevalley.com/en-ca/search#q=',
+
+  // LTK Fashion Retailers (Ships to Canada)
+  'abercrombie': 'https://www.abercrombie.com/shop/ca/search?searchTerm=',
+  'american-eagle': 'https://www.ae.com/ca/en/search?q=',
+  'aerie': 'https://www.ae.com/ca/en/c/aerie/cat10004?q=',
+  'alo-yoga': 'https://www.aloyoga.com/search?q=',
+  'guess': 'https://www.guess.com/ca/en/search?q=',
+  'skims': 'https://skims.com/search?q=',
+  'revolve': 'https://www.revolve.com/r/search?q=',
+  'princess-polly': 'https://us.princesspolly.com/search?q=',
+  'shopbop': 'https://www.shopbop.com/s?q=',
+  'vuori': 'https://vuoriclothing.com/search?q=',
+  'lulus': 'https://www.lulus.com/search?q=',
+  'madewell': 'https://www.madewell.com/search?q=',
+  'anthropologie': 'https://www.anthropologie.com/search?q=',
+  'free-people': 'https://www.freepeople.com/search/?q=',
+  'cotton-on': 'https://cottonon.com/CA/search/?q=',
+  'nasty-gal': 'https://www.nastygal.com/search?q=',
+  'prettylittlething': 'https://www.prettylittlething.ca/search?term=',
+  'urban-outfitters': 'https://www.urbanoutfitters.com/en-ca/search?q=',
+  'steve-madden': 'https://www.stevemadden.ca/search?q=',
+  'new-balance': 'https://www.newbalance.ca/en_ca/search?q=',
+  'birkenstock': 'https://www.birkenstock.ca/en-ca/search?q=',
+  'ugg': 'https://www.ugg.com/ca/search?q=',
+
+  // LTK Beauty Retailers (Ships to Canada)
+  'charlotte-tilbury': 'https://www.charlottetilbury.com/ca/search?q=',
+  'tarte': 'https://tartecosmetics.com/shop/search?q=',
+  'elf': 'https://www.elfcosmetics.com/search/?q=',
+  'tula': 'https://www.tula.com/search?q=',
+  'colleen-rothschild': 'https://colleenrothschild.com/search?q=',
+  'dime-beauty': 'https://dimebeauty.co/search?q=',
+  'merit': 'https://meritbeauty.com/search?q=',
+  'supergoop': 'https://supergoop.com/search?q=',
+  'sephora': 'https://www.sephora.ca/search?keyword=',
+
+  // LTK Home Retailers (Ships to Canada)
+  'crate-and-barrel': 'https://www.crateandbarrel.ca/search?query=',
+  'pottery-barn': 'https://www.potterybarn.ca/search/results.html?words=',
+  'west-elm': 'https://www.westelm.ca/search/results.html?words=',
+  'cb2': 'https://www.cb2.ca/search?query=',
+  'dyson': 'https://www.dyson.ca/en/search?q=',
+  'brooklinen': 'https://www.brooklinen.com/search?q=',
 }
 
 
