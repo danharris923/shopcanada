@@ -1,0 +1,7 @@
+---
+title: "Fern Petal"
+slug: "fern-petal"
+category: "Jewellery"
+---
+
+pure, all-natural essential oilslocally blended and packaged with love in Vancouver Hello, from Fern & Petal! We’re a small, family-run business born out of our own fruitless search for high-quality, all-natural products made close to home. We never found what we were looking for, so we created what we wanted! Our products are carefully sourced from sustainable international growers, and handmade and packaged locally in Vancouver B.C. Canada. We want you to feel safe knowing our products are all-natural and of the highest quality. We also believe in sustainability and giving back. That’s why we fund planting one tree for every Fern & Petal order. We’re here to help you feel good, in every sense of the word.Our goal is to create products that are truly natural in every sense. From packaging to ingredients, our products come from nature and must return effortlessly.Katie Derrick, FounderZero dyes. No preservatives. And perfume-free — simply all-natural aromas and highest-quality ingredients. Fern & Petal’s small-batch essential oils, blends, and luxury products come in 100% recyclable packaging, from pulp-paper labels and boxes to refillable and reusable glass rollers and jars. As we harvest Mother Nature’s bounty, we aim to replace what we have taken through our One Tree Planted initiative, where one baby tree is planted every time you make a purchase.

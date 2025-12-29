@@ -1,0 +1,7 @@
+---
+title: "Sweet Monk"
+slug: "sweet-monk"
+category: "Keto"
+---
+
+About Us Hello!We are SweetMonk, and we are happy to finally meet you!We worked on the conception of SweetMonk for a year and a half, building something that we would feel proud to share with everyone and anyone who crosses our path. SweetMonk was officially launched in April 2017.SweetMonk was born when we found a need that wasn’t currently being met by other products on the market. Our busy lives include sports, working on the road, raising a family, and being health conscious all at the same time, something that isn’t always easy to achieve.We want to live a healthy lifestyle while still being able to enjoy some of life's simple pleasures, sweet tooth anyone? We want to satisfy the diet requirements of an elite athlete and at the same time provide yummy yogurt to the two-year-old without creating a sugar crash right after breakfast. SweetMonk does all of that.SweetMonk is an all natural, zero calorie sweetener that tastes delicious. There is no bad aftertaste. It contains no sugar and has no affect on your glycemic index.It is really quite simple. SweetMonk is pure. SweetMonk is easy to use. And, there is nothing else quite like it out there.If you’re interested in learning more, finding our product, or know of someone who might be, you have come to the right place. Please take a look at our site and our media accounts and pass the information along.Thanks from your SweetMonk creators.Kelsey and Nicole Proudly supported by Innovation Guelph Visit Boundless Accelerator

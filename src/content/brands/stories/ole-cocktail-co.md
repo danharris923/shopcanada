@@ -1,0 +1,9 @@
+---
+slug: ole-cocktail-co
+name: Ole Cocktail Co
+type: brand
+---
+
+# Ole Cocktail Co
+
+Skip to main content Close Search OUR SEARCH FOR BALANCE Home » Our Story In late Spring 2020, we were thirsty. Our local quest for a refreshing ready-to-drink margarita and paloma was inspired by the desire for a tropical escape in the midst of a challenging season staying home. At the time, we struggled to find local options that tasted like the real deal without being full of sugar and artificial flavours. We knew then that the only way to satisfy our craving for a crisp and refreshing tequila cocktail was to craft one ourselves using premium ingredients! TURNS OUT, WE WEREN'T ALONE. Our journey to create something totally unique was also driven by other margarita and paloma lovers who were feeling the same way. By combining the vision of a premium cocktail brand with a year-long adventure of perfecting recipes, Olé Cocktails Co. was born! Perfectly balanced and crafted with care, our cocktails are made with premium quality blue weber agave tequila from Jalisco, México, real fruit juices, organic agave nectar, and a delectable pinch of sea salt. Irresistible taste with no artificial colours, flavours, or sweeteners. Just one sip will leave you with a crisp, clean finish and a light sparkle. We invite you to give them a try and let us know what you think! Want to Find OlÉ in your area? Find a retail location near you! If you don’t see your favourite local on our list, please ask for us by name so we can be in a store near you when you’re feeling thirsty too. #OLÉALLDAY #OLÉALLDAY #OLÉALLDAY #OLÉALLDAY #OLÉALLDAY #OLÉALLDAY #OLÉALLDAY #OLÉALLDAY #OLÉALLDAY #OLÉALLDAY #OLÉALLDAY #OLÉALLDAY #OLÉALLDAY #OLÉALLDAY #OLÉALLDAY #OLÉALLDAY #OLÉALLDAY #OLÉALLDAY Close Menu instagram

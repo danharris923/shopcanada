@@ -1,5 +1,5 @@
 import { Pool } from 'pg'
-import { Deal, Store, Category } from '@/types/deal'
+import { Deal, Store, Category, StoreCardData } from '@/types/deal'
 
 /**
  * Database queries for deals, stores, and categories.
@@ -18,7 +18,12 @@ function transformRow<T>(row: Record<string, unknown>): T {
   const transformed: Record<string, unknown> = {}
   for (const [key, value] of Object.entries(row)) {
     if (value === null || value === undefined) {
-      transformed[key] = null
+      // For JSONB array fields, return empty array instead of null
+      if (key === 'badges' || key === 'top_categories') {
+        transformed[key] = []
+      } else {
+        transformed[key] = null
+      }
     } else if (value instanceof Date) {
       // Convert Date objects to ISO strings
       transformed[key] = value.toISOString()
@@ -31,6 +36,23 @@ function transformRow<T>(row: Record<string, unknown>): T {
     } else if (key === 'discount_percent' || key === 'deal_count') {
       // Convert integer strings to numbers
       transformed[key] = value !== null ? parseInt(String(value), 10) : null
+    } else if (key === 'badges' || key === 'top_categories') {
+      // Handle JSONB array fields - pg driver may return as object, string, or array
+      if (Array.isArray(value)) {
+        transformed[key] = value
+      } else if (typeof value === 'string') {
+        try {
+          const parsed = JSON.parse(value)
+          transformed[key] = Array.isArray(parsed) ? parsed : []
+        } catch {
+          transformed[key] = []
+        }
+      } else {
+        transformed[key] = []
+      }
+    } else if (key === 'is_canadian') {
+      // Ensure boolean type
+      transformed[key] = Boolean(value)
     } else if (typeof value === 'bigint') {
       // Convert BigInt to number (or string if too large)
       transformed[key] = Number(value)
@@ -231,7 +253,16 @@ export async function getAllDealSlugs(): Promise<string[]> {
 
 export async function getStores(): Promise<Store[]> {
   try {
-    return await query<Store>('SELECT * FROM stores ORDER BY deal_count DESC')
+    return await query<Store>(`
+      SELECT
+        id, name, slug, type, logo_url, website_url, affiliate_url,
+        color, tagline, description, badges, top_categories,
+        is_canadian, province, return_policy, loyalty_program_name,
+        loyalty_program_desc, shipping_info, price_match_policy,
+        affiliate_network, deal_count
+      FROM stores
+      ORDER BY deal_count DESC
+    `)
   } catch (error) {
     // Error handled silently
     return []
@@ -241,12 +272,171 @@ export async function getStores(): Promise<Store[]> {
 export async function getStoreBySlug(slug: string): Promise<Store | null> {
   try {
     return await queryOne<Store>(
-      'SELECT * FROM stores WHERE slug = $1 LIMIT 1',
+      `SELECT
+        id, name, slug, type, logo_url, website_url, affiliate_url,
+        color, tagline, description, badges, top_categories,
+        is_canadian, province, return_policy, loyalty_program_name,
+        loyalty_program_desc, shipping_info, price_match_policy,
+        affiliate_network, deal_count
+      FROM stores
+      WHERE slug = $1
+      LIMIT 1`,
       [slug]
     )
   } catch (error) {
     // Error handled silently
     return null
+  }
+}
+
+/**
+ * Get minimal store data for deal cards - reduces payload size
+ */
+export async function getStoreForCard(slug: string): Promise<StoreCardData | null> {
+  try {
+    return await queryOne<StoreCardData>(
+      `SELECT
+        name, slug, logo_url, color, badges, return_policy, shipping_info
+      FROM stores
+      WHERE slug = $1
+      LIMIT 1`,
+      [slug]
+    )
+  } catch (error) {
+    // Error handled silently
+    return null
+  }
+}
+
+/**
+ * Get Canadian brands - stores where type='brand' OR is_canadian=true
+ */
+export async function getCanadianBrands(): Promise<Store[]> {
+  try {
+    return await query<Store>(
+      `SELECT
+        id, name, slug, type, logo_url, website_url, affiliate_url,
+        color, tagline, description, badges, top_categories,
+        is_canadian, province, return_policy, loyalty_program_name,
+        loyalty_program_desc, shipping_info, price_match_policy,
+        affiliate_network, deal_count
+      FROM stores
+      WHERE type = 'brand' OR is_canadian = TRUE
+      ORDER BY deal_count DESC`
+    )
+  } catch (error) {
+    // Error handled silently
+    return []
+  }
+}
+
+/**
+ * Get all Canadian brand slugs for static params generation
+ */
+export async function getCanadianBrandSlugs(): Promise<string[]> {
+  try {
+    const rows = await query<{ slug: string }>(
+      `SELECT slug FROM stores WHERE type = 'brand' OR is_canadian = TRUE`
+    )
+    return rows.map(row => row.slug)
+  } catch (error) {
+    // Error handled silently
+    return []
+  }
+}
+
+/**
+ * Get related Canadian brands (same top_categories)
+ */
+export async function getRelatedCanadianBrands(brand: Store, limit: number = 6): Promise<Store[]> {
+  try {
+    // Get brands that share any of the same top_categories
+    const categories = brand.top_categories || []
+    if (categories.length === 0) {
+      // Fall back to just getting other Canadian brands
+      return await query<Store>(
+        `SELECT
+          id, name, slug, type, logo_url, website_url, affiliate_url,
+          color, tagline, description, badges, top_categories,
+          is_canadian, province, return_policy, loyalty_program_name,
+          loyalty_program_desc, shipping_info, price_match_policy,
+          affiliate_network, deal_count
+        FROM stores
+        WHERE (type = 'brand' OR is_canadian = TRUE)
+          AND slug != $1
+        ORDER BY deal_count DESC
+        LIMIT $2`,
+        [brand.slug, limit]
+      )
+    }
+
+    return await query<Store>(
+      `SELECT
+        id, name, slug, type, logo_url, website_url, affiliate_url,
+        color, tagline, description, badges, top_categories,
+        is_canadian, province, return_policy, loyalty_program_name,
+        loyalty_program_desc, shipping_info, price_match_policy,
+        affiliate_network, deal_count
+      FROM stores
+      WHERE (type = 'brand' OR is_canadian = TRUE)
+        AND slug != $1
+        AND top_categories && $2::text[]
+      ORDER BY deal_count DESC
+      LIMIT $3`,
+      [brand.slug, categories, limit]
+    )
+  } catch (error) {
+    // Error handled silently
+    return []
+  }
+}
+
+/**
+ * Get Canadian brands by category
+ */
+export async function getCanadianBrandsByCategory(category: string): Promise<Store[]> {
+  try {
+    return await query<Store>(
+      `SELECT
+        id, name, slug, type, logo_url, website_url, affiliate_url,
+        color, tagline, description, badges, top_categories,
+        is_canadian, province, return_policy, loyalty_program_name,
+        loyalty_program_desc, shipping_info, price_match_policy,
+        affiliate_network, deal_count
+      FROM stores
+      WHERE (type = 'brand' OR is_canadian = TRUE)
+        AND $1 = ANY(top_categories)
+      ORDER BY deal_count DESC`,
+      [category]
+    )
+  } catch (error) {
+    // Error handled silently
+    return []
+  }
+}
+
+/**
+ * Get unique categories from Canadian brands with counts
+ */
+export async function getCanadianBrandCategories(): Promise<{ name: string; slug: string; count: number }[]> {
+  try {
+    const rows = await query<{ category: string; count: string }>(
+      `SELECT unnest(top_categories) as category, COUNT(*) as count
+       FROM stores
+       WHERE (type = 'brand' OR is_canadian = TRUE)
+         AND top_categories IS NOT NULL
+         AND array_length(top_categories, 1) > 0
+       GROUP BY category
+       ORDER BY count DESC`
+    )
+    return rows.map(row => ({
+      name: row.category,
+      slug: row.category.toLowerCase().replace(/\s+/g, '-'),
+      count: parseInt(row.count, 10)
+    }))
+  } catch (error) {
+    // Error handled silently
+    return []
   }
 }
 
@@ -338,7 +528,14 @@ export async function searchDeals(searchQuery: string, limit: number = 50): Prom
 export async function getAllStoresAdmin(): Promise<Store[]> {
   try {
     return await query<Store>(
-      'SELECT id, name, slug, affiliate_url, deal_count FROM stores ORDER BY name ASC'
+      `SELECT
+        id, name, slug, type, logo_url, website_url, affiliate_url,
+        color, tagline, description, badges, top_categories,
+        is_canadian, province, return_policy, loyalty_program_name,
+        loyalty_program_desc, shipping_info, price_match_policy,
+        affiliate_network, deal_count
+      FROM stores
+      ORDER BY name ASC`
     )
   } catch (error) {
     // Error handled silently
@@ -359,11 +556,33 @@ export async function updateStoreAffiliateUrl(id: number, affiliateUrl: string |
   }
 }
 
-export async function addStore(name: string, slug: string, affiliateUrl: string | null): Promise<boolean> {
+export async function updateStoreUrls(
+  id: number,
+  websiteUrl: string | null,
+  affiliateUrl: string | null
+): Promise<boolean> {
   try {
     await query(
-      'INSERT INTO stores (name, slug, affiliate_url, deal_count) VALUES ($1, $2, $3, 0)',
-      [name, slug, affiliateUrl]
+      'UPDATE stores SET website_url = $1, affiliate_url = $2 WHERE id = $3',
+      [websiteUrl, affiliateUrl, id]
+    )
+    return true
+  } catch (error) {
+    // Error handled silently
+    return false
+  }
+}
+
+export async function addStore(
+  name: string,
+  slug: string,
+  websiteUrl: string | null,
+  affiliateUrl: string | null
+): Promise<boolean> {
+  try {
+    await query(
+      'INSERT INTO stores (name, slug, website_url, affiliate_url, deal_count) VALUES ($1, $2, $3, $4, 0)',
+      [name, slug, websiteUrl, affiliateUrl]
     )
     return true
   } catch (error) {

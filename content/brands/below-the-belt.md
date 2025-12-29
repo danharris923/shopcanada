@@ -1,0 +1,7 @@
+---
+title: "Below The Belt"
+slug: "below-the-belt"
+category: "Clothing"
+---
+
+Land Acknowledgement We would like to respectfully acknowledge that our head office is located on the traditional territory of Treaty 6 and within the Métis homelands and Métis Nation of Alberta Region 4. We acknowledge this land as the traditional territories of many First Nations such as the Nehiyaw (Cree), Denesuliné (Dene), Nakota Sioux (Stoney), Anishinaabe (Saulteaux), and Niitsitapi (Blackfoot). We respect and acknowledge the traditional lands and un-ceded territories across Turtle Island on which our stores our located. Our Story Below The Belt is a Canadian, family-owned company that started with a single denim store in Edmonton, Alberta. Since then, we have grown so much! Below The Belt stores are now across Canada and our stores feature a diverse collection of fashion and accessories for below and above the belt. We are proud to support Indigenous-owned, local, and sustainable brands. We are also committed to keeping up with the trends and bringing you the best brands and latest styles. Check out our curated collections and discover brands like The North Face, Levi's, Carhartt, SECTION 35, tentree, Volcom, and more. Sustainability We are happy to support many sustainable brands and eco-friendly practices. We have sustainable and reusable bag options available in-store. We also encourage you to go bagless or bring your own bags. Find a Store Prefer shopping in person? Check out our store locator to find a store near you.

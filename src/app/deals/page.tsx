@@ -5,7 +5,7 @@ import { Footer } from '@/components/Footer'
 import { DealCard, DealGrid } from '@/components/DealCard'
 import { FilterSidebar } from '@/components/FilterSidebar'
 import { StatsBar } from '@/components/StatsBar'
-import { Breadcrumbs } from '@/components/deal/Breadcrumbs'
+import { Breadcrumbs } from '@/components/breadcrumbs'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {

@@ -22,15 +22,43 @@ export interface Deal {
 }
 
 /**
- * Store type
+ * Store type - includes all store metadata and policies
  */
 export interface Store {
   id: number
   name: string
   slug: string
+  type: 'store' | 'brand'
   logo_url: string | null
+  website_url: string | null
   affiliate_url: string | null
+  color: string | null
+  tagline: string | null
+  description: string | null
+  badges: string[]
+  top_categories: string[]
+  is_canadian: boolean
+  province: string | null
+  return_policy: string | null
+  loyalty_program_name: string | null
+  loyalty_program_desc: string | null
+  shipping_info: string | null
+  price_match_policy: string | null
+  affiliate_network: string | null
   deal_count: number
+}
+
+/**
+ * Minimal store data for deal cards - reduces payload size
+ */
+export interface StoreCardData {
+  name: string
+  slug: string
+  logo_url: string | null
+  color: string | null
+  badges: string[]
+  return_policy: string | null
+  shipping_info: string | null
 }
 
 /**
@@ -45,6 +73,7 @@ export interface Category {
 
 /**
  * Deal card display props (simplified for components)
+ * Supports both regular deals and Flipp flyer deals via variant prop
  */
 export interface DealCardProps {
   id: string
@@ -59,6 +88,15 @@ export interface DealCardProps {
   featured?: boolean
   isCanadian?: boolean
   directAffiliate?: boolean  // If true, click goes directly to affiliate link
+  // Store data from database (passed from server component)
+  storeData?: StoreCardData | null
+  // Variant support for Flipp deals
+  variant?: 'default' | 'flipp'
+  // Flipp-specific props (only used when variant='flipp')
+  storeSlug?: string
+  storeLogo?: string
+  validTo?: string
+  saleStory?: string | null
 }
 
 /**

@@ -1,13 +1,12 @@
-import { Leaf } from 'lucide-react'
 import Link from 'next/link'
-import { brands, getBrandBySlug, getRelatedBrands, getCategoryBySlug } from '@/lib/brands-data'
 import { Breadcrumbs } from '@/components/breadcrumbs'
 import { CategorySidebar } from '@/components/category-sidebar'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { StatsBar } from '@/components/StatsBar'
 import { DealCard, DealGrid } from '@/components/DealCard'
-import { getDealsByStore } from '@/lib/db'
+import { getStoreBySlug, getDealsByStore, getCanadianBrandSlugs, getRelatedCanadianBrands, getCanadianBrandCategories } from '@/lib/db'
+import { getBrandStory, markdownToHtml } from '@/lib/brand-story'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 
@@ -17,7 +16,7 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const brand = getBrandBySlug(slug)
+  const brand = await getStoreBySlug(slug)
 
   if (!brand) {
     return { title: 'Brand Not Found' }
@@ -25,37 +24,40 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${brand.name} - Canadian Brand`,
-    description: brand.description,
+    description: brand.description || brand.tagline || `Shop ${brand.name} products`,
   }
 }
 
-export function generateStaticParams() {
-  return brands.map((brand) => ({
-    slug: brand.slug,
-  }))
+export async function generateStaticParams() {
+  const slugs = await getCanadianBrandSlugs()
+  return slugs.map((slug) => ({ slug }))
 }
 
 export default async function BrandPage({ params }: Props) {
   const { slug } = await params
-  const brand = getBrandBySlug(slug)
+  const brand = await getStoreBySlug(slug)
 
   if (!brand) {
     notFound()
   }
 
-  const relatedBrands = getRelatedBrands(brand, 6)
-  const categorySlug = brand.category.toLowerCase().replace(/\s+/g, '-')
-  const category = getCategoryBySlug(categorySlug)
+  // Fetch related data in parallel
+  const [relatedBrands, deals, brandStoryMd, brandCategories] = await Promise.all([
+    getRelatedCanadianBrands(brand, 6),
+    getDealsByStore(slug),
+    getBrandStory(slug),
+    getCanadianBrandCategories()
+  ])
 
-  // Fetch deals for this brand
-  let deals: any[] = []
-  try {
-    deals = await getDealsByStore(slug)
-  } catch (error) {
-    deals = []
-  }
   const previewDeals = deals.slice(0, 4)
   const hasMoreDeals = deals.length > 4
+
+  // Get the primary category for breadcrumbs
+  const primaryCategory = brand.top_categories?.[0] || 'Canadian'
+  const categorySlug = primaryCategory.toLowerCase().replace(/\s+/g, '-')
+
+  // Convert brand story markdown to HTML if exists
+  const brandStoryHtml = brandStoryMd ? markdownToHtml(brandStoryMd) : null
 
   return (
     <>
@@ -63,24 +65,24 @@ export default async function BrandPage({ params }: Props) {
       <StatsBar />
       <main className="min-h-screen bg-cream">
         <div className="max-w-7xl mx-auto px-6 py-8">
-          <Breadcrumbs items={[
+          <Breadcrumbs variant="default" items={[
             { label: 'Home', href: '/' },
-            { label: 'Canadian Brands', href: '/canadian' },
-            { label: brand.category, href: `/canadian/category/${categorySlug}` },
+            { label: 'Canadian Brands', href: '/canadian/brands' },
+            { label: primaryCategory, href: `/canadian/category/${categorySlug}` },
             { label: brand.name }
           ]} />
 
           <div className="flex gap-8 mt-8">
-            <CategorySidebar activeCategory={categorySlug} />
+            <CategorySidebar activeCategory={categorySlug} categories={brandCategories} />
 
             <div className="flex-1">
               {/* Brand Hero */}
               <div className="mb-12 bg-white border border-silver-light rounded-card p-8 md:p-12">
                 <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8 mb-8">
                   <div className="w-24 h-24 md:w-32 md:h-32 bg-cream border border-maple-red flex items-center justify-center rounded-card overflow-hidden">
-                    {brand.logo ? (
+                    {brand.logo_url ? (
                       <img
-                        src={brand.logo}
+                        src={brand.logo_url}
                         alt={`${brand.name} logo`}
                         className="w-full h-full object-contain p-2"
                       />
@@ -90,27 +92,38 @@ export default async function BrandPage({ params }: Props) {
                   </div>
                   <div className="flex-1">
                     <div className="inline-block mb-2 px-3 py-1 bg-burgundy text-white text-xs tracking-widest rounded">
-                      CANADIAN {brand.category.toUpperCase()}
+                      CANADIAN {primaryCategory.toUpperCase()}
                     </div>
                     <h1 className="text-3xl md:text-5xl font-bold text-charcoal mb-2">{brand.name}</h1>
                     <p className="text-lg md:text-xl text-slate">
-                      Proudly Canadian
+                      {brand.province ? `Proudly Canadian - ${brand.province}` : 'Proudly Canadian'}
                     </p>
                   </div>
                 </div>
 
                 <p className="text-base md:text-lg text-charcoal leading-relaxed mb-8">
-                  {brand.description}
+                  {brand.description || brand.tagline || `Discover quality products from ${brand.name}`}
                 </p>
 
-                {brand.amazonLink && (
+                {/* Badges */}
+                {brand.badges && brand.badges.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {brand.badges.map((badge, idx) => (
+                      <span key={idx} className="px-3 py-1 bg-ivory text-slate text-sm rounded-full">
+                        {badge}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {brand.affiliate_url && (
                   <a
-                    href={brand.amazonLink}
+                    href={brand.affiliate_url}
                     target="_blank"
                     rel="nofollow noopener noreferrer"
                     className="btn-secondary text-center inline-block"
                   >
-                    {brand.buttonText || 'Shop Now 🛒'}
+                    Shop Now
                   </a>
                 )}
               </div>
@@ -127,7 +140,7 @@ export default async function BrandPage({ params }: Props) {
                         href={`/stores/${slug}`}
                         className="text-maple-red hover:text-burgundy font-semibold transition-colors"
                       >
-                        View All {deals.length} Deals →
+                        View All {deals.length} Deals
                       </Link>
                     )}
                   </div>
@@ -161,77 +174,65 @@ export default async function BrandPage({ params }: Props) {
                 </section>
               )}
 
-              {/* Website Screenshot with Visit Button */}
-              {brand.screenshot && (
-                <div className="mb-12 relative group">
+              {/* Website Link */}
+              {brand.website_url && (
+                <div className="mb-12 p-6 bg-ivory rounded-card border border-silver-light">
+                  <h2 className="text-lg font-bold text-charcoal mb-3">Visit {brand.name}</h2>
                   <a
-                    href={brand.url}
+                    href={brand.affiliate_url || brand.website_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block relative overflow-hidden rounded-card border border-silver-light hover:border-maple-red transition-all"
+                    className="btn-primary inline-block"
                   >
-                    <img
-                      src={brand.screenshot}
-                      alt={`${brand.name} website preview`}
-                      className="w-full h-auto"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform">
-                      <span className="btn-primary inline-block">
-                        Visit {brand.name} →
-                      </span>
-                    </div>
+                    Visit {brand.name} Website
                   </a>
                 </div>
               )}
 
-
               {/* Brand Story (only if available) */}
-              {brand.brandStory && (
+              {brandStoryHtml && (
                 <div className="mb-12 p-8 bg-ivory rounded-card border border-maple-red/30">
                   <h2 className="text-2xl md:text-3xl font-bold text-burgundy mb-6">The {brand.name} Story</h2>
                   <div className="prose max-w-none">
                     <div
                       className="text-charcoal leading-relaxed space-y-4"
-                      dangerouslySetInnerHTML={{ __html: brand.brandStory }}
+                      dangerouslySetInnerHTML={{ __html: brandStoryHtml }}
                     />
                   </div>
                 </div>
               )}
 
-              {/* Affiliate Products Section (only if available) */}
-              {brand.affiliateProducts && brand.affiliateProducts.length > 0 && (
-                <div className="mb-12">
-                  <h2 className="text-2xl md:text-3xl font-bold text-maple-red mb-6">
-                    Popular {brand.name} Products
-                  </h2>
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {brand.affiliateProducts.map((product, idx) => (
-                      <a
-                        key={idx}
-                        href={product.url}
-                        target="_blank"
-                        rel="nofollow noopener noreferrer"
-                        className="group bg-white border border-silver-light rounded-card p-6 hover:border-maple-red transition-all hover:-translate-y-1"
-                      >
-                        {product.image && (
-                          <div className="mb-4 h-48 flex items-center justify-center bg-cream rounded-lg border border-silver-light">
-                            <img
-                              src={product.image}
-                              alt={product.name}
-                              className="max-h-full max-w-full object-contain"
-                            />
-                          </div>
-                        )}
-                        <h3 className="text-lg font-bold text-charcoal mb-2 group-hover:text-maple-red">
-                          {product.name}
-                        </h3>
-                        <span className="block w-full px-4 py-2 bg-maple-red text-white text-sm font-bold text-center hover:bg-burgundy mt-4 rounded-button">
-                          Shop Now →
-                        </span>
-                      </a>
-                    ))}
-                  </div>
+              {/* Store Policies */}
+              {(brand.return_policy || brand.shipping_info || brand.price_match_policy) && (
+                <div className="mb-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {brand.return_policy && (
+                    <div className="p-6 bg-white border border-silver-light rounded-card">
+                      <h3 className="font-bold text-charcoal mb-2">Return Policy</h3>
+                      <p className="text-sm text-slate">{brand.return_policy}</p>
+                    </div>
+                  )}
+                  {brand.shipping_info && (
+                    <div className="p-6 bg-white border border-silver-light rounded-card">
+                      <h3 className="font-bold text-charcoal mb-2">Shipping Info</h3>
+                      <p className="text-sm text-slate">{brand.shipping_info}</p>
+                    </div>
+                  )}
+                  {brand.price_match_policy && (
+                    <div className="p-6 bg-white border border-silver-light rounded-card">
+                      <h3 className="font-bold text-charcoal mb-2">Price Match</h3>
+                      <p className="text-sm text-slate">{brand.price_match_policy}</p>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Loyalty Program */}
+              {brand.loyalty_program_name && (
+                <div className="mb-12 p-6 bg-maple-red/10 border border-maple-red/30 rounded-card">
+                  <h3 className="font-bold text-maple-red mb-2">{brand.loyalty_program_name}</h3>
+                  {brand.loyalty_program_desc && (
+                    <p className="text-sm text-charcoal">{brand.loyalty_program_desc}</p>
+                  )}
                 </div>
               )}
 
@@ -239,7 +240,7 @@ export default async function BrandPage({ params }: Props) {
               {relatedBrands.length > 0 && (
                 <div className="mb-8">
                   <h2 className="text-2xl md:text-3xl font-bold text-maple-red mb-6">
-                    More Canadian {brand.category} Brands:
+                    More Canadian {primaryCategory} Brands:
                   </h2>
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {relatedBrands.map((relatedBrand) => (
@@ -249,9 +250,9 @@ export default async function BrandPage({ params }: Props) {
                         className="group bg-white border border-silver-light rounded-card p-6 hover:border-maple-red transition-all hover:-translate-y-1"
                       >
                         <div className="mb-4 h-20 flex items-center justify-center">
-                          {relatedBrand.logo ? (
+                          {relatedBrand.logo_url ? (
                             <img
-                              src={relatedBrand.logo}
+                              src={relatedBrand.logo_url}
                               alt={`${relatedBrand.name} logo`}
                               className="max-h-full max-w-full object-contain"
                             />
@@ -263,7 +264,7 @@ export default async function BrandPage({ params }: Props) {
                           {relatedBrand.name}
                         </h3>
                         <p className="text-sm text-slate line-clamp-2">
-                          {relatedBrand.description}
+                          {relatedBrand.description || relatedBrand.tagline}
                         </p>
                       </Link>
                     ))}
@@ -277,13 +278,13 @@ export default async function BrandPage({ params }: Props) {
                   href={`/canadian/category/${categorySlug}`}
                   className="btn-secondary"
                 >
-                  ← Back to {brand.category} Brands
+                  Back to {primaryCategory} Brands
                 </Link>
                 <Link
                   href="/canadian/categories"
                   className="btn-secondary"
                 >
-                  ← View All Categories
+                  View All Categories
                 </Link>
               </div>
             </div>

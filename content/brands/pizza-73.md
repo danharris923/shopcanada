@@ -1,0 +1,7 @@
+---
+title: "Pizza 73"
+slug: "pizza-73"
+category: "Restaurant"
+---
+
+About UsOur StoryOur FoodOur GuaranteeOur LocationsMenuFor YouNews & OpportunitiesLegalOur Story The year was 1985. It was a magical time when hair defied gravity, neon spandex defied explanation, and pizza came in one of two choices: tasty or cheap, but that would soon change. In September, we swung our door open for the first time and introduced Albertans to our dream of delivering great value on top-notch food.Our unique melange of palate-pleasing pizzas at pocketbook-protecting prices caught on fast. Almost overnight – give or take 24 months – 17 new Pizza 73 outlets popped up in Edmonton and Calgary. Today there are over 85 Pizza 73 stores across Western Canada with more opening soon. Each delivering on our promise to serve up a “Better meal. Better deal.” every time. Headquartered at 13703 164 Street NW in Edmonton, Pizza 73 continues to be a leader in technology, personnel, and food products. We were the first Alberta pizza company with a Central Call Centre, which means that in every region we feed, one telephone number connects you to our operators, who then pass your order on to your neighbourhood Pizza 73. That’s why our meals make it to your door so fast, hot, and delicious.

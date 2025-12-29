@@ -1,0 +1,7 @@
+---
+title: "Rogers"
+slug: "rogers"
+category: "Telecom"
+---
+
+Video Player is loading.Current Time 0:00/Duration 0:42Loaded: 93.24%0:00Stream Type LIVERemaining Time -0:42 Canada's communications & entertainment company. Connecting Canadians for 65 years. Since 1960, we’ve been there. From innovative firsts to the best sports and entertainment. Read more Our businesses From cable and wireless services, to news, sports and entertainment, and our award-winning credit card, we reach Canadians from coast-to-coast. Read more Our story Ted Rogers started our company with one small loan and one big dream. From there we’ve grown to become Canada’s communications and entertainment company. Read more Our commitment Connecting and entertaining Canadians is what we do. Whether you’re streaming the final minute of the final game or connecting with someone you love, we do our thing so you can do yours. Read more Our investments We reinvest 90% of our profits back into Canada every year. Read more Our impact As a proud Canadian company, we’re deeply committed to making our communities and our country stronger. Read more Our news Learn more about what we’ve been up to. Find all of our latest updates here. Read more Beyond Proud. The Toronto Blue Jays had an unforgettable season that captured the hearts of fans across the country. As the owner of Canada’s team, we’re beyond proud. Thank you, Blue Jays. Video Player is loading.Current Time 0:00/Duration 0:30Loaded: 32.76%0:00Stream Type LIVERemaining Time -0:30

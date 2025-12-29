@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { getAllStoresAdmin, updateStoreAffiliateUrl, addStore, checkStoreSlugExists } from '@/lib/db'
+import { getAllStoresAdmin, updateStoreUrls, addStore, checkStoreSlugExists } from '@/lib/db'
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'shopcanada2024'
 
@@ -19,20 +19,20 @@ export async function GET() {
   }
 }
 
-// PUT - update store affiliate URL
+// PUT - update store URLs
 export async function PUT(request: Request) {
   if (!checkAuth(request)) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
   try {
-    const { id, affiliate_url } = await request.json()
+    const { id, website_url, affiliate_url } = await request.json()
 
     if (!id) {
       return NextResponse.json({ error: 'Store ID required' }, { status: 400 })
     }
 
-    const success = await updateStoreAffiliateUrl(id, affiliate_url)
+    const success = await updateStoreUrls(id, website_url || null, affiliate_url || null)
     if (!success) {
       return NextResponse.json({ error: 'Failed to update store' }, { status: 500 })
     }
@@ -51,7 +51,7 @@ export async function POST(request: Request) {
   }
 
   try {
-    const { name, slug, affiliate_url } = await request.json()
+    const { name, slug, website_url, affiliate_url } = await request.json()
 
     if (!name || !slug) {
       return NextResponse.json({ error: 'Name and slug required' }, { status: 400 })
@@ -63,7 +63,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Store with this slug already exists' }, { status: 409 })
     }
 
-    const success = await addStore(name, slug, affiliate_url || null)
+    const success = await addStore(name, slug, website_url || null, affiliate_url || null)
     if (!success) {
       return NextResponse.json({ error: 'Failed to add store' }, { status: 500 })
     }

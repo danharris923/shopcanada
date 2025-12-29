@@ -1,12 +1,10 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { searchDeals } from '@/lib/db'
+import { searchDeals, getCanadianBrands } from '@/lib/db'
 import { searchFlippDeals } from '@/lib/flipp'
-import { brands } from '@/lib/brands-data'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
-import { DealCard, DealGrid } from '@/components/DealCard'
-import { FlippDealCard, FlippDealGrid } from '@/components/FlippDealCard'
+import { DealCard, DealGrid, FlippDealGrid } from '@/components/DealCard'
 import { StatsBar } from '@/components/StatsBar'
 
 export const revalidate = 0 // Don't cache search results
@@ -35,9 +33,10 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   // Search Flipp deals
   const flippDeals = hasQuery ? await searchFlippDeals(query, 20) : []
 
-  // Search Canadian brands
+  // Search Canadian brands from database
+  const allBrands = hasQuery ? await getCanadianBrands() : []
   const matchingBrands = hasQuery
-    ? brands.filter(
+    ? allBrands.filter(
         b =>
           b.name.toLowerCase().includes(query.toLowerCase()) ||
           b.slug.toLowerCase().includes(query.toLowerCase()) ||
@@ -90,9 +89,9 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                           href={`/canadian/brand/${brand.slug}`}
                           className="bg-card-bg border border-card-border rounded-card p-4 shadow-card hover:shadow-card-hover hover:border-maple-red transition-all text-center group"
                         >
-                          {brand.logo ? (
+                          {brand.logo_url ? (
                             <img
-                              src={brand.logo}
+                              src={brand.logo_url}
                               alt={brand.name}
                               className="w-12 h-12 mx-auto mb-2 object-contain rounded"
                             />
@@ -144,7 +143,23 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                     </h2>
                     <FlippDealGrid>
                       {flippDeals.map(deal => (
-                        <FlippDealCard key={deal.id} deal={deal} />
+                        <DealCard
+                          key={deal.id}
+                          id={deal.id}
+                          title={deal.title}
+                          slug={deal.slug}
+                          imageUrl={deal.imageUrl}
+                          price={deal.price}
+                          originalPrice={deal.originalPrice}
+                          discountPercent={deal.discountPercent}
+                          store={deal.store}
+                          affiliateUrl=""
+                          variant="flipp"
+                          storeSlug={deal.storeSlug}
+                          storeLogo={deal.storeLogo}
+                          validTo={deal.validTo}
+                          saleStory={deal.saleStory}
+                        />
                       ))}
                     </FlippDealGrid>
                   </div>

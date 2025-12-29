@@ -1,25 +1,27 @@
-import { Leaf } from 'lucide-react'
 import Link from 'next/link'
-import { brands, categories } from '@/lib/brands-data'
+import { getCanadianBrands } from '@/lib/db'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { StatsBar } from '@/components/StatsBar'
-import { Breadcrumbs } from '@/components/deal/Breadcrumbs'
+import { Breadcrumbs } from '@/components/breadcrumbs'
 import type { Metadata } from 'next'
+import type { Store } from '@/types/deal'
 
 export const metadata: Metadata = {
   title: 'All Canadian Brands',
   description: 'Browse our complete directory of Canadian brands. Support local businesses and discover quality Canadian-made products.',
 }
 
-export default function AllBrandsPage() {
+export default async function AllBrandsPage() {
+  const brands = await getCanadianBrands()
+
   // Group brands by first letter
   const brandsByLetter = brands.reduce((acc, brand) => {
     const letter = brand.name.charAt(0).toUpperCase()
     if (!acc[letter]) acc[letter] = []
     acc[letter].push(brand)
     return acc
-  }, {} as Record<string, typeof brands>)
+  }, {} as Record<string, Store[]>)
 
   const letters = Object.keys(brandsByLetter).sort()
 
@@ -81,28 +83,30 @@ export default function AllBrandsPage() {
                       className="bg-white border border-silver-light hover:border-maple-red transition-all p-4 rounded-card"
                     >
                       <div className="flex items-start gap-3 mb-2">
-                        {brand.logo ? (
+                        {brand.logo_url ? (
                           <img
-                            src={brand.logo}
+                            src={brand.logo_url}
                             alt={`${brand.name} logo`}
                             className="w-10 h-10 rounded object-contain bg-cream flex-shrink-0"
                           />
                         ) : (
                           <div className="w-10 h-10 rounded bg-cream flex items-center justify-center flex-shrink-0 text-xl">
-                            
+
                           </div>
                         )}
                         <div className="flex-1 min-w-0">
                           <h3 className="text-lg font-bold text-charcoal truncate">
                             {brand.name}
                           </h3>
-                          <span className="text-xs bg-ivory text-slate px-2 py-0.5 inline-block rounded">
-                            {brand.category}
-                          </span>
+                          {brand.top_categories && brand.top_categories.length > 0 && (
+                            <span className="text-xs bg-ivory text-slate px-2 py-0.5 inline-block rounded">
+                              {brand.top_categories[0]}
+                            </span>
+                          )}
                         </div>
                       </div>
                       <p className="text-sm text-slate mb-4 line-clamp-2">
-                        {brand.description}
+                        {brand.description || brand.tagline || `Discover ${brand.name} products`}
                       </p>
                       <div className="flex gap-2">
                         <Link
@@ -111,9 +115,9 @@ export default function AllBrandsPage() {
                         >
                           Read More
                         </Link>
-                        {brand.amazonLink && (
+                        {brand.affiliate_url && (
                           <a
-                            href={brand.amazonLink}
+                            href={brand.affiliate_url}
                             target="_blank"
                             rel="nofollow noopener noreferrer"
                             className="flex-1 text-center border border-maple-red text-maple-red hover:bg-maple-red hover:text-white font-bold py-2 px-3 text-sm transition-colors rounded-button"

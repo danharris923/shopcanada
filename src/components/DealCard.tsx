@@ -1,13 +1,17 @@
 'use client'
 
-import { Leaf, ExternalLink, RotateCcw, Truck, Crown, Scale } from 'lucide-react'
+import { Leaf, ExternalLink, RotateCcw, Truck } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { DealCardProps } from '@/types/deal'
 import { toNumber, formatPrice, calculateSavings } from '@/lib/price-utils'
-import { getStoreLogo, generateLogoUrl } from '@/lib/store-logos'
-import { getBrandBySlug } from '@/lib/brands-data'
-import { getStoreInfo } from '@/lib/store-info'
+import { getReturnDays, getShipThreshold } from '@/lib/utils/policy-parser'
+import { getRandomTag } from '@/lib/utils/deal-utils'
+import { getAffiliateSearchUrl } from '@/lib/affiliates'
+
+// Helper to generate fallback logo URL using Google favicons
+const generateLogoUrl = (domain: string) =>
+  `https://www.google.com/s2/favicons?domain=${domain}&sz=128`
 
 export function DealCard({
   id,
@@ -22,59 +26,45 @@ export function DealCard({
   featured,
   isCanadian,
   directAffiliate = false,
+  // Store data from database (passed from server component)
+  storeData,
+  // Flipp-specific props
+  variant = 'default',
+  storeSlug: propStoreSlug,
+  storeLogo: propStoreLogo,
+  validTo,
+  saleStory,
 }: DealCardProps) {
+  const isFlipp = variant === 'flipp'
+
   const priceNum = toNumber(price)
   const originalPriceNum = toNumber(originalPrice)
   const savings = calculateSavings(originalPrice, price)
 
-  // Get store info from brand data
-  const storeSlug = store?.toLowerCase().replace(/\s+/g, '-') || ''
-  const storeLogoInfo = getStoreLogo(storeSlug)
-  const brand = getBrandBySlug(storeSlug)
-  const storeLogo = storeLogoInfo?.logo || brand?.logo || generateLogoUrl(storeSlug.replace(/-/g, '') + '.ca')
-  const storeName = storeLogoInfo?.name || brand?.name || store
+  // Determine store slug - use prop for Flipp, derive from storeData, or from store name
+  const storeSlug = propStoreSlug || storeData?.slug || store?.toLowerCase().replace(/\s+/g, '-') || ''
 
-  // Get store policies for SEO badges
-  const storeData = getStoreInfo(storeSlug)
+  // Determine store logo - use prop for Flipp, then database data, then fallback to generated URL
+  const storeLogo = propStoreLogo || storeData?.logo_url || generateLogoUrl(storeSlug.replace(/-/g, '') + '.ca')
+  const storeName = storeData?.name || store
 
-  // Parse return days from policy text
-  const getReturnDays = (policy: string): string | null => {
-    const match = policy.match(/(\d+)\s*day/i)
-    return match ? `${match[1]}-day returns` : null
-  }
+  // Store policy data for SEO badges (from storeData prop)
+  const hasReturnPolicy = storeData?.return_policy
+  const hasShippingInfo = storeData?.shipping_info
 
-  // Parse free shipping threshold
-  const getShipThreshold = (shipping: string): string | null => {
-    const match = shipping.match(/\$(\d+)/i)
-    if (shipping.toLowerCase().includes('free') && match) {
-      return `Free ship $${match[1]}+`
-    }
-    return null
-  }
+  // For Flipp variant, check for affiliate URL
+  const flippAffiliateUrl = isFlipp ? getAffiliateSearchUrl(storeSlug, title) : null
+  const effectiveAffiliateUrl = affiliateUrl || flippAffiliateUrl || ''
 
-  // Random highlight tags for affiliated deals only
-  const highlightTags = [
-    { text: 'HOT DEAL', color: 'bg-red-600' },
-    { text: 'BEST PRICE', color: 'bg-orange-600' },
-    { text: 'LIMITED TIME', color: 'bg-purple-600' },
-    { text: 'TRENDING', color: 'bg-pink-600' },
-    { text: 'POPULAR', color: 'bg-blue-600' },
-    { text: 'FLASH SALE', color: 'bg-green-600' },
-    { text: 'EXCLUSIVE', color: 'bg-indigo-600' },
-    { text: 'TOP PICK', color: 'bg-yellow-600' },
-  ]
-
-  // Generate consistent random tag based on deal ID
-  const getRandomTag = (dealId: string) => {
-    const hash = dealId.split('').reduce((a, b) => {
-      a = ((a << 5) - a) + b.charCodeAt(0)
-      return a & a
-    }, 0)
-    return highlightTags[Math.abs(hash) % highlightTags.length]
-  }
-
-  const shouldShowHighlight = affiliateUrl && !directAffiliate
+  const shouldShowHighlight = effectiveAffiliateUrl && !directAffiliate
   const randomTag = shouldShowHighlight ? getRandomTag(id) : null
+
+  // For Flipp: show FLYER badge when no random tag
+  const showFlyerBadge = isFlipp && !randomTag
+
+  // Flipp-specific: check if we have price data
+  const hasPriceData = priceNum !== null && priceNum > 0
+  const hasDiscount = discountPercent !== null && discountPercent > 0
 
   // Function to handle Read more click
   const handleReadMoreClick = (e: React.MouseEvent) => {
@@ -88,14 +78,14 @@ export function DealCard({
       {/* Image Container */}
       <div className="relative aspect-square bg-cream">
         {/* Discount Badge */}
-        {discountPercent && discountPercent > 0 && (
+        {hasDiscount && (
           <div className="discount-badge">
             -{discountPercent}%
           </div>
         )}
 
         {/* Highlight Badge - Only show for affiliate deals with random tags */}
-        {randomTag && (
+        {randomTag ? (
           <div className="absolute top-2 left-2 z-10">
             <span className={`
               ${randomTag.color} text-white
@@ -107,10 +97,21 @@ export function DealCard({
               {randomTag.text}
             </span>
           </div>
-        )}
+        ) : showFlyerBadge ? (
+          <div className="absolute top-2 left-2 z-10">
+            <span className="
+              bg-orange-600 text-white
+              px-2 py-1 rounded-lg
+              font-bold text-xs
+              shadow-md
+            ">
+              FLYER
+            </span>
+          </div>
+        ) : null}
 
         {/* Direct Affiliate Badge */}
-        {directAffiliate && (
+        {directAffiliate && effectiveAffiliateUrl && (
           <div className="absolute top-2 right-2 z-10">
             <span className="
               bg-maple-red text-white
@@ -124,8 +125,8 @@ export function DealCard({
           </div>
         )}
 
-        {/* Canadian Badge */}
-        {isCanadian && (
+        {/* Canadian Badge (only for regular variant) */}
+        {!isFlipp && isCanadian && (
           <div className="absolute bottom-2 left-2 z-10">
             <span className="
               bg-white text-maple-red
@@ -147,26 +148,49 @@ export function DealCard({
           fill
           className="object-contain p-4 group-hover:scale-105 transition-transform duration-200"
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          unoptimized={isFlipp}
         />
       </div>
 
       {/* Content */}
       <div className="p-4">
-        {/* Store with Logo - only show if we have a store */}
+        {/* Store with Logo */}
         {store && storeName && (
-          <div className="flex items-center gap-1.5 mb-1">
-            {storeLogo && (
-              <img
-                src={storeLogo}
-                alt=""
-                className="w-4 h-4 rounded-sm object-contain"
-                onError={(e) => { e.currentTarget.style.display = 'none' }}
-              />
-            )}
-            <span className="deal-card-store uppercase tracking-wide">
-              {storeName}
-            </span>
-          </div>
+          isFlipp ? (
+            // Flipp variant: clickable store link
+            <Link
+              href={`/stores/${storeSlug}`}
+              onClick={(e) => e.stopPropagation()}
+              className="flex items-center gap-1.5 mb-1 hover:text-maple-red transition-colors"
+            >
+              {storeLogo && (
+                <img
+                  src={storeLogo}
+                  alt=""
+                  className="w-4 h-4 rounded-sm object-contain"
+                  onError={(e) => { e.currentTarget.style.display = 'none' }}
+                />
+              )}
+              <span className="deal-card-store uppercase tracking-wide">
+                {storeName}
+              </span>
+            </Link>
+          ) : (
+            // Regular variant: non-clickable store display
+            <div className="flex items-center gap-1.5 mb-1">
+              {storeLogo && (
+                <img
+                  src={storeLogo}
+                  alt=""
+                  className="w-4 h-4 rounded-sm object-contain"
+                  onError={(e) => { e.currentTarget.style.display = 'none' }}
+                />
+              )}
+              <span className="deal-card-store uppercase tracking-wide">
+                {storeName}
+              </span>
+            </div>
+          )
         )}
 
         {/* Title */}
@@ -174,75 +198,98 @@ export function DealCard({
           {title}
         </h3>
 
-        {/* Price */}
-        {priceNum !== null && (
+        {/* Price - different logic for Flipp variant */}
+        {isFlipp ? (
           <div className="flex items-baseline gap-2 mb-3">
-            <span className="deal-card-price">
-              ${formatPrice(priceNum)}
-            </span>
-            {originalPriceNum !== null && (
-              <span className="deal-card-original-price">
-                ${formatPrice(originalPriceNum)}
+            {hasPriceData ? (
+              <>
+                <span className="deal-card-price">
+                  ${priceNum?.toFixed(2)}
+                </span>
+                {originalPriceNum !== null && originalPriceNum > (priceNum || 0) && (
+                  <span className="deal-card-original-price">
+                    ${originalPriceNum.toFixed(2)}
+                  </span>
+                )}
+              </>
+            ) : saleStory ? (
+              <span className="text-lg font-semibold text-maple-red">
+                {saleStory}
+              </span>
+            ) : (
+              <span className="text-lg font-semibold text-charcoal">
+                Check Flyer
               </span>
             )}
           </div>
+        ) : (
+          // Regular variant price display
+          priceNum !== null && (
+            <div className="flex items-baseline gap-2 mb-3">
+              <span className="deal-card-price">
+                ${formatPrice(priceNum)}
+              </span>
+              {originalPriceNum !== null && (
+                <span className="deal-card-original-price">
+                  ${formatPrice(originalPriceNum)}
+                </span>
+              )}
+            </div>
+          )
         )}
 
-        {/* Savings */}
-        {savings && (
+        {/* Savings (only for regular variant) */}
+        {!isFlipp && savings && (
           <div className="text-sm text-maple-red font-semibold mb-2">
             Save ${savings}
           </div>
         )}
 
-        {/* Store Info Badges - Real SEO data */}
-        {storeData && (
+        {/* Valid dates (only for Flipp variant) */}
+        {isFlipp && validTo && (
+          <div className="text-sm text-meta mb-2">
+            Valid until {new Date(validTo).toLocaleDateString()}
+          </div>
+        )}
+
+        {/* Store Info Badges - from database */}
+        {storeData && (hasReturnPolicy || hasShippingInfo) && (
           <div className="flex flex-wrap gap-1 mb-3">
-            {storeData.returnPolicy && getReturnDays(storeData.returnPolicy) && (
+            {storeData.return_policy && getReturnDays(storeData.return_policy) && (
               <span className="inline-flex items-center gap-0.5 text-[10px] text-charcoal bg-cream px-1.5 py-0.5 rounded">
                 <RotateCcw size={10} className="text-maple-red" />
-                {getReturnDays(storeData.returnPolicy)}
+                {getReturnDays(storeData.return_policy)}
               </span>
             )}
-            {storeData.loyaltyProgram && (
-              <span className="inline-flex items-center gap-0.5 text-[10px] text-charcoal bg-cream px-1.5 py-0.5 rounded">
-                <Crown size={10} className="text-maple-red" />
-                {storeData.loyaltyProgram.name}
-              </span>
-            )}
-            {storeData.shippingInfo && getShipThreshold(storeData.shippingInfo) && (
+            {storeData.shipping_info && getShipThreshold(storeData.shipping_info) && (
               <span className="inline-flex items-center gap-0.5 text-[10px] text-charcoal bg-cream px-1.5 py-0.5 rounded">
                 <Truck size={10} className="text-maple-red" />
-                {getShipThreshold(storeData.shippingInfo)}
-              </span>
-            )}
-            {storeData.priceMatch && (
-              <span className="inline-flex items-center gap-0.5 text-[10px] text-charcoal bg-cream px-1.5 py-0.5 rounded">
-                <Scale size={10} className="text-maple-red" />
-                Price Match
+                {getShipThreshold(storeData.shipping_info)}
               </span>
             )}
           </div>
         )}
 
-        {/* Read More button */}
-        <div className="mt-2">
-          <button
-            onClick={handleReadMoreClick}
-            className="inline-block px-4 py-2 bg-white border border-charcoal text-charcoal text-sm font-medium rounded-lg hover:shadow-md transition-shadow"
-          >
-            Read More
-          </button>
-        </div>
+        {/* Read More button (only for regular variant) */}
+        {!isFlipp && (
+          <div className="mt-2">
+            <button
+              onClick={handleReadMoreClick}
+              className="inline-block px-4 py-2 bg-white border border-charcoal text-charcoal text-sm font-medium rounded-lg hover:shadow-md transition-shadow"
+            >
+              Read More
+            </button>
+          </div>
+        )}
       </div>
     </>
   )
 
   // Always go direct to retailer if affiliateUrl exists
-  if (affiliateUrl) {
+  if (effectiveAffiliateUrl) {
     return (
       <a
-        href={affiliateUrl}
+        href={effectiveAffiliateUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="deal-card group block cursor-pointer hover:no-underline"
@@ -252,7 +299,16 @@ export function DealCard({
     )
   }
 
-  // Fallback - navigate to deal page if no affiliate URL
+  // For Flipp with no affiliate: display without link
+  if (isFlipp) {
+    return (
+      <div className="deal-card group block">
+        {cardContent}
+      </div>
+    )
+  }
+
+  // Fallback - navigate to deal page if no affiliate URL (regular variant)
   return (
     <Link
       href={`/deals/${slug}`}
@@ -271,3 +327,6 @@ export function DealGrid({ children }: { children: React.ReactNode }) {
     </div>
   )
 }
+
+// Alias for FlippDealGrid - same as DealGrid for backward compatibility
+export const FlippDealGrid = DealGrid

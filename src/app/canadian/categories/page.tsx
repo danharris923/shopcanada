@@ -1,16 +1,51 @@
 import Link from 'next/link'
-import { categories } from '@/lib/brands-data'
+import { getCanadianBrandCategories } from '@/lib/db'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { StatsBar } from '@/components/StatsBar'
-import { Breadcrumbs } from '@/components/deal/Breadcrumbs'
+import { Breadcrumbs } from '@/components/breadcrumbs'
 import type { Metadata } from 'next'
 import * as LucideIcons from 'lucide-react'
+
+// Map category names to Lucide icon names
+const categoryIconMap: Record<string, string> = {
+  'Clothing': 'Shirt',
+  'Beauty': 'Sparkles',
+  'Jewellery': 'Gem',
+  'Jewelry': 'Gem',
+  'Accessories': 'Watch',
+  'Electronics': 'Laptop',
+  'Home': 'Home',
+  'Home & Garden': 'Home',
+  'Sports': 'Dumbbell',
+  'Sports & Outdoors': 'Dumbbell',
+  'Food': 'UtensilsCrossed',
+  'Food & Beverage': 'UtensilsCrossed',
+  'Restaurant': 'UtensilsCrossed',
+  'Health': 'Heart',
+  'Health & Wellness': 'Heart',
+  'Pets': 'Cat',
+  'Pet': 'Cat',
+  'Toys': 'Gamepad2',
+  'Books': 'BookOpen',
+  'Office': 'Briefcase',
+  'Automotive': 'Car',
+  'Grocery': 'ShoppingCart',
+  'Department Store': 'Store',
+  'Fashion': 'Shirt',
+  'Outdoor': 'Mountain',
+  'Travel': 'Plane',
+  'Telecom': 'Phone',
+  'Indigenous': 'Feather',
+  'Baby': 'Baby',
+  'Kids': 'Baby',
+}
 
 // Dynamic icon component that renders Lucide icons by name
 function CategoryIcon({ name, className }: { name: string; className?: string }) {
   const icons = LucideIcons as unknown as Record<string, React.ComponentType<{ className?: string; size?: number }>>
-  const Icon = icons[name] || LucideIcons.Leaf
+  const iconName = categoryIconMap[name] || 'Leaf'
+  const Icon = icons[iconName] || LucideIcons.Leaf
   return <Icon className={className} size={32} />
 }
 
@@ -19,7 +54,9 @@ export const metadata: Metadata = {
   description: 'Browse Canadian brands by category. From fashion to food, discover quality Canadian-made products.',
 }
 
-export default function CategoriesPage() {
+export default async function CategoriesPage() {
+  const categories = await getCanadianBrandCategories()
+
   return (
     <>
       <Header />
@@ -57,20 +94,20 @@ export default function CategoriesPage() {
                   className="group bg-card-bg border border-card-border shadow-card hover:shadow-card-hover hover:border-maple-red hover:-translate-y-1 transition-all p-6 rounded-card"
                 >
                   <div className="mb-4">
-                    <CategoryIcon name={category.icon} className="text-maple-red" />
+                    <CategoryIcon name={category.name} className="text-maple-red" />
                   </div>
                   <h2 className="text-2xl font-bold text-charcoal mb-2 group-hover:text-maple-red transition-colors">
                     {category.name}
                   </h2>
                   <p className="text-slate text-sm mb-4">
-                    {category.seoBlurb || `Explore Canadian ${category.name.toLowerCase()} brands`}
+                    Explore Canadian {category.name.toLowerCase()} brands
                   </p>
                   <div className="flex items-center justify-between">
                     <span className="text-maple-red font-bold">
-                      {category.brandCount} brands
+                      {category.count} brands
                     </span>
                     <span className="text-maple-red group-hover:text-burgundy transition-colors">
-                      Browse →
+                      Browse
                     </span>
                   </div>
                 </Link>

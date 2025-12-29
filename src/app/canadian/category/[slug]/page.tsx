@@ -1,10 +1,9 @@
-import { Leaf } from 'lucide-react'
 import Link from 'next/link'
-import { brands, categories, getCategoryBySlug } from '@/lib/brands-data'
+import { getCanadianBrandsByCategory, getCanadianBrandCategories } from '@/lib/db'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { StatsBar } from '@/components/StatsBar'
-import { Breadcrumbs } from '@/components/deal/Breadcrumbs'
+import { Breadcrumbs } from '@/components/breadcrumbs'
 import { CategoryIcon } from '@/components/CategoryIcon'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
@@ -15,19 +14,20 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const category = getCategoryBySlug(slug)
-
-  if (!category) {
-    return { title: 'Category Not Found' }
-  }
+  // Convert slug back to category name (e.g., 'home-garden' -> 'Home Garden')
+  const categoryName = slug
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ')
 
   return {
-    title: `${category.name} - Canadian Brands`,
-    description: category.seoBlurb || `Browse Canadian ${category.name.toLowerCase()} brands. Support local businesses.`,
+    title: `${categoryName} - Canadian Brands`,
+    description: `Browse Canadian ${categoryName.toLowerCase()} brands. Support local businesses.`,
   }
 }
 
 export async function generateStaticParams() {
+  const categories = await getCanadianBrandCategories()
   return categories.map((category) => ({
     slug: category.slug,
   }))
@@ -35,15 +35,19 @@ export async function generateStaticParams() {
 
 export default async function CategoryPage({ params }: Props) {
   const { slug } = await params
-  const category = getCategoryBySlug(slug)
 
-  if (!category) {
+  // Convert slug to category name for querying
+  const categoryName = slug
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ')
+
+  const categoryBrands = await getCanadianBrandsByCategory(categoryName)
+
+  // If no brands found, try with original case variations
+  if (categoryBrands.length === 0) {
     notFound()
   }
-
-  const categoryBrands = brands.filter(
-    brand => brand.category.toLowerCase() === category.name.toLowerCase()
-  )
 
   return (
     <>
@@ -56,7 +60,7 @@ export default async function CategoryPage({ params }: Props) {
             { label: 'Home', href: '/' },
             { label: 'Stores', href: '/stores' },
             { label: 'Categories', href: '/canadian/categories' },
-            { label: category.name, href: `/canadian/category/${slug}` },
+            { label: categoryName, href: `/canadian/category/${slug}` },
           ]} />
         </div>
 
@@ -66,20 +70,20 @@ export default async function CategoryPage({ params }: Props) {
             <source media="(min-width: 768px)" srcSet="/hero-desktop.png" />
             <img
               src="/hero-mobile.png"
-              alt={`Canadian ${category.name} Brands`}
+              alt={`Canadian ${categoryName} Brands`}
               className="w-full h-auto"
             />
           </picture>
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-full max-w-7xl mx-auto px-4 flex flex-col items-end">
               <div className="flex items-center gap-3 mb-2">
-                <CategoryIcon category={category.name} size={48} className="text-white drop-shadow" />
+                <CategoryIcon category={categoryName} size={48} className="text-white drop-shadow" />
                 <h1 className="text-3xl md:text-5xl font-bold text-white drop-shadow-lg text-right">
-                  {category.name}
+                  {categoryName}
                 </h1>
               </div>
               <p className="text-white/90 text-sm md:text-lg drop-shadow text-right max-w-xl">
-                {category.seoBlurb || `Discover quality Canadian ${category.name.toLowerCase()} brands.`}
+                Discover quality Canadian {categoryName.toLowerCase()} brands.
               </p>
               <p className="text-white font-bold mt-2 drop-shadow text-right">
                 {categoryBrands.length} Canadian brands
@@ -98,15 +102,15 @@ export default async function CategoryPage({ params }: Props) {
                   className="bg-white border border-silver-light hover:border-maple-red transition-all p-6 rounded-card"
                 >
                   <div className="flex items-center gap-3 mb-3">
-                    {brand.logo ? (
+                    {brand.logo_url ? (
                       <img
-                        src={brand.logo}
+                        src={brand.logo_url}
                         alt={`${brand.name} logo`}
                         className="w-12 h-12 rounded object-contain bg-cream flex-shrink-0"
                       />
                     ) : (
                       <div className="w-12 h-12 rounded bg-cream flex items-center justify-center flex-shrink-0 text-2xl">
-                        
+
                       </div>
                     )}
                     <h3 className="text-xl font-bold text-charcoal">
@@ -114,7 +118,7 @@ export default async function CategoryPage({ params }: Props) {
                     </h3>
                   </div>
                   <p className="text-slate text-sm mb-4 line-clamp-3">
-                    {brand.description}
+                    {brand.description || brand.tagline || `Discover ${brand.name} products`}
                   </p>
                   <div className="flex flex-col gap-2">
                     <Link
@@ -123,14 +127,14 @@ export default async function CategoryPage({ params }: Props) {
                     >
                       READ MORE
                     </Link>
-                    {brand.amazonLink && (
+                    {brand.affiliate_url && (
                       <a
-                        href={brand.amazonLink}
+                        href={brand.affiliate_url}
                         target="_blank"
                         rel="nofollow noopener noreferrer"
                         className="text-center border border-maple-red text-maple-red hover:bg-maple-red hover:text-white font-bold py-3 px-4 transition-colors rounded-button"
                       >
-                        {brand.buttonText?.toUpperCase() || 'SHOP NOW'}
+                        SHOP NOW
                       </a>
                     )}
                   </div>
@@ -142,7 +146,7 @@ export default async function CategoryPage({ params }: Props) {
               <div className="text-center py-12">
                 <p className="text-slate text-lg">No brands found in this category yet.</p>
                 <Link href="/canadian/brands" className="text-maple-red hover:text-burgundy font-bold mt-4 inline-block">
-                  Browse All Brands →
+                  Browse All Brands
                 </Link>
               </div>
             )}

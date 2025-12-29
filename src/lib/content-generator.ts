@@ -7,7 +7,6 @@
 
 import { Deal, ContentContext } from '@/types/deal'
 import { toNumber, formatPrice, calculateSavings } from '@/lib/price-utils'
-import { getStoreInfo } from '@/lib/store-info'
 
 // =============================================================================
 // DESCRIPTION TEMPLATES (8 variations per category)
@@ -100,37 +99,6 @@ const URGENCY_PHRASES = [
   '',
 ]
 
-// =============================================================================
-// STORE DESCRIPTIONS
-// =============================================================================
-
-const STORE_DESCRIPTIONS: Record<string, string> = {
-  'amazon': 'Amazon.ca offers fast Prime shipping across Canada with easy returns. Free shipping on orders over $35 for Prime members. Canada\'s largest online retailer with millions of products.',
-  'walmart': 'Walmart Canada provides everyday low prices with free shipping on orders over $35. Price match guarantee and convenient store pickup available at 400+ locations across Canada.',
-  'costco': 'Costco Canada is known for bulk savings and quality products for members. Warehouse prices on groceries, electronics, and household items. Membership includes exclusive deals.',
-  'best-buy': 'Best Buy Canada is your destination for electronics with price matching. Free shipping on orders over $35. Expert advice and Geek Squad support available in-store.',
-  'canadian-tire': 'Canadian Tire offers a wide selection of automotive, sports, and home products. Triangle Rewards program for cashback. Free in-store pickup available at 500+ locations.',
-  'home-depot': 'Home Depot Canada is the go-to for home improvement and building materials. Free delivery on orders over $45. Pro services and tool rental available.',
-  'shoppers': 'Shoppers Drug Mart offers health, beauty, and convenience products with PC Optimum points. 20x points events for maximum savings. Pharmacy services available.',
-  'loblaws': 'Loblaws is one of Canada\'s largest grocery chains with PC Optimum rewards. Fresh produce, bakery, and deli. Online grocery pickup and delivery available.',
-  'no-frills': 'No Frills offers no-name brand savings with PC Optimum points. Budget-friendly grocery shopping. Flashfood app deals on expiring items.',
-  'metro': 'Metro is a leading Canadian grocery chain with weekly flyer deals. Fresh food, quality products, and convenient locations. Online ordering available.',
-  'sobeys': 'Sobeys offers quality groceries with Scene+ rewards points. Local and organic products. Voila delivery service in select areas.',
-  'lululemon': 'Lululemon offers premium athletic wear designed in Vancouver. Free shipping on orders over $75. Free returns and exchanges. Quality guarantee on all products.',
-  'gap': 'Gap Canada offers casual American style for the whole family. Free shipping on orders over $50. GapCash and rewards program available.',
-  'old-navy': 'Old Navy offers affordable fashion for the whole family. Super Cash rewards program. Free shipping on orders over $50.',
-  'the-bay': 'Hudson\'s Bay is Canada\'s iconic department store since 1670. Premium brands at competitive prices. Hudson\'s Bay Rewards program.',
-  'sport-chek': 'Sport Chek is Canada\'s largest sporting goods retailer. Expert advice and price matching. Triangle Rewards program.',
-  'marks': 'Mark\'s offers durable workwear and casual clothing. Triangle Rewards program. Free in-store pickup available.',
-  'staples': 'Staples Canada offers office supplies, technology, and furniture. Free next-day delivery on orders over $45. Business solutions available.',
-  'rona': 'RONA is a Canadian home improvement retailer. Air Miles rewards. Free in-store pickup and delivery available.',
-  'ikea': 'IKEA Canada offers affordable Swedish design furniture. Flat-pack shipping and assembly services. IKEA Family member discounts.',
-  'indigo': 'Indigo is Canada\'s largest book and lifestyle retailer. Plum rewards program. Free shipping on orders over $35.',
-  'sephora': 'Sephora Canada offers premium beauty products. Beauty Insider rewards program. Free shipping on orders over $50.',
-  'winners': 'Winners offers designer brands at 20-60% off department store prices. New arrivals weekly. TJX Rewards card available.',
-  'dollarama': 'Dollarama offers everyday essentials at $1.25-$5 price points. Canada\'s largest dollar store chain.',
-  'london-drugs': 'London Drugs offers pharmacy, electronics, and household items. LDExtras rewards program. Price matching available.',
-}
 
 // =============================================================================
 // MAIN GENERATOR FUNCTIONS
@@ -244,7 +212,18 @@ export function generateMetaDescription(deal: Deal): string {
   }
 
   const templateIndex = hashString(deal.id.toString()) % templates.length
-  return templates[templateIndex].substring(0, 160) // Google limit
+  const desc = templates[templateIndex]
+
+  // Truncate cleanly at word boundary if over 160 chars
+  if (desc.length > 157) {
+    // Find last space before 157 chars to avoid mid-word cut
+    const lastSpace = desc.lastIndexOf(' ', 154)
+    if (lastSpace > 100) {
+      return desc.substring(0, lastSpace) + '...'
+    }
+    return desc.substring(0, 157) + '...'
+  }
+  return desc
 }
 
 /**
@@ -296,62 +275,25 @@ export function generateBreadcrumbs(deal: Deal): { label: string; href: string }
 
 /**
  * Generate store description
+ * Returns empty string - store descriptions are now in the database
  */
 export function getStoreDescription(storeSlug: string | null): string {
   if (!storeSlug) return ''
-  return STORE_DESCRIPTIONS[storeSlug] || `Shop deals at ${formatStoreName(storeSlug)}.`
+  // Store descriptions are now fetched from the database
+  // This function is kept for backwards compatibility but returns empty
+  return ''
 }
 
 /**
- * Generate FAQ items for a deal - uses real store-specific info ONLY
- * Returns empty array if no real info available (no generic slop!)
+ * Generate FAQ items for a deal
+ * Store-specific info is now in the database, so this returns an empty array
+ * FAQs should be generated at the page level using async database queries
  */
 export function generateFAQ(deal: Deal): { question: string; answer: string }[] {
-  const storeName = formatStoreName(deal.store)
-  const storeSlug = deal.store?.toLowerCase().replace(/\s+/g, '-') || ''
-  const info = getStoreInfo(storeSlug)
-
-  const faqs: { question: string; answer: string }[] = []
-
-  // Only include FAQs if we have REAL store-specific info
-  // No generic fallback - if we don't have real info, return empty array
-
-  // Return policy - only if we have real info
-  if (info?.returnPolicy) {
-    faqs.push({
-      question: `What is ${storeName}'s return policy?`,
-      answer: info.returnPolicy,
-    })
-  }
-
-  // Loyalty program - only if store has one
-  if (info?.loyaltyProgram) {
-    faqs.push({
-      question: `Does ${storeName} have a loyalty program?`,
-      answer: `Yes, ${info.loyaltyProgram.name}. ${info.loyaltyProgram.description}`,
-    })
-  }
-
-  // Shipping info - only if we have real info
-  if (info?.shippingInfo) {
-    faqs.push({
-      question: `Does ${storeName} offer free shipping to Canada?`,
-      answer: info.shippingInfo,
-    })
-  }
-
-  // Price match - only if available
-  if (info?.priceMatch) {
-    faqs.push({
-      question: `Does ${storeName} price match?`,
-      answer: info.priceMatch,
-    })
-  }
-
-  // NO GENERIC FALLBACK - if we don't have real info, return empty array
-  // The page will hide the FAQ section entirely
-
-  return faqs
+  // Store policies are now in the database and should be fetched async
+  // This function returns empty array - FAQ generation should happen
+  // at the page level where async DB access is available
+  return []
 }
 
 // =============================================================================

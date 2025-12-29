@@ -1,0 +1,9 @@
+---
+slug: well-juices
+name: Well Juices
+type: brand
+---
+
+# Well Juices
+
+We have come a long way since our little start up in Calgary, Canada back in 2014! One thing has remained constant from day one, however, is our mission to produce the freshest, most vibrant, and undeniably best-tasting juices for you, Our loyal customers!Becoming the healthiest, most vibrant version of yourself takes effort, and for over 14 years, Well has been playing an important role in these journeys, making it easier for you to treat yourself to something that's both healthy for your body and good for your state of mind.At Well, we take the highest quality produce available and cold-press it so you don’t have to. We stay away from preservatives, additives and anything else that takes away from pure taste. We never subject our juices to heat, and we never, ever UVC irradiate our juices (a vitamin and antioxidant activity degrading UV Light Sterilization process that other large juice companies employ [ a UV Light Sterilization process used by large companies that degrades vitamins and antioxidants ] ). We control 100% of our process, from pressing to bottling, and have the highest food handling certifications. The result? A joyfully fresh, nutritious juice that’s good for your mind and body.Whether you get your energy from impulsive adventures or healthy daily rituals, Well fuels your journey. Together let’s celebrate a vibrant lifestyle filled with wellness and joy. We’re good for the planet and we’re good for you.

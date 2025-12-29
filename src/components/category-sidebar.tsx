@@ -1,14 +1,33 @@
 'use client'
 
 import Link from 'next/link'
-import { categories } from '@/lib/brands-data'
 import { CategoryIcon } from '@/components/CategoryIcon'
+import { useEffect, useState } from 'react'
+
+interface Category {
+  name: string
+  slug: string
+  count: number
+}
 
 interface CategorySidebarProps {
   activeCategory?: string
+  categories?: Category[]
 }
 
-export function CategorySidebar({ activeCategory }: CategorySidebarProps) {
+export function CategorySidebar({ activeCategory, categories: initialCategories }: CategorySidebarProps) {
+  const [categories, setCategories] = useState<Category[]>(initialCategories || [])
+
+  useEffect(() => {
+    // If no categories were passed, fetch them from the API
+    if (!initialCategories || initialCategories.length === 0) {
+      fetch('/api/canadian-categories')
+        .then(res => res.json())
+        .then(data => setCategories(data))
+        .catch(() => setCategories([]))
+    }
+  }, [initialCategories])
+
   return (
     <aside className="w-64 shrink-0 hidden lg:block">
       <div className="sticky top-24 bg-white border border-silver-light rounded-card p-6">
@@ -31,7 +50,7 @@ export function CategorySidebar({ activeCategory }: CategorySidebarProps) {
                   <CategoryIcon category={category.name} size={18} className={isActive ? 'text-white' : 'text-maple-red'} />
                   <span className="flex-1">{category.name}</span>
                   <span className={`text-xs ${isActive ? 'text-silver-light' : 'text-silver'}`}>
-                    ({category.brandCount})
+                    ({category.count})
                   </span>
                 </Link>
               </li>
@@ -65,7 +84,7 @@ export function CategorySidebar({ activeCategory }: CategorySidebarProps) {
         <div className="mt-6 p-4 bg-ivory border border-silver-light rounded text-center">
           <p className="text-xs text-slate mb-2">Can&apos;t find what you&apos;re looking for?</p>
           <Link href="/canadian/brands" className="text-maple-red hover:text-burgundy text-sm font-bold">
-            View All Brands A-Z →
+            View All Brands A-Z
           </Link>
         </div>
       </div>

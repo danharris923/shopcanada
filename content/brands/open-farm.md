@@ -1,0 +1,7 @@
+---
+title: "Open Farm"
+slug: "open-farm"
+category: "Pets"
+---
+
+Building A Better Pet Food Our Story When we rescued our first pugs Maddie and Bella, we set out to find natural, nutritious pet food that would help them grow happy, healthy and strong – and that aligned with our personal values. But at the time we couldn’t find a food that prioritized animal welfare, sustainability and transparency standards. We wanted to provide our own pets with premium nutrition that came from ingredients that were grown and raised the right way. We realized that a pet food with these standards didn’t exist, and saw an opportunity to create it ourselves. For us that meant sourcing the highest quality ingredients, supporting farmers who treat their animals right, respecting the environment, and providing full transparency to our customers. It’s out of that vision that Open Farm was born – from the simple idea that pet food can be good for your pet and Do Some Good, all at the same time. Our Standards Premium nutrition With the most nutritious ingredients, our recipes are created to meet your pet’s unique needs. LEARN MORE Over-the-top tracing Instantly trace every single ingredient in every Open Farm product back to its origin. LEARN MORE Meticulous source vetting We audit all of our farms, plants, and facilities for the most stringent animal welfare standards. WHAT THAT MEANS Climate strategy commitment We’re on a ten-year journey to minimize our carbon footprint and reduce emissions. HOW WE’RE DOING IT

@@ -4,8 +4,7 @@
 
 import { Deal } from '@/types/deal'
 import { formatStoreName, generateBreadcrumbs, generateFAQ } from './content-generator'
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://shopcanada.cc'
+import { SITE_URL } from './config'
 
 /**
  * Generate a deterministic rating based on deal ID

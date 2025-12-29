@@ -1,0 +1,7 @@
+---
+title: "Centex"
+slug: "centex"
+category: "Clothing"
+---
+
+How we purchase the fuel helps us provide our customers with great prices. At Centex, we keep fuel prices competitive, offer convenient locations, and deliver services for people on the go—making us a refreshing alternative to the big brands. As an independent chain, we’re free to shop around daily and find the best deals on fuel, so we can pass those savings on to you. Starting from a single location in Inglewood in 1986, Centex has grown to more than 150 locations across Canada What’s in your Tank? At Centex, we’re committed to bringing you high-quality, Canadian-refined fuel designed for all driving conditions—especially the tough Canadian winters. Our fuel meets or exceeds all federal and provincial standards, so you can trust you’re fueling up with quality. Premium Fuel: Enjoy high-performance fuel with an octane rating of 91 or higher, just like major retailers but at a better price! Compare and see the difference in your wallet. Diesel: We offer ultra-low sulfur diesel for all on-road diesel vehicles, from passenger cars to commercial trucks. Our clean fuel is free from additives that can clog injectors or harm diesel engines, ensuring smoother, more reliable performance. Fuel up with confidence at Centex!

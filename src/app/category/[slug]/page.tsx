@@ -3,23 +3,17 @@ import Link from 'next/link'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { DealCard, DealGrid } from '@/components/DealCard'
-import { Breadcrumbs } from '@/components/deal/Breadcrumbs'
-import { Smartphone, Shirt, Home, ShoppingCart, Sparkles, Dumbbell } from 'lucide-react'
+import { Breadcrumbs } from '@/components/breadcrumbs'
 import { StatsBar } from '@/components/StatsBar'
 import { getDealsByCategory } from '@/lib/db'
+import { CORE_CATEGORIES, getCategoryBySlug, type Category } from '@/lib/categories'
 import type { Metadata } from 'next'
 
 // Revalidate every 15 minutes
 export const revalidate = 900
 
-const categories = [
-  { slug: 'electronics', name: 'Electronics', icon: Smartphone, description: 'Find the latest electronics, computers, phones, tablets, gaming gear, and tech accessories from top Canadian retailers.', keywords: 'electronics, computers, phones, tablets, gaming' },
-  { slug: 'fashion', name: 'Fashion & Apparel', icon: Shirt, description: 'Discover fashion deals on clothing, shoes, and accessories for men, women, and kids from Canadian fashion retailers.', keywords: 'fashion, clothing, shoes, accessories' },
-  { slug: 'home', name: 'Home & Garden', icon: Home, description: 'Shop home improvement, furniture, decor, appliances, tools, and outdoor living products from Canadian home retailers.', keywords: 'home, garden, furniture, decor, appliances' },
-  { slug: 'grocery', name: 'Grocery & Food', icon: ShoppingCart, description: 'Save on fresh food, pantry staples, snacks, and beverages from Canadian grocery stores and food retailers.', keywords: 'grocery, food, fresh, pantry, snacks' },
-  { slug: 'beauty', name: 'Beauty & Personal Care', icon: Sparkles, description: 'Browse beauty deals on skincare, makeup, haircare, and wellness products from Canadian beauty retailers.', keywords: 'beauty, skincare, makeup, haircare, wellness' },
-  { slug: 'sports', name: 'Sports & Outdoors', icon: Dumbbell, description: 'Find deals on fitness equipment, outdoor gear, sportswear, and recreational products from Canadian sports retailers.', keywords: 'sports, outdoors, fitness, gear, recreation' },
-]
+// Use core categories for category pages
+const categories = CORE_CATEGORIES
 
 interface CategoryPageProps {
   params: {

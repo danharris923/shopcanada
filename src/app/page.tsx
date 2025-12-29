@@ -1,28 +1,67 @@
 import Link from 'next/link'
-import { getStoreStats } from '@/lib/db'
+import { getStoreStats, getStoreBySlug } from '@/lib/db'
 import { generateWebsiteSchema, generateOrganizationSchema } from '@/lib/schema'
 import { DealCard, DealGrid } from '@/components/DealCard'
-import { FlippDealCard, FlippDealGrid } from '@/components/FlippDealCard'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { StoreLogo } from '@/components/StoreLogo'
-import { featuredStores, getTopBadges } from '@/lib/store-logos'
-import { Smartphone, Shirt, Home, ShoppingCart, Sparkles, Dumbbell, Leaf } from 'lucide-react'
+import { Leaf } from 'lucide-react'
+import { CORE_CATEGORIES } from '@/lib/categories'
 import { StatsBar } from '@/components/StatsBar'
 import { getShuffledFeaturedDeals, getShuffledDeals, getDistributionSummary } from '@/lib/deal-shuffle'
 import { getLatestVideos } from '@/lib/youtube'
 import { VideoCarousel } from '@/components/VideoCarousel'
+import { REVALIDATE_INTERVAL, SOCIAL_LINKS, FEATURED_STORE_SLUGS } from '@/lib/config'
+import { Store } from '@/types/deal'
 
-// Revalidate every 15 minutes
-export const revalidate = 900
+// Badge display configuration for homepage store cards
+const BADGE_CONFIG: Record<string, { emoji: string; label: string; priority: number }> = {
+  'canadian-owned': { emoji: '\u{1F1E8}\u{1F1E6}', label: 'Canadian-Owned', priority: 1 },
+  'made-in-canada': { emoji: '\u{1F3ED}', label: 'Made in Canada', priority: 2 },
+  'canadian-retailer': { emoji: '\u{1F3EC}', label: 'Canadian Retailer', priority: 3 },
+  'international': { emoji: '\u{1F30D}', label: 'International', priority: 4 },
+  'ships-from-canada': { emoji: '\u{1F69A}', label: 'Ships from Canada', priority: 5 },
+}
+
+/**
+ * Get top badge for a store, sorted by priority
+ */
+function getTopBadge(store: Store): { emoji: string; label: string } | null {
+  if (!store.badges || store.badges.length === 0) return null
+
+  const sorted = store.badges
+    .filter(badge => BADGE_CONFIG[badge])
+    .map(badge => ({ ...BADGE_CONFIG[badge], badge }))
+    .sort((a, b) => a.priority - b.priority)
+
+  return sorted.length > 0 ? { emoji: sorted[0].emoji, label: sorted[0].label } : null
+}
+
+/**
+ * Extract domain from a URL for StoreLogo fallback
+ */
+function extractDomain(url: string | null): string {
+  if (!url) return ''
+  try {
+    return new URL(url).hostname.replace('www.', '')
+  } catch {
+    return url.replace(/^https?:\/\//, '').replace('www.', '').split('/')[0]
+  }
+}
+
+export const revalidate = REVALIDATE_INTERVAL
 
 export default async function HomePage() {
-  const [shuffledFeatured, shuffledLatest, storeStats, latestVideos] = await Promise.all([
+  const [shuffledFeatured, shuffledLatest, storeStats, latestVideos, ...featuredStoreResults] = await Promise.all([
     getShuffledFeaturedDeals(8),
     getShuffledDeals(16),
     getStoreStats(),
     getLatestVideos(6),
+    ...FEATURED_STORE_SLUGS.map(slug => getStoreBySlug(slug)),
   ])
+
+  // Filter out null results and cast to Store[]
+  const featuredStores = featuredStoreResults.filter((s): s is Store => s !== null)
 
   // Distribution logging removed for production
 
@@ -122,25 +161,22 @@ export default async function HomePage() {
               <DealGrid>
                 {shuffledFeatured.deals.map(deal => (
                   (deal as any).source === 'flipp' ? (
-                    <FlippDealCard
+                    <DealCard
                       key={deal.id}
-                      deal={{
-                        id: deal.id,
-                        title: deal.title,
-                        store: deal.store || '',
-                        storeSlug: (deal as any).category || 'general',
-                        imageUrl: (deal as any).image_blob_url || (deal as any).image_url || (deal as any).imageUrl || '/placeholder-deal.jpg',
-                        price: deal.price,
-                        originalPrice: (deal as any).original_price || (deal as any).originalPrice,
-                        discountPercent: (deal as any).discount_percent || (deal as any).discountPercent,
-                        validFrom: (deal as any).date_added || (deal as any).validFrom || new Date().toISOString(),
-                        validTo: (deal as any).validTo || new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
-                        saleStory: (deal as any).saleStory || null,
-                        storeLogo: (deal as any).storeLogo || '',
-                        category: (deal as any).category,
-                        slug: deal.slug,
-                        source: 'flipp'
-                      }}
+                      id={deal.id}
+                      title={deal.title}
+                      slug={deal.slug}
+                      imageUrl={(deal as any).image_blob_url || (deal as any).image_url || (deal as any).imageUrl || '/placeholder-deal.jpg'}
+                      price={deal.price}
+                      originalPrice={(deal as any).original_price || (deal as any).originalPrice}
+                      discountPercent={(deal as any).discount_percent || (deal as any).discountPercent}
+                      store={deal.store || null}
+                      affiliateUrl={(deal as any).affiliate_url || ''}
+                      variant="flipp"
+                      storeSlug={(deal as any).category || 'general'}
+                      storeLogo={(deal as any).storeLogo || ''}
+                      validTo={(deal as any).validTo || new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString()}
+                      saleStory={(deal as any).saleStory || null}
                     />
                   ) : (
                     <DealCard
@@ -171,7 +207,7 @@ export default async function HomePage() {
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
               {featuredStores.map(store => {
-                const badges = getTopBadges(store, 1)
+                const badge = getTopBadge(store)
                 return (
                   <Link
                     key={store.slug}
@@ -180,18 +216,18 @@ export default async function HomePage() {
                   >
                     <div className="w-12 h-12 mb-2 mx-auto rounded-lg overflow-hidden bg-cream flex items-center justify-center group-hover:scale-110 transition-transform">
                       <StoreLogo
-                        src={store.logo}
+                        src={store.logo_url || ''}
                         alt={`${store.name} logo`}
-                        domain={store.domain}
+                        domain={extractDomain(store.website_url)}
                         size={40}
                       />
                     </div>
                     <span className="font-semibold text-charcoal text-sm text-center group-hover:text-maple-red transition-colors">
                       {store.name}
                     </span>
-                    {badges.length > 0 && (
-                      <span className="block text-[10px] text-slate mt-1" title={badges[0].label}>
-                        {badges[0].emoji} {badges[0].label}
+                    {badge && (
+                      <span className="block text-[10px] text-slate mt-1" title={badge.label}>
+                        {badge.emoji} {badge.label}
                       </span>
                     )}
                   </Link>
@@ -217,7 +253,7 @@ export default async function HomePage() {
               <div className="grid grid-cols-2 gap-4">
                 {/* YouTube */}
                 <a
-                  href="https://www.youtube.com/@ShopCanada-cc"
+                  href={SOCIAL_LINKS.youtube}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex flex-col items-center justify-center p-6 bg-white rounded-lg border-2 border-transparent hover:border-[#FF0000] transition-all group shadow-sm hover:shadow-md"
@@ -231,7 +267,7 @@ export default async function HomePage() {
 
                 {/* TikTok */}
                 <a
-                  href="https://www.tiktok.com/@shopcanada1"
+                  href={SOCIAL_LINKS.tiktok}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex flex-col items-center justify-center p-6 bg-white rounded-lg border-2 border-transparent hover:border-black transition-all group shadow-sm hover:shadow-md"
@@ -245,7 +281,7 @@ export default async function HomePage() {
 
                 {/* Facebook */}
                 <a
-                  href="https://www.facebook.com/profile.php?id=100079001052299"
+                  href={SOCIAL_LINKS.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex flex-col items-center justify-center p-6 bg-white rounded-lg border-2 border-transparent hover:border-[#1877F2] transition-all group shadow-sm hover:shadow-md"
@@ -259,7 +295,7 @@ export default async function HomePage() {
 
                 {/* Bluesky */}
                 <a
-                  href="https://bsky.app/profile/shopcanada.bsky.social"
+                  href={SOCIAL_LINKS.bluesky}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex flex-col items-center justify-center p-6 bg-white rounded-lg border-2 border-transparent hover:border-[#0085FF] transition-all group shadow-sm hover:shadow-md"
@@ -292,25 +328,22 @@ export default async function HomePage() {
             <DealGrid>
               {shuffledLatest.deals.map(deal => (
                 (deal as any).source === 'flipp' ? (
-                  <FlippDealCard
+                  <DealCard
                     key={deal.id}
-                    deal={{
-                      id: deal.id,
-                      title: deal.title,
-                      store: deal.store || '',
-                      storeSlug: (deal as any).category || 'general',
-                      imageUrl: (deal as any).image_blob_url || (deal as any).image_url || (deal as any).imageUrl || '/placeholder-deal.jpg',
-                      price: deal.price,
-                      originalPrice: (deal as any).original_price || (deal as any).originalPrice,
-                      discountPercent: (deal as any).discount_percent || (deal as any).discountPercent,
-                      validFrom: (deal as any).date_added || (deal as any).validFrom || new Date().toISOString(),
-                      validTo: (deal as any).validTo || new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
-                      saleStory: (deal as any).saleStory || null,
-                      storeLogo: (deal as any).storeLogo || '',
-                      category: (deal as any).category,
-                      slug: deal.slug,
-                      source: 'flipp'
-                    }}
+                    id={deal.id}
+                    title={deal.title}
+                    slug={deal.slug}
+                    imageUrl={(deal as any).image_blob_url || (deal as any).image_url || (deal as any).imageUrl || '/placeholder-deal.jpg'}
+                    price={deal.price}
+                    originalPrice={(deal as any).original_price || (deal as any).originalPrice}
+                    discountPercent={(deal as any).discount_percent || (deal as any).discountPercent}
+                    store={deal.store || null}
+                    affiliateUrl={(deal as any).affiliate_url || ''}
+                    variant="flipp"
+                    storeSlug={(deal as any).category || 'general'}
+                    storeLogo={(deal as any).storeLogo || ''}
+                    validTo={(deal as any).validTo || new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString()}
+                    saleStory={(deal as any).saleStory || null}
                   />
                 ) : (
                   <DealCard
@@ -339,23 +372,19 @@ export default async function HomePage() {
               Browse Categories
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-              {[
-                { slug: 'electronics', name: 'Electronics', Icon: Smartphone },
-                { slug: 'fashion', name: 'Fashion', Icon: Shirt },
-                { slug: 'home', name: 'Home', Icon: Home },
-                { slug: 'grocery', name: 'Grocery', Icon: ShoppingCart },
-                { slug: 'beauty', name: 'Beauty', Icon: Sparkles },
-                { slug: 'sports', name: 'Sports', Icon: Dumbbell },
-              ].map(cat => (
-                <Link
-                  key={cat.slug}
-                  href={`/category/${cat.slug}`}
-                  className="category-pill justify-center"
-                >
-                  <cat.Icon size={28} className="text-maple-red" />
-                  <span className="font-semibold text-charcoal">{cat.name}</span>
-                </Link>
-              ))}
+              {CORE_CATEGORIES.map(cat => {
+                const Icon = cat.icon
+                return (
+                  <Link
+                    key={cat.slug}
+                    href={`/category/${cat.slug}`}
+                    className="category-pill justify-center"
+                  >
+                    <Icon size={28} className="text-maple-red" />
+                    <span className="font-semibold text-charcoal">{cat.name}</span>
+                  </Link>
+                )
+              })}
             </div>
           </div>
         </section>

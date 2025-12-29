@@ -1,0 +1,9 @@
+---
+slug: sash-bustle
+name: Sash Bustle
+type: brand
+---
+
+# Sash Bustle
+
+We have always been so similar yet opposite. Vanessa is more left brain, Andrea is more right. Vanessa has always been a social butterfly with a knack for giving directions. Andrea was knee-deep in glitter by the time she could walk and has been creating ever since. Growing up together as young sisters we would dream of someday owning and operating our very own retail store.We’ve always been big-dreamers, cautious risk-takers, and huge believers in love. Yeah, you could call us hopeless romantics. Working for ourselves was always the obvious choice, and who wouldn’t want to work with their bestie?!You see, we are a little bit of retail nerds with an obsession for authentic customer service. Our favourite thing to do when visiting a new place is to check out it’s trendy independent shops. Gathering inspiration and learning how other retail businesses differentiate always excites us. It must be in our blood or something cause together we have always wanted to provide a special shopping experience. Until in 2014 when Sash + Bustle came to be we didn’t exactly know what that meant.Sash + Bustle has some how married (pun intended) all of our skill sets andpassions as individuals. One of our favourite work-perks is that S+B allows us to be a small part of a bride’s wedding day, which we couldn’t be more honoured for. Supporting other women has always been a driving force for us. It gives us the warm and fuzzies when someone lights up in a gown, when they feel like the best version of themselves and they just FEEL great. If we can help someone feel AH-mazing, that’s a win!2021the year we moved to our forever home2015the year we grew2014the year we started5,000happy bridesThe Sash + Bustle Origin Story

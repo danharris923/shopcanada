@@ -1,0 +1,7 @@
+---
+title: "Sloane Fine Tea Merchants"
+slug: "sloane-fine-tea-merchants"
+category: "Beverages"
+---
+
+ABOUT SLOANE The Sloane story is about beauty. Beauty as told through the senses of taste, smell and sight. Beauty as experienced through the remarkable taste of our teas, as well as the beauty of the colour in your cup and the enticing aromas. Sloane’s signature line of teas and tisanes combine the finest loose leaf teas, exotic ingredients and artisanal techniques. OUR MISSION We believe in the integrity of the leaf.We hand blend all-natural, real ingredientsto enhance not mask the beauty of tea.We bring you tea as it should be.Direct from the gardens. Direct from the farmers.Back to its roots. Back to a clean cup.We are creatives. We are makers.We are innovators.We are purveyors of premium.We are Sloane Fine Tea Merchants TEA SOURCED & BLENDED BY CERTIFIED TEA SOMMELIERS Sloane’s founder, Hoda Paripoush, is amongst the elite group of the first certified tea sommeliers in North America. She is the first to have received accreditation from both Canadian and US tea associations. Her travels have taken her throughout the mountains of India, China, Japan and Taiwan in search of the finest full-leaf teas and natural ingredients, insisting every step of the way that fine tea can be an everyday luxury. With a relentless passion for discovery she is constantly inspired by the people she has met and the places she has travelled to.

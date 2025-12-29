@@ -1,0 +1,9 @@
+---
+slug: section-35
+name: Section 35
+type: brand
+---
+
+# Section 35
+
+About Justin Jacob Louis About the Founder Justin Jacob Louis is the Creative Director and Founder of SECTION 35. He is a member of the Samson Cree Nation and was born and raised in Nipisihkopahk (Samson) on Treaty 6 Territory. He now calls Unceded Stó:lō Territory his home. His work blends the past with the present and finds inspiration in the juxtaposition between these elements. He launched SECTION 35 in 2016 with the intention to use art and fashion to tell his peoples' stories.Justin was a finalist for Menswear Designer of the Year at the 2022, 2023 and 2024 Canadian Art and Fashion Awards ("CAFA") in Toronto. His work has seen features in numerous publications from Vogue to Complex and was included at "In America: A Lexicon of Fashion" at the Metropolitan Museum of New York in 2022. SECTION 35 About the Brand SECTION 35 is an Indigenous owned streetwear brand based on the Unceded Territories of the Xʷməθkʷəy̓əm (Musqueam), Sḵwx̱wú7mesh (Squamish), and Sel̓íl̓witulh (Tsleil-Waututh) Nations. SECTION 35 was founded in 2014 and officially launched in March 2016.SECTION 35 has been featured in Vogue, Complex and numerous other publications over the year. In 2022, SECTION 35 had work featured at the Metropolitan Museum of New York’s “In America: A Lexicon of Fashion” Exhibition alongside some of biggest designers in America. The brand has shown on numerous runways from Indigenous Fashion Arts in Toronto and most recently Yamaava Fashion Daze in California which was produced by Kelly Cutrone. In February of 2023, the brand attended the prestigious White Milan Trade Show in Milan, Italy during Milan Fashion Week. SECTION 35 has also collaborated with brands such Roots Canada and Mitchell & Ness.

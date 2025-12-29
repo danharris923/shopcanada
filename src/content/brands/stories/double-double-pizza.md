@@ -1,0 +1,9 @@
+---
+slug: double-double-pizza
+name: Double Double Pizza
+type: brand
+---
+
+# Double Double Pizza
+
+Get Social With Us! Specials Locate a Store About Us Contact Us About Us Founded in 1986, Double Double Pizza and Chicken was created to provide our customers with the tastiest and most affordable meals available. Priding ourselves on fresh ingredients and the best chicken available, we create nutritious meals for lunch or dinner! With over 35 locations serving the best pizza in Toronto, Waterloo, Hamilton, London, Oshawa and other cities in Ontario, there's a Double Double Pizza & Chicken near you! Visit our locations page to find the closest Double Double near you and give us a try today. You won't be disappointed! Join our eClub Receive delicious great offers directly to your email. Join Our Eclub Receive delicious great offers directly to your email. © 2025 Double Double Pizza & Chicken Specials | Store Locator | Online Ordering | Guarantee | Privacy Policy | Contact Adults and youth (ages 13 and older) need an average of 2,000 calories a day, and children (ages 4 to 12) need an average of 1,500 calories a day. However, individual needs vary. Products may not be as pictured. Minimum delivery orders $10.99. Taxes are extra. Prices are subject to change without notice. Debit surcharges apply. Limited time offer. Some restrictions may apply. loading

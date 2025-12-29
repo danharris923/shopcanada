@@ -1,0 +1,7 @@
+---
+title: "Boathouse"
+slug: "boathouse"
+category: "Clothing"
+---
+
+Boathouse is Canada's destination for Men’s and Women’s clothing, footwear and accessories from the hottest brands available today. Boathouse carries a massive selection of Carhartt, Nike, tentree, Princess Polly, Adidas, Salty Crew, Varsity, Vans, Dr. Marten’s, Birkenstock, Crocs, and more. Boathouse began back in 1963 as a small business in the Canadian city of St. Catharines, Ontario. Known locally as Arlies, the family run business specialized in men’s and women’s active lifestyle apparel and footwear, catering to outdoor thrill-seekers and sports enthusiasts alike. Now, our flagship Arlies store is located at the Pen Centre in St.Catharines, Ontario, and is still going strong since 1977. Since that time we have expanded our presence in Canada to more than 90 stores nation-wide, now known to most as Boathouse. Although we are still catering to those sports enthusiasts, Boathouse carries top brands in streetwear, footwear, swim and athleisure. In 2008, we launched Boathousestores.com, bringing the Boathouse experience to you at home, or wherever you choose to shop. In 2024, Boathouse expanded into the USA market with BH2.0, opening 4 brick and mortar stores in Florida and launching BH2stores.com. FIND A STORE Not sure if there's a Boathouse store near you? Check out our store locator, and come by to say hi!

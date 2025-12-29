@@ -1,28 +1,23 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import { notFound } from 'next/navigation'
 
-import { getDealsByStore, getStores } from '@/lib/db'
-import { Deal } from '@/types/deal'
+import { getDealsByStore, getStores, getStoreBySlug } from '@/lib/db'
+import { Deal, Store } from '@/types/deal'
 import { formatStoreName } from '@/lib/content-generator'
 import { generateItemListSchema } from '@/lib/schema'
 import { DealCard, DealGrid } from '@/components/DealCard'
-import { Breadcrumbs } from '@/components/deal/Breadcrumbs'
+import { Breadcrumbs } from '@/components/breadcrumbs'
 import { StoreLogo } from '@/components/StoreLogo'
-import {
-  getStoreLogo,
-  generateLogoUrl,
-  getStorePageH1,
-} from '@/lib/store-logos'
-import { getBrandBySlug } from '@/lib/brands-data'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { StatsBar } from '@/components/StatsBar'
-import { ExternalLink } from 'lucide-react'
+import { ExternalLink, Truck, RotateCcw, Award, CreditCard } from 'lucide-react'
 import { getVideosForStore } from '@/lib/youtube'
 import { StoreVideos } from '@/components/YouTubeEmbed'
 
 interface PageProps {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 // Revalidate every 15 minutes for fresh data
@@ -41,11 +36,40 @@ export async function generateStaticParams() {
 // Allow dynamic params (new stores added by scraper)
 export const dynamicParams = true
 
+// Helper to extract domain from website URL
+function getDomainFromUrl(url: string | null): string {
+  if (!url) return ''
+  try {
+    const urlObj = new URL(url)
+    return urlObj.hostname.replace('www.', '')
+  } catch {
+    return url.replace(/^https?:\/\//, '').replace('www.', '').split('/')[0]
+  }
+}
+
+// Generate page H1 from store data
+function getStorePageH1(store: Store): string {
+  // Use tagline if available, otherwise generate from name
+  if (store.tagline) {
+    return store.tagline
+  }
+  return `${store.name} deals in Canada`
+}
+
 // Generate metadata
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const storeName = formatStoreName(params.slug)
-  const storeInfo = getStoreLogo(params.slug)
-  const seoTitle = storeInfo ? getStorePageH1(storeInfo) : `${storeName} Deals in Canada`
+  const { slug } = await params
+  const store = await getStoreBySlug(slug)
+
+  if (!store) {
+    const storeName = formatStoreName(slug)
+    return {
+      title: `${storeName} Deals in Canada`,
+      description: `Find ${storeName} deals, sales, and discounts in Canada. Updated daily.`,
+    }
+  }
+
+  const seoTitle = getStorePageH1(store)
 
   return {
     title: seoTitle,
@@ -58,12 +82,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function StorePage({ params }: PageProps) {
-  const storeSlug = params.slug
-  const storeName = formatStoreName(storeSlug)
-  const storeInfo = getStoreLogo(storeSlug)
-  const logoUrl = storeInfo?.logo || generateLogoUrl(storeSlug.replace(/-/g, '') + '.ca')
-  const brand = getBrandBySlug(storeSlug)
-  const pageH1 = storeInfo ? getStorePageH1(storeInfo) : `${storeName} deals in Canada`
+  const { slug: storeSlug } = await params
+
+  // Fetch store from database
+  const store = await getStoreBySlug(storeSlug)
+
+  // If store not found, show 404
+  if (!store) {
+    notFound()
+  }
+
+  const storeName = store.name
+  const logoUrl = store.logo_url || ''
+  const domain = getDomainFromUrl(store.website_url)
+  const pageH1 = getStorePageH1(store)
 
   // Get deals
   let deals: Deal[] = []
@@ -92,6 +124,9 @@ export default async function StorePage({ params }: PageProps) {
   const previewDeals = deals.slice(0, 8)
   const hasMoreDeals = deals.length > 8
 
+  // Determine if we have store policies to show
+  const hasStorePolicies = store.return_policy || store.shipping_info || store.loyalty_program_name || store.price_match_policy
+
   return (
     <>
       {itemListSchema && (
@@ -117,7 +152,7 @@ export default async function StorePage({ params }: PageProps) {
               <StoreLogo
                 src={logoUrl}
                 alt={`${storeName} logo`}
-                domain={storeInfo?.domain || storeSlug.replace(/-/g, '') + '.ca'}
+                domain={domain}
                 size={56}
               />
             </div>
@@ -188,81 +223,95 @@ export default async function StorePage({ params }: PageProps) {
             />
           )}
 
-          {/* ABOUT SECTION - BELOW DEALS */}
-          {brand && (
-            <section className="mb-10">
-              {/* Visit Store Button */}
+          {/* ABOUT SECTION */}
+          <section className="mb-10">
+            {/* Visit Store Button */}
+            {store.website_url && (
               <div className="mb-6">
                 <a
-                  href={brand.url}
+                  href={store.affiliate_url || store.website_url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 btn-primary"
                 >
                   <ExternalLink size={18} />
-                  Visit {brand.name}
+                  Visit {storeName}
                 </a>
               </div>
+            )}
 
-              {/* About */}
-              <div className="bg-white border border-silver-light rounded-card p-6 md:p-8">
-                <h2 className="text-xl font-bold text-charcoal mb-4">About {brand.name}</h2>
-                <p className="text-base md:text-lg text-charcoal leading-relaxed mb-6">
-                  {brand.description}
+            {/* About / Description */}
+            {store.description && (
+              <div className="bg-white border border-silver-light rounded-card p-6 md:p-8 mb-6">
+                <h2 className="text-xl font-bold text-charcoal mb-4">About {storeName}</h2>
+                <p className="text-base md:text-lg text-charcoal leading-relaxed">
+                  {store.description}
                 </p>
-
-                {/* Website Screenshot */}
-                {brand.screenshot && (
-                  <div className="mb-6 relative group">
-                    <a
-                      href={brand.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block relative overflow-hidden rounded-lg border border-silver-light hover:border-maple-red transition-all"
-                    >
-                      <img
-                        src={brand.screenshot}
-                        alt={`${brand.name} website preview`}
-                        className="w-full h-auto"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                      <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform">
-                        <span className="btn-primary inline-block text-sm">
-                          Visit {brand.name} →
-                        </span>
-                      </div>
-                    </a>
-                  </div>
-                )}
-
-                {/* Brand Story */}
-                {brand.brandStory && (
-                  <div className="p-6 bg-ivory rounded-lg border border-maple-red/30">
-                    <h3 className="text-lg font-bold text-burgundy mb-4">The {brand.name} Story</h3>
-                    <div
-                      className="text-charcoal leading-relaxed text-sm prose max-w-none"
-                      dangerouslySetInnerHTML={{ __html: brand.brandStory }}
-                    />
-                  </div>
-                )}
               </div>
-            </section>
-          )}
+            )}
 
-          {/* Store Link for stores without brand data */}
-          {!brand && storeInfo && (
-            <section className="mb-10">
-              <a
-                href={`https://${storeInfo.domain}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 btn-primary"
-              >
-                <ExternalLink size={18} />
-                Visit {storeName}
-              </a>
-            </section>
-          )}
+            {/* Store Policies Section */}
+            {hasStorePolicies && (
+              <div className="bg-white border border-silver-light rounded-card p-6 md:p-8">
+                <h2 className="text-xl font-bold text-charcoal mb-6">Store Policies</h2>
+                <div className="grid md:grid-cols-2 gap-6">
+                  {/* Return Policy */}
+                  {store.return_policy && (
+                    <div className="flex gap-4">
+                      <div className="flex-shrink-0 w-10 h-10 bg-maple-red/10 rounded-full flex items-center justify-center">
+                        <RotateCcw className="w-5 h-5 text-maple-red" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-charcoal mb-1">Return Policy</h3>
+                        <p className="text-sm text-slate">{store.return_policy}</p>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Shipping Info */}
+                  {store.shipping_info && (
+                    <div className="flex gap-4">
+                      <div className="flex-shrink-0 w-10 h-10 bg-maple-red/10 rounded-full flex items-center justify-center">
+                        <Truck className="w-5 h-5 text-maple-red" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-charcoal mb-1">Shipping</h3>
+                        <p className="text-sm text-slate">{store.shipping_info}</p>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Loyalty Program */}
+                  {store.loyalty_program_name && (
+                    <div className="flex gap-4">
+                      <div className="flex-shrink-0 w-10 h-10 bg-maple-red/10 rounded-full flex items-center justify-center">
+                        <Award className="w-5 h-5 text-maple-red" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-charcoal mb-1">{store.loyalty_program_name}</h3>
+                        {store.loyalty_program_desc && (
+                          <p className="text-sm text-slate">{store.loyalty_program_desc}</p>
+                        )}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Price Match Policy */}
+                  {store.price_match_policy && (
+                    <div className="flex gap-4">
+                      <div className="flex-shrink-0 w-10 h-10 bg-maple-red/10 rounded-full flex items-center justify-center">
+                        <CreditCard className="w-5 h-5 text-maple-red" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-charcoal mb-1">Price Match</h3>
+                        <p className="text-sm text-slate">{store.price_match_policy}</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+          </section>
         </div>
       </main>
 

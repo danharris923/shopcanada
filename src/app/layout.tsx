@@ -1,10 +1,9 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { SITE_URL } from '@/lib/config'
 
 const inter = Inter({ subsets: ['latin'] })
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://shopcanada.cc'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

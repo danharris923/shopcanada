@@ -1,0 +1,9 @@
+---
+slug: the-dsrt-company
+name: The Dsrt Company
+type: brand
+---
+
+# The Dsrt Company
+
+Skip to content HOLIDAY ORDERS: UNFORTUNATELY WE CANNOT GUARANTEE ORDERS PLACED AFTER DECEMBER 14 WILL ARRIVE BEFORE CHRISTMAS IMPORTANT! PLEASE READ THROUGH OUR SHIPPING TIMELINES + POLICIES BEFORE ORDERING! SHIPPING TO THE UNITED STATES HAS BEEN SUSPENDED UNTIL FURTHER NOTICE 404 Page not found Continue shopping Choosing a selection results in a full page refresh.

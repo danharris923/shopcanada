@@ -1,0 +1,9 @@
+---
+slug: lesley-hampton
+name: Lesley Hampton
+type: brand
+---
+
+# Lesley Hampton
+
+Our Story Lesley Hampton is an Anishinaabe artist and fashion designer focused on mental wellness and body neutrality in fashion through the lens of the Indigenous worldview.Lesley is a member of Temagami First Nation, and she identifies as an adult 'Third Culture Kid' with her formative years spent in Canada's Arctic and Atlantic, Australia, England, Indonesia, and New Caledonia. This amalgamation of her Anishinaabe Indigeneity and her international upbringing nurtured a passion for socio-cultural causes as she uses her work as a catalyst for research, conversation, and community building. Named in the Forbes 30 Under 30 Local: Toronto list and the number one Canadian brand to keep your eye on by VOGUE, Lesley has styled campaigns for the Toronto Raptors, modelled for Nike, created custom designs for The Toronto Maple Leafs, and has been a Guest judge on Canada’s Drag Race.An inspiring speaker on Indigenous entrepreneurship and diversity in fashion, Lesley has been a guest lecturer at Parsons School of Design in New York City and had fireside chats at Toronto Metropolitan University. The brand has showcased at White Milano Trade show during Milan Fashion Week, Canadian Curated Collections during London Fashion Week, Toronto Fashion Week, and Indigenous Fashion Arts Festival, and has dressed celebrities such as Lily Gladstone (Killer of the Flower Moon), Devery Jacobs (Reservation Dogs), and Tantoo Cardinal (ECHO).Lesley was the recipient of the 2023 Young Aboriginal Entrepreneur Award from the Canadian Council of Aboriginal Business, the 2021 Indspire Awards Youth recipient, and the Fashion Impact Award at the 2021 Canadian Arts and Fashion Awards. Get in Touch with Lesley!

@@ -1,0 +1,7 @@
+---
+title: "Toboggan Canada"
+slug: "toboggan-canada"
+category: "Clothing"
+---
+
+Toboggan outerwear is an iconic Canadian brand, born from an appreciation of the Canadian outdoors. Each garment is produced with a commitment to best-in-class with great perceived value and excellent craftsmanship. A BRIEF HISTORY OF THE TOBOGGAN For most Canadians, tobogganing is a very popular winter sport. In modern times, a toboggan is used to carry one or more people down a hill or slope for recreation. However, this tradition dates back to aboriginal times when natives would use toboggans to transport their families and supplies across snowy tundra. Toboggans were often long and narrow to fit inside a snowshoe trail and were pulled by someone wearing a chest harness or by sled dogs. The word “toboggan” is said to have originated from the word for sled by the Ml’kmaq (Tobakun). With the arrival of the Europeans, who quickly adopted the use of the toboggan, recreational tobogganing was soon born! In 1881, the Montreal tobogganing club was founded. Since then, tobogganing as a recreational past time has evolved into some serious competitive olympic racing, such as bobsledding, luging and skeleton racing. LEARN MORE ABOUT THE TOBOGGAN ART_PRJKT CLICK HERE.
