@@ -179,6 +179,31 @@ export const RETAILER_SEARCH_URLS: Record<string, string> = {
   'toys-r-us': 'https://www.toysrus.ca/en/toysrus/search?q=',
   'michaels': 'https://canada.michaels.com/en/search?q=',
   'eb-games': 'https://www.ebgames.ca/SearchResult/QuickSearch?q=',
+
+  // Flipp Grocery/Specialty Stores
+  'adonis': 'https://www.marchesadonis.com/en/search?q=',
+  'marches-adonis': 'https://www.marchesadonis.com/en/search?q=',
+  'starsky': 'https://www.starskydeli.com/',
+  't-t-supermarket': 'https://www.tntsupermarket.com/search.html?keyword=',
+  'tnt-supermarket': 'https://www.tntsupermarket.com/search.html?keyword=',
+  'loblaws': 'https://www.loblaws.ca/search?search-bar=',
+  'fortinos': 'https://www.fortinos.ca/search?search-bar=',
+  'natures-emporium': 'https://www.naturesemporium.com/',
+  "nature-s-emporium": 'https://www.naturesemporium.com/',
+  'cabelas-bass-pro': 'https://www.cabelas.ca/search?q=',
+  "cabela-s-bass-pro": 'https://www.cabelas.ca/search?q=',
+  'm-m-food-market': 'https://www.mmfoodmarket.com/en/search?q=',
+  'shoppers-drug-mart': 'https://shop.shoppersdrugmart.ca/Shop/Search?q=',
+  'food-basics': 'https://www.foodbasics.ca/search?filter=',
+  'farm-boy': 'https://www.farmboy.ca/',
+  'bulk-barn': 'https://www.bulkbarn.ca/',
+  'real-canadian-superstore': 'https://www.realcanadiansuperstore.ca/search?search-bar=',
+  'your-independent-grocer': 'https://www.yourindependentgrocer.ca/search?search-bar=',
+  'valumart': 'https://www.valumart.ca/search?search-bar=',
+  'zehrs': 'https://www.zehrs.ca/search?search-bar=',
+  'atlantic-superstore': 'https://www.atlanticsuperstore.ca/search?search-bar=',
+  'dominion': 'https://www.dominion.ca/search?search-bar=',
+  'extra-foods': 'https://www.extrafoods.ca/search?search-bar=',
 }
 
 // =============================================================================

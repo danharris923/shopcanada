@@ -156,41 +156,19 @@ export function DealCard({
       <div className="p-4">
         {/* Store with Logo */}
         {store && storeName && (
-          isFlipp ? (
-            // Flipp variant: clickable store link
-            <Link
-              href={`/stores/${storeSlug}`}
-              onClick={(e) => e.stopPropagation()}
-              className="flex items-center gap-1.5 mb-1 hover:text-maple-red transition-colors"
-            >
-              {storeLogo && (
-                <img
-                  src={storeLogo}
-                  alt=""
-                  className="w-4 h-4 rounded-sm object-contain"
-                  onError={(e) => { e.currentTarget.style.display = 'none' }}
-                />
-              )}
-              <span className="deal-card-store uppercase tracking-wide">
-                {storeName}
-              </span>
-            </Link>
-          ) : (
-            // Regular variant: non-clickable store display
-            <div className="flex items-center gap-1.5 mb-1">
-              {storeLogo && (
-                <img
-                  src={storeLogo}
-                  alt=""
-                  className="w-4 h-4 rounded-sm object-contain"
-                  onError={(e) => { e.currentTarget.style.display = 'none' }}
-                />
-              )}
-              <span className="deal-card-store uppercase tracking-wide">
-                {storeName}
-              </span>
-            </div>
-          )
+          <div className="flex items-center gap-1.5 mb-1">
+            {storeLogo && (
+              <img
+                src={storeLogo}
+                alt=""
+                className="w-4 h-4 rounded-sm object-contain"
+                onError={(e) => { e.currentTarget.style.display = 'none' }}
+              />
+            )}
+            <span className="deal-card-store uppercase tracking-wide">
+              {storeName}
+            </span>
+          </div>
         )}
 
         {/* Title */}
@@ -248,7 +226,7 @@ export function DealCard({
         {/* Valid dates (only for Flipp variant) */}
         {isFlipp && validTo && (
           <div className="text-sm text-meta mb-2">
-            Valid until {new Date(validTo).toLocaleDateString()}
+            Valid until {validTo.split('T')[0]}
           </div>
         )}
 
