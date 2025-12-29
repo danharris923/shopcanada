@@ -7,7 +7,7 @@ import { DealCardProps } from '@/types/deal'
 import { toNumber, formatPrice, calculateSavings } from '@/lib/price-utils'
 import { getReturnDays, getShipThreshold } from '@/lib/utils/policy-parser'
 import { getRandomTag } from '@/lib/utils/deal-utils'
-import { getAffiliateSearchUrl } from '@/lib/affiliates'
+import { getAffiliateSearchUrl, getDealAffiliateUrl } from '@/lib/affiliates'
 
 // Helper to generate fallback logo URL using Google favicons
 const generateLogoUrl = (domain: string) =>
@@ -52,9 +52,9 @@ export function DealCard({
   const hasReturnPolicy = storeData?.return_policy
   const hasShippingInfo = storeData?.shipping_info
 
-  // For Flipp variant, check for affiliate URL
-  const flippAffiliateUrl = isFlipp ? getAffiliateSearchUrl(storeSlug, title) : null
-  const effectiveAffiliateUrl = affiliateUrl || flippAffiliateUrl || ''
+  // Build affiliate URL with search-wrapping for frictionless shopping
+  // Uses getDealAffiliateUrl which search-wraps homepage links
+  const effectiveAffiliateUrl = getDealAffiliateUrl(affiliateUrl || null, storeSlug, title) || ''
 
   const shouldShowHighlight = effectiveAffiliateUrl && !directAffiliate
   const randomTag = shouldShowHighlight ? getRandomTag(id) : null
