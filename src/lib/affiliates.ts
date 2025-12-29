@@ -133,8 +133,8 @@ export const RETAILER_SEARCH_URLS: Record<string, string> = {
   // Home Improvement
   'home-depot': 'https://www.homedepot.ca/search?q=',
   'rona': 'https://www.rona.ca/en/search?q=',
-  'home-hardware': 'https://www.homehardware.ca/en/search?q=',
-  'princess-auto': 'https://www.princessauto.com/search?q=',
+  'home-hardware': 'https://www.homehardware.ca/en/search-results?q=',
+  'princess-auto': 'https://www.princessauto.com/en/searchresults?Ntt=',
   'lee-valley': 'https://www.leevalley.com/en-ca/search#q=',
   'structube': 'https://www.structube.com/en_ca/catalogsearch/result/?q=',
   'ikea': 'https://www.ikea.com/ca/en/search/?q=',
