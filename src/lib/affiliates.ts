@@ -156,6 +156,16 @@ export const RETAILER_SEARCH_URLS: Record<string, string> = {
   'zara': 'https://www.zara.com/ca/en/search?searchTerm=',
   'uniqlo': 'https://www.uniqlo.com/ca/en/search?q=',
 
+  // Canadian Fashion (former ShopStyle stores)
+  'lululemon': 'https://shop.lululemon.com/search?Ntt=',
+  'roots': 'https://www.roots.com/ca/en/search?q=',
+  'aritzia': 'https://www.aritzia.com/en/search?q=',
+  'ardene': 'https://www.ardene.com/ca/en/search?q=',
+  'michael-kors': 'https://www.michaelkors.ca/search?q=',
+  'sephora': 'https://www.sephora.ca/search?keyword=',
+  'sperry': 'https://www.sperry.com/en-ca/search?q=',
+  'joe-fresh': 'https://www.joefresh.com/ca/search?q=',
+
   // Sports / Outdoors
   'sport-chek': 'https://www.sportchek.ca/search.html?q=',
   'sportchek': 'https://www.sportchek.ca/search.html?q=',
@@ -276,22 +286,64 @@ export function getAffiliateSearchUrl(storeSlug: string | null, productTitle: st
 }
 
 /**
+ * Extract store slug from a URL domain
+ */
+function extractStoreSlugFromUrl(url: string): string | null {
+  try {
+    const urlObj = new URL(url)
+    const domain = urlObj.hostname.replace('www.', '').replace('.ca', '').replace('.com', '')
+    // Convert domain to slug format
+    return domain.replace(/\./g, '-')
+  } catch {
+    return null
+  }
+}
+
+/**
+ * Check if URL is an Amazon product link (not just homepage)
+ */
+function isAmazonProductLink(url: string): boolean {
+  if (!url.includes('amazon.ca') && !url.includes('amazon.com') && !url.includes('amzn.')) {
+    return false
+  }
+  // Check if it has a product path (/dp/, /gp/, product ASIN)
+  return /\/(dp|gp|product)\/|\/[A-Z0-9]{10}/i.test(url)
+}
+
+/**
  * Get the best affiliate URL for a deal:
- * 1. Use deal's affiliate_url if it exists (cleaned for Amazon)
- * 2. Fall back to store affiliate link + product search (Rakuten only)
- * 3. Return null if no affiliate available
+ * 1. Amazon product links - use directly with our tag
+ * 2. Other URLs - search-wrap with product title for frictionless shopping
+ * 3. Fall back to store affiliate link + product search
  */
 export function getDealAffiliateUrl(
   dealAffiliateUrl: string | null | undefined,
   storeSlug: string | null,
   productTitle: string
 ): string | null {
-  // If deal has its own affiliate URL, use that (but clean Amazon URLs)
-  if (dealAffiliateUrl) {
+  // Amazon product links go directly (already has product page)
+  if (dealAffiliateUrl && isAmazonProductLink(dealAffiliateUrl)) {
     return cleanAmazonUrl(dealAffiliateUrl)
   }
 
-  // Otherwise, try to build one from Rakuten affiliate
+  // For all other affiliate URLs, try to search-wrap them
+  if (dealAffiliateUrl) {
+    // Try to extract store from the URL and build search link
+    const urlStoreSlug = extractStoreSlugFromUrl(dealAffiliateUrl)
+    const effectiveSlug = storeSlug || urlStoreSlug
+
+    if (effectiveSlug) {
+      const searchUrl = getAffiliateSearchUrl(effectiveSlug, productTitle)
+      if (searchUrl) {
+        return searchUrl
+      }
+    }
+
+    // If we can't search-wrap, fall back to the original URL
+    return dealAffiliateUrl
+  }
+
+  // No affiliate URL - try to build one from store
   return getAffiliateSearchUrl(storeSlug, productTitle)
 }
 
