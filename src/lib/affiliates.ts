@@ -85,6 +85,103 @@ export function buildRakutenDeepLink(merchantSlug: string, searchQuery: string):
 }
 
 // =============================================================================
+// RETAILER SEARCH URLS
+// Direct search URLs for stores without affiliate programs
+// =============================================================================
+
+export const RETAILER_SEARCH_URLS: Record<string, string> = {
+  // Grocery
+  'costco': 'https://www.costco.ca/CatalogSearch?keyword=',
+  'no-frills': 'https://www.nofrills.ca/search?search-bar=',
+  'superstore': 'https://www.realcanadiansuperstore.ca/search?search-bar=',
+  'real-canadian-superstore': 'https://www.realcanadiansuperstore.ca/search?search-bar=',
+  'loblaws': 'https://www.loblaws.ca/search?search-bar=',
+  'metro': 'https://www.metro.ca/en/online-grocery/search?filter=',
+  'food-basics': 'https://www.foodbasics.ca/search?filter=',
+  'freshco': 'https://www.freshco.com/search?q=',
+  'sobeys': 'https://www.sobeys.com/en/search/?q=',
+  'safeway': 'https://www.safeway.ca/search?q=',
+  'save-on-foods': 'https://www.saveonfoods.com/search?q=',
+  'iga': 'https://www.iga.net/en/search?q=',
+  'maxi': 'https://www.maxi.ca/search?search-bar=',
+  'provigo': 'https://www.provigo.ca/search?search-bar=',
+  'super-c': 'https://www.superc.ca/search?search-bar=',
+  'wholesale-club': 'https://www.wholesaleclub.ca/search?search-bar=',
+  'giant-tiger': 'https://www.gianttiger.com/search?q=',
+
+  // Big Box / General
+  'walmart': 'https://www.walmart.ca/search?q=',
+  'amazon': 'https://www.amazon.ca/s?k=',
+  'amazon-ca': 'https://www.amazon.ca/s?k=',
+  'canadian-tire': 'https://www.canadiantire.ca/en/search.html?q=',
+  'dollarama': 'https://www.dollarama.com/en-CA/search?q=',
+
+  // Electronics
+  'best-buy': 'https://www.bestbuy.ca/en-ca/search?search=',
+  'the-source': 'https://www.thesource.ca/en-ca/search?text=',
+  'staples': 'https://www.staples.ca/search?query=',
+  'dell': 'https://www.dell.com/en-ca/search/laptop?p=1&q=',
+  'lenovo': 'https://www.lenovo.com/ca/en/search?text=',
+  'newegg': 'https://www.newegg.ca/p/pl?d=',
+  'memory-express': 'https://www.memoryexpress.com/Search/Products?Search=',
+  'canada-computers': 'https://www.canadacomputers.com/search.php?search=',
+  'apple': 'https://www.apple.com/ca/shop/search/',
+  'microsoft': 'https://www.microsoft.com/en-ca/search?q=',
+  'samsung': 'https://www.samsung.com/ca/search/?searchvalue=',
+  'visions': 'https://www.visions.ca/Catalogue/Search?keywords=',
+
+  // Home Improvement
+  'home-depot': 'https://www.homedepot.ca/search?q=',
+  'rona': 'https://www.rona.ca/en/search?q=',
+  'home-hardware': 'https://www.homehardware.ca/en/search?q=',
+  'princess-auto': 'https://www.princessauto.com/search?q=',
+  'lee-valley': 'https://www.leevalley.com/en-ca/search#q=',
+  'structube': 'https://www.structube.com/en_ca/catalogsearch/result/?q=',
+  'ikea': 'https://www.ikea.com/ca/en/search/?q=',
+
+  // Furniture
+  'the-brick': 'https://www.thebrick.com/search?q=',
+  'leons': 'https://www.leons.ca/search?q=',
+  'wayfair': 'https://www.wayfair.ca/keyword.html?keyword=',
+  'sleep-country': 'https://www.sleepcountry.ca/search?q=',
+
+  // Fashion / Department
+  'the-bay': 'https://www.thebay.com/search?q=',
+  'hudsons-bay': 'https://www.thebay.com/search?q=',
+  'hudson-s-bay': 'https://www.thebay.com/search?q=',
+  'simons': 'https://www.simons.ca/en/search?q=',
+  'old-navy': 'https://oldnavy.gapcanada.ca/browse/search.do?searchText=',
+  'gap': 'https://www.gapcanada.ca/browse/search.do?searchText=',
+  'h-m': 'https://www2.hm.com/en_ca/search-results.html?q=',
+  'zara': 'https://www.zara.com/ca/en/search?searchTerm=',
+  'uniqlo': 'https://www.uniqlo.com/ca/en/search?q=',
+
+  // Sports / Outdoors
+  'sport-chek': 'https://www.sportchek.ca/search.html?q=',
+  'sportchek': 'https://www.sportchek.ca/search.html?q=',
+  'marks': 'https://www.marks.com/en/search.html?q=',
+  'atmosphere': 'https://www.atmosphere.ca/search.html?q=',
+  'mec': 'https://www.mec.ca/en/search?text=',
+  'sail': 'https://www.sail.ca/en/catalogsearch/result/?q=',
+
+  // Pharmacy / Health
+  'shoppers': 'https://shop.shoppersdrugmart.ca/Shop/Search?q=',
+  'shoppers-drug-mart': 'https://shop.shoppersdrugmart.ca/Shop/Search?q=',
+  'rexall': 'https://www.rexall.ca/search?q=',
+  'london-drugs': 'https://www.londondrugs.com/search/?q=',
+
+  // Pets
+  'petsmart': 'https://www.petsmart.ca/search/?q=',
+  'pet-valu': 'https://www.petvalu.ca/search?q=',
+
+  // Books / Toys
+  'indigo': 'https://www.indigo.ca/en-ca/search/?q=',
+  'toys-r-us': 'https://www.toysrus.ca/en/toysrus/search?q=',
+  'michaels': 'https://canada.michaels.com/en/search?q=',
+  'eb-games': 'https://www.ebgames.ca/SearchResult/QuickSearch?q=',
+}
+
+// =============================================================================
 // COOKIE BYPASS PARAMS
 // Append after search query for sites with known cookie consent popups
 // =============================================================================
@@ -138,8 +235,7 @@ export function buildAffiliateSearchUrl(
 
 /**
  * Get affiliate link with product search query appended
- * Uses Rakuten for supported merchants, otherwise returns null
- * For other stores, use buildAffiliateSearchUrl with the store's search URL from DB
+ * Priority: Rakuten affiliate > Direct retailer search URL
  */
 export function getAffiliateSearchUrl(storeSlug: string | null, productTitle: string): string | null {
   if (!storeSlug) return null
@@ -147,6 +243,13 @@ export function getAffiliateSearchUrl(storeSlug: string | null, productTitle: st
   // Try Rakuten (affiliate)
   const rakutenUrl = buildRakutenDeepLink(storeSlug, productTitle)
   if (rakutenUrl) return rakutenUrl
+
+  // Try direct retailer search URL
+  const searchUrl = RETAILER_SEARCH_URLS[storeSlug]
+  if (searchUrl) {
+    const bypassParam = COOKIE_BYPASS_PARAMS[storeSlug] || ''
+    return `${searchUrl}${encodeURIComponent(productTitle)}${bypassParam}`
+  }
 
   return null
 }
