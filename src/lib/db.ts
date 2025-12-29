@@ -259,7 +259,7 @@ export async function getStores(): Promise<Store[]> {
         color, tagline, description, badges, top_categories,
         is_canadian, province, return_policy, loyalty_program_name,
         loyalty_program_desc, shipping_info, price_match_policy,
-        affiliate_network, deal_count
+        affiliate_network, screenshot_url, deal_count
       FROM stores
       ORDER BY deal_count DESC
     `)
@@ -277,7 +277,7 @@ export async function getStoreBySlug(slug: string): Promise<Store | null> {
         color, tagline, description, badges, top_categories,
         is_canadian, province, return_policy, loyalty_program_name,
         loyalty_program_desc, shipping_info, price_match_policy,
-        affiliate_network, deal_count
+        affiliate_network, screenshot_url, deal_count
       FROM stores
       WHERE slug = $1
       LIMIT 1`,
@@ -319,7 +319,7 @@ export async function getCanadianBrands(): Promise<Store[]> {
         color, tagline, description, badges, top_categories,
         is_canadian, province, return_policy, loyalty_program_name,
         loyalty_program_desc, shipping_info, price_match_policy,
-        affiliate_network, deal_count
+        affiliate_network, screenshot_url, deal_count
       FROM stores
       WHERE type = 'brand' OR is_canadian = TRUE
       ORDER BY deal_count DESC`
@@ -360,7 +360,7 @@ export async function getRelatedCanadianBrands(brand: Store, limit: number = 6):
           color, tagline, description, badges, top_categories,
           is_canadian, province, return_policy, loyalty_program_name,
           loyalty_program_desc, shipping_info, price_match_policy,
-          affiliate_network, deal_count
+          affiliate_network, screenshot_url, deal_count
         FROM stores
         WHERE (type = 'brand' OR is_canadian = TRUE)
           AND slug != $1
@@ -376,7 +376,7 @@ export async function getRelatedCanadianBrands(brand: Store, limit: number = 6):
         color, tagline, description, badges, top_categories,
         is_canadian, province, return_policy, loyalty_program_name,
         loyalty_program_desc, shipping_info, price_match_policy,
-        affiliate_network, deal_count
+        affiliate_network, screenshot_url, deal_count
       FROM stores
       WHERE (type = 'brand' OR is_canadian = TRUE)
         AND slug != $1
@@ -402,7 +402,7 @@ export async function getCanadianBrandsByCategory(category: string): Promise<Sto
         color, tagline, description, badges, top_categories,
         is_canadian, province, return_policy, loyalty_program_name,
         loyalty_program_desc, shipping_info, price_match_policy,
-        affiliate_network, deal_count
+        affiliate_network, screenshot_url, deal_count
       FROM stores
       WHERE (type = 'brand' OR is_canadian = TRUE)
         AND $1 = ANY(top_categories)
@@ -533,7 +533,7 @@ export async function getAllStoresAdmin(): Promise<Store[]> {
         color, tagline, description, badges, top_categories,
         is_canadian, province, return_policy, loyalty_program_name,
         loyalty_program_desc, shipping_info, price_match_policy,
-        affiliate_network, deal_count
+        affiliate_network, screenshot_url, deal_count
       FROM stores
       ORDER BY name ASC`
     )

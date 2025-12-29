@@ -45,6 +45,7 @@ export interface Store {
   shipping_info: string | null
   price_match_policy: string | null
   affiliate_network: string | null
+  screenshot_url: string | null
   deal_count: number
 }
 

@@ -128,6 +128,24 @@ export default async function BrandPage({ params }: Props) {
                 )}
               </div>
 
+              {/* Brand Screenshot */}
+              {brand.screenshot_url && (
+                <div className="mb-12">
+                  <div className="relative rounded-card overflow-hidden border border-silver-light shadow-lg">
+                    <img
+                      src={brand.screenshot_url}
+                      alt={`${brand.name} website screenshot`}
+                      className="w-full h-auto"
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+                      <p className="text-white text-sm">
+                        Preview of {brand.name} website
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* Deals Section - Only show if deals exist */}
               {deals.length > 0 && (
                 <section className="mb-12">
