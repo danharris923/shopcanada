@@ -254,9 +254,76 @@ export function getStoreAffiliateLink(storeSlug: string | null): string | null {
 }
 
 /**
+ * Extract clean search terms from a product title
+ * Strips out prices, sale language, sizes, and other noise
+ *
+ * "Sale $6 Jays My Mighty Wolf, Doggy Bits dog treats" -> "Jays My Mighty Wolf Doggy Bits dog treats"
+ * "SAVE 50% Tide Pods 42ct" -> "Tide Pods"
+ * "$19.99 Samsung Galaxy Buds" -> "Samsung Galaxy Buds"
+ */
+export function extractSearchTerms(title: string): string {
+  if (!title) return ''
+
+  let cleaned = title
+
+  // Remove price patterns: $6, $19.99, $1,299.99
+  cleaned = cleaned.replace(/\$[\d,]+\.?\d*/g, '')
+
+  // Remove "SAVE X%" patterns first (before removing standalone %)
+  cleaned = cleaned.replace(/\bsave\s+\d+%?/gi, '')
+
+  // Remove "Sale" prefix and sale-related words
+  cleaned = cleaned.replace(/^sale\s+/i, '')
+  cleaned = cleaned.replace(/\bon\s+sale\b/gi, '')
+  cleaned = cleaned.replace(/\bsale\b/gi, '')
+  cleaned = cleaned.replace(/\bsavings?\b/gi, '')
+
+  // Remove discount patterns: 50% OFF, -20%, 50%, 30% off
+  cleaned = cleaned.replace(/-?\d+%\s*(off)?\b/gi, '')
+
+  // Remove standalone % left over
+  cleaned = cleaned.replace(/\s*%\s*/g, ' ')
+
+  // Remove "was $X" / "reg $X" / "now $X" patterns
+  cleaned = cleaned.replace(/\b(was|reg|regular|originally|now)\s*\$?[\d,.]+/gi, '')
+
+  // Remove standalone "was", "now" left over from price removal
+  cleaned = cleaned.replace(/\b(was|now)\b/gi, '')
+
+  // Remove quantity/size patterns: 42ct, 500ml, 1.5L, 12pk, 6 pack, 1kg
+  cleaned = cleaned.replace(/\b\d+\.?\d*\s*(ct|pk|pack|count|ml|l|g|kg|oz|lb)\b/gi, '')
+
+  // Remove "limit X" patterns
+  cleaned = cleaned.replace(/\blimit\s+\d+\b/gi, '')
+
+  // Remove standalone numbers at start
+  cleaned = cleaned.replace(/^\d+\s+/, '')
+
+  // Remove common flyer noise words
+  cleaned = cleaned.replace(/\b(selected|assorted|varieties|each|ea)\b/gi, '')
+
+  // Clean up punctuation and whitespace
+  cleaned = cleaned.replace(/[,|\-]/g, ' ')    // Replace commas, pipes, dashes with spaces
+  cleaned = cleaned.replace(/\s+/g, ' ')       // Collapse multiple spaces
+  cleaned = cleaned.trim()
+
+  // If we stripped too much, return a reasonable portion of original
+  if (cleaned.length < 3 && title.length > 3) {
+    // Just strip obvious prefixes and prices
+    return title
+      .replace(/^sale\s+/i, '')
+      .replace(/\$[\d,]+\.?\d*/g, '')
+      .replace(/\s+/g, ' ')
+      .trim()
+  }
+
+  return cleaned
+}
+
+/**
  * Build affiliate search URL from a base search URL and product title
  * @param searchUrl - The base search URL from DB (e.g., "https://www.amazon.ca/s?k=")
- * @param productTitle - The product to search for
+ * @param productTitle - The product to search for (will be cleaned)
  * @param storeSlug - Optional store slug for cookie bypass params
  */
 export function buildAffiliateSearchUrl(
@@ -264,26 +331,31 @@ export function buildAffiliateSearchUrl(
   productTitle: string,
   storeSlug?: string | null
 ): string {
+  const cleanedTitle = extractSearchTerms(productTitle)
   const bypassParam = storeSlug ? (COOKIE_BYPASS_PARAMS[storeSlug] || '') : ''
-  return `${searchUrl}${encodeURIComponent(productTitle)}${bypassParam}`
+  return `${searchUrl}${encodeURIComponent(cleanedTitle)}${bypassParam}`
 }
 
 /**
  * Get affiliate link with product search query appended
  * Priority: Rakuten affiliate > Direct retailer search URL
+ * Automatically cleans the product title for better search results
  */
 export function getAffiliateSearchUrl(storeSlug: string | null, productTitle: string): string | null {
   if (!storeSlug) return null
 
+  // Clean the title for better search results
+  const cleanedTitle = extractSearchTerms(productTitle)
+
   // Try Rakuten (affiliate)
-  const rakutenUrl = buildRakutenDeepLink(storeSlug, productTitle)
+  const rakutenUrl = buildRakutenDeepLink(storeSlug, cleanedTitle)
   if (rakutenUrl) return rakutenUrl
 
   // Try direct retailer search URL
   const searchUrl = RETAILER_SEARCH_URLS[storeSlug]
   if (searchUrl) {
     const bypassParam = COOKIE_BYPASS_PARAMS[storeSlug] || ''
-    return `${searchUrl}${encodeURIComponent(productTitle)}${bypassParam}`
+    return `${searchUrl}${encodeURIComponent(cleanedTitle)}${bypassParam}`
   }
 
   return null
