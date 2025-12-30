@@ -340,7 +340,7 @@ export default async function HomePage() {
                     store={deal.store || null}
                     affiliateUrl={(deal as any).affiliate_url || ''}
                     variant="flipp"
-                    storeSlug={(deal as any).category || 'general'}
+                    storeSlug={(deal as any).storeSlug || (deal as any).store?.toLowerCase().replace(/\s+/g, '-') || 'general'}
                     storeLogo={(deal as any).storeLogo || ''}
                     validTo={(deal as any).validTo || new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString()}
                     saleStory={(deal as any).saleStory || null}
