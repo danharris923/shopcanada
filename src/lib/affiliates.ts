@@ -210,6 +210,10 @@ export const RETAILER_SEARCH_URLS: Record<string, string> = {
   'atlantic-superstore': 'https://www.atlanticsuperstore.ca/search?search-bar=',
   'dominion': 'https://www.dominion.ca/search?search-bar=',
   'extra-foods': 'https://www.extrafoods.ca/search?search-bar=',
+
+  // Appliances
+  'goemans-appliances': 'https://www.goemans.com/search?q=',
+  'goemans': 'https://www.goemans.com/search?q=',
 }
 
 // =============================================================================
