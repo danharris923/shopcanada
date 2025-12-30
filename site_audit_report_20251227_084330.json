@@ -1,0 +1,2779 @@
+{
+  "audit_info": {
+    "site": "https://shopcanada.cc",
+    "started_at": "2025-12-27T08:42:57.770036",
+    "completed_at": "2025-12-27T08:43:30.017442",
+    "pages_audited": 14,
+    "elapsed_seconds": 32.24644
+  },
+  "summary": {
+    "critical_issues": 3,
+    "warnings": 18,
+    "info": 404,
+    "issues_by_category": {
+      "seo": 13,
+      "image": 404,
+      "content": 4,
+      "performance": 1,
+      "link": 3
+    },
+    "pages_with_ai_slop": 0,
+    "broken_links": 3
+  },
+  "pages": [
+    {
+      "url": "https://shopcanada.cc/category/grocery",
+      "status_code": 200,
+      "title": "Grocery & Food Deals - Shop Canada | Shop Canada",
+      "meta_description": "Save on fresh food, pantry staples, snacks, and beverages from Canadian grocery stores and food retailers.",
+      "h1_tags": [
+        "Grocery & Food"
+      ],
+      "word_count": 694,
+      "load_time_ms": 970,
+      "ai_slop_matches": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "category": "seo",
+          "message": "Meta description too short (106 chars)",
+          "details": "Aim for 120-160 chars"
+        },
+        {
+          "severity": "warning",
+          "category": "seo",
+          "message": "Heading hierarchy skip: H1 → H3",
+          "details": "Don't skip heading levels (e.g., H1 → H3)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=indigo.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=indigo.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=sephora.com&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=sephora.com&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        }
+      ]
+    },
+    {
+      "url": "https://shopcanada.cc",
+      "status_code": 200,
+      "title": "Shop Canada - Best Canadian Deals & Discounts 2025",
+      "meta_description": "Find the best deals, sales, and discounts from top Canadian retailers like Amazon.ca, Walmart, Costco, Best Buy, and more. Save up to 70% on electronics, fashion, home goods. Updated hourly.",
+      "h1_tags": [
+        "Shop Canada"
+      ],
+      "word_count": 673,
+      "load_time_ms": 1800,
+      "ai_slop_matches": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "category": "seo",
+          "message": "Meta description too long (190 chars)",
+          "details": "Will be truncated. Aim for <160 chars"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /hero-mobile.png... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://f.wishabi.net/page_items/403431461/1766125910/extra_... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://f.wishabi.net/page_items/403431462/1766125911/extra_... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://f.wishabi.net/page_items/401782758/1765510621/extra_... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        }
+      ]
+    },
+    {
+      "url": "https://shopcanada.cc/",
+      "status_code": 200,
+      "title": "Shop Canada - Best Canadian Deals & Discounts 2025",
+      "meta_description": "Find the best deals, sales, and discounts from top Canadian retailers like Amazon.ca, Walmart, Costco, Best Buy, and more. Save up to 70% on electronics, fashion, home goods. Updated hourly.",
+      "h1_tags": [
+        "Shop Canada"
+      ],
+      "word_count": 673,
+      "load_time_ms": 1455,
+      "ai_slop_matches": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "category": "seo",
+          "message": "Meta description too long (190 chars)",
+          "details": "Will be truncated. Aim for <160 chars"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /hero-mobile.png... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://f.wishabi.net/page_items/403431461/1766125910/extra_... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://f.wishabi.net/page_items/403431462/1766125911/extra_... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://f.wishabi.net/page_items/401782758/1765510621/extra_... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        }
+      ]
+    },
+    {
+      "url": "https://shopcanada.cc/category/sports",
+      "status_code": 200,
+      "title": "Sports & Outdoors Deals - Shop Canada | Shop Canada",
+      "meta_description": "Find deals on fitness equipment, outdoor gear, sportswear, and recreational products from Canadian sports retailers.",
+      "h1_tags": [
+        "Sports & Outdoors"
+      ],
+      "word_count": 73,
+      "load_time_ms": 1229,
+      "ai_slop_matches": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "category": "seo",
+          "message": "Meta description too short (116 chars)",
+          "details": "Aim for 120-160 chars"
+        },
+        {
+          "severity": "warning",
+          "category": "content",
+          "message": "Thin content (73 words)",
+          "details": "Consider adding more content (aim for >300 words)"
+        }
+      ]
+    },
+    {
+      "url": "https://shopcanada.cc/category/electronics",
+      "status_code": 200,
+      "title": "Electronics Deals - Shop Canada | Shop Canada",
+      "meta_description": "Find the latest electronics, computers, phones, tablets, gaming gear, and tech accessories from top Canadian retailers.",
+      "h1_tags": [
+        "Electronics"
+      ],
+      "word_count": 145,
+      "load_time_ms": 765,
+      "ai_slop_matches": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "category": "seo",
+          "message": "Meta description too short (119 chars)",
+          "details": "Aim for 120-160 chars"
+        },
+        {
+          "severity": "warning",
+          "category": "seo",
+          "message": "Heading hierarchy skip: H1 → H3",
+          "details": "Don't skip heading levels (e.g., H1 → H3)"
+        },
+        {
+          "severity": "warning",
+          "category": "content",
+          "message": "Thin content (145 words)",
+          "details": "Consider adding more content (aim for >300 words)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        }
+      ]
+    },
+    {
+      "url": "https://shopcanada.cc/category/home",
+      "status_code": 200,
+      "title": "Home & Garden Deals - Shop Canada | Shop Canada",
+      "meta_description": "Shop home improvement, furniture, decor, appliances, tools, and outdoor living products from Canadian home retailers.",
+      "h1_tags": [
+        "Home & Garden"
+      ],
+      "word_count": 204,
+      "load_time_ms": 954,
+      "ai_slop_matches": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "category": "seo",
+          "message": "Meta description too short (117 chars)",
+          "details": "Aim for 120-160 chars"
+        },
+        {
+          "severity": "warning",
+          "category": "seo",
+          "message": "Heading hierarchy skip: H1 → H3",
+          "details": "Don't skip heading levels (e.g., H1 → H3)"
+        },
+        {
+          "severity": "warning",
+          "category": "content",
+          "message": "Thin content (204 words)",
+          "details": "Consider adding more content (aim for >300 words)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        }
+      ]
+    },
+    {
+      "url": "https://shopcanada.cc/stores?filter=canadian",
+      "status_code": 200,
+      "title": "Shop Canada - Best Canadian Deals & Discounts 2025",
+      "meta_description": "Find the best deals, sales, and discounts from top Canadian retailers like Amazon.ca, Walmart, Costco, Best Buy, and more. Save up to 70% on electronics, fashion, home goods. Updated hourly.",
+      "h1_tags": [
+        "Browse All Stores"
+      ],
+      "word_count": 1841,
+      "load_time_ms": 3115,
+      "ai_slop_matches": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "category": "seo",
+          "message": "Meta description too long (190 chars)",
+          "details": "Will be truncated. Aim for <160 chars"
+        },
+        {
+          "severity": "warning",
+          "category": "performance",
+          "message": "Slow page load (3115ms)",
+          "details": "Pages should load in <3 seconds"
+        }
+      ]
+    },
+    {
+      "url": "https://shopcanada.cc/category/beauty",
+      "status_code": 200,
+      "title": "Beauty & Personal Care Deals - Shop Canada | Shop Canada",
+      "meta_description": "Browse beauty deals on skincare, makeup, haircare, and wellness products from Canadian beauty retailers.",
+      "h1_tags": [
+        "Beauty & Personal Care"
+      ],
+      "word_count": 73,
+      "load_time_ms": 901,
+      "ai_slop_matches": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "category": "seo",
+          "message": "Meta description too short (104 chars)",
+          "details": "Aim for 120-160 chars"
+        },
+        {
+          "severity": "warning",
+          "category": "content",
+          "message": "Thin content (73 words)",
+          "details": "Consider adding more content (aim for >300 words)"
+        }
+      ]
+    },
+    {
+      "url": "https://shopcanada.cc/canadian",
+      "status_code": 200,
+      "title": "Shop Canada - Best Canadian Deals & Discounts 2025",
+      "meta_description": "Find the best deals, sales, and discounts from top Canadian retailers like Amazon.ca, Walmart, Costco, Best Buy, and more. Save up to 70% on electronics, fashion, home goods. Updated hourly.",
+      "h1_tags": [
+        "Browse All Stores"
+      ],
+      "word_count": 1841,
+      "load_time_ms": 1398,
+      "ai_slop_matches": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "category": "seo",
+          "message": "Meta description too long (190 chars)",
+          "details": "Will be truncated. Aim for <160 chars"
+        }
+      ]
+    },
+    {
+      "url": "https://shopcanada.cc/terms",
+      "status_code": 404,
+      "title": "",
+      "meta_description": "",
+      "h1_tags": [],
+      "word_count": 0,
+      "load_time_ms": 647,
+      "ai_slop_matches": [],
+      "issues": [
+        {
+          "severity": "critical",
+          "category": "link",
+          "message": "Page returned HTTP 404",
+          "details": "This page is not accessible"
+        }
+      ]
+    },
+    {
+      "url": "https://shopcanada.cc/privacy",
+      "status_code": 404,
+      "title": "",
+      "meta_description": "",
+      "h1_tags": [],
+      "word_count": 0,
+      "load_time_ms": 639,
+      "ai_slop_matches": [],
+      "issues": [
+        {
+          "severity": "critical",
+          "category": "link",
+          "message": "Page returned HTTP 404",
+          "details": "This page is not accessible"
+        }
+      ]
+    },
+    {
+      "url": "https://shopcanada.cc/deals",
+      "status_code": 200,
+      "title": "All Deals - Shop Canada | Shop Canada",
+      "meta_description": "Browse all the best deals from Canadian retailers. Find discounts from Amazon.ca, Walmart, Costco, Best Buy, Canadian Tire and more.",
+      "h1_tags": [
+        "All Deals"
+      ],
+      "word_count": 1240,
+      "load_time_ms": 1158,
+      "ai_slop_matches": [],
+      "issues": [
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=indigo.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=indigo.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=amazon.ca&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://www.google.com/s2/favicons?domain=sephora.com&sz=128... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://www.google.com/s2/favicons?domain=sephora.com&sz=128... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: /_next/image?url=https%3A%2F%2Fmb9dzju6czs0gtn6.public.blob.... - Causes layout shift (CLS)"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image has empty alt text",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - OK if decorative"
+        },
+        {
+          "severity": "info",
+          "category": "image",
+          "message": "Image missing width/height",
+          "details": "src: https://logo.clearbit.com/unknown.ca... - Causes layout shift (CLS)"
+        }
+      ]
+    },
+    {
+      "url": "https://shopcanada.cc/stores",
+      "status_code": 200,
+      "title": "Shop Canada - Best Canadian Deals & Discounts 2025",
+      "meta_description": "Find the best deals, sales, and discounts from top Canadian retailers like Amazon.ca, Walmart, Costco, Best Buy, and more. Save up to 70% on electronics, fashion, home goods. Updated hourly.",
+      "h1_tags": [
+        "Browse All Stores"
+      ],
+      "word_count": 2301,
+      "load_time_ms": 1749,
+      "ai_slop_matches": [],
+      "issues": [
+        {
+          "severity": "warning",
+          "category": "seo",
+          "message": "Meta description too long (190 chars)",
+          "details": "Will be truncated. Aim for <160 chars"
+        }
+      ]
+    },
+    {
+      "url": "https://shopcanada.cc/about",
+      "status_code": 404,
+      "title": "",
+      "meta_description": "",
+      "h1_tags": [],
+      "word_count": 0,
+      "load_time_ms": 639,
+      "ai_slop_matches": [],
+      "issues": [
+        {
+          "severity": "critical",
+          "category": "link",
+          "message": "Page returned HTTP 404",
+          "details": "This page is not accessible"
+        }
+      ]
+    }
+  ],
+  "broken_links": [
+    {
+      "url": "https://shopcanada.cc/terms",
+      "status": 404
+    },
+    {
+      "url": "https://shopcanada.cc/privacy",
+      "status": 404
+    },
+    {
+      "url": "https://shopcanada.cc/about",
+      "status": 404
+    }
+  ]
+}

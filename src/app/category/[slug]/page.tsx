@@ -6,14 +6,14 @@ import { DealCard, DealGrid } from '@/components/DealCard'
 import { Breadcrumbs } from '@/components/breadcrumbs'
 import { StatsBar } from '@/components/StatsBar'
 import { getDealsByCategory } from '@/lib/db'
-import { CORE_CATEGORIES, getCategoryBySlug, type Category } from '@/lib/categories'
+import { CATEGORIES, getCategoryBySlug, type Category } from '@/lib/categories'
 import type { Metadata } from 'next'
 
 // Revalidate every 15 minutes
 export const revalidate = 900
 
-// Use core categories for category pages
-const categories = CORE_CATEGORIES
+// Use all categories for category pages (including extended categories)
+const categories = CATEGORIES
 
 interface CategoryPageProps {
   params: {
