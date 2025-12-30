@@ -62,7 +62,7 @@ function shuffleArray<T>(array: T[], seed: number): T[] {
 /**
  * Transform FlippDeal to match Deal interface for consistency
  */
-function normalizeFlippDeal(flippDeal: FlippDeal): Deal & { source: 'flipp' } {
+function normalizeFlippDeal(flippDeal: FlippDeal): Deal & { source: 'flipp', storeSlug: string, storeLogo: string, validTo: string, saleStory: string | null } {
   return {
     id: flippDeal.id,
     title: flippDeal.title,
@@ -81,7 +81,12 @@ function normalizeFlippDeal(flippDeal: FlippDeal): Deal & { source: 'flipp' } {
     date_updated: new Date().toISOString(),
     description: null,
     source_url: null,
-    source: 'flipp'
+    source: 'flipp',
+    // Include Flipp-specific fields for DealCard
+    storeSlug: flippDeal.storeSlug,
+    storeLogo: flippDeal.storeLogo,
+    validTo: flippDeal.validTo,
+    saleStory: flippDeal.saleStory
   }
 }
 
