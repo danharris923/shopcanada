@@ -9,7 +9,26 @@ interface Store {
   website_url: string | null
   affiliate_url: string | null
   deal_count: number
+  top_categories: string[]
 }
+
+// Priority LTK brands from LTK-BRANDS-STATUS.md
+const LTK_BRANDS = [
+  // Fashion (23)
+  'abercrombie-fitch', 'abercrombie', 'american-eagle', 'aerie', 'alo-yoga', 'alo',
+  'guess', 'skims', 'revolve', 'princess-polly', 'shopbop', 'vuori',
+  'lulus', 'madewell', 'anthropologie', 'free-people', 'cotton-on', 'nasty-gal',
+  'prettylittlething', 'urban-outfitters', 'steve-madden', 'new-balance',
+  'birkenstock', 'ugg', 'simons',
+  // Beauty (8)
+  'charlotte-tilbury', 'tarte', 'tarte-cosmetics', 'elf-cosmetics', 'elf', 'e-l-f',
+  'tula', 'tula-skincare', 'colleen-rothschild', 'dime-beauty', 'merit', 'merit-beauty',
+  'supergoop',
+  // Home (6)
+  'crate-barrel', 'crate-and-barrel', 'pottery-barn', 'west-elm', 'cb2', 'dyson', 'brooklinen'
+]
+
+type FilterType = 'all' | 'ltk' | 'no-affiliate' | 'has-affiliate'
 
 export default function AdminPage() {
   const [password, setPassword] = useState('')
@@ -18,6 +37,8 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(false)
   const [saving, setSaving] = useState<number | null>(null)
   const [message, setMessage] = useState('')
+  const [filter, setFilter] = useState<FilterType>('ltk')
+  const [categoryFilter, setCategoryFilter] = useState<string>('all')
   const [newStoreName, setNewStoreName] = useState('')
   const [newStoreSlug, setNewStoreSlug] = useState('')
   const [newStoreWebsite, setNewStoreWebsite] = useState('')
@@ -132,6 +153,40 @@ export default function AdminPage() {
     setStores([])
   }
 
+  // Get unique categories from all stores
+  const allCategories = Array.from(new Set(
+    stores.flatMap(s => s.top_categories || [])
+  )).sort()
+
+  // Filter and sort stores - LTK brands first, then by deal count
+  const filteredStores = stores
+    .filter(store => {
+      // Category filter
+      if (categoryFilter !== 'all') {
+        if (!store.top_categories?.includes(categoryFilter)) return false
+      }
+      // Type filter
+      switch (filter) {
+        case 'ltk':
+          return LTK_BRANDS.includes(store.slug)
+        case 'no-affiliate':
+          return !store.affiliate_url
+        case 'has-affiliate':
+          return !!store.affiliate_url
+        default:
+          return true
+      }
+    })
+    .sort((a, b) => {
+      // LTK brands always first
+      const aIsLtk = LTK_BRANDS.includes(a.slug)
+      const bIsLtk = LTK_BRANDS.includes(b.slug)
+      if (aIsLtk && !bIsLtk) return -1
+      if (!aIsLtk && bIsLtk) return 1
+      // Then by deal count
+      return b.deal_count - a.deal_count
+    })
+
   if (!isLoggedIn) {
     return (
       <div className="min-h-screen bg-gray-100 flex items-center justify-center">
@@ -223,7 +278,59 @@ export default function AdminPage() {
         {/* Store List */}
         <div className="bg-white rounded-lg shadow">
           <div className="px-6 py-4 border-b">
-            <h2 className="text-xl font-semibold">All Stores ({stores.length})</h2>
+            <div className="flex items-center justify-between mb-3">
+              <h2 className="text-xl font-semibold">
+                Stores ({filteredStores.length}{filter !== 'all' || categoryFilter !== 'all' ? ` of ${stores.length}` : ''})
+              </h2>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setFilter('ltk')}
+                  className={`px-3 py-1 rounded text-sm ${filter === 'ltk' ? 'bg-purple-600 text-white' : 'bg-gray-100 hover:bg-gray-200'}`}
+                >
+                  LTK Priority ({stores.filter(s => LTK_BRANDS.includes(s.slug)).length})
+                </button>
+                <button
+                  onClick={() => setFilter('no-affiliate')}
+                  className={`px-3 py-1 rounded text-sm ${filter === 'no-affiliate' ? 'bg-red-600 text-white' : 'bg-gray-100 hover:bg-gray-200'}`}
+                >
+                  Missing Affiliate
+                </button>
+                <button
+                  onClick={() => setFilter('has-affiliate')}
+                  className={`px-3 py-1 rounded text-sm ${filter === 'has-affiliate' ? 'bg-green-600 text-white' : 'bg-gray-100 hover:bg-gray-200'}`}
+                >
+                  Has Affiliate
+                </button>
+                <button
+                  onClick={() => setFilter('all')}
+                  className={`px-3 py-1 rounded text-sm ${filter === 'all' ? 'bg-black text-white' : 'bg-gray-100 hover:bg-gray-200'}`}
+                >
+                  All
+                </button>
+              </div>
+            </div>
+            {/* Category filter */}
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-gray-500">Category:</span>
+              <select
+                value={categoryFilter}
+                onChange={(e) => setCategoryFilter(e.target.value)}
+                className="px-2 py-1 border rounded text-sm bg-white"
+              >
+                <option value="all">All Categories</option>
+                {allCategories.map(cat => (
+                  <option key={cat} value={cat}>{cat}</option>
+                ))}
+              </select>
+              {categoryFilter !== 'all' && (
+                <button
+                  onClick={() => setCategoryFilter('all')}
+                  className="text-xs text-gray-500 hover:text-black"
+                >
+                  Clear
+                </button>
+              )}
+            </div>
           </div>
 
           {/* Column Headers */}
@@ -239,12 +346,13 @@ export default function AdminPage() {
             <div className="p-8 text-center text-gray-500">Loading...</div>
           ) : (
             <div className="divide-y">
-              {stores.map((store) => (
+              {filteredStores.map((store) => (
                 <StoreRow
                   key={store.id}
                   store={store}
                   onSave={updateStore}
                   saving={saving === store.id}
+                  isLtk={LTK_BRANDS.includes(store.slug)}
                 />
               ))}
             </div>
@@ -258,11 +366,13 @@ export default function AdminPage() {
 function StoreRow({
   store,
   onSave,
-  saving
+  saving,
+  isLtk
 }: {
   store: Store
   onSave: (store: Store, websiteUrl: string, affiliateUrl: string) => void
   saving: boolean
+  isLtk: boolean
 }) {
   const [websiteUrl, setWebsiteUrl] = useState(store.website_url || '')
   const [affiliateUrl, setAffiliateUrl] = useState(store.affiliate_url || '')
@@ -292,10 +402,20 @@ function StoreRow({
   }
 
   return (
-    <div className="px-6 py-3 flex items-center gap-3 flex-nowrap overflow-hidden">
+    <div className={`px-6 py-3 flex items-center gap-3 flex-nowrap overflow-hidden ${isLtk ? 'bg-purple-50' : ''}`}>
       <div className="w-36 flex-shrink-0">
-        <div className="font-medium truncate text-sm">{store.name}</div>
-        <div className="text-xs text-gray-500 truncate">{store.slug}</div>
+        <div className="font-medium truncate text-sm flex items-center gap-1">
+          {store.name}
+          {isLtk && <span className="text-xs bg-purple-600 text-white px-1 rounded">LTK</span>}
+        </div>
+        <div className="text-xs text-gray-500 truncate flex items-center gap-1">
+          {store.slug}
+          {store.affiliate_url ? (
+            <span className="text-green-600">✓</span>
+          ) : (
+            <span className="text-red-400">✗</span>
+          )}
+        </div>
       </div>
       <div className="w-56 flex-shrink-0">
         <input
