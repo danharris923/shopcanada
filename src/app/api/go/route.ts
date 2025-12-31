@@ -18,62 +18,28 @@ export async function GET(request: NextRequest) {
     return NextResponse.redirect(new URL('/', request.url))
   }
 
-  // If we have both affiliate and search URLs, return HTML that:
-  // 1. Loads affiliate URL in hidden iframe (sets cookie)
-  // 2. Redirects main window to search URL after brief delay
+  // If we have both affiliate and search URLs:
+  // 1. Fire off affiliate URL request immediately (img beacon - fastest)
+  // 2. Redirect to search URL with zero delay
   if (affiliateUrl) {
     const html = `<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="refresh" content="0;url=${searchUrl}">
   <title>Redirecting...</title>
-  <style>
-    body {
-      font-family: system-ui, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background: #f5f5f5;
-    }
-    .loader {
-      text-align: center;
-    }
-    .spinner {
-      width: 40px;
-      height: 40px;
-      border: 4px solid #ddd;
-      border-top-color: #c41e3a;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin: 0 auto 16px;
-    }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-  </style>
 </head>
 <body>
-  <div class="loader">
-    <div class="spinner"></div>
-    <p>Taking you to the store...</p>
-  </div>
-
-  <!-- Hidden iframe to set affiliate cookie -->
-  <iframe src="${affiliateUrl}" style="display:none" width="0" height="0"></iframe>
-
-  <script>
-    // Redirect to search URL after cookie is set
-    setTimeout(function() {
-      window.location.href = "${searchUrl}";
-    }, 500);
-  </script>
+  <img src="${affiliateUrl}" width="1" height="1" style="position:absolute;left:-9999px" alt="">
+  <script>window.location.replace("${searchUrl}")</script>
 </body>
 </html>`
 
     return new NextResponse(html, {
-      headers: { 'Content-Type': 'text/html' },
+      headers: {
+        'Content-Type': 'text/html',
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+      },
     })
   }
 
