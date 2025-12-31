@@ -398,6 +398,41 @@ export function buildAffiliateSearchUrl(
 }
 
 /**
+ * Map store slugs to brand names for search term cleaning
+ */
+const STORE_BRAND_NAMES: Record<string, string> = {
+  'lululemon': 'Lululemon',
+  'aritzia': 'Aritzia',
+  'ardene': 'Ardene',
+  'aldo': 'Aldo',
+  'simons': 'Simons',
+  'foot-locker': 'Foot Locker',
+  'new-balance': 'New Balance',
+  'abercrombie-fitch': 'Abercrombie',
+  'american-eagle': 'American Eagle',
+  'anthropologie': 'Anthropologie',
+  'free-people': 'Free People',
+  'urban-outfitters': 'Urban Outfitters',
+  'madewell': 'Madewell',
+  'skims': 'SKIMS',
+  'birkenstock': 'Birkenstock',
+  'ugg': 'UGG',
+  'steve-madden': 'Steve Madden',
+  'revolve': 'Revolve',
+  'princess-polly': 'Princess Polly',
+  'nasty-gal': 'Nasty Gal',
+  'prettylittlething': 'PrettyLittleThing',
+  'lulus': 'Lulus',
+  'guess': 'GUESS',
+  'dyson': 'Dyson',
+  'sephora': 'Sephora',
+  'charlotte-tilbury': 'Charlotte Tilbury',
+  'tarte-cosmetics': 'Tarte',
+  'elf-cosmetics': 'e.l.f.',
+  'supergoop': 'Supergoop',
+}
+
+/**
  * Get affiliate link with product search query appended
  * Priority: Rakuten affiliate > Direct retailer search URL
  * Automatically cleans the product title for better search results
@@ -405,8 +440,11 @@ export function buildAffiliateSearchUrl(
 export function getAffiliateSearchUrl(storeSlug: string | null, productTitle: string): string | null {
   if (!storeSlug) return null
 
-  // Clean the title for better search results
-  const cleanedTitle = extractSearchTerms(productTitle)
+  // Get brand name from slug for better search term cleaning
+  const brandName = STORE_BRAND_NAMES[storeSlug]
+
+  // Clean the title for better search results (strips brand name, noise words)
+  const cleanedTitle = extractSearchTerms(productTitle, brandName)
 
   // Try Rakuten (affiliate)
   const rakutenUrl = buildRakutenDeepLink(storeSlug, cleanedTitle)
