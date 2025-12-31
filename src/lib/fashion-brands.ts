@@ -673,6 +673,14 @@ function generateDiscount(brandSlug: string, interval: number): number | null {
 }
 
 /**
+ * Check if a URL is a search URL that expects query parameters
+ */
+function isSearchUrl(url: string): boolean {
+  // Common search URL patterns
+  return /[?&](q|query|search|searchTerm|keyword|k)=$/i.test(url)
+}
+
+/**
  * Generate a synthetic deal card for a fashion brand
  * @param storeAffiliateUrl - The affiliate URL from the database (from admin panel)
  */
@@ -693,14 +701,22 @@ export function generateFashionDeal(
   // Generate unique ID based on brand and interval (changes every 15 min)
   const dealId = `fashion-${brand.slug}-${interval}`
 
-  // Use store's affiliate URL from database (admin panel) if available
-  // Fall back to search URL only if no affiliate URL exists
+  // Extract clean search terms (strips brand name, "collection", etc.)
+  const searchTerms = extractSearchTerms(title, brand.name)
+
+  // Build affiliate URL
   let affiliateUrl: string
   if (storeAffiliateUrl) {
-    affiliateUrl = storeAffiliateUrl
+    // If the affiliate URL is a search URL, append the search terms
+    if (isSearchUrl(storeAffiliateUrl)) {
+      affiliateUrl = `${storeAffiliateUrl}${encodeURIComponent(searchTerms)}`
+    } else {
+      // It's a direct affiliate link, use as-is
+      affiliateUrl = storeAffiliateUrl
+    }
   } else {
+    // Fall back to RETAILER_SEARCH_URLS
     const searchUrl = RETAILER_SEARCH_URLS[brand.slug]
-    const searchTerms = extractSearchTerms(title)
     affiliateUrl = searchUrl
       ? `${searchUrl}${encodeURIComponent(searchTerms)}`
       : `https://www.google.com/search?q=${encodeURIComponent(brand.name + ' ' + searchTerms)}`

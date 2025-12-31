@@ -303,10 +303,29 @@ export function getStoreAffiliateLink(storeSlug: string | null): string | null {
  * "SAVE 50% Tide Pods 42ct" -> "Tide Pods"
  * "$19.99 Samsung Galaxy Buds" -> "Samsung Galaxy Buds"
  */
-export function extractSearchTerms(title: string): string {
+export function extractSearchTerms(title: string, brandName?: string): string {
   if (!title) return ''
 
   let cleaned = title
+
+  // Remove brand name if provided (case insensitive)
+  if (brandName) {
+    const brandPattern = new RegExp(`\\b${brandName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi')
+    cleaned = cleaned.replace(brandPattern, '')
+  }
+
+  // Remove common marketing/noise words that don't help search
+  const noiseWords = [
+    'collection', 'collections', 'new arrivals', 'arrivals', 'new', 'shop now',
+    'shop', 'bestseller', 'bestsellers', 'best seller', 'fan favorite', 'fan favorites',
+    'classic', 'essentials', 'must have', 'must-have', 'trending', 'featured',
+    'limited edition', 'exclusive', 'special', 'hot', 'deal', 'deals',
+    'buy now', 'get it now', 'available now', 'in stock', 'back in stock'
+  ]
+  for (const word of noiseWords) {
+    const wordPattern = new RegExp(`\\b${word}\\b`, 'gi')
+    cleaned = cleaned.replace(wordPattern, '')
+  }
 
   // Remove price patterns: $6, $19.99, $1,299.99
   cleaned = cleaned.replace(/\$[\d,]+\.?\d*/g, '')
