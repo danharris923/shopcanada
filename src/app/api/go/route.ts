@@ -24,27 +24,17 @@ export async function GET(request: NextRequest) {
   }
 
   // If we have both affiliate and search URLs:
-  // 1. Fire off affiliate URL request (img beacon)
-  // 2. Subtle corner toast (200ms)
-  // 3. Redirect to search URL
+  // Fire affiliate beacon and redirect immediately - browser completes request in background
   if (affiliateUrl) {
     const html = `<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <title>Redirecting...</title>
-  <style>
-    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
-    .toast{position:fixed;bottom:20px;left:20px;background:#fff;border:1px solid #e5e5e5;border-radius:8px;padding:12px 16px;box-shadow:0 2px 8px rgba(0,0,0,.1);display:flex;align-items:center;gap:10px}
-    .spinner{width:14px;height:14px;border:2px solid #e5e5e5;border-top-color:#c41e3a;border-radius:50%;animation:spin .6s linear infinite}
-    .txt{font-size:13px;color:#666}
-    @keyframes spin{to{transform:rotate(360deg)}}
-  </style>
 </head>
 <body>
-  <div class="toast"><div class="spinner"></div><span class="txt">Redirecting...</span></div>
   <img src="${affiliateUrl}" width="1" height="1" style="position:absolute;left:-9999px" alt="">
-  <script>setTimeout(function(){window.location.replace("${searchUrl}")},200)</script>
+  <script>window.location.replace("${searchUrl}")</script>
 </body>
 </html>`
 
