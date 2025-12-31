@@ -448,10 +448,42 @@ function isAmazonProductLink(url: string): boolean {
 }
 
 /**
+ * Known affiliate tracking domains - these should be used directly, not search-wrapped
+ */
+const AFFILIATE_TRACKING_DOMAINS = [
+  'rstyle.me',           // rewardStyle/LTK
+  'linksynergy.com',     // Rakuten
+  'click.linksynergy.com',
+  'shareasale.com',      // ShareASale
+  'pntra.com',           // Pepperjam
+  'pjatr.com',           // Pepperjam
+  'sjv.io',              // Skimlinks
+  'go.redirectingat.com', // Skimlinks
+  'howl.me',             // Howl
+  'narrativ.com',        // Narrativ
+  'shop-links.co',       // ShopLinks
+]
+
+/**
+ * Check if URL is an affiliate tracking link (should not be search-wrapped)
+ */
+function isAffiliateTrackingLink(url: string): boolean {
+  try {
+    const urlObj = new URL(url)
+    return AFFILIATE_TRACKING_DOMAINS.some(domain =>
+      urlObj.hostname === domain || urlObj.hostname.endsWith('.' + domain)
+    )
+  } catch {
+    return AFFILIATE_TRACKING_DOMAINS.some(domain => url.includes(domain))
+  }
+}
+
+/**
  * Get the best affiliate URL for a deal:
  * 1. Amazon product links - use directly with our tag
- * 2. Other URLs - search-wrap with product title for frictionless shopping
- * 3. Fall back to store affiliate link + product search
+ * 2. Affiliate tracking links (rstyle.me, etc.) - use directly
+ * 3. Homepage URLs - search-wrap with product title for frictionless shopping
+ * 4. Fall back to store affiliate link + product search
  */
 export function getDealAffiliateUrl(
   dealAffiliateUrl: string | null | undefined,
@@ -463,7 +495,12 @@ export function getDealAffiliateUrl(
     return cleanAmazonUrl(dealAffiliateUrl)
   }
 
-  // For all other affiliate URLs, try to search-wrap them
+  // Affiliate tracking links (rstyle.me, linksynergy, etc.) go directly
+  if (dealAffiliateUrl && isAffiliateTrackingLink(dealAffiliateUrl)) {
+    return dealAffiliateUrl
+  }
+
+  // For homepage/generic URLs, try to search-wrap them
   if (dealAffiliateUrl) {
     // Try to extract store from the URL and build search link
     const urlStoreSlug = extractStoreSlugFromUrl(dealAffiliateUrl)
