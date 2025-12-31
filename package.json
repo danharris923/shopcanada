@@ -7,7 +7,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "sync-fashion-images": "node scripts/sync-fashion-images.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.89.0",
@@ -29,6 +30,7 @@
   "private": "true",
   "devDependencies": {
     "@types/pg": "^8.15.6",
-    "playwright": "^1.57.0"
+    "playwright": "^1.57.0",
+    "ts-node": "^10.9.2"
   }
 }

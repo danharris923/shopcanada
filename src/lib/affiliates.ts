@@ -214,6 +214,48 @@ export const RETAILER_SEARCH_URLS: Record<string, string> = {
   // Appliances
   'goemans-appliances': 'https://www.goemans.com/search?q=',
   'goemans': 'https://www.goemans.com/search?q=',
+
+  // Fashion & Apparel (Affiliate Brands)
+  'foot-locker': 'https://www.footlocker.ca/en/search?query=',
+  'aldo': 'https://www.aldoshoes.com/ca/en/search?q=',
+  'new-balance': 'https://www.newbalance.ca/en_ca/search?q=',
+  'abercrombie-fitch': 'https://www.abercrombie.com/shop/search?searchTerm=',
+  'aerie': 'https://www.ae.com/ca/en/c/aerie/cat1410002?q=',
+  'alo-yoga': 'https://www.aloyoga.com/search?q=',
+  'american-eagle': 'https://www.ae.com/ca/en/search?q=',
+  'anthropologie': 'https://www.anthropologie.com/search?q=',
+  'birkenstock': 'https://www.birkenstock.com/ca/search?q=',
+  'brooklinen': 'https://www.brooklinen.com/search?q=',
+  'cb2': 'https://www.cb2.ca/search?query=',
+  'cotton-on': 'https://cottonon.com/CA/search/?q=',
+  'crate-barrel': 'https://www.crateandbarrel.ca/search?query=',
+  'free-people': 'https://www.freepeople.com/search/?q=',
+  'guess': 'https://www.guess.ca/en/catalog/search?q=',
+  'lulus': 'https://www.lulus.com/search?q=',
+  'madewell': 'https://www.madewell.com/search?q=',
+  'nasty-gal': 'https://www.nastygal.com/search?q=',
+  'pottery-barn': 'https://www.potterybarn.ca/search/results.html?words=',
+  'prettylittlething': 'https://www.prettylittlething.ca/catalogsearch/result/?q=',
+  'princess-polly': 'https://us.princesspolly.com/search?q=',
+  'revolve': 'https://www.revolve.com/content/search?q=',
+  'shopbop': 'https://www.shopbop.com/s/search?keywords=',
+  'skims': 'https://skims.com/search?q=',
+  'steve-madden': 'https://www.stevemadden.ca/search?q=',
+  'ugg': 'https://www.ugg.com/ca/search?q=',
+  'urban-outfitters': 'https://www.urbanoutfitters.com/search?q=',
+  'vuori': 'https://vuoriclothing.com/search?q=',
+  'west-elm': 'https://www.westelm.ca/search/results.html?words=',
+
+  // Beauty Brands
+  'charlotte-tilbury': 'https://www.charlottetilbury.com/ca/search?q=',
+  'colleen-rothschild': 'https://www.colleenrothschild.com/search?q=',
+  'dime-beauty': 'https://dimebeautyco.com/search?q=',
+  'dyson': 'https://www.dyson.ca/en/search?q=',
+  'elf-cosmetics': 'https://www.elfcosmetics.com/search?q=',
+  'merit-beauty': 'https://meritbeauty.com/search?q=',
+  'supergoop': 'https://supergoop.com/search?q=',
+  'tarte-cosmetics': 'https://tartecosmetics.com/shop/search?q=',
+  'tula-skincare': 'https://www.tula.com/search?q=',
 }
 
 // =============================================================================
