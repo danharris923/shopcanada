@@ -448,12 +448,20 @@ function isAmazonProductLink(url: string): boolean {
 }
 
 /**
- * Known affiliate tracking domains - these should be used directly, not search-wrapped
+ * Affiliate tracking domains that support deep linking with custom URLs
+ * These can wrap a search URL while maintaining affiliate tracking
  */
-const AFFILIATE_TRACKING_DOMAINS = [
-  'rstyle.me',           // rewardStyle/LTK
-  'linksynergy.com',     // Rakuten
-  'click.linksynergy.com',
+const DEEP_LINK_AFFILIATE_DOMAINS: Record<string, (url: string, publisherId: string) => string> = {
+  // Rakuten/LinkShare - supports murl parameter for destination
+  'click.linksynergy.com': (url, publisherId) =>
+    `https://click.linksynergy.com/deeplink?id=${publisherId}&mid=1&murl=${encodeURIComponent(url)}`,
+}
+
+/**
+ * Affiliate tracking domains that are static redirects (cannot add search params)
+ */
+const STATIC_AFFILIATE_DOMAINS = [
+  'rstyle.me',           // rewardStyle/LTK - static redirect links
   'shareasale.com',      // ShareASale
   'pntra.com',           // Pepperjam
   'pjatr.com',           // Pepperjam
@@ -465,25 +473,51 @@ const AFFILIATE_TRACKING_DOMAINS = [
 ]
 
 /**
- * Check if URL is an affiliate tracking link (should not be search-wrapped)
+ * Check if URL is from a static affiliate domain (can't be modified)
  */
-function isAffiliateTrackingLink(url: string): boolean {
+function isStaticAffiliateLink(url: string): boolean {
   try {
     const urlObj = new URL(url)
-    return AFFILIATE_TRACKING_DOMAINS.some(domain =>
+    return STATIC_AFFILIATE_DOMAINS.some(domain =>
       urlObj.hostname === domain || urlObj.hostname.endsWith('.' + domain)
     )
   } catch {
-    return AFFILIATE_TRACKING_DOMAINS.some(domain => url.includes(domain))
+    return STATIC_AFFILIATE_DOMAINS.some(domain => url.includes(domain))
   }
+}
+
+/**
+ * Check if a URL already has search parameters (is a search URL template with query)
+ */
+function hasSearchQuery(url: string): boolean {
+  try {
+    const urlObj = new URL(url)
+    // Check for common search params that already have values
+    const searchParams = ['q', 'query', 'search', 'searchTerm', 'keyword', 'k', 'Ntt', 'text']
+    return searchParams.some(param => {
+      const value = urlObj.searchParams.get(param)
+      return value && value.length > 0
+    })
+  } catch {
+    return false
+  }
+}
+
+/**
+ * Build affiliate redirect URL that sets cookie AND redirects to search
+ * Uses /api/go endpoint to load affiliate link in iframe, then redirect to search
+ */
+function buildAffiliateRedirect(affiliateUrl: string, searchUrl: string): string {
+  return `/api/go?a=${encodeURIComponent(affiliateUrl)}&s=${encodeURIComponent(searchUrl)}`
 }
 
 /**
  * Get the best affiliate URL for a deal:
  * 1. Amazon product links - use directly with our tag
- * 2. Affiliate tracking links (rstyle.me, etc.) - use directly
- * 3. Homepage URLs - search-wrap with product title for frictionless shopping
- * 4. Fall back to store affiliate link + product search
+ * 2. Static affiliate links (rstyle.me) + search URL - use redirect wrapper (cookie + search)
+ * 3. Rakuten stores - use deep link with search
+ * 4. Homepage URLs - search-wrap with product title
+ * 5. Fall back to store search URL
  */
 export function getDealAffiliateUrl(
   dealAffiliateUrl: string | null | undefined,
@@ -495,14 +529,32 @@ export function getDealAffiliateUrl(
     return cleanAmazonUrl(dealAffiliateUrl)
   }
 
-  // Affiliate tracking links (rstyle.me, linksynergy, etc.) go directly
-  if (dealAffiliateUrl && isAffiliateTrackingLink(dealAffiliateUrl)) {
+  // Static affiliate links (rstyle.me, etc.) - wrap with search redirect
+  if (dealAffiliateUrl && isStaticAffiliateLink(dealAffiliateUrl)) {
+    // Build the search URL for this store
+    const searchUrl = storeSlug ? getAffiliateSearchUrl(storeSlug, productTitle) : null
+
+    if (searchUrl) {
+      // Use redirect wrapper: sets affiliate cookie, then goes to search
+      return buildAffiliateRedirect(dealAffiliateUrl, searchUrl)
+    }
+
+    // No search URL available, use affiliate link directly
     return dealAffiliateUrl
   }
 
-  // For homepage/generic URLs, try to search-wrap them
+  // Check if we have Rakuten for this store (can wrap search URL with tracking)
+  if (storeSlug) {
+    const rakutenMerchant = RAKUTEN_MERCHANTS[storeSlug]
+    if (rakutenMerchant) {
+      const cleanedTitle = extractSearchTerms(productTitle)
+      const targetUrl = `${rakutenMerchant.domain}${rakutenMerchant.searchPath}${encodeURIComponent(cleanedTitle)}`
+      return `https://click.linksynergy.com/deeplink?id=${RAKUTEN_PUBLISHER_ID}&mid=${rakutenMerchant.mid}&murl=${encodeURIComponent(targetUrl)}`
+    }
+  }
+
+  // For other URLs, try to search-wrap them
   if (dealAffiliateUrl) {
-    // Try to extract store from the URL and build search link
     const urlStoreSlug = extractStoreSlugFromUrl(dealAffiliateUrl)
     const effectiveSlug = storeSlug || urlStoreSlug
 
@@ -513,7 +565,6 @@ export function getDealAffiliateUrl(
       }
     }
 
-    // If we can't search-wrap, fall back to the original URL
     return dealAffiliateUrl
   }
 
