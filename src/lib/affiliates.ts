@@ -511,6 +511,45 @@ const STATIC_AFFILIATE_DOMAINS = [
 ]
 
 /**
+ * Store slug → LTK affiliate URL mapping
+ * ALL deals from these stores should use the cookie wrapper, regardless of source
+ */
+const STORE_LTK_URLS: Record<string, string> = {
+  'aldo': 'https://rstyle.me/+CBJ4WHku-A5YVGy6FO0_rQ',
+  'alo-yoga': 'https://rstyle.me/+CZSIX4GWmjaQ-f5SUd-BHw',
+  'american-eagle': 'https://rstyle.me/+liJBDv4pZkamPwGzcOPndQ',
+  'anthropologie': 'https://rstyle.me/+3fIjOEm7LxYVDsTgENcpzQ',
+  'ardene': 'https://rstyle.me/+3Iv-vrfiCmKsG0ge6JOUWw',
+  'aritzia': 'https://rstyle.me/+tFcFySramQ6X5mZqqjRziA',
+  'birkenstock': 'https://rstyle.me/+piN_BZewf8a-A79f3MQbxw',
+  'brooklinen': 'https://rstyle.me/+WcQHY6FVYdWshsUorcyy5g',
+  'charlotte-tilbury': 'https://rstyle.me/+bNwIRgNpTg5xfsVVH82gzg',
+  'colleen-rothschild': 'https://rstyle.me/+RYKgt3fcqvvurINx1fEN-w',
+  'dyson': 'https://rstyle.me/+QmpGGCq0houSi1ePstWkGA',
+  'elf-cosmetics': 'https://rstyle.me/+Ic6O5HlhvRjZUuUoo1KgQw',
+  'foot-locker': 'https://rstyle.me/+oHY0bh6ugRwUCKNOxBAnaA',
+  'free-people': 'https://rstyle.me/+uv2bA5MgAi5FFlKsvKTFwg',
+  'lululemon': 'https://rstyle.me/+0xQZOkGVCCp9PUQYYLfDYg',
+  'lulus': 'https://rstyle.me/+2wpLhVsYPDEiZ0wau3IUQQ',
+  'madewell': 'https://rstyle.me/+jH5oINzMdvgrDucclYAx_A',
+  'merit-beauty': 'https://rstyle.me/+ror9DjcC1V_Luu6W1kR5jQ',
+  'nasty-gal': 'https://rstyle.me/+7gCGGy8KWPzKwLVLowj18Q',
+  'new-balance': 'https://rstyle.me/+8HcemR3srPpQotlwAbgpNg',
+  'pottery-barn': 'https://rstyle.me/+8Yt-eCkFatXSzT5GwdRAEA',
+  'princess-polly': 'https://rstyle.me/+7bAqJiW1aHLJlfarlI6uCQ',
+  'revolve': 'https://rstyle.me/+vcRZQB2RV39M-sQj8fnf4A',
+  'shopbop': 'https://rstyle.me/+UiWcQDbsNxNjGNTmbj9e6w',
+  'simons': 'https://rstyle.me/+KLM6hDCQEGhfb_lv8sc54Q',
+  'skims': 'https://rstyle.me/+J7eAYat1Rzs2kW1Z1Qtu2A',
+  'steve-madden': 'https://rstyle.me/+8rGR-jODBXMcpJS0Adb8Gw',
+  'supergoop': 'https://rstyle.me/+57coFZG_GArE95A-TB5gYw',
+  'tarte-cosmetics': 'https://rstyle.me/+qyJmXlQgpT8NI-d-VVcolw',
+  'tula-skincare': 'https://rstyle.me/+GS3XhgI_xINZIlAQrVQWqA',
+  'urban-outfitters': 'https://rstyle.me/+c5GD1uimJ48k5gu0qVw7KQ',
+  'west-elm': 'https://rstyle.me/+YYLdV99ZTYUH0xL86TXUwA',
+}
+
+/**
  * Check if URL is from a static affiliate domain (can't be modified)
  */
 function isStaticAffiliateLink(url: string): boolean {
@@ -551,17 +590,33 @@ function buildAffiliateRedirect(affiliateUrl: string, searchUrl: string): string
 
 /**
  * Get the best affiliate URL for a deal:
- * 1. Amazon product links - use directly with our tag
- * 2. Static affiliate links (rstyle.me) + search URL - use redirect wrapper (cookie + search)
- * 3. Rakuten stores - use deep link with search
- * 4. Homepage URLs - search-wrap with product title
- * 5. Fall back to store search URL
+ * 1. LTK stores (lululemon, aritzia, etc.) - ALWAYS use cookie wrapper with LTK URL
+ * 2. Amazon product links - use directly with our tag
+ * 3. Static affiliate links (rstyle.me) + search URL - use redirect wrapper (cookie + search)
+ * 4. Rakuten stores - use deep link with search
+ * 5. Homepage URLs - search-wrap with product title
+ * 6. Fall back to store search URL
  */
 export function getDealAffiliateUrl(
   dealAffiliateUrl: string | null | undefined,
   storeSlug: string | null,
   productTitle: string
 ): string | null {
+  // PRIORITY 1: LTK stores - ALWAYS use cookie wrapper regardless of deal's affiliate_url
+  // This ensures scraped deals (lululemon.com URLs) still set the affiliate cookie
+  if (storeSlug) {
+    const ltkAffiliateUrl = STORE_LTK_URLS[storeSlug]
+    if (ltkAffiliateUrl) {
+      const searchUrl = getAffiliateSearchUrl(storeSlug, productTitle)
+      if (searchUrl) {
+        // Use redirect wrapper: sets LTK cookie, then goes to store search
+        return buildAffiliateRedirect(ltkAffiliateUrl, searchUrl)
+      }
+      // Fallback to LTK link directly if no search URL
+      return ltkAffiliateUrl
+    }
+  }
+
   // Amazon product links go directly (already has product page)
   if (dealAffiliateUrl && isAmazonProductLink(dealAffiliateUrl)) {
     return cleanAmazonUrl(dealAffiliateUrl)
