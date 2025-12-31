@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-import { getDealsByStore, getStores, getStoreBySlug } from '@/lib/db'
+import { getDealsByStore, getStores, getStoreBySlug, getRelatedCanadianBrands } from '@/lib/db'
 import { Deal, Store } from '@/types/deal'
 import { formatStoreName } from '@/lib/content-generator'
 import { generateItemListSchema } from '@/lib/schema'
@@ -97,16 +97,15 @@ export default async function StorePage({ params }: PageProps) {
   const domain = getDomainFromUrl(store.website_url)
   const pageH1 = getStorePageH1(store)
 
-  // Get deals
-  let deals: Deal[] = []
-  try {
-    deals = await getDealsByStore(storeSlug)
-  } catch (error) {
-    deals = []
-  }
+  // Get primary category for related stores
+  const primaryCategory = store.top_categories?.[0] || 'Retail'
 
-  // Get YouTube videos for this store
-  const videos = await getVideosForStore(storeSlug, 3)
+  // Fetch deals, videos, and related stores in parallel
+  const [deals, videos, relatedStores] = await Promise.all([
+    getDealsByStore(storeSlug).catch(() => []),
+    getVideosForStore(storeSlug, 3),
+    getRelatedCanadianBrands(store, 6).catch(() => [])
+  ])
 
   // Schema markup
   const itemListSchema = deals.length > 0
@@ -157,9 +156,16 @@ export default async function StorePage({ params }: PageProps) {
               />
             </div>
             <div>
-              <h1 className="text-2xl md:text-3xl font-bold text-charcoal mb-1">
-                {pageH1}
-              </h1>
+              <div className="flex items-center gap-2 mb-1">
+                <h1 className="text-2xl md:text-3xl font-bold text-charcoal">
+                  {pageH1}
+                </h1>
+                {store.is_canadian && (
+                  <span className="px-2 py-0.5 bg-maple-red text-white text-xs font-medium rounded">
+                    Canadian
+                  </span>
+                )}
+              </div>
               {deals.length > 0 && (
                 <p className="text-slate text-sm">
                   {deals.length} active deal{deals.length !== 1 ? 's' : ''}
@@ -330,6 +336,52 @@ export default async function StorePage({ params }: PageProps) {
               </div>
             )}
           </section>
+
+          {/* Related Stores */}
+          {relatedStores.length > 0 && (
+            <section className="mb-10">
+              <h2 className="text-2xl font-bold text-charcoal mb-6">
+                More {primaryCategory} Stores
+              </h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {relatedStores.map((relatedStore) => (
+                  <Link
+                    key={relatedStore.slug}
+                    href={`/stores/${relatedStore.slug}`}
+                    className="group bg-white border border-silver-light rounded-card p-6 hover:border-maple-red transition-all hover:-translate-y-1"
+                  >
+                    <div className="mb-4 h-16 flex items-center justify-center">
+                      {relatedStore.logo_url ? (
+                        <img
+                          src={relatedStore.logo_url}
+                          alt={`${relatedStore.name} logo`}
+                          className="max-h-full max-w-full object-contain"
+                        />
+                      ) : (
+                        <StoreLogo
+                          src=""
+                          alt={`${relatedStore.name} logo`}
+                          domain={relatedStore.slug + '.ca'}
+                          size={48}
+                        />
+                      )}
+                    </div>
+                    <h3 className="text-lg font-bold text-charcoal mb-2 group-hover:text-maple-red">
+                      {relatedStore.name}
+                    </h3>
+                    <p className="text-sm text-slate line-clamp-2">
+                      {relatedStore.tagline || relatedStore.description || `Shop ${relatedStore.name}`}
+                    </p>
+                    {relatedStore.is_canadian && (
+                      <span className="inline-block mt-2 px-2 py-0.5 bg-maple-red/10 text-maple-red text-xs rounded">
+                        Canadian
+                      </span>
+                    )}
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
         </div>
       </main>
 
