@@ -19,6 +19,7 @@ import {
   getTopTierBrands,
   getStandardBrands,
 } from './fashion-brands'
+import { getStoreBySlug } from './db'
 
 // =============================================================================
 // IMAGE PATH CONFIGURATION
@@ -130,6 +131,7 @@ function isCacheValid(): boolean {
 /**
  * Generate all fashion deals from brand images
  * Returns deals for ALL brands (top tier + standard)
+ * Fetches affiliate URLs from database (admin panel) for each brand
  */
 export async function getFashionDeals(): Promise<Deal[]> {
   // Return cached deals if still valid
@@ -139,12 +141,20 @@ export async function getFashionDeals(): Promise<Deal[]> {
 
   const deals: Deal[] = []
 
+  // Fetch all store affiliate URLs in parallel for efficiency
+  const storePromises = FASHION_BRANDS.map(brand =>
+    getStoreBySlug(brand.slug).catch(() => null)
+  )
+  const stores = await Promise.all(storePromises)
+
   for (let i = 0; i < FASHION_BRANDS.length; i++) {
     const brand = FASHION_BRANDS[i]
     const images = getBrandImageFiles(brand)
+    const store = stores[i]
 
     if (images.length > 0) {
-      const deal = generateFashionDeal(brand, i, images)
+      // Pass the store's affiliate_url from database (admin panel)
+      const deal = generateFashionDeal(brand, i, images, store?.affiliate_url)
       deals.push(deal)
     }
   }

@@ -674,11 +674,13 @@ function generateDiscount(brandSlug: string, interval: number): number | null {
 
 /**
  * Generate a synthetic deal card for a fashion brand
+ * @param storeAffiliateUrl - The affiliate URL from the database (from admin panel)
  */
 export function generateFashionDeal(
   brand: FashionBrand,
   brandIndex: number,
-  imageFiles: string[]
+  imageFiles: string[],
+  storeAffiliateUrl?: string | null
 ): Deal {
   const interval = getIntervalIndex()
   const imageIndex = getRotatingImageIndex(imageFiles.length, brandIndex)
@@ -691,12 +693,18 @@ export function generateFashionDeal(
   // Generate unique ID based on brand and interval (changes every 15 min)
   const dealId = `fashion-${brand.slug}-${interval}`
 
-  // Build affiliate URL using existing system
-  const searchUrl = RETAILER_SEARCH_URLS[brand.slug]
-  const searchTerms = extractSearchTerms(title)
-  const affiliateUrl = searchUrl
-    ? `${searchUrl}${encodeURIComponent(searchTerms)}`
-    : `https://www.google.com/search?q=${encodeURIComponent(brand.name + ' ' + searchTerms)}`
+  // Use store's affiliate URL from database (admin panel) if available
+  // Fall back to search URL only if no affiliate URL exists
+  let affiliateUrl: string
+  if (storeAffiliateUrl) {
+    affiliateUrl = storeAffiliateUrl
+  } else {
+    const searchUrl = RETAILER_SEARCH_URLS[brand.slug]
+    const searchTerms = extractSearchTerms(title)
+    affiliateUrl = searchUrl
+      ? `${searchUrl}${encodeURIComponent(searchTerms)}`
+      : `https://www.google.com/search?q=${encodeURIComponent(brand.name + ' ' + searchTerms)}`
+  }
 
   // Image URL - served from public/images/fashion/{folder}/
   const imageUrl = `${FASHION_IMAGES_BASE_URL}/${brand.folder}/${imageFile}`
@@ -717,7 +725,7 @@ export function generateFashionDeal(
     description: `Shop ${brand.name} - ${title}. ${brand.isCanadian ? 'Proud Canadian brand. ' : ''}Find the latest styles and deals.`,
     affiliate_url: affiliateUrl,
     source_url: null,
-    featured: brand.priority === 'top',
+    featured: brand.priority === 'premium' || brand.priority === 'top',
     date_added: now,
     date_updated: now,
     is_active: true,
