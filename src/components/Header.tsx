@@ -8,7 +8,8 @@ import { Menu, X, Leaf, Home, ShoppingBag, Store, Grid3X3, Search } from 'lucide
 const navLinks = [
   { href: '/', label: 'Home', icon: Home },
   { href: '/deals', label: "Today's Deals", icon: ShoppingBag },
-  { href: '/stores', label: 'Stores & Categories', icon: Store },
+  { href: '/stores', label: 'Stores', icon: Store },
+  { href: '/categories', label: 'Categories', icon: Grid3X3 },
 ]
 
 export function Header() {
@@ -36,16 +37,18 @@ export function Header() {
           </Link>
 
           {/* Search Bar - Center */}
-          <form onSubmit={handleSearchSubmit} className="flex-1 max-w-xl">
+          <form onSubmit={handleSearchSubmit} className="flex-1 max-w-xl" role="search">
+            <label htmlFor="header-search" className="sr-only">Search products or stores</label>
             <div className="relative">
               <input
+                id="header-search"
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search products or stores..."
                 className="w-full px-4 py-2 pl-10 pr-20 rounded-full bg-white/10 text-white placeholder-white/60 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white text-sm"
               />
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/60" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/60" aria-hidden="true" />
               <button
                 type="submit"
                 className="absolute right-1 top-1/2 -translate-y-1/2 px-3 py-1 bg-white/20 text-white rounded-full text-sm font-medium border border-white/30 hover:bg-white/30 transition-colors"
@@ -61,13 +64,15 @@ export function Header() {
               onClick={() => setMenuOpen(!menuOpen)}
               className="p-2 text-white hover:bg-white/10 rounded-lg transition-colors"
               aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={menuOpen}
+              aria-controls="nav-menu"
             >
-              {menuOpen ? <X size={24} /> : <Menu size={24} />}
+              {menuOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
             </button>
 
             {/* Dropdown Menu - positioned right, compact width */}
             {menuOpen && (
-              <nav className="absolute right-0 top-full mt-2 w-56 bg-soft-black border border-white/20 rounded-lg shadow-xl py-2 z-50">
+              <nav id="nav-menu" className="absolute right-0 top-full mt-2 w-56 bg-soft-black border border-white/20 rounded-lg shadow-xl py-2 z-50">
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}
@@ -75,7 +80,7 @@ export function Header() {
                     onClick={() => setMenuOpen(false)}
                     className="flex items-center gap-3 px-4 py-3 font-medium transition-all text-silver hover:text-white hover:bg-white/10"
                   >
-                    <link.icon size={20} />
+                    <link.icon size={20} aria-hidden="true" />
                     {link.label}
                   </Link>
                 ))}

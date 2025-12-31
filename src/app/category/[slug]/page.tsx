@@ -63,8 +63,8 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         <div className="max-w-7xl mx-auto px-4 pt-4">
           <Breadcrumbs items={[
             { label: 'Home', href: '/' },
-            { label: 'Stores', href: '/stores' },
-            { label: category.name, href: `/category/${category.slug}` },
+            { label: 'Categories', href: '/categories' },
+            { label: category.name },
           ]} />
         </div>
 

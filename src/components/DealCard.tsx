@@ -69,13 +69,13 @@ export function DealCard({
   // Check if this is a fashion affiliate deal (synthetic, no deal page)
   const isFashionDeal = id.startsWith('fashion-')
 
-  // Function to handle Read more click
+  // Function to handle Read More click
+  // Affiliated deals go to store page, others go to deal page
   const handleReadMoreClick = (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
-    // Fashion deals don't have deal pages - go to affiliate URL
-    if (isFashionDeal && effectiveAffiliateUrl) {
-      window.open(effectiveAffiliateUrl, '_blank', 'noopener,noreferrer')
+    if (effectiveAffiliateUrl && storeSlug) {
+      window.location.href = `/stores/${storeSlug}`
     } else {
       window.location.href = `/deals/${slug}`
     }
@@ -263,7 +263,7 @@ export function DealCard({
               onClick={handleReadMoreClick}
               className="inline-block px-4 py-2 bg-white border border-charcoal text-charcoal text-sm font-medium rounded-lg hover:shadow-md transition-shadow"
             >
-              {isFashionDeal ? 'Shop Now' : 'Read More'}
+              Read More
             </button>
           </div>
         )}

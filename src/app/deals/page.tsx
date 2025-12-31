@@ -6,11 +6,15 @@ import { DealCard, DealGrid } from '@/components/DealCard'
 import { FilterSidebar } from '@/components/FilterSidebar'
 import { StatsBar } from '@/components/StatsBar'
 import { Breadcrumbs } from '@/components/breadcrumbs'
+import { SITE_URL } from '@/lib/config'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'All Deals - Shop Canada',
   description: 'Browse all the best deals from Canadian retailers. Find discounts from Amazon.ca, Walmart, Costco, Best Buy, Canadian Tire and more.',
+  alternates: {
+    canonical: `${SITE_URL}/deals`,
+  },
 }
 
 // Revalidate every 15 minutes

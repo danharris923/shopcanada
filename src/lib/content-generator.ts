@@ -245,12 +245,12 @@ export function generatePageTitle(deal: Deal): string {
 /**
  * Generate breadcrumb items
  */
-export function generateBreadcrumbs(deal: Deal): { label: string; href: string }[] {
-  const breadcrumbs = [
+export function generateBreadcrumbs(deal: Deal): { label: string; href?: string }[] {
+  const breadcrumbs: { label: string; href?: string }[] = [
     { label: 'Home', href: '/' },
-    { label: 'Deals', href: '/deals' },
   ]
 
+  // Add category if available
   if (deal.category) {
     breadcrumbs.push({
       label: formatCategoryName(deal.category),
@@ -258,16 +258,18 @@ export function generateBreadcrumbs(deal: Deal): { label: string; href: string }
     })
   }
 
+  // Add store with proper slug
   if (deal.store) {
+    const storeSlug = deal.store.toLowerCase().replace(/\s+/g, '-')
     breadcrumbs.push({
       label: formatStoreName(deal.store),
-      href: `/stores/${deal.store}`,
+      href: `/stores/${storeSlug}`,
     })
   }
 
+  // Current page (no href for last item)
   breadcrumbs.push({
     label: truncate(deal.title, 40),
-    href: `/deals/${deal.slug}`,
   })
 
   return breadcrumbs

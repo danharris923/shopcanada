@@ -2,10 +2,14 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
+import { SITE_URL } from '@/lib/config'
 
 export const metadata: Metadata = {
   title: 'Terms of Service - Shop Canada',
   description: 'Terms and conditions for using Shop Canada. Read about our affiliate relationships, user responsibilities, and site usage policies.',
+  alternates: {
+    canonical: `${SITE_URL}/terms`,
+  },
 }
 
 export default function TermsPage() {

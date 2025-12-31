@@ -39,9 +39,9 @@ export const metadata: Metadata = {
     description: 'Find the best deals from top Canadian retailers. Save up to 70% on electronics, fashion, home goods.',
     images: [
       {
-        url: `${SITE_URL}/og-image.png`,
+        url: `${SITE_URL}/hero-desktop.png`,
         width: 1200,
-        height: 630,
+        height: 400,
         alt: 'Shop Canada - Best Canadian Deals',
       },
     ],
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Shop Canada - Best Canadian Deals & Discounts',
     description: 'Find the best deals from top Canadian retailers. Updated hourly.',
-    images: [`${SITE_URL}/og-image.png`],
+    images: [`${SITE_URL}/hero-desktop.png`],
   },
   robots: {
     index: true,

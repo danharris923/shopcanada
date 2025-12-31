@@ -3,10 +3,14 @@ import Link from 'next/link'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { Leaf, Target, Users, TrendingUp } from 'lucide-react'
+import { SITE_URL } from '@/lib/config'
 
 export const metadata: Metadata = {
   title: 'About Shop Canada - Canadian Deals & Savings',
   description: 'Shop Canada helps Canadians find the best deals from trusted retailers like Amazon.ca, Walmart, Costco, and more. Learn about our mission to save you money.',
+  alternates: {
+    canonical: `${SITE_URL}/about`,
+  },
 }
 
 export default function AboutPage() {

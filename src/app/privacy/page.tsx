@@ -2,10 +2,14 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
+import { SITE_URL } from '@/lib/config'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy - Shop Canada',
   description: 'Shop Canada privacy policy. Learn how we handle your information, our use of cookies, and your privacy rights as a Canadian visitor.',
+  alternates: {
+    canonical: `${SITE_URL}/privacy`,
+  },
 }
 
 export default function PrivacyPage() {

@@ -32,6 +32,7 @@ import { StickyMobileCTA } from '@/components/deal/StickyMobileCTA'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { DealCard, DealGrid } from '@/components/DealCard'
+import Link from 'next/link'
 
 interface PageProps {
   params: { slug: string }
@@ -60,7 +61,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const title = generatePageTitle(deal)
   const description = generateMetaDescription(deal)
-  const imageUrl = deal.image_blob_url || deal.image_url || '/og-default.jpg'
+  const imageUrl = deal.image_blob_url || deal.image_url || '/hero-desktop.png'
   const canonicalUrl = `${SITE_URL}/deals/${deal.slug}`
   const publishedTime = deal.date_added ? new Date(deal.date_added).toISOString() : new Date().toISOString()
   const modifiedTime = deal.date_updated ? new Date(deal.date_updated).toISOString() : publishedTime
@@ -134,6 +135,7 @@ export default async function DealPage({ params }: PageProps) {
 
   const imageUrl = deal.image_blob_url || deal.image_url || '/placeholder-deal.jpg'
   const storeName = formatStoreName(deal.store)
+  const storeSlug = deal.store?.toLowerCase().replace(/\s+/g, '-') || ''
 
   return (
     <>
@@ -185,12 +187,21 @@ export default async function DealPage({ params }: PageProps) {
 
             {/* Right: Deal Info + CTA */}
             <div className="flex flex-col">
-              {/* Store Badge */}
+              {/* Store Badge with Link */}
               <div className="mb-3 flex items-center gap-2">
                 <StoreBadge store={deal.store} />
-                <span className="text-silver text-sm">
-                  at {storeName}
-                </span>
+                {storeSlug ? (
+                  <Link
+                    href={`/stores/${storeSlug}`}
+                    className="text-silver text-sm hover:text-maple-red transition-colors"
+                  >
+                    at {storeName} →
+                  </Link>
+                ) : (
+                  <span className="text-silver text-sm">
+                    at {storeName}
+                  </span>
+                )}
               </div>
 
               {/* Title */}
@@ -278,9 +289,17 @@ export default async function DealPage({ params }: PageProps) {
                   <h2 className="text-xl font-bold text-charcoal mb-4">
                     About {storeName}
                   </h2>
-                  <p className="text-slate">
+                  <p className="text-slate mb-4">
                     {storeDescription}
                   </p>
+                  {storeSlug && (
+                    <Link
+                      href={`/stores/${storeSlug}`}
+                      className="inline-flex items-center gap-1 text-maple-red hover:underline font-medium"
+                    >
+                      View all {storeName} deals →
+                    </Link>
+                  )}
                 </section>
               )}
 

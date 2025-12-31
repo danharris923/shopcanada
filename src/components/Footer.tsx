@@ -59,7 +59,7 @@ export function Footer() {
               </div>
             </div>
             <Link
-              href="/canadian"
+              href="/stores?filter=canadian"
               className="bg-white text-maple-red hover:bg-cream font-bold py-3 px-6 rounded-button transition-colors whitespace-nowrap"
             >
               Explore Brands
