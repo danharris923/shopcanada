@@ -10,9 +10,14 @@ import { NextRequest, NextResponse } from 'next/server'
  * - s: Search URL - where user ends up
  */
 export async function GET(request: NextRequest) {
-  const searchParams = request.nextUrl.searchParams
-  const affiliateUrl = searchParams.get('a')
-  const searchUrl = searchParams.get('s')
+  // Get raw query string to preserve + signs (searchParams decodes them as spaces)
+  const url = new URL(request.url)
+  const rawQuery = url.search.slice(1) // Remove leading ?
+  const params = new URLSearchParams(rawQuery)
+
+  // Decode but preserve the actual URL structure
+  const affiliateUrl = params.get('a')
+  const searchUrl = params.get('s')
 
   if (!searchUrl) {
     return NextResponse.redirect(new URL('/', request.url))
