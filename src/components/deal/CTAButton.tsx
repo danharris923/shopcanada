@@ -68,8 +68,8 @@ export function CTAButton({
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => {
         // Track click event (analytics placeholder)
-        if (typeof window !== 'undefined' && (window as any).gtag) {
-          (window as any).gtag('event', 'click', {
+        if (typeof window !== 'undefined' && window.gtag) {
+          window.gtag('event', 'click', {
             event_category: 'affiliate',
             event_label: storeName || 'unknown',
           })

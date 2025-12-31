@@ -65,8 +65,8 @@ export default function useAffiliateClick(): UseAffiliateClickReturn {
 
       if (result.url) {
         // Track the click for analytics
-        if (typeof window !== 'undefined' && (window as any).gtag) {
-          (window as any).gtag('event', 'affiliate_click', {
+        if (typeof window !== 'undefined' && window.gtag) {
+          window.gtag('event', 'affiliate_click', {
             event_category: 'affiliate',
             event_label: result.network || 'unknown',
             value: 1,

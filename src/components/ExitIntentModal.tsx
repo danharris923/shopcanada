@@ -36,12 +36,12 @@ export function ExitIntentModal({ dealTitle, dealPrice }: ExitIntentModalProps) 
 
     // Wait a bit before enabling (don't trigger immediately)
     const timeout = setTimeout(() => {
-      document.addEventListener('mouseout', handleExitIntent as any)
+      document.addEventListener('mouseout', handleExitIntent as EventListener)
     }, 5000) // Wait 5 seconds
 
     return () => {
       clearTimeout(timeout)
-      document.removeEventListener('mouseout', handleExitIntent as any)
+      document.removeEventListener('mouseout', handleExitIntent as EventListener)
     }
   }, [handleExitIntent])
 

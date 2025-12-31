@@ -107,12 +107,12 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                     id={deal.id}
                     title={deal.title}
                     slug={deal.slug}
-                    imageUrl={(deal as any).image_blob_url || (deal as any).image_url || '/placeholder-deal.jpg'}
+                    imageUrl={deal.image_blob_url || deal.image_url || '/placeholder-deal.jpg'}
                     price={deal.price}
-                    originalPrice={(deal as any).original_price}
-                    discountPercent={(deal as any).discount_percent}
+                    originalPrice={deal.original_price}
+                    discountPercent={deal.discount_percent}
                     store={deal.store || null}
-                    affiliateUrl={(deal as any).affiliate_url}
+                    affiliateUrl={deal.affiliate_url}
                   />
                 ))}
               </DealGrid>

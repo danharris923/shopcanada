@@ -12,7 +12,7 @@ import { getShuffledFeaturedDeals, getShuffledDeals, getDistributionSummary } fr
 import { getLatestVideos } from '@/lib/youtube'
 import { VideoCarousel } from '@/components/VideoCarousel'
 import { REVALIDATE_INTERVAL, SOCIAL_LINKS, FEATURED_STORE_SLUGS } from '@/lib/config'
-import { Store } from '@/types/deal'
+import { Store, MixedDeal } from '@/types/deal'
 
 // Badge display configuration for homepage store cards
 const BADGE_CONFIG: Record<string, { emoji: string; label: string; priority: number }> = {
@@ -160,23 +160,23 @@ export default async function HomePage() {
               </div>
               <DealGrid>
                 {shuffledFeatured.deals.map(deal => (
-                  (deal as any).source === 'flipp' ? (
+                  deal.source === 'flipp' ? (
                     <DealCard
                       key={deal.id}
                       id={deal.id}
                       title={deal.title}
                       slug={deal.slug}
-                      imageUrl={(deal as any).image_blob_url || (deal as any).image_url || (deal as any).imageUrl || '/placeholder-deal.jpg'}
+                      imageUrl={deal.image_blob_url || deal.image_url || deal.imageUrl || '/placeholder-deal.jpg'}
                       price={deal.price}
-                      originalPrice={(deal as any).original_price || (deal as any).originalPrice}
-                      discountPercent={(deal as any).discount_percent || (deal as any).discountPercent}
+                      originalPrice={deal.original_price ?? deal.originalPrice ?? null}
+                      discountPercent={deal.discount_percent ?? deal.discountPercent ?? null}
                       store={deal.store || null}
-                      affiliateUrl={(deal as any).affiliate_url || ''}
+                      affiliateUrl={deal.affiliate_url || ''}
                       variant="flipp"
-                      storeSlug={(deal as any).storeSlug || (deal as any).store?.toLowerCase().replace(/\s+/g, '-') || 'general'}
-                      storeLogo={(deal as any).storeLogo || ''}
-                      validTo={(deal as any).validTo || new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString()}
-                      saleStory={(deal as any).saleStory || null}
+                      storeSlug={deal.storeSlug || deal.store?.toLowerCase().replace(/\s+/g, '-') || 'general'}
+                      storeLogo={deal.storeLogo || ''}
+                      validTo={deal.validTo || new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString()}
+                      saleStory={deal.saleStory ?? null}
                     />
                   ) : (
                     <DealCard
@@ -184,12 +184,12 @@ export default async function HomePage() {
                       id={deal.id}
                       title={deal.title}
                       slug={deal.slug}
-                      imageUrl={(deal as any).image_blob_url || (deal as any).image_url || (deal as any).imageUrl || '/placeholder-deal.jpg'}
+                      imageUrl={deal.image_blob_url || deal.image_url || deal.imageUrl || '/placeholder-deal.jpg'}
                       price={deal.price}
-                      originalPrice={(deal as any).original_price || (deal as any).originalPrice}
-                      discountPercent={(deal as any).discount_percent || (deal as any).discountPercent}
+                      originalPrice={deal.original_price ?? deal.originalPrice ?? null}
+                      discountPercent={deal.discount_percent ?? deal.discountPercent ?? null}
                       store={deal.store || null}
-                      affiliateUrl={(deal as any).affiliate_url}
+                      affiliateUrl={deal.affiliate_url}
                       featured={true}
                     />
                   )
@@ -327,23 +327,23 @@ export default async function HomePage() {
             </div>
             <DealGrid>
               {shuffledLatest.deals.map(deal => (
-                (deal as any).source === 'flipp' ? (
+                deal.source === 'flipp' ? (
                   <DealCard
                     key={deal.id}
                     id={deal.id}
                     title={deal.title}
                     slug={deal.slug}
-                    imageUrl={(deal as any).image_blob_url || (deal as any).image_url || (deal as any).imageUrl || '/placeholder-deal.jpg'}
+                    imageUrl={deal.image_blob_url || deal.image_url || deal.imageUrl || '/placeholder-deal.jpg'}
                     price={deal.price}
-                    originalPrice={(deal as any).original_price || (deal as any).originalPrice}
-                    discountPercent={(deal as any).discount_percent || (deal as any).discountPercent}
+                    originalPrice={deal.original_price ?? deal.originalPrice ?? null}
+                    discountPercent={deal.discount_percent ?? deal.discountPercent ?? null}
                     store={deal.store || null}
-                    affiliateUrl={(deal as any).affiliate_url || ''}
+                    affiliateUrl={deal.affiliate_url || ''}
                     variant="flipp"
-                    storeSlug={(deal as any).storeSlug || (deal as any).store?.toLowerCase().replace(/\s+/g, '-') || 'general'}
-                    storeLogo={(deal as any).storeLogo || ''}
-                    validTo={(deal as any).validTo || new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString()}
-                    saleStory={(deal as any).saleStory || null}
+                    storeSlug={deal.storeSlug || deal.store?.toLowerCase().replace(/\s+/g, '-') || 'general'}
+                    storeLogo={deal.storeLogo || ''}
+                    validTo={deal.validTo || new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString()}
+                    saleStory={deal.saleStory ?? null}
                   />
                 ) : (
                   <DealCard
@@ -351,13 +351,13 @@ export default async function HomePage() {
                     id={deal.id}
                     title={deal.title}
                     slug={deal.slug}
-                    imageUrl={(deal as any).image_blob_url || (deal as any).image_url || (deal as any).imageUrl || '/placeholder-deal.jpg'}
+                    imageUrl={deal.image_blob_url || deal.image_url || deal.imageUrl || '/placeholder-deal.jpg'}
                     price={deal.price}
-                    originalPrice={(deal as any).original_price || (deal as any).originalPrice}
-                    discountPercent={(deal as any).discount_percent || (deal as any).discountPercent}
+                    originalPrice={deal.original_price ?? deal.originalPrice ?? null}
+                    discountPercent={deal.discount_percent ?? deal.discountPercent ?? null}
                     store={deal.store || null}
-                    affiliateUrl={(deal as any).affiliate_url}
-                    featured={(deal as any).featured}
+                    affiliateUrl={deal.affiliate_url}
+                    featured={deal.featured}
                   />
                 )
               ))}

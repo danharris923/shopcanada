@@ -9,13 +9,13 @@
  * - Random shuffling that changes every 15 minutes
  */
 
-import { Deal } from '@/types/deal'
+import { Deal, MixedDeal } from '@/types/deal'
 import { searchFlippDeals, FlippDeal } from '@/lib/flipp'
 import { getDeals, getLatestDeals, getFeaturedDeals } from '@/lib/db'
 import { getFashionDeals, getTopTierFashionDeals, getPremiumFashionDeals, isFashionDeal } from '@/lib/fashion-deals'
 
 export interface ShuffledDeals {
-  deals: (Deal | FlippDeal)[]
+  deals: MixedDeal[]
   distribution: {
     total: number
     fashion: number
@@ -65,7 +65,7 @@ function shuffleArray<T>(array: T[], seed: number): T[] {
 /**
  * Transform FlippDeal to match Deal interface for consistency
  */
-function normalizeFlippDeal(flippDeal: FlippDeal): Deal & { source: 'flipp', storeSlug: string, storeLogo: string, validTo: string, saleStory: string | null } {
+function normalizeFlippDeal(flippDeal: FlippDeal): MixedDeal {
   return {
     id: flippDeal.id,
     title: flippDeal.title,
@@ -160,11 +160,11 @@ export async function getShuffledDeals(
       .slice(0, Math.max(0, remainingSlots))
 
     // Combine and shuffle all selected deals
-    const allSelected: (Deal & { source?: string })[] = [
+    const allSelected: MixedDeal[] = [
       ...selectedFashion,
       ...selectedFlipp,
-      ...selectedAmazon.map(deal => ({ ...deal, source: 'database' })),
-      ...selectedOther.map(deal => ({ ...deal, source: 'database' }))
+      ...selectedAmazon.map(deal => ({ ...deal, source: 'database' as const })),
+      ...selectedOther.map(deal => ({ ...deal, source: 'database' as const }))
     ]
 
     const finalDeals = shuffleArray(allSelected, seed + 1000) // Different seed for final shuffle
@@ -191,7 +191,7 @@ export async function getShuffledDeals(
     ).length
 
     return {
-      deals: shuffled.map(deal => ({ ...deal, source: 'database' })),
+      deals: shuffled.map(deal => ({ ...deal, source: 'database' as const })),
       distribution: {
         total: shuffled.length,
         fashion: 0,
@@ -234,9 +234,9 @@ export async function getShuffledFeaturedDeals(
       .map(normalizeFlippDeal)
 
     // Combine and limit - premium fashion gets priority placement
-    const combined = [
+    const combined: MixedDeal[] = [
       ...selectedPremium,
-      ...featuredDeals.map(deal => ({ ...deal, source: 'database' })),
+      ...featuredDeals.map(deal => ({ ...deal, source: 'database' as const })),
       ...selectedFlipp
     ]
 
@@ -269,7 +269,7 @@ export async function getShuffledFeaturedDeals(
     ).length
 
     return {
-      deals: shuffled.map(deal => ({ ...deal, source: 'database' })),
+      deals: shuffled.map(deal => ({ ...deal, source: 'database' as const })),
       distribution: {
         total: shuffled.length,
         fashion: 0,

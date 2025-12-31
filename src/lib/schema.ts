@@ -162,12 +162,14 @@ export function generateBreadcrumbSchema(deal: Deal) {
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: breadcrumbs.map((crumb, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      name: crumb.label,
-      item: crumb.href.startsWith('http') ? crumb.href : `${SITE_URL}${crumb.href}`,
-    })),
+    itemListElement: breadcrumbs
+      .filter((crumb): crumb is { label: string; href: string } => !!crumb.href)
+      .map((crumb, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: crumb.label,
+        item: crumb.href.startsWith('http') ? crumb.href : `${SITE_URL}${crumb.href}`,
+      })),
   }
 }
 
