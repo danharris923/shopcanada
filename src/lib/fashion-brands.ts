@@ -26,7 +26,7 @@ export interface FashionBrand {
   category: string          // Deal category (fashion, beauty, home, sports)
   cardTitles: string[]      // Rotating card titles for variety
   isCanadian?: boolean      // Canadian brand flag
-  priority: 'top' | 'standard'  // Top tier = page 1 priority
+  priority: 'premium' | 'top' | 'standard'  // Premium = highest priority, guaranteed page 1
 }
 
 /**
@@ -36,7 +36,7 @@ export interface FashionBrand {
  */
 export const FASHION_BRANDS: FashionBrand[] = [
   // ==========================================================================
-  // TOP TIER BRANDS - Always represented on page 1
+  // PREMIUM TIER - Highest priority Canadian brands, always page 1
   // ==========================================================================
   {
     folder: 'lululemon',
@@ -44,7 +44,7 @@ export const FASHION_BRANDS: FashionBrand[] = [
     name: 'Lululemon',
     category: 'fashion',
     isCanadian: true,
-    priority: 'top',
+    priority: 'premium',
     cardTitles: [
       'Lululemon Align Leggings - New Arrivals',
       'Lululemon Define Jacket - Shop Now',
@@ -53,6 +53,40 @@ export const FASHION_BRANDS: FashionBrand[] = [
       'Lululemon Wunder Under - Classic Fit',
     ],
   },
+  {
+    folder: 'aritzia',
+    slug: 'aritzia',
+    name: 'Aritzia',
+    category: 'fashion',
+    isCanadian: true,
+    priority: 'premium',
+    cardTitles: [
+      'Aritzia - Super Puff Collection',
+      'Aritzia - Effortless Pants',
+      'Aritzia - The Melina Pant',
+      'Aritzia TNA - Cozy Fleece',
+      'Aritzia - New Season Arrivals',
+    ],
+  },
+  {
+    folder: 'ardene',
+    slug: 'ardene',
+    name: 'Ardene',
+    category: 'fashion',
+    isCanadian: true,
+    priority: 'premium',
+    cardTitles: [
+      'Ardene - Buy 1 Get 1 Free',
+      'Ardene - $5 Tank Tops & More',
+      'Ardene - Back to School Essentials',
+      'Ardene - Activewear Collection',
+      'Ardene - Accessories Under $10',
+    ],
+  },
+
+  // ==========================================================================
+  // TOP TIER BRANDS - High priority on page 1
+  // ==========================================================================
   {
     folder: 'foot-locker',
     slug: 'foot-locker',
@@ -695,10 +729,17 @@ export function generateFashionDeal(
 // =============================================================================
 
 /**
- * Get top tier brands that should always appear on page 1
+ * Get premium tier brands - highest priority, guaranteed page 1
+ */
+export function getPremiumBrands(): FashionBrand[] {
+  return FASHION_BRANDS.filter(b => b.priority === 'premium')
+}
+
+/**
+ * Get top tier brands that should appear on page 1 (premium + top)
  */
 export function getTopTierBrands(): FashionBrand[] {
-  return FASHION_BRANDS.filter(b => b.priority === 'top')
+  return FASHION_BRANDS.filter(b => b.priority === 'premium' || b.priority === 'top')
 }
 
 /**
@@ -722,6 +763,8 @@ export function getBrandsByCategory(category: string): FashionBrand[] {
 
 export const FASHION_SEARCH_URLS: Record<string, string> = {
   // Add any missing brand search URLs here
+  'ardene': 'https://www.ardene.com/ca/en/search?q=',
+  'aritzia': 'https://www.aritzia.com/en/search?q=',
   'foot-locker': 'https://www.footlocker.ca/en/search?query=',
   'aldo': 'https://www.aldoshoes.com/ca/en/search?q=',
   'new-balance': 'https://www.newbalance.ca/en_ca/search?q=',

@@ -15,6 +15,7 @@ import {
   FASHION_BRANDS,
   FashionBrand,
   generateFashionDeal,
+  getPremiumBrands,
   getTopTierBrands,
   getStandardBrands,
 } from './fashion-brands'
@@ -44,6 +45,8 @@ const IMAGE_MANIFEST: Record<string, string[]> = {
   'abercrombie-fitch': ['abercrombie___f_01_7cbeefff.jpg','abercrombie___f_02_df97771e.jpg','abercrombie___f_03_854461af.jpg','abercrombie___f_04_85a6b380.jpg','abercrombie___f_05_f2206963.jpg','abercrombie___f_06_f2d9b81f.png','abercrombie___f_07_07dd0f1e.jpg','abercrombie___f_08_6f019784.jpg','abercrombie___f_09_8fcab9e3.jpg','abercrombie___f_10_468414eb.jpg','abercrombie___f_11_924223fe.jpg','abercrombie___f_12_050c78d9.jpg'],
   'aerie': ['aerie_01_9b0513b9.jpg','aerie_02_abc4f1ba.jpg','aerie_03_ae673d37.jpg','aerie_04_3e51512a.jpg','aerie_05_c661d1c0.jpg','aerie_06_fbd04c76.jpg','aerie_07_43417503.jpg','aerie_08_d8b4c77f.jpg','aerie_09_daba36c0.jpg','aerie_10_522728f3.png','aerie_11_b5e03293.jpg','aerie_12_0de45417.jpg'],
   'aldo': ['aldo_01_7b687e49.jpg','aldo_02_b5b0fbcd.jpg','aldo_03_f0801955.jpg','aldo_04_646dcdd3.jpg','aldo_05_bd7a603e.jpg','aldo_06_c926a5fc.jpg','aldo_07_a0bcb4e3.jpg','aldo_08_04f34a5c.jpg','aldo_09_a3161f41.jpg','aldo_10_58b1d131.jpg','aldo_11_b477547b.jpg','aldo_12_ca0a6057.jpg'],
+  'ardene': ['ardene_01_04d06382.jpg','ardene_02_f25dac6a.jpg','ardene_03_56b58de7.jpg','ardene_04_607403f6.jpg','ardene_05_b6f149e3.jpg','ardene_06_dbd909fc.jpg','ardene_07_9f7e9451.jpg','ardene_08_7f7420d4.jpg','ardene_09_1ae53d9f.jpg','ardene_10_d0e9e809.jpg','ardene_11_6bc5be85.jpg','ardene_12_cc326449.jpg','ardene_13_e0f299d0.jpg','ardene_14_3eb40027.jpg','ardene_15_fbe9093d.jpg'],
+  'aritzia': ['aritzia_01_84fd03c4.jpg','aritzia_02_840f2d5d.jpg','aritzia_03_bcb08fe1.jpg','aritzia_04_6f928cc7.jpg','aritzia_05_5652ecc8.webp','aritzia_06_9a87d65f.jpg','aritzia_07_9f995236.jpg','aritzia_08_11d55afd.jpg','aritzia_09_4e088ab6.jpg','aritzia_10_af932dc9.jpg','aritzia_11_3f2f5631.jpg','aritzia_12_47e6ea0f.jpg','aritzia_13_036c8daa.jpg','aritzia_14_0b0b4e59.jpg','aritzia_15_74458503.jpg'],
   'alo-yoga': ['alo_yoga_01_e10afafc.jpg','alo_yoga_02_fad25bae.jpg','alo_yoga_03_fb4ca937.jpg','alo_yoga_04_8b2778e4.jpg','alo_yoga_05_d3c1091c.jpg','alo_yoga_06_4b7f8287.jpg','alo_yoga_07_076e49c7.jpg','alo_yoga_08_ee7a3971.png','alo_yoga_09_d13db6ce.jpg','alo_yoga_10_db2cc0d7.jpg','alo_yoga_11_2b3f78ed.jpg','alo_yoga_12_d00b166d.jpg'],
   'american-eagle': ['american_eagle_01_f3e614cf.png','american_eagle_02_b0add819.png','american_eagle_03_03b75c0e.jpg','american_eagle_04_d84bd5c6.jpg','american_eagle_05_29c18edf.png','american_eagle_06_d1664b83.jpg','american_eagle_07_8b7af9c4.jpg','american_eagle_08_4b3ac7be.jpg','american_eagle_09_05801441.jpg','american_eagle_10_d2aaf327.jpg','american_eagle_11_157b18be.jpg','american_eagle_12_16eaf426.jpg'],
   'anthropologie': ['anthropologie_01_2889d16e.png','anthropologie_02_2081dc87.jpg','anthropologie_03_c91c47ee.jpg','anthropologie_04_69f50916.png','anthropologie_05_66e7bd1b.jpg','anthropologie_06_f0ebc0c4.jpg','anthropologie_07_a365fd3a.jpg','anthropologie_08_5e492982.png','anthropologie_09_6bed41a8.jpg','anthropologie_10_00379228.jpg','anthropologie_11_ee196515.jpg','anthropologie_12_c46ba0ee.jpg'],
@@ -157,8 +160,24 @@ export async function getFashionDeals(): Promise<Deal[]> {
 }
 
 /**
+ * Get premium-tier fashion deals (highest priority - guaranteed page 1)
+ * These are Canadian brands like Lululemon, Aritzia, Ardene
+ */
+export async function getPremiumFashionDeals(): Promise<Deal[]> {
+  const allDeals = await getFashionDeals()
+  const premiumSlugs = new Set(getPremiumBrands().map(b => b.slug))
+
+  return allDeals.filter(deal => {
+    const match = deal.id.match(/^fashion-(.+)-\d+$/)
+    if (!match) return false
+    return premiumSlugs.has(match[1])
+  })
+}
+
+/**
  * Get only top-tier fashion deals (for page 1 priority)
  * These brands should always have representation on first page load
+ * Includes both premium and top tier brands
  */
 export async function getTopTierFashionDeals(): Promise<Deal[]> {
   const allDeals = await getFashionDeals()

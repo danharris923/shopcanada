@@ -19,6 +19,8 @@ const DEST_DIR = path.join(process.cwd(), 'public', 'images', 'fashion')
 // Brand folder mappings (source folder -> destination folder)
 // Normalizes folder names for URL consistency
 const BRAND_FOLDERS = {
+  'ardene': 'ardene',
+  'aritzia': 'aritzia',
   'Abercrombie_Fitch': 'abercrombie-fitch',
   'Aerie': 'aerie',
   'aldo': 'aldo',
