@@ -52,6 +52,7 @@ export interface Store {
   affiliate_url: string | null
   color: string | null
   tagline: string | null
+  keywords: string[]
   description: string | null
   badges: string[]
   top_categories: string[]

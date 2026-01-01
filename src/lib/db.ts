@@ -218,16 +218,31 @@ export async function getDealsByCategory(category: string, limit: number = 50): 
 
 export async function getRelatedDeals(deal: Deal, limit: number = 6): Promise<Deal[]> {
   try {
+    // Extract keywords from deal title for matching (first 3 significant words)
+    const titleWords = deal.title
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/g, '')
+      .split(/\s+/)
+      .filter(w => w.length > 3 && !['sale', 'deal', 'save', 'off', 'free', 'get', 'now', 'today', 'only', 'with', 'from', 'this', 'that', 'your', 'more'].includes(w))
+      .slice(0, 3)
+
+    const keywordPattern = titleWords.length > 0 ? `%(${titleWords.join('|')})%` : null
+
     return await query<Deal>(
-      `SELECT * FROM deals
-       WHERE is_active = TRUE
-         AND id != $1
-         AND (store = $2 OR category = $3)
+      `SELECT d.* FROM deals d
+       LEFT JOIN stores s ON LOWER(d.store) = s.slug
+       WHERE d.is_active = TRUE
+         AND d.id != $1
+         AND (d.store = $2 OR d.category = $3 ${keywordPattern ? `OR LOWER(d.title) SIMILAR TO $5` : ''})
        ORDER BY
-         CASE WHEN store = $2 THEN 0 ELSE 1 END,
-         date_added DESC
+         CASE WHEN s.affiliate_url IS NOT NULL THEN 0 ELSE 1 END,
+         CASE WHEN d.store = $2 THEN 0 ELSE 1 END,
+         ${keywordPattern ? `CASE WHEN LOWER(d.title) SIMILAR TO $5 THEN 0 ELSE 1 END,` : ''}
+         d.date_added DESC
        LIMIT $4`,
-      [deal.id, deal.store, deal.category, limit]
+      keywordPattern
+        ? [deal.id, deal.store, deal.category, limit, keywordPattern]
+        : [deal.id, deal.store, deal.category, limit]
     )
   } catch (error) {
     // Error handled silently
@@ -515,6 +530,39 @@ export async function searchDeals(searchQuery: string, limit: number = 50): Prom
       [searchTerm, limit]
     )
     return rows
+  } catch (error) {
+    // Error handled silently
+    return []
+  }
+}
+
+/**
+ * Search stores by keyword - returns stores that sell products matching the search term
+ * Prioritizes affiliated stores (has affiliate_url)
+ */
+export async function searchStoresByKeyword(searchQuery: string, limit: number = 12): Promise<Store[]> {
+  if (!searchQuery || searchQuery.trim().length < 2) return []
+
+  try {
+    const searchTerm = searchQuery.trim().toLowerCase()
+    return await query<Store>(
+      `SELECT
+        id, name, slug, type, logo_url, website_url, affiliate_url,
+        color, tagline, description, badges, top_categories,
+        is_canadian, province, return_policy, loyalty_program_name,
+        loyalty_program_desc, shipping_info, price_match_policy,
+        affiliate_network, screenshot_url, deal_count, keywords
+      FROM stores
+      WHERE $1 = ANY(keywords)
+         OR LOWER(name) LIKE $2
+         OR LOWER(tagline) LIKE $2
+      ORDER BY
+        CASE WHEN affiliate_url IS NOT NULL THEN 0 ELSE 1 END,
+        CASE WHEN $1 = ANY(keywords) THEN 0 ELSE 1 END,
+        deal_count DESC
+      LIMIT $3`,
+      [searchTerm, `%${searchTerm}%`, limit]
+    )
   } catch (error) {
     // Error handled silently
     return []

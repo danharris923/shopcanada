@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { searchDeals, getCanadianBrands } from '@/lib/db'
+import { searchDeals, searchStoresByKeyword } from '@/lib/db'
 import { searchFlippDeals } from '@/lib/flipp'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
@@ -33,18 +33,11 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   // Search Flipp deals
   const flippDeals = hasQuery ? await searchFlippDeals(query, 20) : []
 
-  // Search Canadian brands from database
-  const allBrands = hasQuery ? await getCanadianBrands() : []
-  const matchingBrands = hasQuery
-    ? allBrands.filter(
-        b =>
-          b.name.toLowerCase().includes(query.toLowerCase()) ||
-          b.slug.toLowerCase().includes(query.toLowerCase()) ||
-          (b.description && b.description.toLowerCase().includes(query.toLowerCase()))
-      ).slice(0, 12)
-    : []
+  // Search stores by keyword (e.g., "leggings" → Lululemon, Alo Yoga)
+  // Prioritizes affiliated stores
+  const matchingStores = hasQuery ? await searchStoresByKeyword(query, 12) : []
 
-  const totalResults = dbDeals.length + flippDeals.length + matchingBrands.length
+  const totalResults = dbDeals.length + flippDeals.length + matchingStores.length
 
   return (
     <>
@@ -76,33 +69,43 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           <div className="max-w-7xl mx-auto">
             {hasQuery ? (
               <>
-                {/* Canadian Brands */}
-                {matchingBrands.length > 0 && (
+                {/* Stores that sell this product */}
+                {matchingStores.length > 0 && (
                   <div className="mb-12">
                     <h2 className="text-2xl font-bold text-heading mb-6">
-                      Canadian Brands ({matchingBrands.length})
+                      Stores for "{query}" ({matchingStores.length})
                     </h2>
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                      {matchingBrands.map(brand => (
+                      {matchingStores.map(store => (
                         <Link
-                          key={brand.slug}
-                          href={`/canadian/brand/${brand.slug}`}
-                          className="bg-card-bg border border-card-border rounded-card p-4 shadow-card hover:shadow-card-hover hover:border-maple-red transition-all text-center group"
+                          key={store.slug}
+                          href={`/stores/${store.slug}`}
+                          className="bg-card-bg border border-card-border rounded-card p-4 shadow-card hover:shadow-card-hover hover:border-maple-red transition-all text-center group relative"
                         >
-                          {brand.logo_url ? (
+                          {store.affiliate_url && (
+                            <span className="absolute top-2 right-2 text-xs bg-green-100 text-green-700 px-1.5 py-0.5 rounded">
+                              Partner
+                            </span>
+                          )}
+                          {store.logo_url ? (
                             <img
-                              src={brand.logo_url}
-                              alt={brand.name}
+                              src={store.logo_url}
+                              alt={store.name}
                               className="w-12 h-12 mx-auto mb-2 object-contain rounded"
                             />
                           ) : (
                             <div className="w-12 h-12 mx-auto mb-2 bg-cream rounded flex items-center justify-center text-xl">
-                              {brand.name.charAt(0)}
+                              {store.name.charAt(0)}
                             </div>
                           )}
-                          <span className="font-semibold text-heading text-sm group-hover:text-maple-red transition-colors">
-                            {brand.name}
+                          <span className="font-semibold text-heading text-sm group-hover:text-maple-red transition-colors block">
+                            {store.name}
                           </span>
+                          {store.keywords && store.keywords.length > 0 && (
+                            <span className="text-xs text-muted mt-1 block truncate">
+                              {store.keywords.slice(0, 3).join(', ')}
+                            </span>
+                          )}
                         </Link>
                       ))}
                     </div>
