@@ -3,7 +3,11 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { SITE_URL } from '@/lib/config'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  preload: true,
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -80,6 +84,10 @@ export default function RootLayout({
   return (
     <html lang="en-CA">
       <head>
+        {/* Preload hero images for faster LCP */}
+        <link rel="preload" href="/hero-desktop.webp" as="image" type="image/webp" media="(min-width: 768px)" />
+        <link rel="preload" href="/hero-mobile.webp" as="image" type="image/webp" media="(max-width: 767px)" />
+
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#8F020D" />
