@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     default: 'Shop Canada - Best Canadian Deals & Discounts 2025',
     template: '%s | Shop Canada'
   },
-  description: 'Find the best deals, sales, and discounts from top Canadian retailers like Amazon.ca, Walmart, Costco, Best Buy, and more. Save up to 70% on electronics, fashion, home goods. Updated hourly.',
+  description: 'Find the best deals from top Canadian retailers like Amazon.ca, Walmart, Costco & Best Buy. Save up to 70% on electronics, fashion & home goods. Updated hourly.',
   keywords: [
     'canadian deals',
     'canada sales',

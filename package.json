@@ -31,6 +31,7 @@
   "devDependencies": {
     "@types/pg": "^8.15.6",
     "playwright": "^1.57.0",
+    "sharp": "^0.34.5",
     "ts-node": "^10.9.2"
   }
 }

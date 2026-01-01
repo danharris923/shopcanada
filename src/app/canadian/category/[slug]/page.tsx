@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { getCanadianBrandsByCategory, getCanadianBrandCategories } from '@/lib/db'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
@@ -66,14 +67,28 @@ export default async function CategoryPage({ params }: Props) {
 
         {/* Hero Section - matching home page style */}
         <section className="relative mt-4">
-          <picture>
-            <source media="(min-width: 768px)" srcSet="/hero-desktop.png" />
-            <img
-              src="/hero-mobile.png"
+          {/* Desktop Hero */}
+          <div className="hidden md:block relative w-full h-[400px]">
+            <Image
+              src="/hero-desktop.webp"
               alt={`Canadian ${categoryName} Brands`}
-              className="w-full h-auto"
+              fill
+              priority
+              className="object-cover"
+              sizes="100vw"
             />
-          </picture>
+          </div>
+          {/* Mobile Hero */}
+          <div className="block md:hidden relative w-full h-[300px]">
+            <Image
+              src="/hero-mobile.webp"
+              alt={`Canadian ${categoryName} Brands`}
+              fill
+              priority
+              className="object-cover"
+              sizes="100vw"
+            />
+          </div>
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-full max-w-7xl mx-auto px-4 flex flex-col items-end">
               <div className="flex items-center gap-3 mb-2">

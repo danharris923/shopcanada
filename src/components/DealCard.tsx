@@ -168,7 +168,7 @@ export function DealCard({
             {storeLogo && (
               <img
                 src={storeLogo}
-                alt=""
+                alt={`${storeName} logo`}
                 className="w-4 h-4 rounded-sm object-contain"
                 onError={(e) => { e.currentTarget.style.display = 'none' }}
               />

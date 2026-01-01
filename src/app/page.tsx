@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { getStoreStats, getStoreBySlug } from '@/lib/db'
 import { generateWebsiteSchema, generateOrganizationSchema } from '@/lib/schema'
 import { DealCard, DealGrid } from '@/components/DealCard'
@@ -82,14 +83,28 @@ export default async function HomePage() {
       <main>
         {/* Hero Banner */}
         <section className="relative">
-          <picture>
-            <source media="(min-width: 768px)" srcSet="/hero-desktop.png" />
-            <img
-              src="/hero-mobile.png"
-              alt="Shop Canada"
-              className="w-full h-auto object-cover max-h-[300px] md:max-h-[400px]"
+          {/* Desktop Hero - hidden on mobile */}
+          <div className="hidden md:block relative w-full h-[400px]">
+            <Image
+              src="/hero-desktop.webp"
+              alt="Shop Canada - Best Canadian Deals"
+              fill
+              priority
+              className="object-cover"
+              sizes="100vw"
             />
-          </picture>
+          </div>
+          {/* Mobile Hero - hidden on desktop */}
+          <div className="block md:hidden relative w-full h-[300px]">
+            <Image
+              src="/hero-mobile.webp"
+              alt="Shop Canada - Best Canadian Deals"
+              fill
+              priority
+              className="object-cover"
+              sizes="100vw"
+            />
+          </div>
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-full max-w-7xl mx-auto px-4 flex flex-col items-end">
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-2 text-right tracking-wide" style={{
