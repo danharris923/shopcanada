@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server'
 import { getAllStoresAdmin, updateStoreUrls, addStore, checkStoreSlugExists } from '@/lib/db'
 
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'shopcanada2024'
-
 function checkAuth(request: Request): boolean {
+  const adminPassword = process.env.ADMIN_PASSWORD
+  if (!adminPassword) return false
   const auth = request.headers.get('Authorization')
-  return auth === ADMIN_PASSWORD
+  return auth === adminPassword
 }
 
 // GET all stores
