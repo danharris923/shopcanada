@@ -10,8 +10,6 @@ import { Leaf } from 'lucide-react'
 import { CORE_CATEGORIES } from '@/lib/categories'
 import { StatsBar } from '@/components/StatsBar'
 import { getShuffledFeaturedDeals, getShuffledDeals, getDistributionSummary } from '@/lib/deal-shuffle'
-import { getLatestVideos } from '@/lib/youtube'
-import { VideoCarousel } from '@/components/VideoCarousel'
 import { REVALIDATE_INTERVAL, SOCIAL_LINKS, FEATURED_STORE_SLUGS } from '@/lib/config'
 import { Store, MixedDeal } from '@/types/deal'
 
@@ -53,11 +51,10 @@ function extractDomain(url: string | null): string {
 export const revalidate = REVALIDATE_INTERVAL
 
 export default async function HomePage() {
-  const [shuffledFeatured, shuffledLatest, storeStats, latestVideos, ...featuredStoreResults] = await Promise.all([
+  const [shuffledFeatured, shuffledLatest, storeStats, ...featuredStoreResults] = await Promise.all([
     getShuffledFeaturedDeals(8),
     getShuffledDeals(16),
     getStoreStats(),
-    getLatestVideos(6),
     ...FEATURED_STORE_SLUGS.map(slug => getStoreBySlug(slug)),
   ])
 
@@ -252,20 +249,13 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* Store Tours + Social */}
+        {/* Social Links */}
         <section className="py-12 section-cream">
           <div className="max-w-7xl mx-auto px-4">
             <h2 className="text-2xl md:text-3xl font-bold text-charcoal mb-6">
               Follow Along
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Auto-playing Video Carousel */}
-              {latestVideos.length > 0 && (
-                <VideoCarousel videos={latestVideos.slice(0, 6)} />
-              )}
-
-              {/* Social Buttons Grid */}
-              <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {/* YouTube */}
                 <a
                   href={SOCIAL_LINKS.youtube}
@@ -321,7 +311,6 @@ export default async function HomePage() {
                   <span className="font-bold text-charcoal group-hover:text-[#0085FF] transition-colors">Bluesky</span>
                   <span className="text-xs text-slate">Updates</span>
                 </a>
-              </div>
             </div>
           </div>
         </section>
