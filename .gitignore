@@ -10,3 +10,6 @@ out/
 
 # Vercel
 .vercel
+
+# Audit reports
+audit-report/
