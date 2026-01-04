@@ -24,34 +24,18 @@
       "purpose": "any"
     }
   ],
-  "screenshots": [
-    {
-      "src": "/screenshot-wide.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide"
-    },
-    {
-      "src": "/screenshot-mobile.png",
-      "sizes": "750x1334",
-      "type": "image/png",
-      "form_factor": "narrow"
-    }
-  ],
   "shortcuts": [
     {
       "name": "Today's Deals",
       "short_name": "Deals",
       "description": "View today's best Canadian deals",
-      "url": "/deals/today",
-      "icons": [{ "src": "/icon-deals.png", "sizes": "96x96" }]
+      "url": "/deals/today"
     },
     {
       "name": "All Stores",
       "short_name": "Stores",
       "description": "Browse deals by store",
-      "url": "/stores",
-      "icons": [{ "src": "/icon-stores.png", "sizes": "96x96" }]
+      "url": "/stores"
     }
   ],
   "related_applications": [],

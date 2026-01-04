@@ -10,7 +10,7 @@ import { Leaf } from 'lucide-react'
 import { CORE_CATEGORIES } from '@/lib/categories'
 import { StatsBar } from '@/components/StatsBar'
 import { getShuffledFeaturedDeals, getShuffledDeals, getDistributionSummary } from '@/lib/deal-shuffle'
-import { REVALIDATE_INTERVAL, SOCIAL_LINKS, FEATURED_STORE_SLUGS } from '@/lib/config'
+import { REVALIDATE_INTERVAL, FEATURED_STORE_SLUGS } from '@/lib/config'
 import { Store, MixedDeal } from '@/types/deal'
 
 // Badge display configuration for homepage store cards
@@ -245,72 +245,6 @@ export default async function HomePage() {
                   </Link>
                 )
               })}
-            </div>
-          </div>
-        </section>
-
-        {/* Social Links */}
-        <section className="py-12 section-cream">
-          <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-2xl md:text-3xl font-bold text-charcoal mb-6">
-              Follow Along
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {/* YouTube */}
-                <a
-                  href={SOCIAL_LINKS.youtube}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex flex-col items-center justify-center p-6 bg-white rounded-lg border-2 border-transparent hover:border-[#FF0000] transition-all group shadow-sm hover:shadow-md"
-                >
-                  <svg className="w-12 h-12 mb-3 text-[#FF0000]" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                  </svg>
-                  <span className="font-bold text-charcoal group-hover:text-[#FF0000] transition-colors">YouTube</span>
-                  <span className="text-xs text-slate">Store Tours</span>
-                </a>
-
-                {/* TikTok */}
-                <a
-                  href={SOCIAL_LINKS.tiktok}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex flex-col items-center justify-center p-6 bg-white rounded-lg border-2 border-transparent hover:border-black transition-all group shadow-sm hover:shadow-md"
-                >
-                  <svg className="w-12 h-12 mb-3" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-                  </svg>
-                  <span className="font-bold text-charcoal group-hover:text-black transition-colors">TikTok</span>
-                  <span className="text-xs text-slate">Quick Clips</span>
-                </a>
-
-                {/* Facebook */}
-                <a
-                  href={SOCIAL_LINKS.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex flex-col items-center justify-center p-6 bg-white rounded-lg border-2 border-transparent hover:border-[#1877F2] transition-all group shadow-sm hover:shadow-md"
-                >
-                  <svg className="w-12 h-12 mb-3 text-[#1877F2]" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                  </svg>
-                  <span className="font-bold text-charcoal group-hover:text-[#1877F2] transition-colors">Facebook</span>
-                  <span className="text-xs text-slate">Community</span>
-                </a>
-
-                {/* Bluesky */}
-                <a
-                  href={SOCIAL_LINKS.bluesky}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex flex-col items-center justify-center p-6 bg-white rounded-lg border-2 border-transparent hover:border-[#0085FF] transition-all group shadow-sm hover:shadow-md"
-                >
-                  <svg className="w-12 h-12 mb-3 text-[#0085FF]" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.206-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z"/>
-                  </svg>
-                  <span className="font-bold text-charcoal group-hover:text-[#0085FF] transition-colors">Bluesky</span>
-                  <span className="text-xs text-slate">Updates</span>
-                </a>
             </div>
           </div>
         </section>
