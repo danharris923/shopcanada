@@ -6,11 +6,14 @@ import { DealCard, DealGrid } from '@/components/DealCard'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { StoreLogo } from '@/components/StoreLogo'
+import { FashionCarousel } from '@/components/FashionCarousel'
 import { Leaf } from 'lucide-react'
 import { CORE_CATEGORIES } from '@/lib/categories'
 import { StatsBar } from '@/components/StatsBar'
 import { getShuffledFeaturedDeals, getShuffledDeals, getDistributionSummary } from '@/lib/deal-shuffle'
 import { REVALIDATE_INTERVAL, FEATURED_STORE_SLUGS } from '@/lib/config'
+import { getCanadianFashionBrands, FASHION_IMAGES_BASE_URL, FASHION_SEARCH_URLS } from '@/lib/fashion-brands'
+import { IMAGE_MANIFEST } from '@/lib/fashion-deals'
 import { Store, MixedDeal } from '@/types/deal'
 
 // Badge display configuration for homepage store cards
@@ -152,6 +155,29 @@ export default async function HomePage() {
                 </Link>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Icons of Canadian Fashion - Carousel */}
+        <section className="py-8 bg-white">
+          <div className="max-w-7xl mx-auto px-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-charcoal mb-6">
+              Icons of Canadian Fashion
+            </h2>
+            <FashionCarousel
+              cards={getCanadianFashionBrands().map((brand, brandIdx) => {
+                const images = IMAGE_MANIFEST[brand.folder] || []
+                const img = images[brandIdx % images.length] || images[0]
+                return {
+                  slug: brand.slug,
+                  name: brand.name,
+                  title: brand.cardTitles[0],
+                  imageUrl: `${FASHION_IMAGES_BASE_URL}/${brand.folder}/${img}`,
+                  affiliateUrl: FASHION_SEARCH_URLS[brand.slug] || `/stores/${brand.slug}`,
+                }
+              })}
+              autoPlayInterval={60000}
+            />
           </div>
         </section>
 

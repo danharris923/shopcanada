@@ -843,3 +843,10 @@ export function getFashionAffiliateUrl(slug: string, searchTerms: string): strin
   // Fallback to Google search
   return `https://www.google.com/search?q=${encodeURIComponent(searchTerms)}`
 }
+
+/**
+ * Get Canadian fashion brands for the homepage carousel
+ */
+export function getCanadianFashionBrands(): FashionBrand[] {
+  return FASHION_BRANDS.filter(b => b.isCanadian === true)
+}
