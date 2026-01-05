@@ -22,13 +22,13 @@ export function FashionCarousel({ cards, autoPlayInterval = 60000 }: FashionCaro
   const [isHovered, setIsHovered] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
 
-  // Number of cards visible at once (responsive) - fewer cards = bigger size
+  // Number of cards visible - fewer than deal cards so they appear bigger
   const getVisibleCount = useCallback(() => {
-    if (typeof window === 'undefined') return 4
-    if (window.innerWidth < 640) return 2
-    if (window.innerWidth < 768) return 2
-    if (window.innerWidth < 1024) return 3
-    return 4
+    if (typeof window === 'undefined') return 2
+    if (window.innerWidth < 640) return 1   // Mobile: 1 (deals show 2)
+    if (window.innerWidth < 768) return 2   // Tablet: 2 (deals show 3)
+    if (window.innerWidth < 1024) return 2  // Small desktop: 2 (deals show 4)
+    return 3                                 // Desktop: 3 (deals show 4-6)
   }, [])
 
   const [visibleCount, setVisibleCount] = useState(4)
