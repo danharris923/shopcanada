@@ -6,6 +6,99 @@
  */
 
 // =============================================================================
+// URL CLEANING - Strip competitor affiliate tags
+// =============================================================================
+
+/**
+ * Affiliate/tracking parameters to always remove from URLs
+ * These are competitor tags or generic tracking that we don't want
+ */
+const PARAMS_TO_STRIP = [
+  // Commission Junction (CJ) - Smart Canucks uses this
+  'cjdata', 'cjevent', 'cjid', 'cjp', 'cjpid',
+  // UTM tracking (often contains competitor info)
+  'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term',
+  // ShareASale
+  'sscid', 'afftrack',
+  // Rakuten (unless it's ours)
+  'ranMID', 'ranEAID', 'ranSiteID',
+  // Impact
+  'irclickid', 'irgwc',
+  // Awin
+  'awc', 'awinaffid', 'awinmid',
+  // Pepperjam
+  'pjpid', 'clickId',
+  // FlexOffers
+  'fobs',
+  // Generic affiliate params
+  'ref', 'ref_', 'affid', 'affiliate', 'partner', 'source',
+  // Skimlinks
+  'xcust', 'xs',
+]
+
+/**
+ * Patterns in URL content that indicate competitor affiliates
+ * Will strip the entire parameter if value matches
+ */
+const COMPETITOR_PATTERNS = [
+  /smart\s*canucks/i,
+  /redflagdeals/i,
+  /retailmenot/i,
+  /slickdeals/i,
+  /dealnews/i,
+]
+
+/**
+ * Clean a URL by removing competitor affiliate tags and tracking parameters
+ * Preserves the base URL and any legitimate product/search parameters
+ */
+export function cleanAffiliateUrl(url: string): string {
+  if (!url) return url
+
+  try {
+    const urlObj = new URL(url)
+
+    // Remove known tracking/affiliate params
+    for (const param of PARAMS_TO_STRIP) {
+      urlObj.searchParams.delete(param)
+    }
+
+    // Check remaining params for competitor patterns
+    const paramsToRemove: string[] = []
+    urlObj.searchParams.forEach((value, key) => {
+      // Check if value contains competitor name
+      for (const pattern of COMPETITOR_PATTERNS) {
+        if (pattern.test(value) || pattern.test(key)) {
+          paramsToRemove.push(key)
+          break
+        }
+      }
+    })
+
+    // Remove params with competitor patterns
+    for (const param of paramsToRemove) {
+      urlObj.searchParams.delete(param)
+    }
+
+    return urlObj.toString()
+  } catch {
+    // If URL parsing fails, do basic string replacement
+    let cleaned = url
+
+    // Remove common tracking params with regex
+    for (const param of PARAMS_TO_STRIP) {
+      // Match ?param=value or &param=value
+      cleaned = cleaned.replace(new RegExp(`[?&]${param}=[^&]*`, 'gi'), '')
+    }
+
+    // Clean up orphaned ? or &&
+    cleaned = cleaned.replace(/\?&/, '?').replace(/&&+/g, '&').replace(/\?$/, '').replace(/&$/, '')
+
+    return cleaned
+  }
+}
+
+// =============================================================================
 // AMAZON AFFILIATE CONFIG
 // =============================================================================
 
@@ -602,6 +695,9 @@ export function getDealAffiliateUrl(
   storeSlug: string | null,
   productTitle: string
 ): string | null {
+  // FIRST: Clean any competitor affiliate tags from the incoming URL
+  const cleanedDealUrl = dealAffiliateUrl ? cleanAffiliateUrl(dealAffiliateUrl) : null
+
   // PRIORITY 1: LTK stores - ALWAYS use cookie wrapper regardless of deal's affiliate_url
   // This ensures scraped deals (lululemon.com URLs) still set the affiliate cookie
   if (storeSlug) {
@@ -618,22 +714,22 @@ export function getDealAffiliateUrl(
   }
 
   // Amazon product links go directly (already has product page)
-  if (dealAffiliateUrl && isAmazonProductLink(dealAffiliateUrl)) {
-    return cleanAmazonUrl(dealAffiliateUrl)
+  if (cleanedDealUrl && isAmazonProductLink(cleanedDealUrl)) {
+    return cleanAmazonUrl(cleanedDealUrl)
   }
 
   // Static affiliate links (rstyle.me, etc.) - wrap with search redirect
-  if (dealAffiliateUrl && isStaticAffiliateLink(dealAffiliateUrl)) {
+  if (cleanedDealUrl && isStaticAffiliateLink(cleanedDealUrl)) {
     // Build the search URL for this store
     const searchUrl = storeSlug ? getAffiliateSearchUrl(storeSlug, productTitle) : null
 
     if (searchUrl) {
       // Use redirect wrapper: sets affiliate cookie, then goes to search
-      return buildAffiliateRedirect(dealAffiliateUrl, searchUrl)
+      return buildAffiliateRedirect(cleanedDealUrl, searchUrl)
     }
 
     // No search URL available, use affiliate link directly
-    return dealAffiliateUrl
+    return cleanedDealUrl
   }
 
   // Check if we have Rakuten for this store (can wrap search URL with tracking)
@@ -647,8 +743,8 @@ export function getDealAffiliateUrl(
   }
 
   // For other URLs, try to search-wrap them
-  if (dealAffiliateUrl) {
-    const urlStoreSlug = extractStoreSlugFromUrl(dealAffiliateUrl)
+  if (cleanedDealUrl) {
+    const urlStoreSlug = extractStoreSlugFromUrl(cleanedDealUrl)
     const effectiveSlug = storeSlug || urlStoreSlug
 
     if (effectiveSlug) {
@@ -658,7 +754,7 @@ export function getDealAffiliateUrl(
       }
     }
 
-    return dealAffiliateUrl
+    return cleanedDealUrl
   }
 
   // No affiliate URL - try to build one from store
