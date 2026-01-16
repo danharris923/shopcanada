@@ -63,10 +63,15 @@ const INTERNATIONAL_STORE_DESCRIPTIONS: Record<string, string> = {
   'ikea': `IKEA Canada operates 14 stores across the country along with distribution centers that employ thousands of Canadians. The Swedish furniture retailer has been in Canada since 1976 and has invested significantly in sustainable operations, including renewable energy at Canadian locations. IKEA Canada partners with local charities and provides affordable home furnishing options that have become staples in Canadian households.`,
 }
 
-// Get store description - use database description if available, otherwise fallback
+// Get store description - prefer detailed fallback for major international stores
+// These descriptions highlight Canadian economic impact which is more valuable for SEO
 function getStoreDescriptionWithFallback(store: Store): string | null {
-  if (store.description) return store.description
-  return INTERNATIONAL_STORE_DESCRIPTIONS[store.slug] || null
+  // For major international stores, use our detailed Canadian-focused descriptions
+  if (INTERNATIONAL_STORE_DESCRIPTIONS[store.slug]) {
+    return INTERNATIONAL_STORE_DESCRIPTIONS[store.slug]
+  }
+  // For other stores, use database description
+  return store.description || null
 }
 
 // Generate page H1 from store data
