@@ -1,12 +1,13 @@
 import { MetadataRoute } from 'next'
-import { getAllDealSlugs, getStores, getCategories } from '@/lib/db'
+import { getAllDealSlugs, getStores, getCategories, getAllCostcoSlugs } from '@/lib/db'
 import { SITE_URL } from '@/lib/config'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [dealSlugs, stores, categories] = await Promise.all([
+  const [dealSlugs, stores, categories, costcoSlugs] = await Promise.all([
     getAllDealSlugs(),
     getStores(),
     getCategories(),
+    getAllCostcoSlugs(),
   ])
 
   const now = new Date()
@@ -43,6 +44,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'hourly',
       priority: 0.9,
     },
+    {
+      url: `${SITE_URL}/deals/costco`,
+      lastModified: now,
+      changeFrequency: 'daily',
+      priority: 0.7,
+    },
   ]
 
   // Deal pages
@@ -69,5 +76,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }))
 
-  return [...staticPages, ...dealPages, ...storePages, ...categoryPages]
+  // Costco product pages (SEO - price tracking)
+  const costcoPages: MetadataRoute.Sitemap = costcoSlugs.map(slug => ({
+    url: `${SITE_URL}/deals/costco/${slug}`,
+    lastModified: now,
+    changeFrequency: 'daily' as const,
+    priority: 0.6,
+  }))
+
+  return [...staticPages, ...dealPages, ...storePages, ...categoryPages, ...costcoPages]
 }

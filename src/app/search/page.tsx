@@ -1,10 +1,11 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { searchDeals, searchStoresByKeyword } from '@/lib/db'
+import { searchDeals, searchStoresByKeyword, searchCostcoProducts } from '@/lib/db'
 import { searchFlippDeals } from '@/lib/flipp'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { DealCard, DealGrid, FlippDealGrid } from '@/components/DealCard'
+import { CostcoDealCard, CostcoDealGrid } from '@/components/costco/CostcoDealCard'
 import { StatsBar } from '@/components/StatsBar'
 
 export const revalidate = 0 // Don't cache search results
@@ -27,17 +28,16 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   const query = searchParams.q?.trim() || ''
   const hasQuery = query.length >= 2
 
-  // Search deals from DB
-  const dbDeals = hasQuery ? await searchDeals(query, 30) : []
+  // Search all sources in parallel
+  // Priority: Affiliated stores > DB deals > Flipp > Costco (SEO only, no revenue)
+  const [dbDeals, flippDeals, costcoProducts, matchingStores] = await Promise.all([
+    hasQuery ? searchDeals(query, 30) : Promise.resolve([]),
+    hasQuery ? searchFlippDeals(query, 20) : Promise.resolve([]),
+    hasQuery ? searchCostcoProducts(query, 6) : Promise.resolve([]), // Limited - SEO only, no affiliate
+    hasQuery ? searchStoresByKeyword(query, 12) : Promise.resolve([]),
+  ])
 
-  // Search Flipp deals
-  const flippDeals = hasQuery ? await searchFlippDeals(query, 20) : []
-
-  // Search stores by keyword (e.g., "leggings" → Lululemon, Alo Yoga)
-  // Prioritizes affiliated stores
-  const matchingStores = hasQuery ? await searchStoresByKeyword(query, 12) : []
-
-  const totalResults = dbDeals.length + flippDeals.length + matchingStores.length
+  const totalResults = dbDeals.length + flippDeals.length + costcoProducts.length + matchingStores.length
 
   return (
     <>
@@ -165,6 +165,28 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                         />
                       ))}
                     </FlippDealGrid>
+                  </div>
+                )}
+
+                {/* Costco Products - Lower priority, SEO only */}
+                {costcoProducts.length > 0 && (
+                  <div className="mb-12 pt-8 border-t border-silver-light">
+                    <div className="flex items-center gap-3 mb-4">
+                      <h3 className="text-lg font-semibold text-muted">
+                        Costco Price Tracker ({costcoProducts.length})
+                      </h3>
+                      <Link
+                        href="/deals/costco"
+                        className="text-sm text-maple-red hover:underline"
+                      >
+                        View all →
+                      </Link>
+                    </div>
+                    <CostcoDealGrid>
+                      {costcoProducts.map(product => (
+                        <CostcoDealCard key={product.id} product={product} />
+                      ))}
+                    </CostcoDealGrid>
                   </div>
                 )}
 

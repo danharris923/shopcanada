@@ -1,5 +1,6 @@
 import { Pool } from 'pg'
 import { Deal, Store, Category, StoreCardData } from '@/types/deal'
+import { CostcoProduct, CostcoPriceHistory, CostcoCategory } from '@/types/costco'
 
 /**
  * Database queries for deals, stores, and categories.
@@ -30,10 +31,10 @@ function transformRow<T>(row: Record<string, unknown>): T {
     } else if (typeof value === 'object' && value !== null && 'toISOString' in value) {
       // Duck-type check for Date-like objects from different realms
       transformed[key] = (value as { toISOString: () => string }).toISOString()
-    } else if (key === 'price' || key === 'original_price') {
-      // Convert DECIMAL strings to numbers
+    } else if (key === 'price' || key === 'original_price' || key === 'current_price' || key === 'current_price_min' || key === 'current_price_max' || key === 'price_min' || key === 'price_max') {
+      // Convert DECIMAL strings to numbers (includes Costco price fields)
       transformed[key] = value !== null ? parseFloat(String(value)) : null
-    } else if (key === 'discount_percent' || key === 'deal_count') {
+    } else if (key === 'discount_percent' || key === 'deal_count' || key === 'warehouses_reporting') {
       // Convert integer strings to numbers
       transformed[key] = value !== null ? parseInt(String(value), 10) : null
     } else if (key === 'badges' || key === 'top_categories') {
@@ -649,5 +650,192 @@ export async function checkStoreSlugExists(slug: string): Promise<boolean> {
   } catch (error) {
     // Error handled silently
     return false
+  }
+}
+
+// =============================================================================
+// COSTCO PRODUCTS
+// =============================================================================
+
+/**
+ * Search Costco products by name or category
+ */
+export async function searchCostcoProducts(searchQuery: string, limit: number = 20): Promise<CostcoProduct[]> {
+  if (!searchQuery || searchQuery.trim().length < 2) return []
+
+  try {
+    const searchTerm = `%${searchQuery.trim().toLowerCase()}%`
+    return await query<CostcoProduct>(
+      `SELECT * FROM costco_products
+       WHERE is_active = TRUE
+       AND (LOWER(name) LIKE $1 OR LOWER(category) LIKE $1)
+       ORDER BY last_updated_at DESC
+       LIMIT $2`,
+      [searchTerm, limit]
+    )
+  } catch (error) {
+    // Error handled silently
+    return []
+  }
+}
+
+/**
+ * Get a Costco product by its slug
+ */
+export async function getCostcoProductBySlug(slug: string): Promise<CostcoProduct | null> {
+  try {
+    return await queryOne<CostcoProduct>(
+      'SELECT * FROM costco_products WHERE slug = $1 AND is_active = TRUE LIMIT 1',
+      [slug]
+    )
+  } catch (error) {
+    // Error handled silently
+    return null
+  }
+}
+
+/**
+ * Get a Costco product by its item_id
+ */
+export async function getCostcoProductByItemId(itemId: string): Promise<CostcoProduct | null> {
+  try {
+    return await queryOne<CostcoProduct>(
+      'SELECT * FROM costco_products WHERE item_id = $1 AND is_active = TRUE LIMIT 1',
+      [itemId]
+    )
+  } catch (error) {
+    // Error handled silently
+    return null
+  }
+}
+
+/**
+ * Get price history for a Costco product
+ */
+export async function getCostcoPriceHistory(productId: number, limit: number = 30): Promise<CostcoPriceHistory[]> {
+  try {
+    return await query<CostcoPriceHistory>(
+      `SELECT * FROM costco_price_history
+       WHERE product_id = $1
+       ORDER BY recorded_at DESC
+       LIMIT $2`,
+      [productId, limit]
+    )
+  } catch (error) {
+    // Error handled silently
+    return []
+  }
+}
+
+/**
+ * Get all Costco product slugs for static params generation
+ */
+export async function getAllCostcoSlugs(): Promise<string[]> {
+  try {
+    const rows = await query<{ slug: string }>(
+      'SELECT slug FROM costco_products WHERE is_active = TRUE'
+    )
+    return rows.map(row => row.slug)
+  } catch (error) {
+    // Error handled silently
+    return []
+  }
+}
+
+/**
+ * Get related Costco products (same category)
+ */
+export async function getRelatedCostcoProducts(product: CostcoProduct, limit: number = 6): Promise<CostcoProduct[]> {
+  try {
+    if (!product.category) {
+      // Fallback to any active products
+      return await query<CostcoProduct>(
+        `SELECT * FROM costco_products
+         WHERE is_active = TRUE AND id != $1
+         ORDER BY last_updated_at DESC
+         LIMIT $2`,
+        [product.id, limit]
+      )
+    }
+
+    return await query<CostcoProduct>(
+      `SELECT * FROM costco_products
+       WHERE is_active = TRUE
+       AND id != $1
+       AND category = $2
+       ORDER BY last_updated_at DESC
+       LIMIT $3`,
+      [product.id, product.category, limit]
+    )
+  } catch (error) {
+    // Error handled silently
+    return []
+  }
+}
+
+/**
+ * Get Costco products with optional filters
+ */
+export async function getCostcoProducts(options: {
+  limit?: number
+  offset?: number
+  category?: string
+} = {}): Promise<CostcoProduct[]> {
+  const { limit = 20, offset = 0, category } = options
+
+  try {
+    if (category) {
+      return await query<CostcoProduct>(
+        `SELECT * FROM costco_products
+         WHERE is_active = TRUE AND category = $1
+         ORDER BY last_updated_at DESC
+         LIMIT $2 OFFSET $3`,
+        [category, limit, offset]
+      )
+    }
+
+    return await query<CostcoProduct>(
+      `SELECT * FROM costco_products
+       WHERE is_active = TRUE
+       ORDER BY last_updated_at DESC
+       LIMIT $1 OFFSET $2`,
+      [limit, offset]
+    )
+  } catch (error) {
+    // Error handled silently
+    return []
+  }
+}
+
+/**
+ * Get Costco categories with product counts
+ */
+export async function getCostcoCategories(): Promise<CostcoCategory[]> {
+  try {
+    return await query<CostcoCategory>(
+      `SELECT category, COUNT(*)::int as count
+       FROM costco_products
+       WHERE is_active = TRUE AND category IS NOT NULL
+       GROUP BY category
+       ORDER BY count DESC`
+    )
+  } catch (error) {
+    // Error handled silently
+    return []
+  }
+}
+
+/**
+ * Get total Costco product count
+ */
+export async function getCostcoProductCount(): Promise<number> {
+  try {
+    const rows = await query<{ count: string }>(
+      'SELECT COUNT(*) as count FROM costco_products WHERE is_active = TRUE'
+    )
+    return parseInt(rows[0]?.count || '0', 10)
+  } catch (error) {
+    // Error handled silently
+    return 0
   }
 }
