@@ -2,12 +2,11 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-import { getDealsByStore, getStores, getStoreBySlug, getRelatedCanadianBrands, getCostcoProducts } from '@/lib/db'
+import { getDealsByStore, getStores, getStoreBySlug, getRelatedCanadianBrands } from '@/lib/db'
 import { Deal, Store } from '@/types/deal'
 import { formatStoreName } from '@/lib/content-generator'
 import { generateItemListSchema } from '@/lib/schema'
 import { DealCard, DealGrid } from '@/components/DealCard'
-import { CostcoDealCard, CostcoDealGrid } from '@/components/costco/CostcoDealCard'
 import { Breadcrumbs } from '@/components/breadcrumbs'
 import { StoreLogo } from '@/components/StoreLogo'
 import { Header } from '@/components/Header'
@@ -127,14 +126,10 @@ export default async function StorePage({ params }: PageProps) {
   // Get primary category for related stores
   const primaryCategory = store.top_categories?.[0] || 'Retail'
 
-  // Check if this is the Costco store page
-  const isCostco = storeSlug === 'costco'
-
-  // Fetch deals, videos (skip for Costco), Costco products, and related stores in parallel
-  const [deals, videos, costcoProducts, relatedStores] = await Promise.all([
+  // Fetch deals, videos, and related stores in parallel
+  const [deals, videos, relatedStores] = await Promise.all([
     getDealsByStore(storeSlug).catch(() => []),
-    isCostco ? Promise.resolve([]) : getVideosForStore(storeSlug, 3), // No YouTube for Costco
-    isCostco ? getCostcoProducts({ limit: 12 }).catch(() => []) : Promise.resolve([]),
+    getVideosForStore(storeSlug, 3),
     getRelatedCanadianBrands(store, 6).catch(() => [])
   ])
 
@@ -269,40 +264,7 @@ export default async function StorePage({ params }: PageProps) {
             </section>
           )}
 
-          {/* COSTCO PRODUCTS SECTION - Only for Costco store page */}
-          {isCostco && costcoProducts.length > 0 && (
-            <section className="mb-10">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-bold text-charcoal">
-                  Costco Price Tracker
-                </h2>
-                <Link
-                  href="/deals/costco"
-                  className="text-maple-red hover:text-burgundy font-semibold transition-colors"
-                >
-                  View All Products →
-                </Link>
-              </div>
-              <p className="text-slate mb-4">
-                Track prices on {costcoProducts.length > 1000 ? '1,000+' : costcoProducts.length} Costco products across Canadian warehouse locations.
-              </p>
-              <CostcoDealGrid>
-                {costcoProducts.slice(0, 8).map(product => (
-                  <CostcoDealCard key={product.id} product={product} />
-                ))}
-              </CostcoDealGrid>
-              <div className="mt-6 text-center">
-                <Link
-                  href="/deals/costco"
-                  className="btn-primary inline-block"
-                >
-                  Browse All Costco Products
-                </Link>
-              </div>
-            </section>
-          )}
-
-          {/* YOUTUBE VIDEOS SECTION - Skip for Costco */}
+          {/* YOUTUBE VIDEOS SECTION */}
           {videos.length > 0 && (
             <StoreVideos
               storeSlug={storeSlug}
