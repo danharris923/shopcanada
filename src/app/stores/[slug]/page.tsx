@@ -126,10 +126,13 @@ export default async function StorePage({ params }: PageProps) {
   // Get primary category for related stores
   const primaryCategory = store.top_categories?.[0] || 'Retail'
 
+  // Skip YouTube for Costco (no relevant content)
+  const skipYouTube = storeSlug === 'costco'
+
   // Fetch deals, videos, and related stores in parallel
   const [deals, videos, relatedStores] = await Promise.all([
     getDealsByStore(storeSlug).catch(() => []),
-    getVideosForStore(storeSlug, 3),
+    skipYouTube ? Promise.resolve([]) : getVideosForStore(storeSlug, 3),
     getRelatedCanadianBrands(store, 6).catch(() => [])
   ])
 
