@@ -1,8 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import Image from 'next/image'
-import { MapPin } from 'lucide-react'
-import { searchDeals, searchStoresByKeyword, searchCostcoProducts } from '@/lib/db'
+import { searchDeals, searchStoresByKeyword } from '@/lib/db'
 import { searchFlippDeals } from '@/lib/flipp'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
@@ -30,15 +28,14 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   const hasQuery = query.length >= 2
 
   // Search all sources in parallel
-  // Priority: Affiliated stores > DB deals > Flipp > Costco (SEO only, no revenue)
-  const [dbDeals, flippDeals, costcoProducts, matchingStores] = await Promise.all([
+  // Priority: Affiliated stores > DB deals > Flipp
+  const [dbDeals, flippDeals, matchingStores] = await Promise.all([
     hasQuery ? searchDeals(query, 30) : Promise.resolve([]),
     hasQuery ? searchFlippDeals(query, 20) : Promise.resolve([]),
-    hasQuery ? searchCostcoProducts(query, 6) : Promise.resolve([]), // Limited - SEO only, no affiliate
     hasQuery ? searchStoresByKeyword(query, 12) : Promise.resolve([]),
   ])
 
-  const totalResults = dbDeals.length + flippDeals.length + costcoProducts.length + matchingStores.length
+  const totalResults = dbDeals.length + flippDeals.length + matchingStores.length
 
   return (
     <>
@@ -165,93 +162,6 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                           saleStory={deal.saleStory}
                         />
                       ))}
-                    </FlippDealGrid>
-                  </div>
-                )}
-
-                {/* Costco Products - Display like Flipp, direct links to costco.ca */}
-                {costcoProducts.length > 0 && (
-                  <div className="mb-12 pt-8 border-t border-silver-light">
-                    <h3 className="text-lg font-semibold text-muted mb-4">
-                      Costco Products ({costcoProducts.length})
-                    </h3>
-                    <FlippDealGrid>
-                      {costcoProducts.map(product => {
-                        const costcoUrl = `https://www.costco.ca/CatalogSearch?dept=All&keyword=${encodeURIComponent(product.name)}`
-                        const minPrice = product.current_price_min ?? product.current_price
-                        const maxPrice = product.current_price_max ?? product.current_price
-                        const hasPriceRange = minPrice !== null && maxPrice !== null && minPrice !== maxPrice
-                        const formatPrice = (price: number) => price.toLocaleString('en-CA', { style: 'currency', currency: 'CAD' })
-
-                        return (
-                          <a
-                            key={product.id}
-                            href={costcoUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="deal-card group block"
-                          >
-                            {/* Image Container */}
-                            <div className="relative aspect-square bg-cream">
-                              {/* Costco Badge */}
-                              <div className="absolute top-2 left-2 z-10">
-                                <span className="bg-[#e31837] text-white px-2 py-1 rounded-lg font-bold text-xs shadow-md">
-                                  COSTCO
-                                </span>
-                              </div>
-                              {/* Warehouse Badge */}
-                              {product.warehouses_reporting && product.warehouses_reporting > 0 && (
-                                <div className="absolute top-2 right-2 z-10">
-                                  <span className={`inline-flex items-center gap-1 px-2 py-1 rounded-lg text-xs font-medium shadow-md ${product.warehouses_reporting < 50 ? 'bg-amber-100 text-amber-700' : 'bg-green-100 text-green-700'}`}>
-                                    <MapPin size={10} />
-                                    {product.warehouses_reporting}
-                                  </span>
-                                </div>
-                              )}
-                              <Image
-                                src={product.image_url || '/placeholder-deal.jpg'}
-                                alt={product.name}
-                                fill
-                                className="object-contain p-4 group-hover:scale-105 transition-transform duration-200"
-                                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                              />
-                            </div>
-                            {/* Content */}
-                            <div className="p-4">
-                              {product.category && (
-                                <div className="flex items-center gap-1.5 mb-1">
-                                  <span className="deal-card-store uppercase tracking-wide text-[#e31837]">
-                                    {product.category}
-                                  </span>
-                                </div>
-                              )}
-                              <h3 className="deal-card-title mb-2 line-clamp-2 group-hover:text-maple-red transition-colors">
-                                {product.name}
-                              </h3>
-                              <div className="mb-3">
-                                {minPrice !== null ? (
-                                  hasPriceRange ? (
-                                    <>
-                                      <span className="deal-card-price">
-                                        {formatPrice(minPrice)} - {formatPrice(maxPrice!)}
-                                      </span>
-                                      <span className="block text-xs text-muted mt-0.5">
-                                        Price varies by location
-                                      </span>
-                                    </>
-                                  ) : (
-                                    <span className="deal-card-price">
-                                      {formatPrice(minPrice)}
-                                    </span>
-                                  )
-                                ) : (
-                                  <span className="text-muted">Check store for price</span>
-                                )}
-                              </div>
-                            </div>
-                          </a>
-                        )
-                      })}
                     </FlippDealGrid>
                   </div>
                 )}
