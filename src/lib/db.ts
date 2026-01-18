@@ -1,6 +1,5 @@
 import { Pool } from 'pg'
 import { Deal, Store, Category, StoreCardData } from '@/types/deal'
-import { CostcoProduct, CostcoPriceHistory, CostcoCategory } from '@/types/costco'
 
 /**
  * Database queries for deals, stores, and categories.
@@ -31,10 +30,10 @@ function transformRow<T>(row: Record<string, unknown>): T {
     } else if (typeof value === 'object' && value !== null && 'toISOString' in value) {
       // Duck-type check for Date-like objects from different realms
       transformed[key] = (value as { toISOString: () => string }).toISOString()
-    } else if (key === 'price' || key === 'original_price' || key === 'current_price' || key === 'current_price_min' || key === 'current_price_max' || key === 'price_min' || key === 'price_max') {
-      // Convert DECIMAL strings to numbers (includes Costco price fields)
+    } else if (key === 'price' || key === 'original_price' || key === 'current_price') {
+      // Convert DECIMAL strings to numbers
       transformed[key] = value !== null ? parseFloat(String(value)) : null
-    } else if (key === 'discount_percent' || key === 'deal_count' || key === 'warehouses_reporting') {
+    } else if (key === 'discount_percent' || key === 'deal_count') {
       // Convert integer strings to numbers
       transformed[key] = value !== null ? parseInt(String(value), 10) : null
     } else if (key === 'badges' || key === 'top_categories') {
@@ -93,7 +92,7 @@ async function queryOne<T>(queryText: string, values?: unknown[]): Promise<T | n
 }
 
 // =============================================================================
-// DEALS
+// DEALS (queries old deals table - has 1648 active deals)
 // =============================================================================
 
 export async function getDealBySlug(slug: string): Promise<Deal | null> {
@@ -103,7 +102,7 @@ export async function getDealBySlug(slug: string): Promise<Deal | null> {
       [slug]
     )
   } catch (error) {
-    // Error handled silently
+    console.error('getDealBySlug error:', error)
     return null
   }
 }
@@ -115,7 +114,7 @@ export async function getDealById(id: string): Promise<Deal | null> {
       [id]
     )
   } catch (error) {
-    // Error handled silently
+    console.error('getDealById error:', error)
     return null
   }
 }
@@ -164,7 +163,7 @@ export async function getDeals(options: {
 
     return await query<Deal>(queryText, values)
   } catch (error) {
-    // Error handled silently
+    console.error('getDeals error:', error)
     return []
   }
 }
@@ -176,7 +175,7 @@ export async function getFeaturedDeals(limit: number = 12): Promise<Deal[]> {
       [limit]
     )
   } catch (error) {
-    // Error handled silently
+    console.error('getFeaturedDeals error:', error)
     return []
   }
 }
@@ -188,7 +187,7 @@ export async function getLatestDeals(limit: number = 20): Promise<Deal[]> {
       [limit]
     )
   } catch (error) {
-    // Error handled silently
+    console.error('getLatestDeals error:', error)
     return []
   }
 }
@@ -200,7 +199,7 @@ export async function getDealsByStore(store: string, limit: number = 50): Promis
       [store, limit]
     )
   } catch (error) {
-    // Error handled silently
+    console.error('getDealsByStore error:', error)
     return []
   }
 }
@@ -212,14 +211,13 @@ export async function getDealsByCategory(category: string, limit: number = 50): 
       [category, limit]
     )
   } catch (error) {
-    // Error handled silently
+    console.error('getDealsByCategory error:', error)
     return []
   }
 }
 
 export async function getRelatedDeals(deal: Deal, limit: number = 6): Promise<Deal[]> {
   try {
-    // Extract keywords from deal title for matching (first 3 significant words)
     const titleWords = deal.title
       .toLowerCase()
       .replace(/[^a-z0-9\s]/g, '')
@@ -246,7 +244,7 @@ export async function getRelatedDeals(deal: Deal, limit: number = 6): Promise<De
         : [deal.id, deal.store, deal.category, limit]
     )
   } catch (error) {
-    // Error handled silently
+    console.error('getRelatedDeals error:', error)
     return []
   }
 }
@@ -258,13 +256,13 @@ export async function getAllDealSlugs(): Promise<string[]> {
     )
     return rows.map(row => row.slug)
   } catch (error) {
-    // Error handled silently
+    console.error('getAllDealSlugs error:', error)
     return []
   }
 }
 
 // =============================================================================
-// STORES
+// STORES (queries old stores table - has 41 stores)
 // =============================================================================
 
 export async function getStores(): Promise<Store[]> {
@@ -280,7 +278,7 @@ export async function getStores(): Promise<Store[]> {
       ORDER BY deal_count DESC
     `)
   } catch (error) {
-    // Error handled silently
+    console.error('getStores error:', error)
     return []
   }
 }
@@ -300,7 +298,7 @@ export async function getStoreBySlug(slug: string): Promise<Store | null> {
       [slug]
     )
   } catch (error) {
-    // Error handled silently
+    console.error('getStoreBySlug error:', error)
     return null
   }
 }
@@ -311,15 +309,14 @@ export async function getStoreBySlug(slug: string): Promise<Store | null> {
 export async function getStoreForCard(slug: string): Promise<StoreCardData | null> {
   try {
     return await queryOne<StoreCardData>(
-      `SELECT
-        name, slug, logo_url, color, badges, return_policy, shipping_info
+      `SELECT name, slug, logo_url, color, badges, return_policy, shipping_info
       FROM stores
       WHERE slug = $1
       LIMIT 1`,
       [slug]
     )
   } catch (error) {
-    // Error handled silently
+    console.error('getStoreForCard error:', error)
     return null
   }
 }
@@ -341,7 +338,7 @@ export async function getCanadianBrands(): Promise<Store[]> {
       ORDER BY deal_count DESC`
     )
   } catch (error) {
-    // Error handled silently
+    console.error('getCanadianBrands error:', error)
     return []
   }
 }
@@ -356,7 +353,7 @@ export async function getCanadianBrandSlugs(): Promise<string[]> {
     )
     return rows.map(row => row.slug)
   } catch (error) {
-    // Error handled silently
+    console.error('getCanadianBrandSlugs error:', error)
     return []
   }
 }
@@ -366,10 +363,8 @@ export async function getCanadianBrandSlugs(): Promise<string[]> {
  */
 export async function getRelatedCanadianBrands(brand: Store, limit: number = 6): Promise<Store[]> {
   try {
-    // Get brands that share any of the same top_categories
     const categories = brand.top_categories || []
     if (categories.length === 0) {
-      // Fall back to just getting other Canadian brands
       return await query<Store>(
         `SELECT
           id, name, slug, type, logo_url, website_url, affiliate_url,
@@ -402,7 +397,7 @@ export async function getRelatedCanadianBrands(brand: Store, limit: number = 6):
       [brand.slug, categories, limit]
     )
   } catch (error) {
-    // Error handled silently
+    console.error('getRelatedCanadianBrands error:', error)
     return []
   }
 }
@@ -426,7 +421,7 @@ export async function getCanadianBrandsByCategory(category: string): Promise<Sto
       [category]
     )
   } catch (error) {
-    // Error handled silently
+    console.error('getCanadianBrandsByCategory error:', error)
     return []
   }
 }
@@ -451,20 +446,20 @@ export async function getCanadianBrandCategories(): Promise<{ name: string; slug
       count: parseInt(row.count, 10)
     }))
   } catch (error) {
-    // Error handled silently
+    console.error('getCanadianBrandCategories error:', error)
     return []
   }
 }
 
 // =============================================================================
-// CATEGORIES
+// CATEGORIES (queries old categories table)
 // =============================================================================
 
 export async function getCategories(): Promise<Category[]> {
   try {
     return await query<Category>('SELECT * FROM categories ORDER BY deal_count DESC')
   } catch (error) {
-    // Error handled silently
+    console.error('getCategories error:', error)
     return []
   }
 }
@@ -476,13 +471,13 @@ export async function getCategoryBySlug(slug: string): Promise<Category | null> 
       [slug]
     )
   } catch (error) {
-    // Error handled silently
+    console.error('getCategoryBySlug error:', error)
     return null
   }
 }
 
 // =============================================================================
-// STATS
+// STATS (queries old deals table)
 // =============================================================================
 
 export async function getDealCount(): Promise<number> {
@@ -492,7 +487,7 @@ export async function getDealCount(): Promise<number> {
     )
     return parseInt(rows[0]?.count || '0', 10)
   } catch (error) {
-    // Error handled silently
+    console.error('getDealCount error:', error)
     return 0
   }
 }
@@ -508,13 +503,13 @@ export async function getStoreStats(): Promise<{ store: string; count: number }[
     )
     return rows.map(row => ({ store: row.store, count: parseInt(row.count, 10) }))
   } catch (error) {
-    // Error handled silently
+    console.error('getStoreStats error:', error)
     return []
   }
 }
 
 // =============================================================================
-// SEARCH
+// SEARCH (queries old deals/stores tables)
 // =============================================================================
 
 export async function searchDeals(searchQuery: string, limit: number = 50): Promise<Deal[]> {
@@ -522,7 +517,7 @@ export async function searchDeals(searchQuery: string, limit: number = 50): Prom
 
   try {
     const searchTerm = `%${searchQuery.trim().toLowerCase()}%`
-    const rows = await query<Deal>(
+    return await query<Deal>(
       `SELECT * FROM deals
        WHERE is_active = TRUE
        AND (LOWER(title) LIKE $1 OR LOWER(store) LIKE $1 OR LOWER(category) LIKE $1)
@@ -530,9 +525,8 @@ export async function searchDeals(searchQuery: string, limit: number = 50): Prom
        LIMIT $2`,
       [searchTerm, limit]
     )
-    return rows
   } catch (error) {
-    // Error handled silently
+    console.error('searchDeals error:', error)
     return []
   }
 }
@@ -565,13 +559,13 @@ export async function searchStoresByKeyword(searchQuery: string, limit: number =
       [searchTerm, `%${searchTerm}%`, limit]
     )
   } catch (error) {
-    // Error handled silently
+    console.error('searchStoresByKeyword error:', error)
     return []
   }
 }
 
 // =============================================================================
-// ADMIN FUNCTIONS
+// ADMIN FUNCTIONS (queries old stores table)
 // =============================================================================
 
 export async function getAllStoresAdmin(): Promise<Store[]> {
@@ -587,7 +581,7 @@ export async function getAllStoresAdmin(): Promise<Store[]> {
       ORDER BY name ASC`
     )
   } catch (error) {
-    // Error handled silently
+    console.error('getAllStoresAdmin error:', error)
     return []
   }
 }
@@ -600,7 +594,7 @@ export async function updateStoreAffiliateUrl(id: number, affiliateUrl: string |
     )
     return true
   } catch (error) {
-    // Error handled silently
+    console.error('updateStoreAffiliateUrl error:', error)
     return false
   }
 }
@@ -617,7 +611,7 @@ export async function updateStoreUrls(
     )
     return true
   } catch (error) {
-    // Error handled silently
+    console.error('updateStoreUrls error:', error)
     return false
   }
 }
@@ -635,7 +629,7 @@ export async function addStore(
     )
     return true
   } catch (error) {
-    // Error handled silently
+    console.error('addStore error:', error)
     return false
   }
 }
@@ -648,194 +642,7 @@ export async function checkStoreSlugExists(slug: string): Promise<boolean> {
     )
     return rows.length > 0
   } catch (error) {
-    // Error handled silently
+    console.error('checkStoreSlugExists error:', error)
     return false
-  }
-}
-
-// =============================================================================
-// COSTCO PRODUCTS
-// =============================================================================
-
-/**
- * Search Costco products by name or category
- */
-export async function searchCostcoProducts(searchQuery: string, limit: number = 20): Promise<CostcoProduct[]> {
-  if (!searchQuery || searchQuery.trim().length < 2) return []
-
-  try {
-    const searchTerm = `%${searchQuery.trim().toLowerCase()}%`
-    return await query<CostcoProduct>(
-      `SELECT * FROM costco_products
-       WHERE is_active = TRUE
-       AND (LOWER(name) LIKE $1 OR LOWER(category) LIKE $1)
-       ORDER BY last_updated_at DESC
-       LIMIT $2`,
-      [searchTerm, limit]
-    )
-  } catch (error) {
-    // Error handled silently
-    return []
-  }
-}
-
-/**
- * Get a Costco product by its slug
- */
-export async function getCostcoProductBySlug(slug: string): Promise<CostcoProduct | null> {
-  try {
-    return await queryOne<CostcoProduct>(
-      'SELECT * FROM costco_products WHERE slug = $1 AND is_active = TRUE LIMIT 1',
-      [slug]
-    )
-  } catch (error) {
-    // Error handled silently
-    return null
-  }
-}
-
-/**
- * Get a Costco product by its item_id
- */
-export async function getCostcoProductByItemId(itemId: string): Promise<CostcoProduct | null> {
-  try {
-    return await queryOne<CostcoProduct>(
-      'SELECT * FROM costco_products WHERE item_id = $1 AND is_active = TRUE LIMIT 1',
-      [itemId]
-    )
-  } catch (error) {
-    // Error handled silently
-    return null
-  }
-}
-
-/**
- * Get price history for a Costco product
- */
-export async function getCostcoPriceHistory(productId: number, limit: number = 30): Promise<CostcoPriceHistory[]> {
-  try {
-    return await query<CostcoPriceHistory>(
-      `SELECT * FROM costco_price_history
-       WHERE product_id = $1
-       ORDER BY recorded_at DESC
-       LIMIT $2`,
-      [productId, limit]
-    )
-  } catch (error) {
-    // Error handled silently
-    return []
-  }
-}
-
-/**
- * Get all Costco product slugs for static params generation
- */
-export async function getAllCostcoSlugs(): Promise<string[]> {
-  try {
-    const rows = await query<{ slug: string }>(
-      'SELECT slug FROM costco_products WHERE is_active = TRUE'
-    )
-    return rows.map(row => row.slug)
-  } catch (error) {
-    // Error handled silently
-    return []
-  }
-}
-
-/**
- * Get related Costco products (same category)
- */
-export async function getRelatedCostcoProducts(product: CostcoProduct, limit: number = 6): Promise<CostcoProduct[]> {
-  try {
-    if (!product.category) {
-      // Fallback to any active products
-      return await query<CostcoProduct>(
-        `SELECT * FROM costco_products
-         WHERE is_active = TRUE AND id != $1
-         ORDER BY last_updated_at DESC
-         LIMIT $2`,
-        [product.id, limit]
-      )
-    }
-
-    return await query<CostcoProduct>(
-      `SELECT * FROM costco_products
-       WHERE is_active = TRUE
-       AND id != $1
-       AND category = $2
-       ORDER BY last_updated_at DESC
-       LIMIT $3`,
-      [product.id, product.category, limit]
-    )
-  } catch (error) {
-    // Error handled silently
-    return []
-  }
-}
-
-/**
- * Get Costco products with optional filters
- */
-export async function getCostcoProducts(options: {
-  limit?: number
-  offset?: number
-  category?: string
-} = {}): Promise<CostcoProduct[]> {
-  const { limit = 20, offset = 0, category } = options
-
-  try {
-    if (category) {
-      return await query<CostcoProduct>(
-        `SELECT * FROM costco_products
-         WHERE is_active = TRUE AND category = $1
-         ORDER BY last_updated_at DESC
-         LIMIT $2 OFFSET $3`,
-        [category, limit, offset]
-      )
-    }
-
-    return await query<CostcoProduct>(
-      `SELECT * FROM costco_products
-       WHERE is_active = TRUE
-       ORDER BY last_updated_at DESC
-       LIMIT $1 OFFSET $2`,
-      [limit, offset]
-    )
-  } catch (error) {
-    // Error handled silently
-    return []
-  }
-}
-
-/**
- * Get Costco categories with product counts
- */
-export async function getCostcoCategories(): Promise<CostcoCategory[]> {
-  try {
-    return await query<CostcoCategory>(
-      `SELECT category, COUNT(*)::int as count
-       FROM costco_products
-       WHERE is_active = TRUE AND category IS NOT NULL
-       GROUP BY category
-       ORDER BY count DESC`
-    )
-  } catch (error) {
-    // Error handled silently
-    return []
-  }
-}
-
-/**
- * Get total Costco product count
- */
-export async function getCostcoProductCount(): Promise<number> {
-  try {
-    const rows = await query<{ count: string }>(
-      'SELECT COUNT(*) as count FROM costco_products WHERE is_active = TRUE'
-    )
-    return parseInt(rows[0]?.count || '0', 10)
-  } catch (error) {
-    // Error handled silently
-    return 0
   }
 }

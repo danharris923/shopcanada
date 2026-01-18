@@ -41,9 +41,10 @@ export interface MixedDeal extends Deal {
 
 /**
  * Store type - includes all store metadata and policies
+ * Compatible with both old (stores) and new (retailers) schema
  */
 export interface Store {
-  id: number
+  id: string | number  // UUID in new schema, SERIAL in old
   name: string
   slug: string
   type: 'store' | 'brand'
@@ -83,9 +84,10 @@ export interface StoreCardData {
 
 /**
  * Category type
+ * Compatible with both old and new (Deal Empire) schema
  */
 export interface Category {
-  id: number
+  id: string | number  // UUID in new schema, SERIAL in old
   name: string
   slug: string
   deal_count: number
