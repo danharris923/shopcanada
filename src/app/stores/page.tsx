@@ -3,6 +3,9 @@ import { getStores } from '@/lib/db'
 import { Store as StoreType } from '@/types/deal'
 import { StoresClient } from './StoresClient'
 
+// Revalidate every 5 minutes to pick up DB changes
+export const revalidate = 300
+
 // Server component that fetches stores from database
 export default async function StoresPage() {
   let stores: StoreType[] = []
