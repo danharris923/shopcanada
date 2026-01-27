@@ -43,6 +43,7 @@ export default function AdminPage() {
   const [newStoreSlug, setNewStoreSlug] = useState('')
   const [newStoreWebsite, setNewStoreWebsite] = useState('')
   const [newStoreAffiliate, setNewStoreAffiliate] = useState('')
+  const [amazonTag, setAmazonTag] = useState('')
 
   // Simple password check
   const handleLogin = async (e: React.FormEvent) => {
@@ -60,6 +61,12 @@ export default function AdminPage() {
       setMessage('Invalid password')
     }
   }
+
+  // Load saved Amazon tag
+  useEffect(() => {
+    const saved = localStorage.getItem('amazon_tag')
+    if (saved) setAmazonTag(saved)
+  }, [])
 
   // Check if already logged in
   useEffect(() => {
@@ -146,6 +153,12 @@ export default function AdminPage() {
     setTimeout(() => setMessage(''), 3000)
   }
 
+  const handleAmazonTagSave = () => {
+    localStorage.setItem('amazon_tag', amazonTag)
+    setMessage('Amazon tag saved')
+    setTimeout(() => setMessage(''), 3000)
+  }
+
   const logout = () => {
     localStorage.removeItem('admin_token')
     setIsLoggedIn(false)
@@ -229,6 +242,27 @@ export default function AdminPage() {
             {message}
           </div>
         )}
+
+        {/* Amazon Tag Config */}
+        <div className="bg-yellow-50 border border-yellow-200 rounded-lg shadow p-4 mb-6">
+          <h2 className="text-lg font-semibold mb-2">Amazon Affiliate Tag</h2>
+          <div className="flex gap-3 items-center">
+            <input
+              type="text"
+              value={amazonTag}
+              onChange={(e) => setAmazonTag(e.target.value)}
+              placeholder="e.g. promopenguin-20"
+              className="flex-1 max-w-xs px-3 py-2 border rounded"
+            />
+            <button
+              onClick={handleAmazonTagSave}
+              className="bg-yellow-600 text-white px-4 py-2 rounded hover:bg-yellow-700"
+            >
+              Save Tag
+            </button>
+            {amazonTag && <span className="text-sm text-gray-600">Current: <code className="bg-gray-100 px-1 rounded">{amazonTag}</code></span>}
+          </div>
+        </div>
 
         {/* Add New Store */}
         <div className="bg-white rounded-lg shadow p-6 mb-8">
