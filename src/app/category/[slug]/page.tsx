@@ -21,12 +21,6 @@ interface CategoryPageProps {
   }
 }
 
-export async function generateStaticParams() {
-  return categories.map((category) => ({
-    slug: category.slug,
-  }))
-}
-
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
   const category = categories.find(cat => cat.slug === params.slug)
 
@@ -107,7 +101,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                     id={deal.id}
                     title={deal.title}
                     slug={deal.slug}
-                    imageUrl={deal.image_blob_url || deal.image_url || '/placeholder-deal.jpg'}
+                    imageUrl={deal.image_blob_url || deal.image_url || '/placeholder-deal.svg'}
                     price={deal.price}
                     originalPrice={deal.original_price}
                     discountPercent={deal.discount_percent}

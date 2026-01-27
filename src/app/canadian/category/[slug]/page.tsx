@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { getCanadianBrandsByCategory, getCanadianBrandCategories } from '@/lib/db'
+import { getCanadianBrandsByCategory } from '@/lib/db'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { StatsBar } from '@/components/StatsBar'
@@ -25,13 +25,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${categoryName} - Canadian Brands`,
     description: `Browse Canadian ${categoryName.toLowerCase()} brands. Support local businesses.`,
   }
-}
-
-export async function generateStaticParams() {
-  const categories = await getCanadianBrandCategories()
-  return categories.map((category) => ({
-    slug: category.slug,
-  }))
 }
 
 export default async function CategoryPage({ params }: Props) {

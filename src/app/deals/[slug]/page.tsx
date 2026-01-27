@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 
-import { getDealBySlug, getRelatedDeals, getAllDealSlugs } from '@/lib/db'
+import { getDealBySlug, getRelatedDeals } from '@/lib/db'
 import { Deal } from '@/types/deal'
 import {
   generateDealDescription,
@@ -36,17 +36,6 @@ import Link from 'next/link'
 
 interface PageProps {
   params: { slug: string }
-}
-
-// Generate static pages for all deals - fallback to empty if no database
-export async function generateStaticParams() {
-  try {
-    const slugs = await getAllDealSlugs()
-    return slugs.map(slug => ({ slug }))
-  } catch (error) {
-    // No database available for static generation
-    return []
-  }
 }
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://shopcanada.cc'
@@ -133,7 +122,7 @@ export default async function DealPage({ params }: PageProps) {
   // Filter out null schemas
   const schemas = [productSchema, breadcrumbSchema, faqSchema, reviewSchema].filter(Boolean)
 
-  const imageUrl = deal.image_blob_url || deal.image_url || '/placeholder-deal.jpg'
+  const imageUrl = deal.image_blob_url || deal.image_url || '/placeholder-deal.svg'
   const storeName = formatStoreName(deal.store)
   const storeSlug = deal.store?.toLowerCase().replace(/\s+/g, '-') || ''
 
@@ -337,7 +326,7 @@ export default async function DealPage({ params }: PageProps) {
                         id={related.id}
                         title={related.title}
                         slug={related.slug}
-                        imageUrl={related.image_blob_url || related.image_url || '/placeholder-deal.jpg'}
+                        imageUrl={related.image_blob_url || related.image_url || '/placeholder-deal.svg'}
                         price={related.price}
                         originalPrice={related.original_price}
                         discountPercent={related.discount_percent}

@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-import { getDealsByStore, getStores, getStoreBySlug, getRelatedCanadianBrands } from '@/lib/db'
+import { getDealsByStore, getStoreBySlug, getRelatedCanadianBrands } from '@/lib/db'
 import { Deal, Store } from '@/types/deal'
 import { formatStoreName } from '@/lib/content-generator'
 import { generateItemListSchema } from '@/lib/schema'
@@ -22,19 +22,6 @@ interface PageProps {
 
 // Revalidate every 15 minutes for fresh data
 export const revalidate = 900
-
-// Generate static pages for all stores
-export async function generateStaticParams() {
-  try {
-    const stores = await getStores()
-    return stores.map(store => ({ slug: store.slug }))
-  } catch (error) {
-    return []
-  }
-}
-
-// Allow dynamic params (new stores added by scraper)
-export const dynamicParams = true
 
 // Helper to extract domain from website URL
 function getDomainFromUrl(url: string | null): string {
@@ -244,7 +231,7 @@ export default async function StorePage({ params }: PageProps) {
                     id={deal.id}
                     title={deal.title}
                     slug={deal.slug}
-                    imageUrl={deal.image_blob_url || deal.image_url || '/placeholder-deal.jpg'}
+                    imageUrl={deal.image_blob_url || deal.image_url || '/placeholder-deal.svg'}
                     price={deal.price}
                     originalPrice={deal.original_price}
                     discountPercent={deal.discount_percent}
