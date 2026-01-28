@@ -21,6 +21,7 @@ import {
 } from '@/lib/schema'
 import { getStockWarning, generateUrgencyData } from '@/lib/urgency'
 import { toNumber, formatPrice, calculateSavings } from '@/lib/price-utils'
+import { cleanAffiliateUrl, cleanAmazonUrl } from '@/lib/affiliates'
 
 import { StatsBar } from '@/components/StatsBar'
 import { PriceDisplay } from '@/components/deal/PriceDisplay'
@@ -94,6 +95,13 @@ export default async function DealPage({ params }: PageProps) {
     notFound()
   }
 
+  // Clean affiliate URL (fix double-wrapped URLs, strip competitor tags, set Amazon tag)
+  if (deal.affiliate_url) {
+    let cleaned = cleanAffiliateUrl(deal.affiliate_url)
+    cleaned = cleanAmazonUrl(cleaned)
+    deal = { ...deal, affiliate_url: cleaned }
+  }
+
   // Generate urgency data for stock warning only
   const urgencyData = generateUrgencyData(deal.id)
   const stockWarning = getStockWarning(urgencyData)
@@ -110,8 +118,13 @@ export default async function DealPage({ params }: PageProps) {
     relatedDeals = []
   }
 
-  // Filter to only affiliated deals (have affiliate_url)
-  const affiliatedRelatedDeals = relatedDeals.filter(d => d.affiliate_url)
+  // Clean affiliate URLs on related deals and filter to affiliated only
+  const affiliatedRelatedDeals = relatedDeals
+    .filter(d => d.affiliate_url)
+    .map(d => ({
+      ...d,
+      affiliate_url: cleanAmazonUrl(cleanAffiliateUrl(d.affiliate_url)),
+    }))
 
   // Schema markup - enhanced with Review for rich snippets
   const productSchema = generateProductSchema(deal)

@@ -55,6 +55,12 @@ const COMPETITOR_PATTERNS = [
 export function cleanAffiliateUrl(url: string): string {
   if (!url) return url
 
+  // Fix double-wrapped URLs: https://example.com/https://example.com/...
+  const doubleUrlMatch = url.match(/^(https?:\/\/[^/]+\/)+(https?:\/\/.+)$/)
+  if (doubleUrlMatch) {
+    url = doubleUrlMatch[2]
+  }
+
   try {
     const urlObj = new URL(url)
 
@@ -114,6 +120,12 @@ export function cleanAmazonUrl(url: string): string {
   // Check if it's an Amazon URL
   if (!url.includes('amazon.ca') && !url.includes('amazon.com') && !url.includes('amzn.')) {
     return url
+  }
+
+  // Fix double-wrapped URLs: https://www.amazon.ca/https://www.amazon.ca/...
+  const doubleUrlMatch = url.match(/^(https?:\/\/[^/]+\/)+(https?:\/\/.+)$/)
+  if (doubleUrlMatch) {
+    url = doubleUrlMatch[2]
   }
 
   try {
