@@ -1,7 +1,7 @@
 'use client'
 
+import { useState } from 'react'
 import { Leaf, ExternalLink, RotateCcw, Truck } from 'lucide-react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { DealCardProps } from '@/types/deal'
 import { toNumber, formatPrice, calculateSavings } from '@/lib/price-utils'
@@ -36,6 +36,15 @@ export function DealCard({
   saleStory,
 }: DealCardProps) {
   const isFlipp = variant === 'flipp'
+
+  const [imgSrc, setImgSrc] = useState(imageUrl || '/placeholder-deal.svg')
+  const [imgError, setImgError] = useState(false)
+  const handleImageError = () => {
+    if (!imgError) {
+      setImgError(true)
+      setImgSrc('/placeholder-deal.svg')
+    }
+  }
 
   const priceNum = toNumber(price)
   const originalPriceNum = toNumber(originalPrice)
@@ -150,13 +159,13 @@ export function DealCard({
 
 
         {/* Image */}
-        <Image
-          src={imageUrl || '/placeholder-deal.jpg'}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={imgSrc}
           alt={title}
-          fill
-          className="object-contain p-4 group-hover:scale-105 transition-transform duration-200"
-          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-          unoptimized={isFlipp}
+          className="absolute inset-0 w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-200"
+          onError={handleImageError}
+          loading="lazy"
         />
       </div>
 
