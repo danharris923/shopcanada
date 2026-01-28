@@ -13,6 +13,13 @@ import { getAffiliateSearchUrl, getDealAffiliateUrl } from '@/lib/affiliates'
 const generateLogoUrl = (domain: string) =>
   `https://www.google.com/s2/favicons?domain=${domain}&sz=128`
 
+// Helper to generate store logo path from store name
+const getStoreLogoPath = (store: string | null | undefined): string | null => {
+  if (!store) return null
+  const slug = store.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+  return `/images/stores/${slug}.png`
+}
+
 export function DealCard({
   id,
   title,
@@ -37,10 +44,27 @@ export function DealCard({
 }: DealCardProps) {
   const isFlipp = variant === 'flipp'
 
-  const [imgSrc, setImgSrc] = useState(imageUrl || '/placeholder-deal.svg')
+  // Get store logo path for fallback
+  const storeLogoFallback = getStoreLogoPath(store)
+
+  // Determine initial image: use deal image, or store logo if no deal image
+  const getInitialImage = () => {
+    if (imageUrl) return imageUrl
+    if (storeLogoFallback) return storeLogoFallback
+    return '/placeholder-deal.svg'
+  }
+
+  const [imgSrc, setImgSrc] = useState(getInitialImage())
   const [imgError, setImgError] = useState(false)
+  const [triedStoreLogo, setTriedStoreLogo] = useState(!imageUrl) // Already using store logo if no imageUrl
+
   const handleImageError = () => {
-    if (!imgError) {
+    if (!imgError && !triedStoreLogo && storeLogoFallback) {
+      // First error: try store logo
+      setTriedStoreLogo(true)
+      setImgSrc(storeLogoFallback)
+    } else if (!imgError) {
+      // Final fallback: placeholder
       setImgError(true)
       setImgSrc('/placeholder-deal.svg')
     }
