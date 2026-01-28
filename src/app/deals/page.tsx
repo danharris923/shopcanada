@@ -22,7 +22,7 @@ export const revalidate = 900
 
 export default async function DealsPage() {
   const [deals, dealCount, stores, categories] = await Promise.all([
-    getDeals({ limit: 100, orderBy: 'date_added', orderDir: 'DESC' }),
+    getDeals({ limit: 100, orderBy: 'random' }),
     getDealCount(),
     getStores(),
     getCategories(),
@@ -80,7 +80,7 @@ export default async function DealsPage() {
                       id={deal.id}
                       title={deal.title}
                       slug={deal.slug}
-                      imageUrl={deal.image_blob_url || deal.image_url || '/placeholder-deal.jpg'}
+                      imageUrl={deal.image_blob_url || deal.image_url || '/placeholder-deal.svg'}
                       price={deal.price}
                       originalPrice={deal.original_price}
                       discountPercent={deal.discount_percent}

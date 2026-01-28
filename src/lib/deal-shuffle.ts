@@ -102,7 +102,8 @@ export async function getShuffledDeals(
   limit: number = 24,
   forceRefresh: boolean = false
 ): Promise<ShuffledDeals> {
-  const seed = forceRefresh ? Date.now() : getTimeSeed()
+  // Always use a unique seed so each ISR rebuild gets a fresh shuffle
+  const seed = Date.now() + Math.floor(Math.random() * 100000)
 
   // Calculate target distribution - balanced equal mix
   const targetFashion = Math.max(Math.floor(limit * 0.33), 3) // 33% fashion, minimum 3
@@ -110,9 +111,10 @@ export async function getShuffledDeals(
   const maxAmazon = Math.floor(limit * 0.20) // Maximum 20% Amazon (reduced from 25%)
 
   try {
-    // Fetch deals from different sources in parallel
+    // Fetch a large random sample from the DB so each revalidation pulls different deals
+    const poolSize = Math.max(limit * 12, 200)
     const [dbDeals, flippDeals, fashionDeals, premiumFashion, topTierFashion] = await Promise.all([
-      getDeals({ limit: limit * 2, orderBy: 'date_added', orderDir: 'DESC' }),
+      getDeals({ limit: poolSize, orderBy: 'random' }),
       searchFlippDeals('sale', Math.min(targetFlipp * 3, 50)),
       getFashionDeals(),
       getPremiumFashionDeals(),  // Lululemon, Aritzia, Ardene
@@ -210,12 +212,13 @@ export async function getShuffledDeals(
 export async function getShuffledFeaturedDeals(
   limit: number = 8
 ): Promise<ShuffledDeals> {
-  const seed = getTimeSeed()
+  const seed = Date.now() + Math.floor(Math.random() * 100000)
 
   try {
-    // Get featured deals, Flipp deals, and premium/top-tier fashion
+    // Get a large random pool of featured deals, Flipp deals, and premium/top-tier fashion
+    const featuredPoolSize = Math.max(limit * 10, 80)
     const [featuredDeals, flippDeals, premiumFashion, topTierFashion] = await Promise.all([
-      getFeaturedDeals(limit),
+      getFeaturedDeals(featuredPoolSize, true),
       searchFlippDeals('featured', Math.min(Math.floor(limit * 0.25), 10)),
       getPremiumFashionDeals(),  // Lululemon, Aritzia, Ardene
       getTopTierFashionDeals()
