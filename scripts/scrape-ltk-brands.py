@@ -106,6 +106,8 @@ COOKIE_SELECTORS = [
     # Close buttons
     'button[aria-label="Close"]',
     'button[aria-label="close"]',
+    'button[aria-label="Dismiss"]',
+    'button[aria-label="dismiss"]',
     'button.close-button',
     '.cookie-banner button',
     '.cookie-consent button',
@@ -113,11 +115,45 @@ COOKIE_SELECTORS = [
     '#onetrust-accept-btn-handler',
     '.onetrust-accept-btn-handler',
     '[data-testid="close-button"]',
-    # Newsletter popups
+    # Newsletter / subscribe popups
     'button[aria-label="Close dialog"]',
+    'button[aria-label="Close modal"]',
     '.modal-close',
     '.popup-close',
     '.newsletter-close',
+    '.newsletter-popup button.close',
+    '.email-popup button.close',
+    '.email-modal button.close',
+    '[class*="newsletter"] button[class*="close"]',
+    '[class*="subscribe"] button[class*="close"]',
+    '[class*="signup"] button[class*="close"]',
+    '.modal-overlay button.close',
+    'button:has-text("No Thanks")',
+    'button:has-text("No thanks")',
+    'button:has-text("Not Now")',
+    'button:has-text("Maybe Later")',
+    'button:has-text("Close")',
+    # Age verification gates
+    'button:has-text("Yes")',
+    'button:has-text("I am over")',
+    'button:has-text("Enter")',
+    '[class*="age-gate"] button',
+    '[class*="age-verify"] button',
+    '[class*="agegate"] button',
+    # Location / region selectors
+    'button:has-text("Stay")',
+    'button:has-text("Canada")',
+    '[class*="country-selector"] button.close',
+    '[class*="locale-selector"] button.close',
+    '[class*="geo-modal"] button.close',
+    # Chat widgets
+    '[class*="intercom"] button[aria-label="Close"]',
+    '#intercom-close',
+    '[class*="zendesk"] button[aria-label="Close"]',
+    '[class*="drift"] button[aria-label="Close"]',
+    '[class*="chat-widget"] button.close',
+    '[class*="livechat"] button.close',
+    'iframe[title*="chat"]',
 ]
 
 # Paths to try for scraping about content
@@ -135,6 +171,58 @@ ABOUT_PAGE_PATTERNS = [
     '/en-ca/about',
     '/ca/about',
 ]
+
+
+def load_brands_from_backup(backup_path: str = "brands-data-backup.ts") -> list:
+    """Parse brands-data-backup.ts to extract slug and url fields for all brands"""
+    backup_file = Path(backup_path)
+    if not backup_file.exists():
+        log_error(f"Backup file not found: {backup_path}")
+        return []
+
+    content = backup_file.read_text(encoding='utf-8')
+    brands = []
+
+    # Extract each brand object's slug, name, and url using regex
+    # Matches JSON-like objects within the brands array
+    slug_pattern = re.compile(r'"slug"\s*:\s*"([^"]+)"')
+    name_pattern = re.compile(r'"name"\s*:\s*"([^"]+)"')
+    url_pattern = re.compile(r'"url"\s*:\s*"([^"]+)"')
+
+    # Split on opening braces that start brand objects (after the array start)
+    array_start = content.find('export const brands')
+    if array_start == -1:
+        log_error("Could not find 'export const brands' in backup file")
+        return []
+
+    content = content[array_start:]
+
+    # Find each object block between { and }
+    depth = 0
+    block_start = None
+    for i, ch in enumerate(content):
+        if ch == '{':
+            if depth == 0:
+                block_start = i
+            depth += 1
+        elif ch == '}':
+            depth -= 1
+            if depth == 0 and block_start is not None:
+                block = content[block_start:i+1]
+                slug_match = slug_pattern.search(block)
+                name_match = name_pattern.search(block)
+                url_match = url_pattern.search(block)
+                if slug_match and url_match:
+                    brands.append({
+                        "slug": slug_match.group(1),
+                        "name": name_match.group(1) if name_match else slug_match.group(1),
+                        "url": url_match.group(1),
+                        "about_paths": ["/about", "/pages/about", "/about-us", "/pages/about-us", "/our-story"],
+                    })
+                block_start = None
+
+    log(f"Loaded {len(brands)} brands from backup file")
+    return brands
 
 
 class BrandScraper:
@@ -158,7 +246,7 @@ class BrandScraper:
             json.dump({"completed": list(completed), "last_run": datetime.now().isoformat()}, f, indent=2)
 
     async def dismiss_popups(self, page):
-        """Try to dismiss cookie banners and newsletter popups"""
+        """Try to dismiss cookie banners, newsletter popups, and other overlays"""
         for selector in COOKIE_SELECTORS:
             try:
                 button = page.locator(selector).first
@@ -169,12 +257,66 @@ class BrandScraper:
             except:
                 continue
 
-        # Also try pressing Escape for modal popups
+        # Press Escape for modal popups
         try:
             await page.keyboard.press("Escape")
             await asyncio.sleep(0.3)
         except:
             pass
+
+        # Force-remove common overlay elements via JS and restore scroll
+        try:
+            await page.evaluate("""() => {
+                // Remove common overlay/modal elements
+                const overlaySelectors = [
+                    '[class*="overlay"]', '[class*="modal"]', '[class*="popup"]',
+                    '[class*="newsletter"]', '[class*="subscribe"]', '[class*="signup-modal"]',
+                    '[class*="email-capture"]', '[class*="exit-intent"]',
+                    '[class*="age-gate"]', '[class*="age-verify"]',
+                    '[id*="overlay"]', '[id*="modal"]', '[id*="popup"]',
+                    '.ReactModal__Overlay', '.fancybox-overlay',
+                ];
+                for (const sel of overlaySelectors) {
+                    document.querySelectorAll(sel).forEach(el => {
+                        const style = window.getComputedStyle(el);
+                        // Only remove elements that look like overlays (fixed/absolute positioned, covering viewport)
+                        if ((style.position === 'fixed' || style.position === 'absolute') &&
+                            (style.zIndex > 100 || style.zIndex === 'auto') &&
+                            el.offsetWidth > window.innerWidth * 0.3 &&
+                            el.offsetHeight > window.innerHeight * 0.3) {
+                            el.remove();
+                        }
+                    });
+                }
+                // Hide chat widget iframes
+                document.querySelectorAll('iframe[title*="chat"], iframe[title*="Chat"], iframe[id*="chat"]').forEach(el => {
+                    el.style.display = 'none';
+                });
+                // Restore scrolling
+                document.body.style.overflow = 'auto';
+                document.documentElement.style.overflow = 'auto';
+                document.body.style.position = '';
+            }""")
+        except:
+            pass
+
+        # Second round: short delay then Escape + dismiss again for late-appearing popups
+        await asyncio.sleep(1)
+        try:
+            await page.keyboard.press("Escape")
+            await asyncio.sleep(0.3)
+        except:
+            pass
+
+        # Quick second pass on the most common dismiss selectors
+        for selector in COOKIE_SELECTORS[:10]:
+            try:
+                button = page.locator(selector).first
+                if await button.is_visible(timeout=300):
+                    await button.click(timeout=500)
+                    await asyncio.sleep(0.3)
+            except:
+                continue
 
     async def take_screenshot(self, page, slug: str) -> Optional[str]:
         """Take a screenshot of the current page"""
@@ -188,7 +330,7 @@ class BrandScraper:
 
             # Dismiss any popups
             await self.dismiss_popups(page)
-            await asyncio.sleep(1)
+            await asyncio.sleep(1.5)
 
             # Scroll down slightly to trigger lazy loading, then back up
             await page.evaluate("window.scrollTo(0, 300)")
@@ -198,6 +340,7 @@ class BrandScraper:
 
             # Dismiss popups again (some appear after scroll)
             await self.dismiss_popups(page)
+            await asyncio.sleep(1)
 
             # Take screenshot
             await page.screenshot(path=str(screenshot_path), full_page=False)
@@ -359,15 +502,17 @@ class BrandScraper:
 
         return result
 
-    async def run(self, resume: bool = True):
-        """Run the scraper on all LTK brands"""
+    async def run(self, resume: bool = True, brands_list: list = None):
+        """Run the scraper on all brands"""
         from playwright.async_api import async_playwright
+
+        brands = brands_list or LTK_BRANDS
 
         log("="*60)
         log("LTK Brand Scraper - Screenshots & About Pages")
         log("="*60)
         log(f"Output directory: {self.output_dir}")
-        log(f"Brands to scrape: {len(LTK_BRANDS)}")
+        log(f"Brands to scrape: {len(brands)}")
 
         # Load progress
         completed = self.load_progress() if resume else set()
@@ -382,12 +527,12 @@ class BrandScraper:
             )
 
             try:
-                for i, brand in enumerate(LTK_BRANDS):
+                for i, brand in enumerate(brands):
                     if brand["slug"] in completed:
                         log(f"Skipping {brand['name']} (already completed)")
                         continue
 
-                    log(f"\nProgress: {i+1}/{len(LTK_BRANDS)}")
+                    log(f"\nProgress: {i+1}/{len(brands)}")
 
                     result = await self.scrape_brand(browser, brand)
                     self.results.append(result)
@@ -440,10 +585,18 @@ def main():
     parser = argparse.ArgumentParser(description="Scrape LTK brand screenshots and about pages")
     parser.add_argument("--no-resume", action="store_true", help="Start fresh, don't resume")
     parser.add_argument("--output", default="public/brand-screenshots", help="Output directory for screenshots")
+    parser.add_argument("--from-backup", action="store_true", help="Load all brands from brands-data-backup.ts instead of the default LTK list")
     args = parser.parse_args()
 
+    brands_list = None
+    if args.from_backup:
+        brands_list = load_brands_from_backup()
+        if not brands_list:
+            log_error("No brands loaded from backup file. Exiting.")
+            return
+
     scraper = BrandScraper(output_dir=args.output)
-    asyncio.run(scraper.run(resume=not args.no_resume))
+    asyncio.run(scraper.run(resume=not args.no_resume, brands_list=brands_list))
 
 
 if __name__ == "__main__":

@@ -15,6 +15,7 @@ import { StatsBar } from '@/components/StatsBar'
 import { ExternalLink, Truck, RotateCcw, Award, CreditCard } from 'lucide-react'
 import { getVideosForStore } from '@/lib/youtube'
 import { StoreVideos } from '@/components/YouTubeEmbed'
+import { getBrandStory, markdownToHtml } from '@/lib/brand-story'
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -116,12 +117,16 @@ export default async function StorePage({ params }: PageProps) {
   // Skip YouTube for Costco (no relevant content)
   const skipYouTube = storeSlug === 'costco'
 
-  // Fetch deals, videos, and related stores in parallel
-  const [deals, videos, relatedStores] = await Promise.all([
+  // Fetch deals, videos, related stores, and brand story in parallel
+  const [deals, videos, relatedStores, brandStoryMarkdown] = await Promise.all([
     getDealsByStore(storeSlug).catch(() => []),
     skipYouTube ? Promise.resolve([]) : getVideosForStore(storeSlug, 3),
-    getRelatedCanadianBrands(store, 6).catch(() => [])
+    getRelatedCanadianBrands(store, 6).catch(() => []),
+    getBrandStory(storeSlug),
   ])
+
+  // Convert brand story markdown to HTML
+  const brandStoryHtml = brandStoryMarkdown ? markdownToHtml(brandStoryMarkdown) : null
 
   // Schema markup
   const itemListSchema = deals.length > 0
@@ -292,6 +297,17 @@ export default async function StorePage({ params }: PageProps) {
                 </div>
               ) : null
             })()}
+
+            {/* Brand Story (long-form content from markdown) */}
+            {brandStoryHtml && (
+              <div className="bg-white border border-silver-light rounded-card p-6 md:p-8 mb-6">
+                <h2 className="text-xl font-bold text-charcoal mb-4">{storeName} Story</h2>
+                <div
+                  className="prose prose-charcoal max-w-none text-base leading-relaxed [&_h2]:text-lg [&_h2]:font-bold [&_h2]:mt-6 [&_h2]:mb-3 [&_h3]:text-base [&_h3]:font-semibold [&_h3]:mt-4 [&_h3]:mb-2 [&_p]:mb-4 [&_a]:text-maple-red [&_a]:underline"
+                  dangerouslySetInnerHTML={{ __html: brandStoryHtml }}
+                />
+              </div>
+            )}
 
             {/* Store Policies Section */}
             {hasStorePolicies && (
