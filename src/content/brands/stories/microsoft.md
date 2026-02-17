@@ -6,4 +6,10 @@ type: store
 
 # Microsoft
 
-<h3>Empowering Every Canadian</h3><p>Microsoft's products power Canadian businesses, schools, and homes. From Windows PCs to Xbox gaming to cloud services, Microsoft technology is everywhere.</p><h3>Surface & Xbox</h3><p>Surface devices combine premium hardware with Windows innovation. Xbox Game Pass offers hundreds of games for a monthly subscription, including day-one releases.</p>
+## What Microsoft Means to Canadian Shoppers
+
+Microsoft serves Canadian consumers with Surface laptops and tablets, Xbox gaming consoles, Office productivity software, and cloud services. The company maintains Canadian operations in Vancouver and other cities.
+
+## Canadian Operations
+
+Microsoft Canada employs Canadians in sales, marketing, engineering, and support roles. The company operates development centres and supports Canadian businesses with cloud and enterprise solutions.

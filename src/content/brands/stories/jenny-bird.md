@@ -1,9 +1,15 @@
 ---
 slug: jenny-bird
 name: Jenny Bird
-type: brand
+type: store
 ---
 
 # Jenny Bird
 
-Get to Know UsJENNY BIRD is a leading jewelry and lifestyle brand known for our lightweight, statement jewelry.Over the past decade, the design objective has remained the same: to deliver the trends through luxurious, fashion-led designs."Will get you nonstop compliments."Meet JennyAt the helm is Founder and Creative Director Jenny Bird, an intuitive, cultural observer. A self-taught designer from Canada, Jenny’s designs emanate from her ability to plug into the zeitgeist and deliver collections that are “in the know”. Each piece starts out as a sketch in Jenny’s office, in the heart of Toronto.Her designs are often featured in the world’s most influential fashion publications from Vogue to The Cut. They have garnered the attention of countless celebrities including Michelle Obama, Hailey Bieber and Selena Gomez, and are available in leading fashion retailers worldwide, including Nordstrom, Revolve, Shopbop, Liberty London and Le Bon Marché.FOLLOW @THEJENNYBIRD“This is the best jewelry for updating your look the moment you put it on. It's for those women who love fashion and want to stay current, but don't want to chase the trends.”Founder & Creative DirectorWe direct 1% of every purchase to organizations that uplift women in urgent need—while also fuelling mental wellness initiatives and mentorship programming.LEARN MOREFollow @possibilitiesfund
+Get to Know UsJENNY BIRD is a leading jewelry and lifestyle brand known for our lightweight, statement jewelry. Over the past decade, the design objective has remained the same: to deliver the trends through luxurious, fashion-led designs.
+
+"Will get you nonstop compliments. "Meet JennyAt the helm is Founder and Creative Director Jenny Bird, an intuitive, cultural observer. A self-taught designer from Canada, Jenny’s designs emanate from her ability to plug into the zeitgeist and deliver collections that are “in the know”.
+
+Each piece starts out as a sketch in Jenny’s office, in the heart of Toronto. Her designs are often featured in the world’s most influential fashion publications from Vogue to The Cut. They have garnered the attention of countless celebrities including Michelle Obama, Hailey Bieber and Selena Gomez, and are available in leading fashion retailers worldwide, including Nordstrom, Revolve, Shopbop, Liberty London and Le Bon Marché.
+
+FOLLOW @THEJENNYBIRD“This is the best jewelry for updating your look the moment you put it on. It's for those women who love fashion and want to stay current, but don't want to chase the trends. ”Founder & Creative DirectorWe direct 1% of every purchase to organizations that uplift women in urgent need—while also fuelling mental wellness initiatives and mentorship programming.

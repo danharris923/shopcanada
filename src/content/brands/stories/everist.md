@@ -1,9 +1,25 @@
 ---
 slug: everist
 name: Everist
-type: brand
+type: store
 ---
 
 # Everist
 
-Our JourneyThe question that started it all: what does the future of beauty look like?After working for decades at some of the world's biggest beauty companies, we knew there was a real need for innovation with our health and the health of our planet in mind.Everist started out as a low-waste brand, then a waterless brand. While we're still both of those things, we've heard over and over again that the unique composition of our formulas (a hybrid of hair and body care meets skincare) and their incredible results is what keeps our loyal customers coming back. Now we talk 'haircare meets skincare' first, and we've learned that what's better for the planet is very often what's better for us as well. Our CustomerWe're here for the Everists.The future thinkers. The blue-sky, outside-of-the-box, 'what if?' kind of dreamers. The ones who think about the forEVER impact of the choices they make on people and planet.We believe that it's time to rethink everything and create the beauty company of the future. With your health and the health of the planet in mind, join us in doing things differently. Shop Shower Essentials Bundle & Save New Arrivals Best Sellers The Limited Edition Hair Growth Ritual Save 35% The Limited Edition Hair Growth Ritual $128.00 $198.00 5.0(112) The Limited Edition Hair Growth Ritual Tins Save 35% The Limited Edition Hair Growth Ritual Tins $128.00 $198.00 5.0(52) The Best Sellers Bundle Save 30% The Best Sellers Bundle $148.00 $212.00 5.0(85) The Healthy Hair System Save 25% The Healthy Hair System $148.00 $198.00 4.9(78) The Hair & Skin Hydration Essentials Save 20% The Hair & Skin Hydration Essentials $108.00 $136.00 4.6(186) The Healthy Hair Starter Set Save 17% The Healthy Hair Starter Set $78.00 $94.00 4.6(605) The Fragrance-Free Stock Your Shower Haircare Bundle Save 25% The Fragrance-Free Stock Your Shower Haircare Bundle $126.00 $168.00 4.5(31) The Fragrance-Free Hydration Essentials Save 20% The Fragrance-Free Hydration Essentials $108.00 $13...
+Our JourneyThe question that started it all: what does the future of beauty look like? After working for decades at some of the world's biggest beauty companies, we knew there was a real need for innovation with our health and the health of our planet in mind.
+
+Everist started out as a low-waste brand, then a waterless brand. While we're still both of those things, we've heard over and over again that the unique composition of our formulas (a hybrid of hair and body care meets skincare) and their incredible results is what keeps our loyal customers coming back.
+
+Now we talk 'haircare meets skincare' first, and we've learned that what's better for the planet is very often what's better for us as well. Our CustomerWe're here for the Everists. The future thinkers.
+
+The blue-sky, outside-of-the-box, 'what if? ' kind of dreamers. The ones who think about the forEVER impact of the choices they make on people and planet. We believe that it's time to rethink everything and create the beauty company of the future.
+
+With your health and the health of the planet in mind, join us in doing things differently. Shop Shower Essentials Bundle & Save New Arrivals Best Sellers The Limited Edition Hair Growth Ritual Save 35% The Limited Edition Hair Growth Ritual $128.
+
+00 $198. 00 5. 0(112) The Limited Edition Hair Growth Ritual Tins Save 35% The Limited Edition Hair Growth Ritual Tins $128. 00 $198. 00 5. 0(52) The Best Sellers Bundle Save 30% The Best Sellers Bundle $148.
+
+00 $212. 00 5. 0(85) The Healthy Hair System Save 25% The Healthy Hair System $148. 00 $198. 00 4. 9(78) The Hair & Skin Hydration Essentials Save 20% The Hair & Skin Hydration Essentials $108. 00 $136.
+
+00 4. 6(186) The Healthy Hair Starter Set Save 17% The Healthy Hair Starter Set $78. 00 $94. 00 4. 6(605) The Fragrance-Free Stock Your Shower Haircare Bundle Save 25% The Fragrance-Free Stock Your Shower Haircare Bundle $126.
+
+00 $168. 00 4. 5(31) The Fragrance-Free Hydration Essentials Save 20% The Fragrance-Free Hydration Essentials $108. 00 $13...

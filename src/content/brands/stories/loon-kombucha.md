@@ -1,9 +1,21 @@
 ---
 slug: loon-kombucha
 name: Loon Kombucha
-type: brand
+type: store
 ---
 
 # Loon Kombucha
 
-In April 2016, Gabe Johnston founded Loon Kombucha in the cottage built by his grandfather in the 1960s, located on Otty Lake just south of Perth, Ontario. Knowing that almost all commercial kombucha has a harsh taste caused by hot-brewing demineralized city water, Gabe wanted this kombucha brewing company to be different, producing a pure and refreshing kombucha using high quality water and an innovative cold-brewing technique. Inspired by the purity of the Loons on the lake, who would sing as he brewed those first batches, he decided to name the kombucha brewing company after them: Loon Kombucha.With a desire to run an environmentally-friendly business, Loon was first sold exclusively in refillable bottles at local farmers’ markets in the Ottawa-Kingston area. The brand quickly developed a cult following. By June, so many grocery stores and cafes were requesting Loon Kombucha that Gabe had to move production to the Two Rivers Food Hub in Smiths Falls in order to increase capacity. Within a year, Loon outgrew the not-for-profit kitchen and made the move to Balderson, a small farming community north of Perth. This is when Loon Kombucha stopped using spring water and began brewing with Balderson's high quality, alkaline, and fully mineralized well water. Loon’s quality improved even more. The whole team knew they had accomplished something really special. Kombucha had never tasted this good.With kombucha brewing company growing and sales surging, Loon Kombucha broadened its reach and started distributing to Toronto, opened up refill stations as far as Kitchener, then expanded out as far as Collingwood and Parry Sound. Loon now ships nationally across Canada. Even though we’re expanding quickly, we still value our roots. We started as a local brand, introducing people to a kombucha inspired by the cottage country it was brewed in – pure, refreshing, and delicious. That’s what Loon will always be about. Gabe Johnston, President and CEO Gabe Johnston comes from a long-s...
+In April 2016, Gabe Johnston founded Loon Kombucha in the cottage built by his grandfather in the 1960s, located on Otty Lake just south of Perth, Ontario. Knowing that almost all commercial kombucha has a harsh taste caused by hot-brewing demineralized city water, Gabe wanted this kombucha brewing company to be different, producing a pure and refreshing kombucha using high quality water and an innovative cold-brewing technique.
+
+Inspired by the purity of the Loons on the lake, who would sing as he brewed those first batches, he decided to name the kombucha brewing company after them: Loon Kombucha. With a desire to run an environmentally-friendly business, Loon was first sold exclusively in refillable bottles at local farmers’ markets in the Ottawa-Kingston area.
+
+The brand quickly developed a cult following. By June, so many grocery stores and cafes were requesting Loon Kombucha that Gabe had to move production to the Two Rivers Food Hub in Smiths Falls in order to increase capacity.
+
+Within a year, Loon outgrew the not-for-profit kitchen and made the move to Balderson, a small farming community north of Perth. This is when Loon Kombucha stopped using spring water and began brewing with Balderson's high quality, alkaline, and fully mineralized well water.
+
+Loon’s quality improved even more. The whole team knew they had accomplished something really special. Kombucha had never tasted this good. With kombucha brewing company growing and sales surging, Loon Kombucha broadened its reach and started distributing to Toronto, opened up refill stations as far as Kitchener, then expanded out as far as Collingwood and Parry Sound.
+
+Loon now ships nationally across Canada. Even though we’re expanding quickly, we still value our roots. We started as a local brand, introducing people to a kombucha inspired by the cottage country it was brewed in – pure, refreshing, and delicious.
+
+That’s what Loon will always be about. Gabe Johnston, President and CEO Gabe Johnston comes from a long-s...

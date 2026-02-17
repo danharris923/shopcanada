@@ -1,9 +1,23 @@
 ---
 slug: freedom-mobile
 name: Freedom Mobile
-type: brand
+type: store
 ---
 
 # Freedom Mobile
 
-Freedom, a voice for change.When it comes to mobile phone services, Canadians have a lot to complain about. We’re here to change that.Canadian wireless still costs way too much.We believe that needs to change, because talking and sharing shouldn’t break the bank. Here are our four fixes.Giving Canadians Freedom from data overages. See our coverageGiving Canadians Freedom from price-gouging. See our phonesSupporting Canadians with flat monthly fees. See our plansSupporting Canadians with affordable everything. See our special offersStart a career with FreedomAt Freedom, we’re proud to be leaders in a movement that brings affordability to Canadians. We not only provide the wireless freedom Canadians want, but the wireless freedom they deserve! We’re always on the lookout for go-getters that are committed to disrupting the status quo to join us. Learn MoreThe network you want. Freedom is continuing to grow, giving Canadians more choice for affordable and fast LTE data. Whether you’re checking emails on the way to work or streaming cat videos in bed, our LTE network improves your reception, inside and out.Learn MoreVisit our Freedom Mobile StoresCheck out our locations across Canada that are finally providing you with an affordable choice in a wireless provider.Find A StoreShop plansShop PhonesA one-time connection fee of up to $45 will apply to each new line or device activation/upgrade. All Freedom Mobile services are subject to our Terms of Service, MyTab Additional Terms of Service, TradeUp Additional Terms of Service, Fair Usage Policy and Privacy Policy.*Starting July 24 2023, all Freedom Mobile subscribers (excluding prepaid and select applicable plans) that have recurring Freedom Network and/or Nationwide data allotments will have their Freedom Network and/or Nationwide data converted into Freedom Nationwide data. Freedom Nationwide data is defined as data that can be used on both Freedom and Canadian partner networks. Only recurring Freedom data and/or Nationwi...
+Freedom, a voice for change. When it comes to mobile phone services, Canadians have a lot to complain about. We’re here to change that. Canadian wireless still costs way too much. We believe that needs to change, because talking and sharing shouldn’t break the bank.
+
+Here are our four fixes. Giving Canadians Freedom from data overages. See our coverageGiving Canadians Freedom from price-gouging. See our phonesSupporting Canadians with flat monthly fees. See our plansSupporting Canadians with affordable everything.
+
+See our special offersStart a career with FreedomAt Freedom, we’re proud to be leaders in a movement that brings affordability to Canadians. We not only provide the wireless freedom Canadians want, but the wireless freedom they deserve!
+
+We’re always on the lookout for go-getters that are committed to disrupting the status quo to join us. Learn MoreThe network you want. Freedom is continuing to grow, giving Canadians more choice for affordable and fast LTE data.
+
+Whether you’re checking emails on the way to work or streaming cat videos in bed, our LTE network improves your reception, inside and out. Learn MoreVisit our Freedom Mobile StoresCheck out our locations across Canada that are finally providing you with an affordable choice in a wireless provider.
+
+Find A StoreShop plansShop PhonesA one-time connection fee of up to $45 will apply to each new line or device activation/upgrade. All Freedom Mobile services are subject to our Terms of Service, MyTab Additional Terms of Service, TradeUp Additional Terms of Service, Fair Usage Policy and Privacy Policy.
+
+*Starting July 24 2023, all Freedom Mobile subscribers (excluding prepaid and select applicable plans) that have recurring Freedom Network and/or Nationwide data allotments will have their Freedom Network and/or Nationwide data converted into Freedom Nationwide data.
+
+Freedom Nationwide data is defined as data that can be used on both Freedom and Canadian partner networks. Only recurring Freedom data and/or Nationwi...

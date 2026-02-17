@@ -1,9 +1,19 @@
 ---
 slug: hungry-buddha
 name: Hungry Buddha
-type: brand
+type: store
 ---
 
 # Hungry Buddha
 
-Powered by Plants.Fueled by Purpose. Eat Better. Do Better. Live Better Our Mission Inspire People to Live Better Buddha Brands’ story started with a simple mission to inspire people to live better. From the very beginning our founders set out to build a company that reflects a conscious effort to live better, eat better, and do better through the creation of delicious, plant-based snacks and beverages made with clean ingredients and low or no-added sugar. For People. For the Planet. Our Commitment to Sustainability For A Sustainable FuturePlant-PoweredSustainable ManufacturingProtect Our Natural ResourcesNourish Our Communities Discover Our Sustainability Approach Discover Our Sustainability Approach We believe in operating our business beyond a goal of profit Buddha Brands™ lets sales fuel giving, supporting charities that work to protect our natural resources and nourish our communities. Learn More about our Impact Learn More about our Impact Clean and Purposeful Ingredients Our snacks and beverages are carefully crafted with natural, purposeful and plant-based ingredients. All of our products are Non-GMO project verified, Vegan Certified, Gluten Free and made without anything artificial. We believe food just tastes better, and is better for you, without all the weird artificial stuff. So all of our snacks and beverages are made with no artificial sweeteners, flavours or colours. Plant Powered We believe plant powered is better for our health and the planet. Low Sugar/No Added Sugar We are committed to producing products that have low sugar or no added sugar and taste delicious. Our founders Meet the Souls behind Buddha Brands We were 3 friends with a passion for healthy living and good food, and we refused to compromise taste for clean labels. We live with passion, practice empathy, and make mindfully better choices leading us one step closer to the best version of ourselves. view bio view bio Christopher Magnone Co-Founder view bio view bio view bio view bio Ma...
+Powered by Plants. Fueled by Purpose. Eat Better. Do Better. Live Better Our Mission Inspire People to Live Better Buddha Brands’ story started with a simple mission to inspire people to live better. From the very beginning our founders set out to build a company that reflects a conscious effort to live better, eat better, and do better through the creation of delicious, plant-based snacks and beverages made with clean ingredients and low or no-added sugar.
+
+For People. For the Planet. Our Commitment to Sustainability For A Sustainable FuturePlant-PoweredSustainable ManufacturingProtect Our Natural ResourcesNourish Our Communities Discover Our Sustainability Approach Discover Our Sustainability Approach We believe in operating our business beyond a goal of profit Buddha Brands™ lets sales fuel giving, supporting charities that work to protect our natural resources and nourish our communities.
+
+Learn More about our Impact Learn More about our Impact Clean and Purposeful Ingredients Our snacks and beverages are carefully crafted with natural, purposeful and plant-based ingredients. All of our products are Non-GMO project verified, Vegan Certified, Gluten Free and made without anything artificial.
+
+We believe food just tastes better, and is better for you, without all the weird artificial stuff. So all of our snacks and beverages are made with no artificial sweeteners, flavours or colours. Plant Powered We believe plant powered is better for our health and the planet.
+
+Low Sugar/No Added Sugar We are committed to producing products that have low sugar or no added sugar and taste delicious. Our founders Meet the Souls behind Buddha Brands We were 3 friends with a passion for healthy living and good food, and we refused to compromise taste for clean labels.
+
+We live with passion, practice empathy, and make mindfully better choices leading us one step closer to the best version of ourselves. view bio view bio Christopher Magnone Co-Founder view bio view bio view bio view bio Ma...

@@ -1,9 +1,23 @@
 ---
 slug: cheekbone-beauty
 name: Cheekbone Beauty
-type: brand
+type: store
 ---
 
 # Cheekbone Beauty
 
-About us Aanii! Welcome! Meet our founder In January of 2015, Jenn Harper had the most vivid dream of little Indigenous girls covered in colorful lip glosses. That dream is what gave birth to Cheekbone Beauty, one of the first Canadian Indigenous-owned and founded cosmetics companies.After reconnecting with her Indigenous roots and learning about the effects of residential schools from her grandmother, Jenn set off on her mission to build Cheekbone Beauty and to create a space in the beauty industry where everyone, including Indigenous people, feel represented and seen. Headquartered in St Catharines, Ontario, Canada, founder Jenn strives to ensure only the best quality colour cosmetics receive the Cheekbone name."Representation saves lives. This is the core of Cheekbone Beauty." - Jenn Harper indigenous roots Drawing from Indigenous teachings and Jenn's Indigenous roots, our products are sustainable, high-quality, clean, vegan, and cruelty-free. From the ingredients to the packaging, we make every effort to use only what's needed for the least amount of environmental impact and maximum wearability. Our mission We strive to create a space in the beauty industry where everyone, including Indigenous people, feel represented and seen.One of our biggest goals and mission is to make a difference in the lives of Indigenous youth – and all the ways we give back have them in mind.As part of the Cheekbone Beauty Scholarship Fund, every year a new limited product is released with 100% of all profits going towards providing Indigenous students an opportunity to soar higher in their post-secondary education journey. Core Values Based on the Indigenous 7 Grandfather teachings: Love, Respect, Bravery, Truth, Honesty, Humility, and Wisdom Integrity & Honesty We are radically transparent about our business, the ingredients we use, and who our partners are. Every year, we publish our sustainability report to share with you the positive impacts we are making, as well as areas where w...
+About us Aanii! Welcome! Meet our founder In January of 2015, Jenn Harper had the most vivid dream of little Indigenous girls covered in colorful lip glosses. That dream is what gave birth to Cheekbone Beauty, one of the first Canadian Indigenous-owned and founded cosmetics companies.
+
+After reconnecting with her Indigenous roots and learning about the effects of residential schools from her grandmother, Jenn set off on her mission to build Cheekbone Beauty and to create a space in the beauty industry where everyone, including Indigenous people, feel represented and seen.
+
+Headquartered in St Catharines, Ontario, Canada, founder Jenn strives to ensure only the best quality colour cosmetics receive the Cheekbone name. "Representation saves lives. This is the core of Cheekbone Beauty.
+
+" - Jenn Harper indigenous roots Drawing from Indigenous teachings and Jenn's Indigenous roots, our products are sustainable, high-quality, clean, vegan, and cruelty-free. From the ingredients to the packaging, we make every effort to use only what's needed for the least amount of environmental impact and maximum wearability.
+
+Our mission We strive to create a space in the beauty industry where everyone, including Indigenous people, feel represented and seen. One of our biggest goals and mission is to make a difference in the lives of Indigenous youth – and all the ways we give back have them in mind.
+
+As part of the Cheekbone Beauty Scholarship Fund, every year a new limited product is released with 100% of all profits going towards providing Indigenous students an opportunity to soar higher in their post-secondary education journey.
+
+Core Values Based on the Indigenous 7 Grandfather teachings: Love, Respect, Bravery, Truth, Honesty, Humility, and Wisdom Integrity & Honesty We are radically transparent about our business, the ingredients we use, and who our partners are.
+
+Every year, we publish our sustainability report to share with you the positive impacts we are making, as well as areas where w...

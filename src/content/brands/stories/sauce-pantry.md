@@ -1,9 +1,21 @@
 ---
 slug: sauce-pantry
 name: Sauce Pantry
-type: brand
+type: store
 ---
 
 # Sauce Pantry
 
-Our Story At Sauce Pantry, we’re here to change the way you think about sauces.Founded by Chef Shahni, who has spent 10+ years in the kitchen, Sauce Pantry was born out of a simple frustration—bulky jars taking up space, half-used sauces going bad, and meals missing that quick burst of flavor. So, we created a better way to sauce.Our compact, ready-to-mix sachets give you fresh, flavorful sauces without the clutter. No more half-used bottles sitting in the fridge—just easy, mess-free flavor whenever you need it. Find Your Savings Why Sauce Pantry? ✅ Saves space – No bulky jars, just simple sachets that fit anywhere✅ Always fresh – Mix on demand, so your sauce is never stale✅ Quick & easy – Just add liquid and shake, ready in seconds✅ Healthier ingredients – Clean, high-quality, no artificial preservatives✅ Cost-effective – Gourmet flavors at nearly half the price of traditional jars✅ Less waste – Smaller portions mean you use what you need Explore Variety PAck Reimagined for convenience and crafted with care. Variety PackHot SauceSeasoning MixAll Starter Pack (6 Sauces + 2 Jars) Regular price From $26.95 CAD Regular price $32.25 CAD Sale price From $26.95 CAD Unit price / per Variety Pack Regular price From $24.25 CAD Regular price $26.00 CAD Sale price From $24.25 CAD Unit price / per Meal Enhancer Pack Regular price From $23.50 CAD Regular price $45.50 CAD Sale price From $23.50 CAD Unit price / per The Pantry Pack (9 Sauces + 2 Jars) Regular price $38.75 CAD Regular price $45.89 CAD Sale price $38.75 CAD Unit price / per Hot Sauce Variety Pack Regular price From $23.75 CAD Regular price $45.50 CAD Sale price From $23.75 CAD Unit price / per Pesto Taster Pack Regular price From $23.50 CAD Regular price $45.50 CAD Sale price From $23.50 CAD Unit price / per Chimichurri Taster Pack Regular price From $23.50 CAD Regular price $45.50 CAD Sale price From $23.50 CAD Unit price / per Camper’s Flavor Pack Regular price From $23.50 CAD Regular price $45.50 CAD Sale price F...
+Sauce Pantry is a Canadian food brand founded by Chef Shahni, who spent over a decade in professional kitchens before channelling that experience into solving a common home cooking problem: the half-used jars of sauce cluttering up the fridge, going bad before they're finished. Sauce Pantry replaces bulky bottles and jars with compact, ready-to-mix sauce sachets that deliver fresh, gourmet flavour on demand without the waste and fridge clutter.
+
+## Sachet Sauces
+
+Each Sauce Pantry sachet contains a concentrated sauce mix that transforms into a full portion of sauce when combined with liquid and shaken. The lineup spans global flavours including pesto, chimichurri, hot sauces, and seasoning blends — the kinds of sauces that elevate a simple meal but are typically only available in jars far too large for a single use. The sachet format means the sauce is always fresh (no half-used jars sitting for weeks), takes up minimal pantry space, and produces zero waste from unused product.
+
+## Chef-Crafted, Clean Ingredients
+
+Shahni's professional culinary background shapes every recipe. The sauces use high-quality, natural ingredients without artificial preservatives, colours, or flavours. Each blend is developed to deliver restaurant-quality flavour that home cooks can achieve in seconds — just add liquid, shake, and pour. The formulations are designed to be versatile, working as marinades, dipping sauces, dressings, and cooking sauces depending on how they're mixed.
+
+## Less Waste, More Flavour
+
+Sauce Pantry sells through its online store and ships across Canada. The brand's sachets are priced competitively against traditional jarred sauces while delivering significantly less food waste — no more throwing out half a jar of pesto because you only needed two tablespoons. For Canadian home cooks who want gourmet flavour without the clutter, waste, and expense of a pantry full of half-used condiments, Sauce Pantry offers a smarter way to sauce.

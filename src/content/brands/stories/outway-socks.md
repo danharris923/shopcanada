@@ -1,9 +1,21 @@
 ---
 slug: outway-socks
 name: Outway Socks
-type: brand
+type: store
 ---
 
-# Outway Socks
+# Outway
 
-Skip to content 🇨🇦 FREE SHIPPING OVER $99 🇨🇦HOLIDAY DEALS 🧦 UP TO 50% OFF Hey, we're Outway. Founded in 2016 in Victoria, BC, Canada, Outway is a brand built by athletes, for active lifestyles. We believe in daily improvement and design performance socks to keep up with active lives without compromising on style and comfort. But this is about more than just socks. We're on a mission to inspire personal bests and stand for challenging the status quo, breaking boundaries, and embodying the spirit of perseverance. Outway socks aren't just worn, they're lived in. Engineered for Every Move We’re all in on creating the ultimate athletic socks—designed to elevate your everyday. Whether you’re on a ride, run, hike, at work, or out for the night, Outway socks are purpose-built for comfort, performance, and style. One pair, for every wear. Designed to Stand Out We’re redefining what socks can be with designs that break the mold. At Outway, we believe self-expression starts from the ground up—bold, unique, and unapologetically you. Step up, stand out, and wear what moves you. Proudly Canadian 🍁 Outway is proudly Canadian—founded, built, and operated in Canada. Our team is based in Canada, our products are warehoused here, and we reinvest in the Canadian economy through jobs, innovation, and community initiatives. We’re a homegrown brand redefining performance socks on a global stage. Incredibly comfortable all-day performance socks. Millions of pairs sold View All (5,107+ Reviews) Best Everyday Socks"I wear these everyday. Perfect for work and a run or ride after. I need more now to round out my week!"- Marc L. My ‘Super Socks’"My super power socks when I’m in need of inspiration. Works every time and gets me to my workouts."- Stephanie G. Better Than Others"These are the best performance socks I’ve owned. Durable, great fit, and don’t shrink like other brands."- Deepak R. Perfect For Athletes"Arrived when they said they would. Use them for running, biking, and hiking. C...
+Outway is a Canadian performance sock brand founded by athletes who believed the most overlooked piece of athletic gear — socks — deserved serious attention. The company designs high-performance socks for running, training, cycling, hiking, and everyday wear, using technical fabrics and construction methods borrowed from high-end athletic apparel. The brand launched with a direct-to-consumer model, selling online and building a community of athletes and fitness enthusiasts who take their sock game as seriously as their training.
+
+## Performance Engineering
+
+Every Outway sock is engineered for specific activities. Running socks feature targeted cushioning zones at the heel and forefoot, moisture-wicking fibres, and seamless toe construction to prevent blisters during long distances. Training socks provide extra arch support and grip features for lateral movements. Compression socks use graduated compression to improve circulation during recovery. The brand uses merino wool, nylon, and technical synthetic blends depending on the sock's purpose, with each material chosen for its performance characteristics rather than cost.
+
+## Bold Design
+
+What sets Outway apart visually is the bold, colourful designs that contrast sharply with the muted black and white socks most athletic brands produce. The brand releases limited-edition colourways and artist collaborations that turn a functional product into a form of self-expression. The philosophy is that athletic socks can be both technically excellent and visually exciting — you don't have to choose between performance and personality. This approach has resonated with a younger, style-conscious athletic demographic.
+
+## Canadian and Growing
+
+Outway ships across North America from Canada, offering free shipping and a satisfaction guarantee. The brand has built its customer base through social media marketing, athlete partnerships, and word of mouth within running and fitness communities. The company has expanded from socks into complementary products while maintaining its core identity as a performance sock specialist. For Canadian athletes tired of settling for generic socks, Outway offers a product that matches the quality and thought put into every other piece of their kit.

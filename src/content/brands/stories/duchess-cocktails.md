@@ -1,9 +1,19 @@
 ---
 slug: duchess-cocktails
 name: Duchess Cocktails
-type: brand
+type: store
 ---
 
 # Duchess Cocktails
 
-About FOUNDER & CEO, OLIVIA LOVENMARK-HAY Olivia loves creating beautiful products and memorable experiences — two things that Duchess brings together. Prior to Duchess, she was a fintech marketer working with California and New York-based startups. In 2022, Olivia co-founded Repose, a community platform that is home to the Duchess Club. She attended Kwantlen Polytechnic University and the British Columbia Institute of Technology and holds her Canadian securities designation (CSC). HOW DUCHESS COCKTAILS STARTED “In June of 2019, I was on a flight home from New York thinking that a cosmo would be great, and too bad they don’t serve those on flights. I thought, ‘someone should bottle cosmopolitans’.” Coupe Beverages Corporation was soon created and our first cocktail launched in December 2020. In 2022, we built out our own factory in East Vancouver to bring all production in-house — and Duchess Cocktails remains a self-funded, independent producer in Canada. Our cocktails offer a unique perspective; they’re not sweet, always made with real juice, and are stylishly packaged. BUT WE WEREN'T DONE INNOVATING In the fall of 2023, we launched DuchessDry to provide a real non-alcoholic experience, where taste and mouthfeel replicates that of a spirit-based cocktail, not just a juice and soda mocktail. ENJOY DUCHESS COCKTAILS Duchess Cocktails are ready-to-serve bottled cocktails, best enjoyed chilled, straight from the bottle, poured over ice, or in your favourite coupe.
+About FOUNDER & CEO, OLIVIA LOVENMARK-HAY Olivia loves creating beautiful products and memorable experiences — two things that Duchess brings together. Prior to Duchess, she was a fintech marketer working with California and New York-based startups.
+
+In 2022, Olivia co-founded Repose, a community platform that is home to the Duchess Club. She attended Kwantlen Polytechnic University and the British Columbia Institute of Technology and holds her Canadian securities designation (CSC).
+
+HOW DUCHESS COCKTAILS STARTED “In June of 2019, I was on a flight home from New York thinking that a cosmo would be great, and too bad they don’t serve those on flights. I thought, ‘someone should bottle cosmopolitans’.
+
+” Coupe Beverages Corporation was soon created and our first cocktail launched in December 2020. In 2022, we built out our own factory in East Vancouver to bring all production in-house — and Duchess Cocktails remains a self-funded, independent producer in Canada.
+
+Our cocktails offer a unique perspective; they’re not sweet, always made with real juice, and are stylishly packaged. BUT WE WEREN'T DONE INNOVATING In the fall of 2023, we launched DuchessDry to provide a real non-alcoholic experience, where taste and mouthfeel replicates that of a spirit-based cocktail, not just a juice and soda mocktail.
+
+ENJOY DUCHESS COCKTAILS Duchess Cocktails are ready-to-serve bottled cocktails, best enjoyed chilled, straight from the bottle, poured over ice, or in your favourite coupe.

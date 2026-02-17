@@ -1,9 +1,21 @@
 ---
 slug: thoughtfully
 name: Thoughtfully
-type: brand
+type: store
 ---
 
 # Thoughtfully
 
-Skip to content Shop All Occasions Recipients Corporate Gifts Knack Gift Sets Man Crates Sale About us Our Purpose Inspiring meaningful connections by empowering people to live Thoughtfully Our Mission Create exceptional experiences that inspire joy and lasting memories, whether for self or others Our Vision To be a global leader in exceptional, meaningful gifting and self-experiences Why We are Unique Thoughtfully is not just a gifting company, it is a platform for delight – from cozy tea nights to bold, hot sauce adventures – we create moments that spark joy Thoughtfully is a global leader in creative gifting, known for transforming everyday moments into meaningful experiences through gourmet food and uniquely curated gifts. With operations in over 18 countries and a strong presence across Amazon, major retailers, and direct-to-consumer platforms, Thoughtfully is trusted by millions for gifts that blend joy, design, and intention. Thoughtfully provides fully customizable gifting experiences, offering premium packaging, personalized details, and dedicated concierge support for both individuals and corporate clients. Thoughtfully’s portfolio includes its wholesale division, Thoughtfully Gourmet Foods, as well as direct platforms like Thoughtfully.com and Mancrates.com, alongside celebrated franchises such as Smokehouse and Good Hurt Fuego. The company’s approach is rooted in creativity, quality, and thoughtful design, with an emphasis on making gifting more intentional, relevant, and easy to execute. Cart 0 Your cart is currently empty. Start Shopping Trending Now Save 68% Quick view Wine To Go Gift Set $125.00 $39.99 / 8 in stock Quick view Artisanal Olive Oil Sampler, Set of 8 $39.99 / 5.0 In stock Quick view Gourmet Hot Chocolate Gift Set $21.99 / 4.86 In stock
+Thoughtfully is a gifting company that creates curated gift sets and experience kits designed to make gift-giving easy, personal, and memorable. Rather than selling individual products, the brand assembles themed collections — cocktail making kits, hot sauce challenge sets, tea tasting experiences, candy assortments, and more — packaged in presentation-ready boxes that are ready to give the moment they arrive. The concept eliminates the stress of assembling a gift yourself while delivering something more personal than a gift card.
+
+## Curated Gift Experiences
+
+The Thoughtfully product line spans dozens of themed gift sets across food, drink, wellness, and entertainment categories. Popular offerings include cocktail mixer sets with recipe cards, global hot sauce collections for spice lovers, artisan chocolate samplers, cheese pairing kits, and cozy night-in bundles with tea and treats. Each set is designed around a specific experience — not just products to consume, but a moment to share. The packaging is polished and attractive, making each box feel like an event in itself.
+
+## For Every Occasion
+
+One of Thoughtfully's strengths is the breadth of its catalogue, which covers virtually every gifting occasion and recipient type. There are sets for birthdays, holidays, housewarmings, thank-yous, corporate gifts, and "just because" moments. The variety means there's something for the person who has everything — the friend who loves cooking, the colleague who's into craft cocktails, the parent who deserves a spa night. The price points range from accessible to premium, making thoughtful gifting available at every budget.
+
+## Available in Canada
+
+Thoughtfully sells through its online store and through major retailers, shipping across Canada. The brand has tapped into a growing preference for experience-based gifts over material ones, offering curated sets that feel generous and fun without requiring the giver to spend hours shopping. For Canadians who want to give gifts that create moments rather than clutter, Thoughtfully takes the guesswork out of the equation.

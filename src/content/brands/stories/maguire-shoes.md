@@ -1,9 +1,23 @@
 ---
 slug: maguire-shoes
 name: Maguire Shoes
-type: brand
+type: store
 ---
 
 # Maguire Shoes
 
-Sisters Myriam and Romy are the founders of Maguire, an independent, direct-to-consumer fashion footwear company. With no connections in the fashion industry, Myriam and Romy’s entrepreneurial journey was propelled by sheer determination and grit. It all started with a desire to make high-quality shoes accessible for more people: “Everywhere we shopped, it was always a choice between quality or affordability,” the sisters recall. “I worked in fast fashion [as a designer for white-label brands],” says Myriam, President and Lead Designer. “I saw the way things were done: there are a lot of middle-men in the industry, driving up margins. I thought there could be a way to offer better products at better prices.” Myriam was always interested in footwear design, having obtained a Footwear Diploma at the prestigious Cordwainer’s College in London. Before founding Maguire, she would work at United Colours of Benetton in Treviso, Pajar and the Aldo Group in Montréal, and design for dozens of white-label clients including Opening Ceremony, Target, and Kohls. Romy, for her part, is no stranger to the world, having lived in Vancouver, Paris, and Sydney. A communications major with diverse interests, she worked with creative agencies and film festivals before joining her sister in the venture. As head of Operations and Marketing at Maguire, she brings a multidisciplinary approach and a fresh perspective to an age-old industry. The duo launched Maguire online in 2017 with a single product and $15k. Only five years later, Maguire has more than twenty employees and is incorporated in two countries with stores in Montréal, Toronto, and New York City. They have been featured in Forbes, WWD, Elle, and Bazaar, and won the Emerging Talent Award for Accessories at the Canadian Fashion Awards in 2022. Still proudly independent, Myriam and her sister Romy continue to grow their mission to bring transparency, quality and fair prices to women’s footwear. More news Maguire Shoes Careers - Rea...
+Sisters Myriam and Romy are the founders of Maguire, an independent, direct-to-consumer fashion footwear company. With no connections in the fashion industry, Myriam and Romy’s entrepreneurial journey was propelled by sheer determination and grit.
+
+It all started with a desire to make high-quality shoes accessible for more people: “Everywhere we shopped, it was always a choice between quality or affordability,” the sisters recall. “I worked in fast fashion [as a designer for white-label brands],” says Myriam, President and Lead Designer.
+
+“I saw the way things were done: there are a lot of middle-men in the industry, driving up margins. I thought there could be a way to offer better products at better prices. ” Myriam was always interested in footwear design, having obtained a Footwear Diploma at the prestigious Cordwainer’s College in London.
+
+Before founding Maguire, she would work at United Colours of Benetton in Treviso, Pajar and the Aldo Group in Montréal, and design for dozens of white-label clients including Opening Ceremony, Target, and Kohls.
+
+Romy, for her part, is no stranger to the world, having lived in Vancouver, Paris, and Sydney. A communications major with diverse interests, she worked with creative agencies and film festivals before joining her sister in the venture.
+
+As head of Operations and Marketing at Maguire, she brings a multidisciplinary approach and a fresh perspective to an age-old industry. The duo launched Maguire online in 2017 with a single product and $15k.
+
+Only five years later, Maguire has more than twenty employees and is incorporated in two countries with stores in Montréal, Toronto, and New York City. They have been featured in Forbes, WWD, Elle, and Bazaar, and won the Emerging Talent Award for Accessories at the Canadian Fashion Awards in 2022.
+
+Still proudly independent, Myriam and her sister Romy continue to grow their mission to bring transparency, quality and fair prices to women’s footwear. More news Maguire Shoes Careers - Rea...

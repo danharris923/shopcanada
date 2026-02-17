@@ -1,9 +1,25 @@
 ---
 slug: hillberg-berk
 name: Hillberg Berk
-type: brand
+type: store
 ---
 
 # Hillberg Berk
 
-Jewellery, AmplifiedWe design jewellery that turns up the volume—on self-expression, on everyday beauty, and on causes that matter. Proudly Canadian and women-owned, this is jewellery made to feel like you. Canadian & Women Owned Founded in the prairies and grown across Canada, we’re proudly women-owned and purpose-driven. We’re here to reimagine what jewellery can mean—when it’s made for self-expression, not expectations. Style That Shows Up We believe in jewellery that does both: bold design and everyday wearability. From standout shapes to thoughtful details, our pieces are made with high-quality materials and backed by a 2-year warranty. Purpose in every piece This is jewellery that stands for something. Every purchase fuels our 1% for women give-back, supporting self-identified women through our community partnerships and charitable impact. How it started Founded in 2007 by Rachel Mielke in the Canadian prairies, Hillberg & Berk began with a single goal: to change how women experience jewellery. Rachel leads with a belief in treating yourself, leaning into fashion as a form of agency, and re-writing expectations that aren’t meant for you. “This business is about building something bold, enduring and powerful” — Rachel Mielke, Founder & CEOMeet Rachel 2024-2025 Impact Report Over 200 initiatives supported through community partnerships. Over $400K contributed in donations and jewellery to mission aligned causes. Surpassed 7000 women gifted through our national partnership with the Dress for Success Canada Foundation. Over 200K boxes saved from the landfill after our sustainable packaging transition. Over 90% of employees identify as women or non-binary, including 83% of H&B’s leadership team. MILESTONE MOMENTS All Products Most Gifted Best Sellers Gift Sets “Hillberg & Berk is great quality. Every piece I have I LOVE. Also, why wouldn’t you want to support a Canadian company?” – Maureen Beautiful Jewellery “This sparkle made me gasp in delight when I opened the ...
+Jewellery, AmplifiedWe design jewellery that turns up the volume—on self-expression, on everyday beauty, and on causes that matter. Proudly Canadian and women-owned, this is jewellery made to feel like you.
+
+Canadian & Women Owned Founded in the prairies and grown across Canada, we’re proudly women-owned and purpose-driven. We’re here to reimagine what jewellery can mean—when it’s made for self-expression, not expectations.
+
+Style That Shows Up We believe in jewellery that does both: bold design and everyday wearability. From standout shapes to thoughtful details, our pieces are made with high-quality materials and backed by a 2-year warranty.
+
+Purpose in every piece This is jewellery that stands for something. Every purchase fuels our 1% for women give-back, supporting self-identified women through our community partnerships and charitable impact.
+
+How it started Founded in 2007 by Rachel Mielke in the Canadian prairies, Hillberg & Berk began with a single goal: to change how women experience jewellery. Rachel leads with a belief in treating yourself, leaning into fashion as a form of agency, and re-writing expectations that aren’t meant for you.
+
+“This business is about building something bold, enduring and powerful” — Rachel Mielke, Founder & CEOMeet Rachel 2024-2025 Impact Report Over 200 initiatives supported through community partnerships.
+
+Over $400K contributed in donations and jewellery to mission aligned causes. Surpassed 7000 women gifted through our national partnership with the Dress for Success Canada Foundation. Over 200K boxes saved from the landfill after our sustainable packaging transition.
+
+Over 90% of employees identify as women or non-binary, including 83% of H&B’s leadership team. MILESTONE MOMENTS All Products Most Gifted Best Sellers Gift Sets “Hillberg & Berk is great quality. Every piece I have I LOVE.
+
+Also, why wouldn’t you want to support a Canadian company? ” – Maureen Beautiful Jewellery “This sparkle made me gasp in delight when I opened the ...

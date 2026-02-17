@@ -1,9 +1,23 @@
 ---
 slug: pearlory
 name: Pearlory
-type: brand
+type: store
 ---
 
 # Pearlory
 
-Our Story: Jewelry That Lives Life With You At Pearlory, we craft beautiful, durable jewelry designed to complement every aspect of daily life. We believe high-quality, beautiful jewelry should be accessible without the excessive markups. Like many, we were frustrated with jewelry that couldn’t keep up—favorites that tarnished, faded, or broke from constant wear, and pieces that were too precious to risk wearing every day. Now you can say goodbye to care instructions—our pieces are designed to be worn everywhere. In the shower, at the gym, at the office, by the pool, and even while sleeping. Built to last through every moment, each piece is hypoallergenic, waterproof, sweatproof, and cosmetic-friendly. Our mission is simple: worry-free jewelry for every moment. We are a Canadian-owned business, with fulfillment centres in both Canada and the U.S. to help our customers avoid fees and duties. Made to Last, Made for You We’ve taken inspiration from the durability techniques of Swiss watchmakers to create jewelry that lasts. Using advanced PVD real-gold plating—the same process trusted by luxury brands like Chanel—we make highly resilient pieces that won’t fade or lose color. Pearlory’s PVD real-gold plating ensures longevity without compromising our planet’s health. Our jewelry is crafted from hypoallergenic, medical-grade stainless steel, so you can say goodbye to rust, tarnish, and irritation. Unlike other brands that rely on copper or brass, Pearlory’s stainless steel is as sweatproof as it is rust-resistant, designed to be worn every day, everywhere. Our mission is simple: to bring you affordable, long-lasting jewelry you can rely on, whatever your style or budget. THE BASE Instead of cheap, corruptible metals like copper and brass that corrode and tarnish, we use premium, hypoallergenic, 100% recyclable stainless steel—extremely resistant to moisture, chemicals, and heat. THE COATING Crafted with an eco-friendly PVD gold plating process trusted by renowned brands ...
+Our Story: Jewelry That Lives Life With You At Pearlory, we craft beautiful, durable jewelry designed to complement every aspect of daily life. We believe high-quality, beautiful jewelry should be accessible without the excessive markups.
+
+Like many, we were frustrated with jewelry that couldn’t keep up—favorites that tarnished, faded, or broke from constant wear, and pieces that were too precious to risk wearing every day. Now you can say goodbye to care instructions—our pieces are designed to be worn everywhere.
+
+In the shower, at the gym, at the office, by the pool, and even while sleeping. Built to last through every moment, each piece is hypoallergenic, waterproof, sweatproof, and cosmetic-friendly. Our mission is simple: worry-free jewelry for every moment.
+
+We are a Canadian-owned business, with fulfillment centres in both Canada and the U. S. to help our customers avoid fees and duties. Made to Last, Made for You We’ve taken inspiration from the durability techniques of Swiss watchmakers to create jewelry that lasts.
+
+Using advanced PVD real-gold plating—the same process trusted by luxury brands like Chanel—we make highly resilient pieces that won’t fade or lose color. Pearlory’s PVD real-gold plating ensures longevity without compromising our planet’s health.
+
+Our jewelry is crafted from hypoallergenic, medical-grade stainless steel, so you can say goodbye to rust, tarnish, and irritation. Unlike other brands that rely on copper or brass, Pearlory’s stainless steel is as sweatproof as it is rust-resistant, designed to be worn every day, everywhere.
+
+Our mission is simple: to bring you affordable, long-lasting jewelry you can rely on, whatever your style or budget. THE BASE Instead of cheap, corruptible metals like copper and brass that corrode and tarnish, we use premium, hypoallergenic, 100% recyclable stainless steel—extremely resistant to moisture, chemicals, and heat.
+
+THE COATING Crafted with an eco-friendly PVD gold plating process trusted by renowned brands ...

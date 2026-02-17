@@ -1,9 +1,25 @@
 ---
 slug: milk-and-memories
 name: Milk And Memories
-type: brand
+type: store
 ---
 
 # Milk And Memories
 
-Our Story Hi there! My name is Magan, I am the owner, founder and creator behind Milk and Memories. Thank you so much for visiting our website! We would love for you to join our community on Facebook, Instagram, and TikTok! Who are we?I am a wife to an amazing husband and father, we have two beautiful children. I have always been a bit of an entrepreneur, I’ve dabbled in a few small businesses and finally found my love in creating. I have had a successful crafting business since 2017. I am also an Educational Assistant with my local school board. When I am not working I can be found enjoying time with my family creating as many memories as possible. How it all startedAs most breastfeeding mothers my journey was a rollercoaster of emotions. With my son I had goals of exclusively pumping for a year. It was a lot of work and unfortunately, I ended up losing my supply when he was 3 months old. When I had my daughter, we were able to latch! I was determined to make it much longer. We powered through mastitis more than once, low supply, and other hurdles along the way. We made it to two years of breastfeeding! When it was time for her to wean it was such an emotional struggle for me to stop. I heard of breastmilk jewelry and new I wanted a piece made one day to commemorate this empowering and emotional chapter. I kept a bottle in my freezer for when I could afford to buy the perfect ring.Four years after my breastfeeding journey ended my husband decided that he was going to surprise me with a breastmilk ring. Unfortunately for him the plans fell through. Luckily, for me I have been a crafty person with a successful crafting business for the past 5 years and his thoughtfulness set the plans in motion for my researching how to make my perfect ring! After some extensive research I finished my ring, and it was more beautiful than I had imagined! I then got to work on making myself and my family a few beautiful memorial pieces. I decided to offer these special keepsakes to oth...
+Our Story Hi there! My name is Magan, I am the owner, founder and creator behind Milk and Memories. Thank you so much for visiting our website! We would love for you to join our community on Facebook, Instagram, and TikTok!
+
+Who are we? I am a wife to an amazing husband and father, we have two beautiful children. I have always been a bit of an entrepreneur, I’ve dabbled in a few small businesses and finally found my love in creating.
+
+I have had a successful crafting business since 2017. I am also an Educational Assistant with my local school board. When I am not working I can be found enjoying time with my family creating as many memories as possible.
+
+How it all startedAs most breastfeeding mothers my journey was a rollercoaster of emotions. With my son I had goals of exclusively pumping for a year. It was a lot of work and unfortunately, I ended up losing my supply when he was 3 months old.
+
+When I had my daughter, we were able to latch! I was determined to make it much longer. We powered through mastitis more than once, low supply, and other hurdles along the way. We made it to two years of breastfeeding!
+
+When it was time for her to wean it was such an emotional struggle for me to stop. I heard of breastmilk jewelry and new I wanted a piece made one day to commemorate this empowering and emotional chapter.
+
+I kept a bottle in my freezer for when I could afford to buy the perfect ring. Four years after my breastfeeding journey ended my husband decided that he was going to surprise me with a breastmilk ring.
+
+Unfortunately for him the plans fell through. Luckily, for me I have been a crafty person with a successful crafting business for the past 5 years and his thoughtfulness set the plans in motion for my researching how to make my perfect ring!
+
+After some extensive research I finished my ring, and it was more beautiful than I had imagined! I then got to work on making myself and my family a few beautiful memorial pieces. I decided to offer these special keepsakes to oth...

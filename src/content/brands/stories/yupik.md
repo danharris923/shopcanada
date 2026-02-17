@@ -1,9 +1,17 @@
 ---
 slug: yupik
 name: Yupik
-type: brand
+type: store
 ---
 
 # Yupik
 
-Home About Us About us Our Story At Yupik, we are a family-owned Canadian company dedicated to providing you with ingredients & snacks that cater to your tastes & needs. We carry an extensive range of organic to conventional products, including nuts, dried fruits, superfoods, snacks, mixes, candies, chocolates & cooking ingredients. Many of our products are labeled “Prepared in Canada”, which means the product was processed (roasted, mixed, and/or seasoned) & packaged at our Montreal facilities. Our Philosophy We strive for the customer’s experience, both in our store & online, to be as fulfilling as possible. We aim to satisfy & leave customers happy to have spent their time with us. High-Quality We source our amazing ingredients from over 55 countries, all while prioritizing Canadian-grown products. Our priority is to offer high-quality products. Our Values At Yupik, we strive to give our customers the best quality products without compromising value. We believe in offering fair prices without compromising on quality. You’re invited to join our family, because your smile is our greatest reward! Commitment Our goal is to deliver quality products in an efficient and timely way. We ship across Canada & right to your doorstep so you can begin enjoying our products as soon as possible. You’re invited to join our family, because your smile is our greatest reward!
+About Us About us Our Story At Yupik, we are a family-owned Canadian company dedicated to providing you with ingredients & snacks that cater to your tastes & needs. We carry an extensive range of organic to conventional products, including nuts, dried fruits, superfoods, snacks, mixes, candies, chocolates & cooking ingredients.
+
+Many of our products are labeled “Prepared in Canada”, which means the product was processed (roasted, mixed, and/or seasoned) & packaged at our Montreal facilities. Our Philosophy We strive for the customer’s experience, both in our store & online, to be as fulfilling as possible.
+
+We aim to satisfy & leave customers happy to have spent their time with us. High-Quality We source our amazing ingredients from over 55 countries, all while prioritizing Canadian-grown products. Our priority is to offer high-quality products.
+
+Our Values At Yupik, we strive to give our customers the best quality products without compromising value. We believe in offering fair prices without compromising on quality. You’re invited to join our family, because your smile is our greatest reward!
+
+Commitment Our goal is to deliver quality products in an efficient and timely way. We ship across Canada & right to your doorstep so you can begin enjoying our products as soon as possible.

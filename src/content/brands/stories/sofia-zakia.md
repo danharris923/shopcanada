@@ -1,9 +1,23 @@
 ---
 slug: sofia-zakia
 name: Sofia Zakia
-type: brand
+type: store
 ---
 
 # Sofia Zakia
 
-About Sofia Zakia Made with the finest materials and meticulously crafted, each piece is a unique sculptural creation using elements of magic, alongside mythological references as inspiration. Sofia Zakia pieces always have a story to tell, or a symbolic meaning, making them feel powerful to wear. Founded in 2016, each piece is an unconventional, tender exploration with symbolism, borrowing from the worlds of art, history, and science in a harmonious juxtaposition of luxury and storytelling. Sofia works to create ceremonial jewelry that is alive with meaning, handcrafted to be passed down over lifetimes. Our customer care is available Monday through Friday from 9:00am - 5:00pm.To reach us during these hours, please send us a message at info@sofiazakia.com OUR FOUNDER Meet Sofia Sofia Ajram is the Canadian Arts and Fashion Award-winning Designer of Sofia Zakia jewelry. She is also the author of the Bram Stoker Award-winning novella Coup de Grâce. Sofia lives in Montreal with her cat Isa.Growing up, she cultivated a strong interest in speculative cinema and literature and applied those interests to the several facets of visual arts. In 2011 she began metalsmithing classes with a focus in wax carving. In 2016, Sofia launched Sofia Zakia, a channel to combine her fascination with the art of goldsmithing and jewelry’s long and wonderful history of wearable objects with meaning.Sofia strives to join the quiet intimacy and elegance of jewelry into communion with the magic of poetry: heirloom objects that act as mirrors to love, pulling threads of inspiration from myth, literature, art, and memory, both new and old; universal and personal. Eternal love letters Inked in precious gems & gold Exquisite craftsmanship Eternal love letters Inked in precious gems & gold Exquisite craftsmanship Thoughtful Design & Sustainability ETHOS & MATERIALSOur relationship to the design process begins with materials themselves, wrought from the enchanting poetry of our home planet.Our preciou...
+About Sofia Zakia Made with the finest materials and meticulously crafted, each piece is a unique sculptural creation using elements of magic, alongside mythological references as inspiration. Sofia Zakia pieces always have a story to tell, or a symbolic meaning, making them feel powerful to wear.
+
+Founded in 2016, each piece is an unconventional, tender exploration with symbolism, borrowing from the worlds of art, history, and science in a harmonious juxtaposition of luxury and storytelling. Sofia works to create ceremonial jewelry that is alive with meaning, handcrafted to be passed down over lifetimes.
+
+Our customer care is available Monday through Friday from 9:00am - 5:00pm. To reach us during these hours, please send us a message at info@sofiazakia. com OUR FOUNDER Meet Sofia Sofia Ajram is the Canadian Arts and Fashion Award-winning Designer of Sofia Zakia jewelry.
+
+She is also the author of the Bram Stoker Award-winning novella Coup de Grâce. Sofia lives in Montreal with her cat Isa. Growing up, she cultivated a strong interest in speculative cinema and literature and applied those interests to the several facets of visual arts.
+
+In 2011 she began metalsmithing classes with a focus in wax carving. In 2016, Sofia launched Sofia Zakia, a channel to combine her fascination with the art of goldsmithing and jewelry’s long and wonderful history of wearable objects with meaning.
+
+Sofia strives to join the quiet intimacy and elegance of jewelry into communion with the magic of poetry: heirloom objects that act as mirrors to love, pulling threads of inspiration from myth, literature, art, and memory, both new and old; universal and personal.
+
+Eternal love letters Inked in precious gems & gold Exquisite craftsmanship Eternal love letters Inked in precious gems & gold Exquisite craftsmanship Thoughtful Design & Sustainability ETHOS & MATERIALSOur relationship to the design process begins with materials themselves, wrought from the enchanting poetry of our home planet.
+
+Our preciou...

@@ -1,9 +1,23 @@
 ---
 slug: pluck-tea
 name: Pluck Tea
-type: brand
+type: store
 ---
 
 # Pluck Tea
 
-Pluck Tea was founded by Jennifer Commins in 2012 with a mission to fix restaurant tea. Today, our team of tea makers is proud to produce a wide range of hand-blended, top quality infusions for tea drinkers who value quality and sustainability - wherever they may be. Turns out, the best teas come in small batches. Our teas are made in small quantities with great care at our facility in midtown Toronto to ensure excellence in quality and freshness. Hand blending minimizes leaf damage and ensures that our makers can assess each batch and ingredient for quality, consistency, and freshness. Pluck Tea has earned GFSI / SQF Certification, a third-party audited, internationally recognized food safety standard - the highest certification possible for tea. Sustainability starts at home. Several of our favourite ingredients are grown and dried for us close to our production facility in Ontario including lavender and ginseng. This ensures that our teas are the freshest out there, while reducing our carbon footprint at the same time. We also source ingredients across Canada from farms in BC, Nova Scotia, and Newfoundland. Upcycling is delicious! Many of our ingredients are upcycled - which directly reduces food waste by repurposing fresh ingredients that could otherwise be diverted to compost. Pluck Tea is thrilled to be certified with the Upcycled Food Association. Examples include: Lemon and orange peels, saved and immediately dried for us by a local juice maker (who also happens to supply many of the restaurants we work with!) Cacao shells, reserved and roasted for us by a local bean-to-bar chocolatier Our zero waste glass jars are stackable, beautiful, and infinitely refillable. Let's talk tea. Tea is the original plant-based beverage. The plant itself (Camellia Sinensis) is indigenous to areas around the world that tend to be closer to the equator than Canada is. We source our tea leaves from organic and sustainable farms. Learn more about our tea sourcing practices here. ...
+was founded by Jennifer Commins in 2012 with a mission to fix restaurant tea. Today, our team of tea makers is proud to produce a wide range of hand-blended, top quality infusions for tea drinkers who value quality and sustainability - wherever they may be.
+
+Turns out, the best teas come in small batches. Our teas are made in small quantities with great care at our facility in midtown Toronto to ensure excellence in quality and freshness. Hand blending minimizes leaf damage and ensures that our makers can assess each batch and ingredient for quality, consistency, and freshness.
+
+Pluck Tea has earned GFSI / SQF Certification, a third-party audited, internationally recognized food safety standard - the highest certification possible for tea. Sustainability starts at home. Several of our favourite ingredients are grown and dried for us close to our production facility in Ontario including lavender and ginseng.
+
+This ensures that our teas are the freshest out there, while reducing our carbon footprint at the same time. We also source ingredients across Canada from farms in BC, Nova Scotia, and Newfoundland. Upcycling is delicious!
+
+Many of our ingredients are upcycled - which directly reduces food waste by repurposing fresh ingredients that could otherwise be diverted to compost. Pluck Tea is thrilled to be certified with the Upcycled Food Association.
+
+Examples include: Lemon and orange peels, saved and immediately dried for us by a local juice maker (who also happens to supply many of the restaurants we work with! ) Cacao shells, reserved and roasted for us by a local bean-to-bar chocolatier Our zero waste glass jars are stackable, beautiful, and infinitely refillable.
+
+Let's talk tea. Tea is the original plant-based beverage. The plant itself (Camellia Sinensis) is indigenous to areas around the world that tend to be closer to the equator than Canada is. We source our tea leaves from organic and sustainable farms.
+
+Learn more about our tea sourcing practices here. ...

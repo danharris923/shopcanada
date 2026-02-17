@@ -1,9 +1,25 @@
 ---
 slug: tru-earth
 name: Tru Earth
-type: brand
+type: store
 ---
 
 # Tru Earth
 
-About When Ryan and his wife Kathleen were expecting their third child, Ryan would wake up, pour his 4 year old son,and 3 year old daughter a glass of milk, and watch YouTube kids videos with them.As most kids do, they LOVED watching shows about toys.Ryan loved his morning routine with the kids, but he got upset by the crazy amounts of plastic waste in the shows they watched. In one popular toy show, it almost seemed the family was promoting this waste. A kid would open a treasure chest made of plastic, wrapped in plastic, with an egg carton of plastic sitting on top. Underneath the toy was more plastic, with 20 little parts wrapped in plastic.“This is insane!” Ryan thought.Ryan wasn’t a hardcore environmentalist by any stretch, but he cared about the world and his kids’ futures. He thought “there’s got to be something we can do! This plastic is just about convenience, but what if there’s a way to make sustainable packaging convenient?” Ryan called up his good friend Brad, a serial entrepreneur. Recently Brad told him about an extended-family member with a patent on laundry detergent that was supposed to be eco-friendly, but Brad didn’t really “get it.” “If it’s so eco-friendly, how the heck does it get my clothes clean?” Brad had grown up in an eco-conscious household, but couldn’t understand how an entire jug of laundry detergent fit in packaging the size of an iPhone. But when Ryan called him up he decided to actually TRY the product for himself instead of dismissing it. Brad, Ryan, and Ryan’s childhood friend Kevin each tried the laundry strips. All three of them concluded the same thing. This stuff actually works! That’s when we decided to become a team, but first we wanted to test our idea to see if anyone else loved the laundry strips as much as we did. Kevin set up a small webpage, Ryan wrote about his experience with the product on that page, and we put it out to market. We determined that 150 subscription orders in the first 30 days would be enough to take...
+About When Ryan and his wife Kathleen were expecting their third child, Ryan would wake up, pour his 4 year old son,and 3 year old daughter a glass of milk, and watch YouTube kids videos with them. As most kids do, they LOVED watching shows about toys.
+
+Ryan loved his morning routine with the kids, but he got upset by the crazy amounts of plastic waste in the shows they watched. In one popular toy show, it almost seemed the family was promoting this waste.
+
+A kid would open a treasure chest made of plastic, wrapped in plastic, with an egg carton of plastic sitting on top. Underneath the toy was more plastic, with 20 little parts wrapped in plastic. “This is insane!
+
+” Ryan thought. Ryan wasn’t a hardcore environmentalist by any stretch, but he cared about the world and his kids’ futures. He thought “there’s got to be something we can do! This plastic is just about convenience, but what if there’s a way to make sustainable packaging convenient?
+
+” Ryan called up his good friend Brad, a serial entrepreneur. Recently Brad told him about an extended-family member with a patent on laundry detergent that was supposed to be eco-friendly, but Brad didn’t really “get it.
+
+” “If it’s so eco-friendly, how the heck does it get my clothes clean? ” Brad had grown up in an eco-conscious household, but couldn’t understand how an entire jug of laundry detergent fit in packaging the size of an iPhone.
+
+But when Ryan called him up he decided to actually TRY the product for himself instead of dismissing it. Brad, Ryan, and Ryan’s childhood friend Kevin each tried the laundry strips. All three of them concluded the same thing.
+
+This stuff actually works! That’s when we decided to become a team, but first we wanted to test our idea to see if anyone else loved the laundry strips as much as we did. Kevin set up a small webpage, Ryan wrote about his experience with the product on that page, and we put it out to market.
+
+We determined that 150 subscription orders in the first 30 days would be enough to take...

@@ -6,4 +6,10 @@ type: store
 
 # Newegg
 
-<h3>PC Builder's Paradise</h3><p>Newegg Canada serves DIY PC builders and tech enthusiasts with competitive prices on components, peripherals, and complete systems. Detailed specs and user reviews guide purchasing decisions.</p><h3>Tech Community</h3><p>Newegg's Shell Shocker and daily deals attract deal hunters. The EggPoints rewards program offers credits toward future purchases.</p>
+## What Newegg Means to Canadian Tech Enthusiasts
+
+Newegg.ca serves Canadian PC builders, gamers, and tech enthusiasts with computer components, peripherals, and consumer electronics. The platform offers detailed product specifications and user reviews that help buyers make informed decisions.
+
+## Savings Opportunities
+
+Newegg runs Shell Shocker daily deals and promotional codes throughout the year. The EggPoints loyalty program rewards purchases, and combo deals bundle complementary products at discounted prices.

@@ -6,4 +6,8 @@ type: store
 
 # Foot Locker
 
-<h3>Sneaker Culture</h3><p>Foot Locker leads sneaker culture in Canada, offering exclusive releases and coveted collaborations. The striped referee shirts of Foot Locker associates are iconic in mall retail.</p><h3>FLX Rewards</h3><p>The FLX membership program offers points on purchases, early access to launches, and chances to win exclusive products and experiences.</p>
+## What Foot Locker Means to Canadian Sneaker Enthusiasts
+
+Foot Locker serves Canadian sneaker culture with the latest releases from major athletic brands. The retailer stocks limited-edition drops and exclusive colorways alongside everyday athletic footwear.
+
+The FLX Rewards program offers 100 points per dollar spent, with rewards redeemable for products, experiences, and exclusive access to limited releases. Members get early access to launches and birthday rewards.

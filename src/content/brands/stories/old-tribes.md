@@ -1,9 +1,23 @@
 ---
 slug: old-tribes
 name: Old Tribes
-type: brand
+type: store
 ---
 
 # Old Tribes
 
-Welcome to OldTribes —a journey that began in 2005 with a simple white mini-van packed with handmade jackets from Ecuador, winding its way through the vast landscapes of Canada. From the bustling streets of Montreal to the remote beauty of the Northwest Territories, we have traveled to every province, sharing our warmth and heritage with Canadians. Our vision? To create clothing that not only shields you from the harshest winters but carries the stories of Indigenous artisans and the timeless traditions of the Kichwa people. In 2006, we planted roots in Edmonton and opened our first shop. But our mission was, and remains, much bigger than simply selling clothing. As we grew, we formed deep bonds with Indigenous communities throughout Canada. Together, we’ve woven the warmth of alpaca wool from Ecuador with the artistry and visions of Canadian Indigenous designs, creating clothing that embodies a unique blend of cultures. Each piece we offer is a testament to this collaboration—a blend of warmth, history, and craftsmanship.Our family-owned business was built on the foundation of traditional techniques passed down through generations of Kichwa artisans. At OldTribes, every product we craft is made with ethically sourced alpaca wool, reflecting our unwavering commitment to sustainability, fair trade, and preserving the cultural heritage that fuels our creations.--- Our ValuesWe believe in more than just making clothing—we believe in making a difference. Every piece you purchase from OldTribes is a part of a bigger story. By choosing our products, you support artisans who pour their skill and love into each stitch. You help preserve traditional craftsmanship and ensure that the beauty of these ancient techniques can be shared with the world. Our commitment to ethical sourcing and fair labor practices means that you can feel confident that every item is made with integrity, respecting both the people who create it and the earth from which it comes.We are more than just a...
+Welcome to OldTribes —a journey that began in 2005 with a simple white mini-van packed with handmade jackets from Ecuador, winding its way through the vast landscapes of Canada. From the bustling streets of Montreal to the remote beauty of the Northwest Territories, we have traveled to every province, sharing our warmth and heritage with Canadians.
+
+Our vision? To create clothing that not only shields you from the harshest winters but carries the stories of Indigenous artisans and the timeless traditions of the Kichwa people. In 2006, we planted roots in Edmonton and opened our first shop.
+
+But our mission was, and remains, much bigger than simply selling clothing. As we grew, we formed deep bonds with Indigenous communities throughout Canada. Together, we’ve woven the warmth of alpaca wool from Ecuador with the artistry and visions of Canadian Indigenous designs, creating clothing that embodies a unique blend of cultures.
+
+Each piece we offer is a testament to this collaboration—a blend of warmth, history, and craftsmanship. Our family-owned business was built on the foundation of traditional techniques passed down through generations of Kichwa artisans.
+
+At OldTribes, every product we craft is made with ethically sourced alpaca wool, reflecting our unwavering commitment to sustainability, fair trade, and preserving the cultural heritage that fuels our creations.
+
+--- Our ValuesWe believe in more than just making clothing—we believe in making a difference. Every piece you purchase from OldTribes is a part of a bigger story. By choosing our products, you support artisans who pour their skill and love into each stitch.
+
+You help preserve traditional craftsmanship and ensure that the beauty of these ancient techniques can be shared with the world. Our commitment to ethical sourcing and fair labor practices means that you can feel confident that every item is made with integrity, respecting both the people who create it and the earth from which it comes.
+
+We are more than just a...

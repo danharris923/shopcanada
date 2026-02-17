@@ -1,9 +1,21 @@
 ---
 slug: red-rebel-armour
 name: Red Rebel Armour
-type: brand
+type: store
 ---
 
 # Red Rebel Armour
 
-About UsRed Rebel Armour is an Indigenous streetwear brand combining Anishinaabe and streetwear culture to form a social enterprise. We blend contemporary fashion with Indigenous aesthetics, creating a signature style that celebrates Indigenous identity, resilience, and pride. But we’re more than just fashion—our brand actively supports Indigenous communities by creating meaningful employment opportunities.Brand MissionOur mission is to empower Indigenous people by showcasing our art, stories, and symbols through fashionable streetwear. Red Rebel Armour fosters cultural appreciation, promotes social justice, and creates a platform for Indigenous voices and narratives to be heard and celebrated.Beyond fashion, we are an Indigenous-led social enterprise that reinvests in our people. Our brand funds an employment service that provides on-the-job paid training in a culturally safe work environment for relatives returning to the community from the criminal justice system.Brand VisionAt Red Rebel Armour, we are dedicated to creating positive change within Indigenous communities by combining streetwear fashion with social enterprise. We have reshaped the workplace, integrating Indigenous ways of knowing into everything we do, from our operations to our brand philosophy.Our vision is to provide meaningful employment opportunities for Indigenous individuals reentering society while promoting Indigenous culture and raising awareness about the challenges our people face. Through fashion, we aim to break cycles, reclaim our narrative, and create lasting impact.Target AudienceRed Rebel Armour's target audience consists of individuals who appreciate and support Indigenous cultures, as well as those who seek to incorporate unique, meaningful, and culturally conscious fashion into their style. We connect with people of diverse backgrounds who value authenticity, social responsibility, and artistic expression.Product RangeRed Rebel Armour offers a diverse range of clothing and acces...
+About UsRed Rebel Armour is an Indigenous streetwear brand combining Anishinaabe and streetwear culture to form a social enterprise. We blend contemporary fashion with Indigenous aesthetics, creating a signature style that celebrates Indigenous identity, resilience, and pride.
+
+But we’re more than just fashion—our brand actively supports Indigenous communities by creating meaningful employment opportunities. Brand MissionOur mission is to empower Indigenous people by showcasing our art, stories, and symbols through fashionable streetwear.
+
+Red Rebel Armour fosters cultural appreciation, promotes social justice, and creates a platform for Indigenous voices and narratives to be heard and celebrated. Beyond fashion, we are an Indigenous-led social enterprise that reinvests in our people.
+
+Our brand funds an employment service that provides on-the-job paid training in a culturally safe work environment for relatives returning to the community from the criminal justice system. Brand VisionAt Red Rebel Armour, we are dedicated to creating positive change within Indigenous communities by combining streetwear fashion with social enterprise.
+
+We have reshaped the workplace, integrating Indigenous ways of knowing into everything we do, from our operations to our brand philosophy. Our vision is to provide meaningful employment opportunities for Indigenous individuals reentering society while promoting Indigenous culture and raising awareness about the challenges our people face.
+
+Through fashion, we aim to break cycles, reclaim our narrative, and create lasting impact. Target AudienceRed Rebel Armour's target audience consists of individuals who appreciate and support Indigenous cultures, as well as those who seek to incorporate unique, meaningful, and culturally conscious fashion into their style.
+
+We connect with people of diverse backgrounds who value authenticity, social responsibility, and artistic expression. Product RangeRed Rebel Armour offers a diverse range of clothing and acces...

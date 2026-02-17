@@ -1,9 +1,19 @@
 ---
 slug: simps-syrups
 name: Simps Syrups
-type: brand
+type: store
 ---
 
 # Simps Syrups
 
-We’re Simps Modern Beverage, a company formed in 2014 by Dave Simpson and Gerry Jobe, two bartenders who decided to take a risk and trade in the nightlife in exchange for launching our own beverage brand. Since then, we’ve created the world’s first line of Vegan Caesar Mixes, launched Canada’s first Coffee Syrups brand, and opened a retail shop in Kelowna specializing in Non-Alcoholic beverages. We are a tip-to-tail beverage company. Whether you are looking for real cane sugar syrups for coffee, cocktails, Sodastream systems and mocktails, Bag-in-Box soda concentrates and mixes for your pop gun, beverage dispensing equipment, gas to power it all or perhaps something cutting edge like the world’s first and only water soluble adaptogens, that’s what we do! Our Name: “Simps” is short for Simpson, (as everyone knows Dave locally as such) and since we were making “SIMPle SYRUPS” it was a no-brainer. “Modern Beverage” speaks for itself, but in essence, we are always pushing the boundaries of what can be created, what can be innovated and challenging ourselves to attempt what has never been done before in the world of Beverage. That’s our pocket, that’s where we live. Our Symbol: The Trident was chosen as it is belongs to Poseidon, the defender of sea life (in regards to our fish/clam free Caesar Mix) as well as in honour of our country of Canada, whose original flag featured a three-pronged Maple Leaf trident. You’re going to google that now aren’t you? Our Syrups: Most Simple Syrup is just that. Simple. 50% Water + 50% Sugar. In comparison, Simps Syrups are produced at a 5-to-1 ratio, (5 parts Sugar to 1 Part Water) resulting in what we refer to in-house as a “Rich Cane Syrup” designed to carry flavour through dilution and heat. Our syrups are pasteurized, and preserved for 365 days so if you’re a slow-sipper, don’t worry, lots of time… We’re excited to see what you create with our syrups, so don’t forget to follow us on social media and tag us in your posts. Thank you f...
+We’re Simps Modern Beverage, a company formed in 2014 by Dave Simpson and Gerry Jobe, two bartenders who decided to take a risk and trade in the nightlife in exchange for launching our own beverage brand.
+
+Since then, we’ve created the world’s first line of Vegan Caesar Mixes, launched Canada’s first Coffee Syrups brand, and opened a retail shop in Kelowna specializing in Non-Alcoholic beverages. We are a tip-to-tail beverage company.
+
+Whether you are looking for real cane sugar syrups for coffee, cocktails, Sodastream systems and mocktails, Bag-in-Box soda concentrates and mixes for your pop gun, beverage dispensing equipment, gas to power it all or perhaps something cutting edge like the world’s first and only water soluble adaptogens, that’s what we do!
+
+Our Name: “Simps” is short for Simpson, (as everyone knows Dave locally as such) and since we were making “SIMPle SYRUPS” it was a no-brainer. “Modern Beverage” speaks for itself, but in essence, we are always pushing the boundaries of what can be created, what can be innovated and challenging ourselves to attempt what has never been done before in the world of Beverage.
+
+That’s our pocket, that’s where we live. Our Symbol: The Trident was chosen as it is belongs to Poseidon, the defender of sea life (in regards to our fish/clam free Caesar Mix) as well as in honour of our country of Canada, whose original flag featured a three-pronged Maple Leaf trident.
+
+You’re going to google that now aren’t you? Our Syrups: Most Simple Syrup is just that. Simple. 50% Water + 50% Sugar. In comparison, Simps Syrups are produced at a 5-to-1 ratio, (5 parts Sugar to 1 Part Water) resulting in what we refer to in-house as a “Rich Cane Syrup” designed to carry flavour through dilution and heat.

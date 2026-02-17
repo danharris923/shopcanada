@@ -1,9 +1,23 @@
 ---
 slug: polysleep
 name: Polysleep
-type: brand
+type: store
 ---
 
 # Polysleep
 
-It all started with a real need... and a lot of pain 😖 In 2016, the life of our founder, Jeremiah Curvers, took an unexpected turn.A diagnosis of a double herniated disc forced him into immobility for three months.Nailed to his bed, unable to move, he was faced with a physical and mental challenge. But sometimes, stopping is the starting point of a revolution 🧠 Being in bed nonstop day and night sucks 💩 But it's in those hard times that genius ideas come alive.Jeremiah realized just how much sleep was misunderstood, underestimated, and even corrupted by the products supposed to support it.A question emerged that became an obsession: HOW CAN WE DEEPLY AND SUSTAINABLY IMPROVE PEOPLE'S SLEEP?Still in bed (it still sucks), he set about creating solutions with a local factory in Montréal, Canada. Not a prototype or two, but 22, before perfecting our first product, the Polysleep Mattress. That’s how Polysleep was born 💜 What began as a personal mission (and obsession to perfection 😝) became a Canadian sleep movement in the next years, helping thousands of people rest better every night.Polysleep is proud to be one of Canada's fastest-growing mattress brands, and the only vertically integrated sleep company in Canada to manufacture its own foam recipe. In the last decade, we served thousands of happy customers online and in-store in North America. We believe in wellness through sleep and in doing business with purpose. %22 Less CO₂ Studies estimate a savings of 80–100 kg of CO₂ per 100 mattresses shipped in boxes (like ours 💪). 62 Prototypes developped To provide the best solutions to real problems. 611 + Mattresses & pillows donations Through our cross-Canada charity network. Returned mattresses get a second life - donated to someone in need through our network of Canadian charities. We craft sleep that’s good for you and the planet. Our secret sauce? Earth-friendly materials and shipping so efficient it makes Tetris jealous. We fit 6 Polysleep mattresses where othe...
+It all started with a real need... and a lot of pain 😖 In 2016, the life of our founder, Jeremiah Curvers, took an unexpected turn. A diagnosis of a double herniated disc forced him into immobility for three months.
+
+Nailed to his bed, unable to move, he was faced with a physical and mental challenge. But sometimes, stopping is the starting point of a revolution 🧠 Being in bed nonstop day and night sucks 💩 But it's in those hard times that genius ideas come alive.
+
+Jeremiah realized just how much sleep was misunderstood, underestimated, and even corrupted by the products supposed to support it. A question emerged that became an obsession: HOW CAN WE DEEPLY AND SUSTAINABLY IMPROVE PEOPLE'S SLEEP?
+
+Still in bed (it still sucks), he set about creating solutions with a local factory in Montréal, Canada. Not a prototype or two, but 22, before perfecting our first product, the Polysleep Mattress. That’s how Polysleep was born 💜 What began as a personal mission (and obsession to perfection 😝) became a Canadian sleep movement in the next years, helping thousands of people rest better every night.
+
+Polysleep is proud to be one of Canada's fastest-growing mattress brands, and the only vertically integrated sleep company in Canada to manufacture its own foam recipe. In the last decade, we served thousands of happy customers online and in-store in North America.
+
+We believe in wellness through sleep and in doing business with purpose. %22 Less CO₂ Studies estimate a savings of 80–100 kg of CO₂ per 100 mattresses shipped in boxes (like ours 💪). 62 Prototypes developped To provide the best solutions to real problems.
+
+611 + Mattresses & pillows donations Through our cross-Canada charity network. Returned mattresses get a second life - donated to someone in need through our network of Canadian charities. We craft sleep that’s good for you and the planet.
+
+Our secret sauce? Earth-friendly materials and shipping so efficient it makes Tetris jealous. We fit 6 Polysleep mattresses where othe...

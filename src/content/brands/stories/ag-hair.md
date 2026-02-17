@@ -1,9 +1,23 @@
 ---
 slug: ag-hair
 name: Ag Hair
-type: brand
+type: store
 ---
 
 # Ag Hair
 
-Proudly made in Canada, our products are thoughtfully crafted and bottled at the source. Each stage of development occurs onsite at our state-of-the-art manufacturing facility in beautiful Vancouver, BC. Our ingredients Clean is in our nature We combine science and nature, selecting the highest quality ingredients to develop formulas that deliver purposeful results. Driven by care, the entire collection is free from drying sulfates, vegan and cruelty-free. Vegan and cruelty-free Always without: drying sulfates, gluten, DEA, PABA, PARABENS, DMDMH AND MORE Our process Responsible impact We believe how we create our products is meaningful — from end to end. It’s how we make our products, care about our people and treat our planet. Refill pouches Aluminum packaging Recycled plastic packaging Our heart Giving back Giving back is the reward for our success and we are committed to making a difference on a local and global level. Each year, we donate product, food and financial support to organizations across our community. Since 2008, we have partnered with One Girl Can helping girls in Kenya harness their power to create gender parity and meaningful change.Help support One Girl Can, consider giving the gift of education at checkout. Learn about One Girl Can → Over $2.49M donated, funding education, training and mentorship 138 facilities, 1000 scholarships, 11K girls mentored annually our founders legacy of innovation Since 1989, founders John Davis, a seasoned stylist, and Lotte Davis, a designer & entrepreneur, have combined their expertise to create clean, sustainable hair care before it was mainstream.John's focus has always been on using high quality ingredients to create products that perform. Lotte's design approach, inspired by simplicity and natural beauty, reinforced the clean formulas inside. With the belief that "giving back is the reward for our success", Lotte founded the charity One Girl Can in 2008, to create generational change for girls in Kenya.
+Proudly made in Canada, our products are thoughtfully crafted and bottled at the source. Each stage of development occurs onsite at our state-of-the-art manufacturing facility in beautiful Vancouver, BC.
+
+Our ingredients Clean is in our nature We combine science and nature, selecting the highest quality ingredients to develop formulas that deliver purposeful results. Driven by care, the entire collection is free from drying sulfates, vegan and cruelty-free.
+
+Vegan and cruelty-free Always without: drying sulfates, gluten, DEA, PABA, PARABENS, DMDMH AND MORE Our process Responsible impact We believe how we create our products is meaningful — from end to end.
+
+It’s how we make our products, care about our people and treat our planet. Refill pouches Aluminum packaging Recycled plastic packaging Our heart Giving back Giving back is the reward for our success and we are committed to making a difference on a local and global level.
+
+Each year, we donate product, food and financial support to organizations across our community. Since 2008, we have partnered with One Girl Can helping girls in Kenya harness their power to create gender parity and meaningful change.
+
+Help support One Girl Can, consider giving the gift of education at checkout. Learn about One Girl Can → Over $2. 49M donated, funding education, training and mentorship 138 facilities, 1000 scholarships, 11K girls mentored annually our founders legacy of innovation Since 1989, founders John Davis, a seasoned stylist, and Lotte Davis, a designer & entrepreneur, have combined their expertise to create clean, sustainable hair care before it was mainstream.
+
+John's focus has always been on using high quality ingredients to create products that perform. Lotte's design approach, inspired by simplicity and natural beauty, reinforced the clean formulas inside.
+
+With the belief that "giving back is the reward for our success", Lotte founded the charity One Girl Can in 2008, to create generational change for girls in Kenya.

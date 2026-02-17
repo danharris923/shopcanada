@@ -1,9 +1,23 @@
 ---
 slug: attitude
 name: Attitude
-type: brand
+type: store
 ---
 
 # Attitude
 
-In your busy everyday life, finding clean products should never feel like a burden — it should be a given. That’s why ATTITUDE® brings you peace of mind with clean, high-performing essentials that fit your lifestyle. Whether it’s for your skin, your home, or your family, every product is made to make your life a little easier, naturally.Our MissionYou deserve products that truly care for you without compromise. That belief is what sparked the creation of ATTITUDE® in 2006. For our CEO, Jean-François Bernier, the imminent arrival of his first child ignited a deep desire to help build a better future for the next generations. Together with his co-founder, he set out on a mission to offer families safer, cleaner, and genuinely effective products. Since then, ATTITUDE® has grown into a proudly Canadian company — born here, grown here, creating everyday essentials that reflect your values: transparency, innovation, and eco-consciousness. Thoughtfully created by Canadians, for Canadians, our products care for you and your family without ever compromising.Our mission: To bring you peace of mind in your everyday routine.Our VisionIn a world full of empty claims and greenwashing, we offer you something different.We call it Conscious Chemistry: our unique approach that combines clean ingredients, in-house innovation, and rigorous standards to meet the needs of people who care about their health, their homes, and their planet. Our vision is to redefine what “clean” truly means, by proving that performance, transparency, and sustainability can — and must — go hand in hand. EWG Verified®Formulated with worry-free ingredients.Natural OriginHigh-performance and naturally derived ingredients.Plastic FreeInnovative plastic-free packaging designed for a more sustainable future.VeganNo animal-derived ingredients & no animal testing.ATTITUDE Around The WorldProudly Canadian and available in over 55 countries, ATTITUDE® is redefining the standards of clean beauty and sustainable living ...
+In your busy everyday life, finding clean products should never feel like a burden — it should be a given. That’s why ATTITUDE® brings you peace of mind with clean, high-performing essentials that fit your lifestyle.
+
+Whether it’s for your skin, your home, or your family, every product is made to make your life a little easier, naturally. Our MissionYou deserve products that truly care for you without compromise. That belief is what sparked the creation of ATTITUDE® in 2006.
+
+For our CEO, Jean-François Bernier, the imminent arrival of his first child ignited a deep desire to help build a better future for the next generations. Together with his co-founder, he set out on a mission to offer families safer, cleaner, and genuinely effective products.
+
+Since then, ATTITUDE® has grown into a proudly Canadian company — born here, grown here, creating everyday essentials that reflect your values: transparency, innovation, and eco-consciousness. Thoughtfully created by Canadians, for Canadians, our products care for you and your family without ever compromising.
+
+Our mission: To bring you peace of mind in your everyday routine. Our VisionIn a world full of empty claims and greenwashing, we offer you something different. We call it Conscious Chemistry: our unique approach that combines clean ingredients, in-house innovation, and rigorous standards to meet the needs of people who care about their health, their homes, and their planet.
+
+Our vision is to redefine what “clean” truly means, by proving that performance, transparency, and sustainability can — and must — go hand in hand. EWG Verified®Formulated with worry-free ingredients.
+
+Natural OriginHigh-performance and naturally derived ingredients. Plastic FreeInnovative plastic-free packaging designed for a more sustainable future. VeganNo animal-derived ingredients & no animal testing.
+
+ATTITUDE Around The WorldProudly Canadian and available in over 55 countries, ATTITUDE® is redefining the standards of clean beauty and sustainable living ...

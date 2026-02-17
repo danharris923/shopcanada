@@ -1,9 +1,23 @@
 ---
 slug: thrive-protein
 name: Thrive Protein
-type: brand
+type: store
 ---
 
 # Thrive Protein
 
-Welcome to THRIVE A Family Owned, Canadian-Based Fitness Nutrition Company. Who are we? Thrive Protein is a family-run company that produces all-natural health and fitness nutrition products, proudly made in Ontario, Canada. “We are a husband and wife team from Collingwood, Ontario. We started Thrive because we wanted to provide our fellow health enthusiasts with truly exceptional nutritional support. We take immense pride in our product line and we focus on providing unparalleled quality, without compromises.” Joe, Gillian (and Grace) – Owners of Thrive Protein The Thrive Team Gillian House My background stems from a life of competitive sport. I competed provincially in middle-distance running, cross-country, and track and field for a number of years, before becoming a certified trainer. There are many components to being a competitive athlete, and I can give an insider’s view to the dedication, mindset, and nature of training at a high level. My professional background was in sales, and I now operate the sales and customer care at Thrive Protein. Joe Clark Joe has had a passion for health and fitness throughout his life. Joe’s athletic disciplines began in middle-distance running and resistance training, and now his main focus is on squash. He is a certified personal trainer, a strength and conditioning coach, a PN1 nutrition coach, and has coached clients for a number of years. Joe is currently completing his dissertation project to earn his BSc (Hons) in Sport and Exercise Science. He directly applies his knowledge of human physiology and nutrition to our product designs at Thrive. Grace Grace is 3 years old, enjoys painting, running around, and helping fulfill orders! Alice Alice is 9 months old and is learning the ropes... Gillian House My background stems from a life of competitive sport. I competed provincially in middle-distance running, cross-country, and track and field for a number of years, before becoming a certified trainer. There are many components ...
+Welcome to THRIVE A Family Owned, Canadian-Based Fitness Nutrition Company. Who are we? Thrive Protein is a family-run company that produces all-natural health and fitness nutrition products, proudly made in Ontario, Canada.
+
+“We are a husband and wife team from Collingwood, Ontario. We started Thrive because we wanted to provide our fellow health enthusiasts with truly exceptional nutritional support. We take immense pride in our product line and we focus on providing unparalleled quality, without compromises.
+
+” Joe, Gillian (and Grace) – Owners of Thrive Protein The Thrive Team Gillian House My background stems from a life of competitive sport. I competed provincially in middle-distance running, cross-country, and track and field for a number of years, before becoming a certified trainer.
+
+There are many components to being a competitive athlete, and I can give an insider’s view to the dedication, mindset, and nature of training at a high level. My professional background was in sales, and I now operate the sales and customer care at Thrive Protein.
+
+Joe Clark Joe has had a passion for health and fitness throughout his life. Joe’s athletic disciplines began in middle-distance running and resistance training, and now his main focus is on squash. He is a certified personal trainer, a strength and conditioning coach, a PN1 nutrition coach, and has coached clients for a number of years.
+
+Joe is currently completing his dissertation project to earn his BSc (Hons) in Sport and Exercise Science. He directly applies his knowledge of human physiology and nutrition to our product designs at Thrive.
+
+Grace Grace is 3 years old, enjoys painting, running around, and helping fulfill orders! Alice Alice is 9 months old and is learning the ropes... Gillian House My background stems from a life of competitive sport.
+
+I competed provincially in middle-distance running, cross-country, and track and field for a number of years, before becoming a certified trainer. There are many components ...

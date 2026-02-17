@@ -1,9 +1,21 @@
 ---
 slug: pyrrha
 name: Pyrrha
-type: brand
+type: store
 ---
 
 # Pyrrha
 
-Sustainable Jewellery With Meaning SHOP TALISMANS Sterling Silver Collection SHOP NOW 14k Gold Collection SHOP NOW Pyrrha x Wicked: For Good SHOP COLLECTION MADE IN CANADAWe create talismans that carry deep personal meaning for those who wear them. As one of the world's most sustainable jewellery brands, we believe that how—and where—a piece is made matters. That’s why we handcraft each talisman from start to finish in our certified zero-carbon studio in Vancouver. STERLING SILVER 14K GOLD CUSTOMER FAVOURITES Direction Sale priceFrom $255.00 CAD Trust in Yourself Sale priceFrom $289.00 CAD Live Every Moment Sale priceFrom $289.00 CAD Trust The Universe Sale priceFrom $275.00 CAD Seek The Light Sale priceFrom $275.00 CAD Hummingbird Sale priceFrom $255.00 CAD Watch Over Me Sale priceFrom $235.00 CAD New Beginnings Sale priceFrom $235.00 CAD Direction 14K Gold Talisman Sale priceFrom $1,075.00 CAD New Beginnings 14K Gold Talisman Sale priceFrom $699.00 CAD Live Every Moment 14K Gold Talisman Sale priceFrom $2,299.00 CAD Unbreakable 14K Gold Talisman Sale priceFrom $1,365.00 CAD Trust the Universe 14K Gold Talisman Sale priceFrom $2,375.00 CAD Trust in Yourself 14K Gold Talisman Sale priceFrom $2,199.00 CAD Hummingbird 14K Gold Talisman Sale priceFrom $1,365.00 CAD Seek the Light 14K Gold Talisman Sale priceFrom $2,199.00 CAD Feel the Fear Sale priceFrom $319.00 CAD Amor Fati Sale priceFrom $349.00 CAD Recovery Sale priceFrom $349.00 CAD Family Roots Sale priceFrom $379.00 CAD Seek The Light Sale priceFrom $275.00 CAD Mandala Sale priceFrom $349.00 CAD Lotus Flower Sale priceFrom $315.00 CAD Feather Sale priceFrom $305.00 CAD WHERE WE MAKE ITZero Carbon StudioFrom wax carving to casting (in 100% recycled metals) to polishing, we handcraft our sustainable jewellery from start to finish in our certified Zero Carbon Vancouver studio. Sustainability is paramount to us, so we designed our building with the planet in mind. We used low-carbon cross-laminated timber as our pri...
+Pyrrha is a Vancouver-based jewellery brand founded in 1995 by Wade Papin and Danielle Wilmore. The brand is known worldwide for its talisman jewellery — pieces cast from authentic 18th and 19th century wax seals that carry symbolic meanings drawn from heraldic traditions. Each talisman features a different image and motto, allowing wearers to choose pieces that reflect their personal values, intentions, and life stories. Pyrrha has grown from a small Vancouver studio into one of Canada's most internationally recognized jewellery brands.
+
+## Talisman Jewellery
+
+Every Pyrrha talisman begins with a genuine antique wax seal — the kind once used to seal letters and mark documents with personal insignia. Papin and Wilmore have amassed one of the world's largest collections of these historical seals, and each one is used to cast jewellery in sterling silver, 14k gold, and bronze using the lost-wax casting method. The resulting pieces carry intricate, centuries-old designs depicting animals, plants, celestial bodies, and Latin mottos with meanings like "trust the universe," "new beginnings," and "live every moment."
+
+## Zero-Carbon Studio
+
+Pyrrha handcrafts every piece from start to finish in its Vancouver studio, which the company built as a certified zero-carbon facility. The building uses cross-laminated timber construction and sustainable design principles, and the studio uses 100% recycled precious metals for casting. Sustainability isn't an afterthought for Pyrrha — it's built into the physical structure of where the jewellery is made. The brand has been recognized as one of the most sustainable jewellery companies in the world.
+
+## Global Reach, Vancouver Roots
+
+Pyrrha sells through its own retail locations, its online store, and hundreds of retailers across North America and internationally. The brand has collaborated with major entertainment properties and cultural institutions, bringing its talisman concept to wider audiences while maintaining the handcrafted Vancouver production that defines its identity. For Canadians who want jewellery that carries real meaning, real history, and a genuine commitment to sustainability, Pyrrha offers something truly distinctive.

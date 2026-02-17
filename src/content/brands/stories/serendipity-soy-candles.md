@@ -1,9 +1,23 @@
 ---
 slug: serendipity-soy-candles
 name: Serendipity Soy Candles
-type: brand
+type: store
 ---
 
 # Serendipity Soy Candles
 
-About Us As we enter our 21st year in the candle-making journey, we’re filled with gratitude and excitement at Serendipity Soy Candles. Since 2003, we've been dedicated to crafting candles that bring warmth, joy, happiness, and serenity to homes across Canada and beyond. Each candle we create is a little spark of inspiration, lovingly made by hand and designed to evoke a sense of calm and happiness. My journey began in beautiful Nelson, British Columbia, with stops in Manitoba and Ontario before life led me to Nassau, Bahamas. It was on this enchanting island that my love for candle-making was born. Inspired by the natural beauty around me, I became passionate about creating candles that were pure, environmentally friendly, and free from any harmful ingredients.Our commitment to pure, all-natural candles deepened with my mom's cancer diagnosis. This experience opened my eyes to the hidden dangers in everyday products, and it inspired our mission: to create pollutant-free, clean-burning candles that are safe for you and your home. Though we lost my mom in 2013, her spirit continues to guide us, inspiring everything we do.Today, our journey has brought us back to Collingwood, Ontario, where we pour each candle with meticulous care. We're proud to be local and Canadian, creating products that are local, sustainable, and crafted to perfection. At Serendipity, we’re not just about production but about preserving the art of handmade craftsmanship—ensuring every candle is an expression of quality, intention, and love. Our amazing team hand pours each and every candle with care and commitment.Our all-natural, pure soy candles are made with the utmost dedication to quality, using cotton wicks and timeless scents like lavender and eucalyptus that invoke peaceful memories and provide a sense of calm and comfort in every room. These candles are created with purpose, and each one is our promise of warmth and wellness to you.As we celebrate this incredible milestone, we want to e...
+About Us As we enter our 21st year in the candle-making journey, we’re filled with gratitude and excitement at Serendipity Soy Candles. Since 2003, we've been dedicated to crafting candles that bring warmth, joy, happiness, and serenity to homes across Canada and beyond.
+
+Each candle we create is a little spark of inspiration, lovingly made by hand and designed to evoke a sense of calm and happiness. My journey began in beautiful Nelson, British Columbia, with stops in Manitoba and Ontario before life led me to Nassau, Bahamas.
+
+It was on this enchanting island that my love for candle-making was born. Inspired by the natural beauty around me, I became passionate about creating candles that were pure, environmentally friendly, and free from any harmful ingredients.
+
+Our commitment to pure, all-natural candles deepened with my mom's cancer diagnosis. This experience opened my eyes to the hidden dangers in everyday products, and it inspired our mission: to create pollutant-free, clean-burning candles that are safe for you and your home.
+
+Though we lost my mom in 2013, her spirit continues to guide us, inspiring everything we do. Today, our journey has brought us back to Collingwood, Ontario, where we pour each candle with meticulous care.
+
+We're proud to be local and Canadian, creating products that are local, sustainable, and crafted to perfection. At Serendipity, we’re not just about production but about preserving the art of handmade craftsmanship—ensuring every candle is an expression of quality, intention, and love.
+
+Our amazing team hand pours each and every candle with care and commitment. Our all-natural, pure soy candles are made with the utmost dedication to quality, using cotton wicks and timeless scents like lavender and eucalyptus that invoke peaceful memories and provide a sense of calm and comfort in every room.
+
+These candles are created with purpose, and each one is our promise of warmth and wellness to you. As we celebrate this incredible milestone, we want to e...

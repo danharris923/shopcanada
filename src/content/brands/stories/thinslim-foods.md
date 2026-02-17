@@ -1,9 +1,21 @@
 ---
 slug: thinslim-foods
 name: Thinslim Foods
-type: brand
+type: store
 ---
 
-# Thinslim Foods
+# ThinSlim Foods
 
-Say Goodbye to Carbs! Get 25% Off Our Sample Pack Shop Sample Pack Only the best low-carb ingredients - Plus all nutritional information is independently lab tested. #1 on Google Shopping - Our tasty, zero net carb bread ranks first for 'low carb bread' on Google Shopping. Risk Free with our 100% money back guarantee - You will like the taste or we will refund your order, no questions asked. No Blood Sugar Spike Taste Guarantee Low Calorie Lab Tested Low Carb Limited Edition Zero Net Carb Everything Bagels Seeds on Top! Let Me See! Snacking Is Back and Better than Ever! Shop Pretzels Let Your Creativity Shine! Zero Net Carb Pizza Crust --> All Pizza Crust Pretzels Bread & Buns Bagels Brownies Cakes Cookies Muffins Squares Pasta Chips Candy & Bars More Products New Products Build A Better You Food options inspire you to stay on track by not wasting a calorie or carb Taste Guarantee We think our products taste so good we guarantee it! Lab Tested All of our permanent products are independently lab tested to ensure the most accurate Nutrition Facts. Most Popular Pizza Crust $8.99 SHOP NOW Bread - Plain $8.99 SHOP NOW Bagels $8.99 SHOP NOW Brownie 12pack $34.99 SHOP NOW
+ThinSlim Foods is a specialty food company that produces low-carb, low-calorie alternatives to bread, bagels, pasta, brownies, cookies, and other foods that people following ketogenic, diabetic, or low-carb diets typically have to give up. The brand's flagship product is its zero net carb bread — a loaf that looks, toasts, and sandwiches like regular bread but contains virtually no digestible carbohydrates, making it one of the most popular low-carb bread options in North America.
+
+## Zero Net Carb Staples
+
+ThinSlim Foods' product range covers the carb-heavy staples that low-carb dieters miss most. The bread line includes plain, everything, honey, and other varieties — all at zero net carbs per slice. Bagels, pizza crusts, hamburger buns, and hot dog buns extend the range into meal formats that are normally off-limits on keto and low-carb diets. The brand also produces low-carb brownies, cookies, muffins, cakes, pasta, pretzels, and chips, creating a surprisingly complete pantry for people living without traditional carbs.
+
+## Lab-Tested Accuracy
+
+ThinSlim Foods distinguishes itself by independently lab-testing all permanent products to verify nutritional claims. In an industry where many "low-carb" products rely on creative label math, ThinSlim has its nutrition facts confirmed by third-party laboratories. The company also offers a taste guarantee — a full refund if customers don't enjoy the products — reflecting confidence in the flavour and texture of formulations that use ingredients like oat fiber, wheat protein, and resistant starch.
+
+## Shipping to Canada
+
+ThinSlim Foods ships to Canada through its online store, making its low-carb products accessible to Canadian consumers following keto, diabetic, or carb-conscious diets. For Canadians who refuse to believe that a low-carb lifestyle means permanently giving up bread, bagels, and brownies, ThinSlim Foods provides alternatives that make dietary restrictions feel less like deprivation.

@@ -1,9 +1,25 @@
 ---
 slug: la-vie-en-rose
-name: La Vie en Rose
-type: brand
+name: La Vie En Rose
+type: store
 ---
 
-# La Vie en Rose
+# La Vie En Rose
 
-WELCOME TO LA VIE EN ROSE WELCOME TO LA VIE EN ROSE Experts in lingerie, swimwear and loungewear since 1985. BRAND MISSION BRAND MISSION We celebrate women through products that provide comfort to their everyday moments while making shopping for lingerie, sleepwear and swimwear easier. BRAND PROMISE BRAND PROMISE We offer a complete selection of carefully crafted intimates that feel good to wear, with a bit of real talk on the side.​ BRAND PROMISE We offer a complete selection of carefully crafted intimates that feel good to wear, with a bit of real talk on the side.​ BRAND BELIEF BRAND BELIEF We believe that each woman is unique and that attention to detail is what makes a product high quality.​ BRANDPURPOSE BRAND PURPOSE A place where lingerie fits both your body and spirit. Where comfort is felt in every fiber, and in the heart and mind. Together, we can get through the hard days, brighten the slow days, and celebrate your best days. Because buying a bra, a swimsuit or pajamas should be a treat, not a task. We will make it easier and more enjoyable for you. So, pull up a chair and stay a while. Let's be comfortable talking about it. There's no need to hold back. Here, we will always get it.Here, we will always get you. We are la Vie en Rose,Simply closer to you. OUR PRODUCTS OUR PRODUCTS La Vie en Rose is proud to be a Quebec-based company. All our products are conceived and designed by our designers from our head office, located in Montreal. Supporting and encouraging local talent has always been and remains a priority for us. BRAS We offer a variety of styles and comfortable fits to support our customers throughout their day. PANTIES We offer a selection of matching panties in the same fabrics and colourways as our bras to create the perfect set. LINGERIE We offer a selection of feminine lingerie for every occasion, crafted from sumptuous fabrics. PAJAMAS We offer a wide variety of pajamas to mix and match, available in a range of soft fabrics. SWIMWEAR & BEACH...
+WELCOME TO LA VIE EN ROSE WELCOME TO LA VIE EN ROSE Experts in lingerie, swimwear and loungewear since 1985. BRAND MISSION BRAND MISSION We celebrate women through products that provide comfort to their everyday moments while making shopping for lingerie, sleepwear and swimwear easier.
+
+BRAND PROMISE BRAND PROMISE We offer a complete selection of carefully crafted intimates that feel good to wear, with a bit of real talk on the side. ​ BRAND PROMISE We offer a complete selection of carefully crafted intimates that feel good to wear, with a bit of real talk on the side.
+
+​ BRAND BELIEF BRAND BELIEF We believe that each woman is unique and that attention to detail is what makes a product high quality. ​ BRANDPURPOSE BRAND PURPOSE A place where lingerie fits both your body and spirit.
+
+Where comfort is felt in every fiber, and in the heart and mind. Together, we can get through the hard days, brighten the slow days, and celebrate your best days. Because buying a bra, a swimsuit or pajamas should be a treat, not a task.
+
+We will make it easier and more enjoyable for you. So, pull up a chair and stay a while. Let's be comfortable talking about it. There's no need to hold back. Here, we will always get it. Here, we will always get you.
+
+We are la Vie en Rose,Simply closer to you. OUR PRODUCTS OUR PRODUCTS La Vie en Rose is proud to be a Quebec-based company. All our products are conceived and designed by our designers from our head office, located in Montreal.
+
+Supporting and encouraging local talent has always been and remains a priority for us. BRAS We offer a variety of styles and comfortable fits to support our customers throughout their day. PANTIES We offer a selection of matching panties in the same fabrics and colourways as our bras to create the perfect set.
+
+LINGERIE We offer a selection of feminine lingerie for every occasion, crafted from sumptuous fabrics. PAJAMAS We offer a wide variety of pajamas to mix and match, available in a range of soft fabrics.
+
+SWIMWEAR & BEACH...

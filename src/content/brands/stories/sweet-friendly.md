@@ -1,9 +1,15 @@
 ---
 slug: sweet-friendly
 name: Sweet Friendly
-type: brand
+type: store
 ---
 
 # Sweet Friendly
 
-­ About Us - Sweet & Friendly Erythritol X Close Sweet & Friendly Co, a natural product and sweetener company, brings together industry leaders to provide the best in natural food innovation.With a combined 75 years of experience in food, confectionery, biotechnology and manufacturing innovation, we know how to bring the best to all to our clients and retail consumers.Sweet & Friendly does not compromise on quality or high standards when developing its products. S&F products have been developed to meet all life styles.Our Sweet and Friendly erythritol zero-calorie sweetener provides benefits such as no added sugar, low net carbohydrates, and dental health.In addition, since erythritol has low GI rating, it allows diabetics and people following low glycemic diets to enjoy our products without worrying about raising their blood glucose or insulin levels.Our ProductsConfectionery Using our company’s innovative process, S&F deliver’s the highest quality, natural confectionery products: Mints Candies Lollipops Gums Ice ChipsCondiments Ketchup SrirachaBulk Erythritol S&F erythritol is 100% USA made and is available in the following sizes: 1lb Bag 4 lb bag BulkTo order any of our products, please visit our online store.WordPress Lightbox Plugin
+­ About Us - Sweet & Friendly Erythritol X Close Sweet & Friendly Co, a natural product and sweetener company, brings together industry leaders to provide the best in natural food innovation. With a combined 75 years of experience in food, confectionery, biotechnology and manufacturing innovation, we know how to bring the best to all to our clients and retail consumers.
+
+Sweet & Friendly does not compromise on quality or high standards when developing its products. S&F products have been developed to meet all life styles. Our Sweet and Friendly erythritol zero-calorie sweetener provides benefits such as no added sugar, low net carbohydrates, and dental health.
+
+In addition, since erythritol has low GI rating, it allows diabetics and people following low glycemic diets to enjoy our products without worrying about raising their blood glucose or insulin levels.
+
+Our ProductsConfectionery Using our company’s innovative process, S&F deliver’s the highest quality, natural confectionery products: Mints Candies Lollipops Gums Ice ChipsCondiments Ketchup SrirachaBulk Erythritol S&F erythritol is 100% USA made and is available in the following sizes: 1lb Bag 4 lb bag BulkTo order any of our products, please visit our online store.

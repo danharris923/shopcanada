@@ -1,9 +1,21 @@
 ---
 slug: suetables
 name: Suetables
-type: brand
+type: store
 ---
 
 # Suetables
 
-Our Story At Suetables, we believe jewelry is more than just an accessory-it's a way to tell your story. Each piece marks a moment, a memory, a milestone. Whether it's a quiet reminder of strength or a celebration of who you are, our designs are made to be worn with meaning. Our collection is curated to house Suetables-branded original jewelry designs, product collaborations with like-minded creators, and soulful brands with whom we share a philosophy of delivering happiness, connection, and support for self-expression to our community- one charm at a time. Proudly Canadian and independently owned, Suetables is a testament to the creative spirit of women in business. We are here for the storytellers, the seekers and those who embrace life on their own terms. From small wins to big moments, your jewelry should reflect you. Our Founder Suetables began in 2005 as a passion project by founder + CEO Sue Henderson, a stay-at-home mom looking for a creative and meaningful outlet. What started as hand-stamping words onto vintage spoons for baby gifts soon evolved into something more personal—etching her sons' initials onto pendants to keep them close to her heart. As friends began requesting their own personalized pieces, the vision grew. From simple hand-stamped charms to a full jewelry line, Suetables was built on the idea of using words and symbols to tell stories and express personal truths. Today, Suetables has grown from a home-based business into a thriving retail brand with multiple storefronts and a global e-commerce presence. Suetables have been worn by icons like Meghan Sussex and are featured in FASHION, Marie Claire, Harper's Bazaar and People Magazine. While the brand has expanded, our mission remains the same: to create quality jewelry that helps people share their stories and carry meaning in a beautiful, wearable form.
+Our Story At Suetables, we believe jewelry is more than just an accessory-it's a way to tell your story. Each piece marks a moment, a memory, a milestone. Whether it's a quiet reminder of strength or a celebration of who you are, our designs are made to be worn with meaning.
+
+Our collection is curated to house Suetables-branded original jewelry designs, product collaborations with like-minded creators, and soulful brands with whom we share a philosophy of delivering happiness, connection, and support for self-expression to our community- one charm at a time.
+
+Proudly Canadian and independently owned, Suetables is a testament to the creative spirit of women in business. We are here for the storytellers, the seekers and those who embrace life on their own terms.
+
+From small wins to big moments, your jewelry should reflect you. Our Founder Suetables began in 2005 as a passion project by founder + CEO Sue Henderson, a stay-at-home mom looking for a creative and meaningful outlet.
+
+What started as hand-stamping words onto vintage spoons for baby gifts soon evolved into something more personal—etching her sons' initials onto pendants to keep them close to her heart. As friends began requesting their own personalized pieces, the vision grew.
+
+From simple hand-stamped charms to a full jewelry line, Suetables was built on the idea of using words and symbols to tell stories and express personal truths. Today, Suetables has grown from a home-based business into a thriving retail brand with multiple storefronts and a global e-commerce presence.
+
+Suetables have been worn by icons like Meghan Sussex and are featured in FASHION, Marie Claire, Harper's Bazaar and People Magazine. While the brand has expanded, our mission remains the same: to create quality jewelry that helps people share their stories and carry meaning in a beautiful, wearable form.

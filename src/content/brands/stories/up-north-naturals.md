@@ -1,9 +1,23 @@
 ---
 slug: up-north-naturals
 name: Up North Naturals
-type: brand
+type: store
 ---
 
 # Up North Naturals
 
-Clean ingredients have always been our priority. Our formulations are not only filled with good products, they are also superstars for providing moisture and long lasting hold. Our Story Since 2015, Up North Naturals has grown from a small, kitchen-born passion project into a celebrated Canadian hair care brand – all because we believe no curl problem is too tough to fix.It started with one woman's journey: battling scalp irritation and damaged natural hair. In search of gentle, effective alternatives, she began carefully blending plant-based ingredients that would cleanse, hydrate, and revive curls — without harmful chemicals.Today, UNN’s proudly clean formulations work harmoniously across all textures — curly, coily, and kinky — to solve a range of challenges: from dryness and frizz to scalp concerns and style definition . We’ve made it our mission to deliver real results: clarify without stripping, nourish without greasing, define without crunch, and most importantly, restore confidence in every curl.Whether it's healing a flaky scalp, restoring moisture, or providing long-lasting style, UNN is here to support every individual’s Hair journey. For a decade and beyond, we’ve been the clean, inclusive brand that stands behind your curls—because every curl deserves care that understands its unique needs. WHERE TO FIND US IN STORES Our hair care products are available at select Target locations in the U.S. Walmart Canada in store and online, as well as independent salon and beauty supply shops across North America, UK and the Caribbean. To bring Up North Naturals into your salon or beauty supply outlet, contact us. See our retail locations See what people are saying about us! TESTIMONIALS Elisha Greene | NaturalFlow Salon Owner My passion is helping others love who they were created to be. As a salon owner and hairstylist, I don't make people beautiful - I just enhance what they already have and focus on who they are as an individual. I love working with curls and coi...
+Clean ingredients have always been our priority. Our formulations are not only filled with good products, they are also superstars for providing moisture and long lasting hold. Our Story Since 2015, Up North Naturals has grown from a small, kitchen-born passion project into a celebrated Canadian hair care brand – all because we believe no curl problem is too tough to fix.
+
+It started with one woman's journey: battling scalp irritation and damaged natural hair. In search of gentle, effective alternatives, she began carefully blending plant-based ingredients that would cleanse, hydrate, and revive curls — without harmful chemicals.
+
+Today, UNN’s proudly clean formulations work harmoniously across all textures — curly, coily, and kinky — to solve a range of challenges: from dryness and frizz to scalp concerns and style definition .
+
+We’ve made it our mission to deliver real results: clarify without stripping, nourish without greasing, define without crunch, and most importantly, restore confidence in every curl. Whether it's healing a flaky scalp, restoring moisture, or providing long-lasting style, UNN is here to support every individual’s Hair journey.
+
+For a decade and beyond, we’ve been the clean, inclusive brand that stands behind your curls—because every curl deserves care that understands its unique needs. WHERE TO FIND US IN STORES Our hair care products are available at select Target locations in the U.
+
+S. Walmart Canada in store and online, as well as independent salon and beauty supply shops across North America, UK and the Caribbean. To bring Up North Naturals into your salon or beauty supply outlet, contact us.
+
+See our retail locations See what people are saying about us! TESTIMONIALS Elisha Greene | NaturalFlow Salon Owner My passion is helping others love who they were created to be. As a salon owner and hairstylist, I don't make people beautiful - I just enhance what they already have and focus on who they are as an individual.
+
+I love working with curls and coi...

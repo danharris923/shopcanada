@@ -1,9 +1,21 @@
 ---
 slug: loop-mission
 name: Loop Mission
-type: brand
+type: store
 ---
 
 # Loop Mission
 
-Skip to content Facebook Instagram TikTok YouTube LinkedIn About us We rescue perfectly good fruits and veggies that would have been thrown out simply for aesthetic reasons like shape and size. Then we make delicious & healthy products like cold-pressed juices and more. Even our leftover pulp gets repurposed! Our Story This whole grand adventure began on a Ferris wheel where our first "date" took place. We stayed there for hours, talking and envisioning a better world. We barely knew each other, but after that brief moment, we knew that with our shared passion for food and the environment, we had to start a project together. A project that would make a positive impact on the world.At the same time, we received a call from Fred at Courchesne Larose, the largest fruit and vegetable distributor in Canada. He was looking for a solution for the 16 to 20 tons of food they were losing every day. After visiting their warehouse and quickly discovering why these perfectly good fruits and vegetables were ending up in a landfill, the three of us promised to immediately get to work and find a solution. The stars were aligned, and the dream team was born.To tackle such a global challenge, we had no choice but to set our goals high. From day one, the vision was clear: to become the global leader in the circular economy within the food industry and to inspire new business practices by placing our mission, commitment, and our values at the heart of all our decisions. It is this vision that still motivates us every day, and we won't stop until food waste is eradicated from the face of the earth. That's our promise.Thank you for being here with us, and thank you for participating in our mission—you all contribute to something grand, and we will be eternally grateful to you.David, Julie & Fred — LOOP Mission Founders OUR RESCUE MISSION Nobody likes to be rejected, not even food. We came to the rescue and saw an opportunity to better the food industry by valorizing foods that would have...
+Loop Mission is a Montreal-based circular food company founded in 2016 by Julie Poitras-Saulnier and David Côté. The company's mission is to fight food waste by rescuing imperfect, surplus, and unsold fruits and vegetables from farms and distributors, then transforming them into cold-pressed juices, smoothies, soups, alcoholic beverages, and other products. The founding insight was simple: perfectly nutritious produce gets thrown away every day because it doesn't meet the cosmetic standards of grocery stores — bruised apples, oddly shaped carrots, overripe bananas.
+
+## The Circular Model
+
+Loop's business model turns food waste into a commercial product. The company collects fruits and vegetables that would otherwise go to landfill — from farms, distributors, and grocery retailers — and processes them in its Montreal facility. The cold-pressed juices are the flagship product, but Loop has expanded into craft beer (brewed from rescued bread), gin (distilled from surplus potatoes and fruits), frozen smoothie packs, and ready-to-heat soups. Every product carries a label identifying the approximate weight of food rescued in its production.
+
+## The Product Line
+
+Loop's juice line features blends like watermelon-strawberry, green juice (kale, cucumber, apple), and orange-carrot-turmeric. The Loop Gin, made in partnership with a Quebec distillery, uses surplus fruit and grain. Loop Beer is brewed with unsold bread from Montreal bakeries. The products are positioned as premium — this isn't "discount" food, but rather high-quality products made from ingredients that happen to have been rescued from the waste stream. The branding is vibrant and playful, making the food waste message approachable rather than preachy.
+
+## Impact and Availability
+
+Loop Mission has rescued millions of kilograms of food since its founding. The products are available at major Quebec grocery retailers including IGA and Metro, as well as through online delivery platforms. The company has expanded distribution into Ontario and other provinces. Loop has won recognition from sustainability organizations and was selected as one of Canada's most innovative food companies.

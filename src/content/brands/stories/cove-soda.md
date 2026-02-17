@@ -1,9 +1,21 @@
 ---
 slug: cove-soda
 name: Cove Soda
-type: brand
+type: store
 ---
 
 # Cove Soda
 
-FROM OUR MOM'S KITCHEN TO YOURS Founded by two passionate brothers in 2017, Cove got its start at a local farmers' market and quickly won fans with its fresh approach to beverages. Today, Cove's commitment to community, innovation, and philanthropy continues to set it apart from other brands. Two brothers, one big idea. Cove got its start at a local farmers market and quickly won fans with its fresh approach to beverages. 2017 2018 From market stalls to grocery aisles — Cove caught the eye of retail giants like Sobeys and made its debut across Atlantic Canada. 2019 Nationwide, baby! Cove landed in Costco and Whole Foods, giving Canadians from coast to coast their first taste of Canada’s favorite kombucha. 2020 The pandemic didn’t slow us down. Cove made the switch from kombucha bottles to cans and rolled out a fresh new 10-pack at Costco. 2021 A year of momentum, with a big idea brewing, Cove grew its community, expanded its reach, and set the stage for its next big leap 👀 2022 Soda enters the chat! With a bold rebrand, Cove launched its better-for-you sodas across Canada. 2023 Cove shook things up with new soda flavours and innovations that gained major media buzz and quickly became fan favourites across the country. 2024 With Canadian fans hooked on Soda, Cove went all-in on the US — hitting shelves in powerhouse retailers like Costco and Erewhon. 2025 The US takeover continues! Cove launches in Target and Whole Foods, bringing nostalgic flavours and feel-good fizz to even more customers south of the border. DELICIOUSLY NOSTALGIC FLAVORS IcePop Shop Amazon Find Us BlueRazz Find Us OrangeCream Find Us Smurfberry Find Us Pineapple Find Us Orange Shop Amazon Find Us Grapefruit Find Us Greenapple Find Us Dr.Cove Find Us CreamSoda Find Us Grape Find Us Cherry Shop Amazon Find Us LemonLime Shop Amazon Find Us ClassicCola Find Us RootBeer Find Us Rasberry Find Us Shop All Flavors Thirsty? we got you. find us Pop into our fizzy adventure!
+FROM OUR MOM'S KITCHEN TO YOURS Founded by two passionate brothers in 2017, Cove got its start at a local farmers' market and quickly won fans with its fresh approach to beverages. Today, Cove's commitment to community, innovation, and philanthropy continues to set it apart from other brands.
+
+Two brothers, one big idea. Cove got its start at a local farmers market and quickly won fans with its fresh approach to beverages. 2017 2018 From market stalls to grocery aisles — Cove caught the eye of retail giants like Sobeys and made its debut across Atlantic Canada.
+
+2019 Nationwide, baby! Cove landed in Costco and Whole Foods, giving Canadians from coast to coast their first taste of Canada’s favorite kombucha. 2020 The pandemic didn’t slow us down. Cove made the switch from kombucha bottles to cans and rolled out a fresh new 10-pack at Costco.
+
+2021 A year of momentum, with a big idea brewing, Cove grew its community, expanded its reach, and set the stage for its next big leap 👀 2022 Soda enters the chat! With a bold rebrand, Cove launched its better-for-you sodas across Canada.
+
+2023 Cove shook things up with new soda flavours and innovations that gained major media buzz and quickly became fan favourites across the country. 2024 With Canadian fans hooked on Soda, Cove went all-in on the US — hitting shelves in powerhouse retailers like Costco and Erewhon.
+
+2025 The US takeover continues! Cove launches in Target and Whole Foods, bringing nostalgic flavours and feel-good fizz to even more customers south of the border. DELICIOUSLY NOSTALGIC FLAVORS IcePop Shop Amazon Find Us BlueRazz Find Us OrangeCream Find Us Smurfberry Find Us Pineapple Find Us Orange Shop Amazon Find Us Grapefruit Find Us Greenapple Find Us Dr.
+
+Cove Find Us CreamSoda Find Us Grape Find Us Cherry Shop Amazon Find Us LemonLime Shop Amazon Find Us ClassicCola Find Us RootBeer Find Us Rasberry Find Us Shop All Flavors Thirsty? we got you. find us Pop into our fizzy adventure!

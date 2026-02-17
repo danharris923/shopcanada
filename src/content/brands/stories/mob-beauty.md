@@ -1,9 +1,21 @@
 ---
 slug: mob-beauty
 name: Mob Beauty
-type: brand
+type: store
 ---
 
 # Mob Beauty
 
-About Us EARTH-FIRST Refillable PackagingSustainable MaterialsRecyclingSustainability in ProgressPact FORMULATIONS MISSION EARTH-FIRST Refillable PackagingSustainable MaterialsRecyclingSustainability in ProgressPact FORMULATIONS MOB LabConscious without CompromisePerformance IngredientsOur StandardsNo List MISSION Better Beauty Earth-FirstRefillable PackagingWe spend as much time on our sustainability efforts and packaging design as we do on our product, and you have our commitment that we are always at work on solutions that are better for our planet. Reducing consumption reduces waste, so we designed our palettes to be endlessly refillable and customizable allowing you to make purposeful choices and individually buy only the products and shades you know you will use. Plus, what is better than having a palette designed by you and for you that holds all your makeup in one convenient place? Earth-FirstSustainable MaterialsWe carefully select our materials with consideration of their environmental impact which is why all palettes and refills are made with PET and PP resin, the easiest to recycle. Additionally, we use post-consumer recycled content (reusing material that already exists in the waste stream vs. using new virgin material) as much as possible. Our face, eye, and mascara refills are made with 100% PCR material, and our palettes are made with at least 50%! Using post-consumer recycled materials can be more expensive and challenging because it's difficult to work with, and our packaging was the first time most of our suppliers had ever used our requested material composition. 100% Biodegradable PackagingIdeally, packaging only lasts the life of your product, so we designed our individual compacts, jars, and capsules with a fully biodegradable material. After use, pop out refills for recycling with the Pact Collective and home compost or toss your empty packaging in your blue bin for easy curbside recycling. If you follow along on social, you may have seen us ...
+About Us EARTH-FIRST Refillable PackagingSustainable MaterialsRecyclingSustainability in ProgressPact FORMULATIONS MISSION EARTH-FIRST Refillable PackagingSustainable MaterialsRecyclingSustainability in ProgressPact FORMULATIONS MOB LabConscious without CompromisePerformance IngredientsOur StandardsNo List MISSION Better Beauty Earth-FirstRefillable PackagingWe spend as much time on our sustainability efforts and packaging design as we do on our product, and you have our commitment that we are always at work on solutions that are better for our planet.
+
+Reducing consumption reduces waste, so we designed our palettes to be endlessly refillable and customizable allowing you to make purposeful choices and individually buy only the products and shades you know you will use.
+
+Plus, what is better than having a palette designed by you and for you that holds all your makeup in one convenient place? Earth-FirstSustainable MaterialsWe carefully select our materials with consideration of their environmental impact which is why all palettes and refills are made with PET and PP resin, the easiest to recycle.
+
+Additionally, we use post-consumer recycled content (reusing material that already exists in the waste stream vs. using new virgin material) as much as possible. Our face, eye, and mascara refills are made with 100% PCR material, and our palettes are made with at least 50%!
+
+Using post-consumer recycled materials can be more expensive and challenging because it's difficult to work with, and our packaging was the first time most of our suppliers had ever used our requested material composition.
+
+100% Biodegradable PackagingIdeally, packaging only lasts the life of your product, so we designed our individual compacts, jars, and capsules with a fully biodegradable material. After use, pop out refills for recycling with the Pact Collective and home compost or toss your empty packaging in your blue bin for easy curbside recycling.
+
+If you follow along on social, you may have seen us ...

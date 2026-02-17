@@ -1,9 +1,23 @@
 ---
 slug: okayok
 name: Okayok
-type: brand
+type: store
 ---
 
 # Okayok
 
-Our Process We design and manufacture right here in Ontario Local, hands-on, and creatively driven. We manage every part of the process, from concept and development, to shuttling rolls of fabric and boxes of garments through their series of steps in our local supply chain. This is how it happens... It Begins in House Location: OkayOk Toronto StudioOur studio is a design lab for both our garments and surface designs. Upstairs from the shop we do it all, from the pattern drafting to establishing the final finishing techniques. Graphics & Surface Design Location: OkayOk Toronto StudioAll our prints are developed and applied in-house. Our surface designs are created with heat transfer vinyl and other mediums. Allover prints are designed right on the garment: laid out by hand and applied with precision and rigorous attention to quality. Fabric Sourcing Location: Brampton + Toronto AreaOur cotton jersey and fleece textiles are made by a fabric mill in Brampton, ON. We also seek out interesting overstock fabrics from local mills and factories. Designing with what’s already available is part of our creative process. Cutting & Sewing Location: Mississauga, ON + the OkayOk StudioWe are cutting and sewing small releases of garments right in the Okayok studio, as well as partnering with skilled local manufacturers for larger scale projects. Keeping everything local and small batch allows us to stay flexible and maintain quality at every stage. Garment Dyeing Location: North York, ONWe choose new colour stories every season to dye our garments and socks. Having control over this important aspect of our products has made Okayok who we are today. Experimenting with colour will always be a part of our creative direction and development. Sock Production Location: Brampton, ONOur socks are made on non-computerized, antique sock knitting machines. These machines give our socks their low tech, vintage quality, the same they would have been 50 years ago. We love their imperfect charm a...
+Our Process We design and manufacture right here in Ontario Local, hands-on, and creatively driven. We manage every part of the process, from concept and development, to shuttling rolls of fabric and boxes of garments through their series of steps in our local supply chain.
+
+This is how it happens... It Begins in House Location: OkayOk Toronto StudioOur studio is a design lab for both our garments and surface designs. Upstairs from the shop we do it all, from the pattern drafting to establishing the final finishing techniques.
+
+Graphics & Surface Design Location: OkayOk Toronto StudioAll our prints are developed and applied in-house. Our surface designs are created with heat transfer vinyl and other mediums. Allover prints are designed right on the garment: laid out by hand and applied with precision and rigorous attention to quality.
+
+Fabric Sourcing Location: Brampton + Toronto AreaOur cotton jersey and fleece textiles are made by a fabric mill in Brampton, ON. We also seek out interesting overstock fabrics from local mills and factories.
+
+Designing with what’s already available is part of our creative process. Cutting & Sewing Location: Mississauga, ON + the OkayOk StudioWe are cutting and sewing small releases of garments right in the Okayok studio, as well as partnering with skilled local manufacturers for larger scale projects.
+
+Keeping everything local and small batch allows us to stay flexible and maintain quality at every stage. Garment Dyeing Location: North York, ONWe choose new colour stories every season to dye our garments and socks.
+
+Having control over this important aspect of our products has made Okayok who we are today. Experimenting with colour will always be a part of our creative direction and development. Sock Production Location: Brampton, ONOur socks are made on non-computerized, antique sock knitting machines.
+
+These machines give our socks their low tech, vintage quality, the same they would have been 50 years ago. We love their imperfect charm a...

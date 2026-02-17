@@ -1,9 +1,21 @@
 ---
 slug: brust-protein-coffee
 name: Brust Protein Coffee
-type: brand
+type: store
 ---
 
 # Brust Protein Coffee
 
-Skip to content You can now find brüst at Costco and Walmart stores nationally! Home Order Now Dark Roast Original Light Roast Mocha Salted Caramel Latte Pumpkin Spice Latte Matcha Latte Where to find us Reviews FAQ Contact Us Log in Our Story Workouts are tough, yet somehow, finding quality on the go nutrition can be even tougher. What’s the deal?As former athletes, our co-founders Amar Gupta and Josh Barr struggled to find a simple protein drink that could help them recover between training sessions – let alone one that tasted good. Everything on the market was the same: full of calories, complex ingredients, and chalky taste.So, they developed brüst – a protein drink that’s made from high quality ingredients and delivers on great taste. brüst is simply a protein packed cold brew coffee that was crafted to help athletes power through their day and fuel up while on the go. Share Home © 2025, brüst Powered by Shopify American Express Apple Pay Diners Club Discover Mastercard PayPal Shop Pay Visa © 2025, brüstPowered by Shopify
+Brust is a Canadian beverage brand that combines real brewed coffee with protein, creating a ready-to-drink coffee that doubles as a post-workout recovery drink or a high-protein meal replacement. The concept is straightforward: millions of people drink coffee in the morning and millions of people need more protein in their diet, so why not combine the two into a single convenient beverage? Brust delivers on that idea with cold-brew coffee fortified with 20 grams of protein per can.
+
+## Coffee Meets Protein
+
+Each Brust beverage starts with real cold-brewed coffee — not instant coffee flavouring or coffee extract — combined with milk protein and natural flavours. The result tastes like iced coffee, not a protein shake, which sets it apart from most protein beverages that lean heavily on artificial sweetness and chalky texture. Available in flavours like mocha, vanilla, and original, the drinks are designed to replace both the morning coffee run and the protein shake, saving time and simplifying routines.
+
+## Clean Label
+
+Brust keeps its ingredient lists short and recognizable. The beverages are made without artificial sweeteners, colours, or preservatives, and contain no added sugar beyond what's naturally present in the milk and coffee. Each can delivers a meaningful protein hit alongside natural caffeine from the cold brew, making it functional for athletes, busy professionals, and anyone who wants their coffee to do more than just wake them up.
+
+## Canadian Brewed
+
+Brust is proudly Canadian, brewed and canned domestically. The brand sells through its online store, Amazon Canada, and a growing list of grocery and convenience retailers across the country. For Canadians who are tired of choosing between their morning coffee and their protein intake, Brust offers a genuinely tasty solution that handles both in a single can.

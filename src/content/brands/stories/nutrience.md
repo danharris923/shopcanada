@@ -1,9 +1,21 @@
 ---
 slug: nutrience
 name: Nutrience
-type: brand
+type: store
 ---
 
 # Nutrience
 
-About Nutrience Nutrience took its name from the word ‘science’ and the word ‘nutrient’ from the latin word ‘nutriens’ meaning to nourish or feed. These guiding principles have led Nutrience to providing dogs and cats with complete and balanced diets for over 30 years. Proper nourishment has been at the core of Nutrience’s philosophy and continues to fuel its innovation. All Nutrience formulas meet the nutritional standards set by AAFCO with ingredients that are humanely raised and sustainably harvested. Here at Nutrience, we believe that a healthy lifestyle begins in the bowl. Produced in Canada Crafted in small batches in our very own kitchen located in British Columbia, Canada, Nutrience formulas are made with locally sourced proteins, fruits, and vegetables. Our 9.98 million square kilometers of endless lakes, rivers and forests stretching from the Maritimes to the British Columbia coasts provide us with some of the best raw ingredients for our dog and cat foods and treats. We take great pride in sourcing fresh poultry, meats, wild-caught fish, and produce directly from Canadian farmers, ranchers and fishermen –chicken and turkey from Fraser Valley; beef and bison from the Prairies; or any of the wild-caught fish that is plentiful in the cold, clear waters of the Pacific Northwest. Quality is Our Promise to You Every bag of Nutrience is produced at a Safe Quality Food Program level-3 facility. This ensures that we follow the highest possible standards within pet food manufacturing, equal to that of human-grade facilities. Every batch made passes the most rigorous testing procedures, subscribes to the most stringent food processing policies, and is double-checked by third parties for safety. Now in its second generation of family ownership since 1955, the company is part owner in its own pet food facility as the means of providing absolute assurance that its Nutrience brand promise is kept - the promise of food made from quality ingredients that truly nourish pet...
+About Nutrience Nutrience took its name from the word ‘science’ and the word ‘nutrient’ from the latin word ‘nutriens’ meaning to nourish or feed. These guiding principles have led Nutrience to providing dogs and cats with complete and balanced diets for over 30 years.
+
+Proper nourishment has been at the core of Nutrience’s philosophy and continues to fuel its innovation. All Nutrience formulas meet the nutritional standards set by AAFCO with ingredients that are humanely raised and sustainably harvested.
+
+Here at Nutrience, we believe that a healthy lifestyle begins in the bowl. Produced in Canada Crafted in small batches in our very own kitchen located in British Columbia, Canada, Nutrience formulas are made with locally sourced proteins, fruits, and vegetables.
+
+Our 9. 98 million square kilometers of endless lakes, rivers and forests stretching from the Maritimes to the British Columbia coasts provide us with some of the best raw ingredients for our dog and cat foods and treats.
+
+We take great pride in sourcing fresh poultry, meats, wild-caught fish, and produce directly from Canadian farmers, ranchers and fishermen –chicken and turkey from Fraser Valley; beef and bison from the Prairies; or any of the wild-caught fish that is plentiful in the cold, clear waters of the Pacific Northwest.
+
+Quality is Our Promise to You Every bag of Nutrience is produced at a Safe Quality Food Program level-3 facility. This ensures that we follow the highest possible standards within pet food manufacturing, equal to that of human-grade facilities.
+
+Every batch made passes the most rigorous testing procedures, subscribes to the most stringent food processing policies, and is double-checked by third parties for safety. Now in its second generation of family ownership since 1955, the company is part owner in its own pet food facility as the means of providing absolute assurance that its Nutrience brand promise is kept - the promise of food made from quality ingredients that truly nourish pet...

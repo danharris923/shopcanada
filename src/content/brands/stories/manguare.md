@@ -1,9 +1,17 @@
 ---
 slug: manguare
 name: Manguare
-type: brand
+type: store
 ---
 
 # Manguare
 
-About us Hi! I’m Sara Escobar, the hands and heart behind each piece you’ll find here. Originally from Colombia and now based in Canada, I’m a professional social worker with a deep passion for human connection, creativity, and storytelling. Throughout my career, I’ve worked with diverse communities across Colombia, listening to powerful stories and learning from every experience. During one of those journeys, I discovered a traditional bead-weaving technique that immediately resonated with me. What started as a meditative and personal escape quickly evolved into a meaningful form of self-expression—and a way to uplift other women through handmade accessories full of intention. Each piece I create is a reflection of inner exploration, cultural heritage, and a deep love for slow, purposeful craftsmanship. My work blends organic and geometric designs, and every accessory is made by hand in my cozy studio in Keswick, Ontario, using refined weaving techniques with thread and wire. You can find my creations at art and craft shows in Toronto, California, and Colombia, as well as at select consignment stores, including: Savile Studio and Market Amazing Graze | Mississauga Hometown Heart Store Ltd Every design can be customized in a wide range of colors and is made to be lightweight, waterproof, and vibrant—unique pieces for unique people. Thank you for being here and for supporting handmade art that tells a story. 💛
+About us Hi! I’m Sara Escobar, the hands and heart behind each piece you’ll find here. Originally from Colombia and now based in Canada, I’m a professional social worker with a deep passion for human connection, creativity, and storytelling.
+
+Throughout my career, I’ve worked with diverse communities across Colombia, listening to powerful stories and learning from every experience. During one of those journeys, I discovered a traditional bead-weaving technique that immediately resonated with me.
+
+What started as a meditative and personal escape quickly evolved into a meaningful form of self-expression—and a way to uplift other women through handmade accessories full of intention. Each piece I create is a reflection of inner exploration, cultural heritage, and a deep love for slow, purposeful craftsmanship.
+
+My work blends organic and geometric designs, and every accessory is made by hand in my cozy studio in Keswick, Ontario, using refined weaving techniques with thread and wire. You can find my creations at art and craft shows in Toronto, California, and Colombia, as well as at select consignment stores, including: Savile Studio and Market Amazing Graze | Mississauga Hometown Heart Store Ltd Every design can be customized in a wide range of colors and is made to be lightweight, waterproof, and vibrant—unique pieces for unique people.
+
+Thank you for being here and for supporting handmade art that tells a story.

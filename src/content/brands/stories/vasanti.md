@@ -1,9 +1,21 @@
 ---
 slug: vasanti
 name: Vasanti
-type: brand
+type: store
 ---
 
 # Vasanti
 
-Vasanti [va-san-ti] noun | Origin: Indian (Sanskrit) | 1. of Spring, Spring, Springtime, Spring season Our philosophy is to stay as natural as possible without compromising performance or safety. At Vasanti, we create a happy place for beauty by being innovative, believing in cruelty-free, clean formulas that work. We are in sync with your beauty psychology. So you can look like you and feel like you. from our founders Inclusivity & Sisterhood We have always wanted everyone to feel included regardless of their ethnicity, sexual orientation, skin colour. As women of colour finding cosmetics and skincare has always been challenging. Knowing the feeling of being left out, we want to ensure you always feel included, a part of our Vasanti family. our story 20 years of commitment Value for Luxury Powerful and potent formulas should be accessible solutions for all. Get the luxurious experience with our products that lives up to its full potency and potential. Accessibility Beauty should be accessible(not cost and arm and a leg!) and it should also work! Quality We create Vasanti products with the highest quality of raw materials and highest performance. We use ingredients clinically proven to work, gentle and fast acting. Multi-functional Vasanti products are the hardest working products on the market! They tend to do deliver more than just one result, we want you to use the least amount of products and get the most results Size For the amount of money you invest in your skincare/makeup we want to give you the MOST. Our fill sizes are usually greater than the industry standard, especially in skincare! For an example, most eye creams are 10-15mL our Eye Wonder/Eye Wonder 2.0 are 20mL! Crafting Products You Can Trust Clean Formula We follow all the directives not only from Health Canada but on a global scale to include the EU, Japanese and FDA including California Prop 65 guidelines to ensure we are delivering safe and clean formulations to you. The Safe Brightening Experts ...
+[va-san-ti] noun | Origin: Indian (Sanskrit) | 1. of Spring, Spring, Springtime, Spring season Our philosophy is to stay as natural as possible without compromising performance or safety. At Vasanti, we create a happy place for beauty by being innovative, believing in cruelty-free, clean formulas that work.
+
+We are in sync with your beauty psychology. So you can look like you and feel like you. from our founders Inclusivity & Sisterhood We have always wanted everyone to feel included regardless of their ethnicity, sexual orientation, skin colour.
+
+As women of colour finding cosmetics and skincare has always been challenging. Knowing the feeling of being left out, we want to ensure you always feel included, a part of our Vasanti family. our story 20 years of commitment Value for Luxury Powerful and potent formulas should be accessible solutions for all.
+
+Get the luxurious experience with our products that lives up to its full potency and potential. Accessibility Beauty should be accessible(not cost and arm and a leg! ) and it should also work! Quality We create Vasanti products with the highest quality of raw materials and highest performance.
+
+We use ingredients clinically proven to work, gentle and fast acting. Multi-functional Vasanti products are the hardest working products on the market! They tend to do deliver more than just one result, we want you to use the least amount of products and get the most results Size For the amount of money you invest in your skincare/makeup we want to give you the MOST.
+
+Our fill sizes are usually greater than the industry standard, especially in skincare! For an example, most eye creams are 10-15mL our Eye Wonder/Eye Wonder 2. 0 are 20mL! Crafting Products You Can Trust Clean Formula We follow all the directives not only from Health Canada but on a global scale to include the EU, Japanese and FDA including California Prop 65 guidelines to ensure we are delivering safe and clean formulations to you.
+
+The Safe Brightening Experts ...

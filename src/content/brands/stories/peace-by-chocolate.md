@@ -1,9 +1,21 @@
 ---
 slug: peace-by-chocolate
 name: Peace By Chocolate
-type: brand
+type: store
 ---
 
 # Peace By Chocolate
 
-MEET THE FAMILY BEHIND PEACE BY CHOCOLATE This is Our Story FROM SYRIA TO ANTIGONISH For nearly 30 years we created and shipped our specialty treats all over the Middle East and Europe.Like much of our homeland, in late 2012 the original Hadhad family chocolate factory in Damascus, Syria was destroyed in a bombing that forced our family to leave everything behind and flee to Lebanon.For three years we found ourselves as refugees with little opportunity or hope. Our lives had been forever altered and we dreamed of being able to once again live lives we could love. When our family was invited to Canada, our dreams came true. REBUILDING With the support of our new community of Antigonish and the people of Nova Scotia, we have rebuilt our chocolate company and are once again doing the work we love. Since Peace By Chocolate was founded at the beginning of 2016, we have been fortunate to share our passion for chocolate with new friends in our community of Antigonish, with people all across the province of Nova Scotia, and now around the world. PEACE BY CHOCOLATE TODAY Our desire for excellence is apparent in every piece of chocolate we produce. We passionately combine a blend of Syrian fillings and ingredients, including nuts, fruit, and spices, creating a little taste of heaven in every sweet.Inside each Peace By Chocolate product is uncompromising quality, with each chocolate a little work of art in and of itself, exuding sophistication, style and excellence. We encourage you to try our chocolate soon because, after all, One Peace Won't Hurt™. View Theatres and Movie News WORDS FROM OUR CEO Tareq Hadhad VISIT US IN PERSON Artisan Chocolate on the Halifax WaterfrontIf you’re craving locally made chocolate, look no further than The Queen’s Marque on the Halifax Waterfront!In Antigonish you can visit us where it all started after we arrived in Canada. FIND A LOCATION
+MEET THE FAMILY BEHIND PEACE BY CHOCOLATE This is Our Story FROM SYRIA TO ANTIGONISH For nearly 30 years we created and shipped our specialty treats all over the Middle East and Europe. Like much of our homeland, in late 2012 the original Hadhad family chocolate factory in Damascus, Syria was destroyed in a bombing that forced our family to leave everything behind and flee to Lebanon.
+
+For three years we found ourselves as refugees with little opportunity or hope. Our lives had been forever altered and we dreamed of being able to once again live lives we could love. When our family was invited to Canada, our dreams came true.
+
+REBUILDING With the support of our new community of Antigonish and the people of Nova Scotia, we have rebuilt our chocolate company and are once again doing the work we love. Since Peace By Chocolate was founded at the beginning of 2016, we have been fortunate to share our passion for chocolate with new friends in our community of Antigonish, with people all across the province of Nova Scotia, and now around the world.
+
+PEACE BY CHOCOLATE TODAY Our desire for excellence is apparent in every piece of chocolate we produce. We passionately combine a blend of Syrian fillings and ingredients, including nuts, fruit, and spices, creating a little taste of heaven in every sweet.
+
+Inside each Peace By Chocolate product is uncompromising quality, with each chocolate a little work of art in and of itself, exuding sophistication, style and excellence. We encourage you to try our chocolate soon because, after all, One Peace Won't Hurt™.
+
+View Theatres and Movie News WORDS FROM OUR CEO Tareq Hadhad VISIT US IN PERSON Artisan Chocolate on the Halifax WaterfrontIf you’re craving locally made chocolate, look no further than The Queen’s Marque on the Halifax Waterfront!
+
+In Antigonish you can visit us where it all started after we arrived in Canada.

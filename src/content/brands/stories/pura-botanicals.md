@@ -1,9 +1,19 @@
 ---
 slug: pura-botanicals
 name: Pura Botanicals
-type: brand
+type: store
 ---
 
 # Pura Botanicals
 
-Our Founder - Meet Lane PURA started because I felt so passionate about innovating beauty care products that I could trust. It was ingrained in me from a young age with a mother and grandmother who were both knowledgeable and wise in herbology, wellness and nutrition. My beloved mother lost her heroic battle to an autoimmune disease in 2013. Losing her has made me even more protective of women's health and longevity. When I was expecting my first baby, I became extremely sensitive to all of my conventional beauty products, especially synthetic scent. I couldn't find a skincare line I truly loved. I felt compelled to innovate a luxurious, plant-powered line. Growing up, I'll never forget the bliss of dipping my toes into her bubble baths, and her sensorial nighttime skincare routine. I can still remember the smell of her night cream from when I kissed her goodnight. As a mother of three, I'm my own customer who craves a clean skincare ritual that calms, heals, and repairs. From filling orders as a mad scientist in my unfinished basement, to shipping our products worldwide, being chosen to be Fleetwood Mac's official skincare for their last world tour, or seeing your reviews come in, we are a proud Canadian-made brand. Thanks to our loyal community who inspire me daily, we have never felt more loved and empowered to help women feel confident in their own skin and to age with power. Thank you for supporting a little girl's dream who had a potion step at the side of her home, and for trusting PURA to be a part of your invaluable self care rituals and healthy skin. In pure we trust. With Love,Lane Edwards Founder & Director Pura Botanicals Inc.
+Our Founder - Meet Lane PURA started because I felt so passionate about innovating beauty care products that I could trust. It was ingrained in me from a young age with a mother and grandmother who were both knowledgeable and wise in herbology, wellness and nutrition.
+
+My beloved mother lost her heroic battle to an autoimmune disease in 2013. Losing her has made me even more protective of women's health and longevity. When I was expecting my first baby, I became extremely sensitive to all of my conventional beauty products, especially synthetic scent.
+
+I couldn't find a skincare line I truly loved. I felt compelled to innovate a luxurious, plant-powered line. Growing up, I'll never forget the bliss of dipping my toes into her bubble baths, and her sensorial nighttime skincare routine.
+
+I can still remember the smell of her night cream from when I kissed her goodnight. As a mother of three, I'm my own customer who craves a clean skincare ritual that calms, heals, and repairs. From filling orders as a mad scientist in my unfinished basement, to shipping our products worldwide, being chosen to be Fleetwood Mac's official skincare for their last world tour, or seeing your reviews come in, we are a proud Canadian-made brand.
+
+Thanks to our loyal community who inspire me daily, we have never felt more loved and empowered to help women feel confident in their own skin and to age with power. Thank you for supporting a little girl's dream who had a potion step at the side of her home, and for trusting PURA to be a part of your invaluable self care rituals and healthy skin.
+
+In pure we trust. With Love,Lane Edwards Founder & Director Pura Botanicals Inc.

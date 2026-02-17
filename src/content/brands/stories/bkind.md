@@ -1,9 +1,23 @@
 ---
 slug: bkind
 name: Bkind
-type: brand
+type: store
 ---
 
 # Bkind
 
-Being respectful and thoughtful of everything around us ♡ At BKIND, we offer all-natural, plant-based, vegan, eco-friendly beauty and skin care products made in Quebec. Each product is carefully developed in laboratory. From ingredients to packaging, we choose the best options for you, your skin and the environment. Kind stuff that we do Over the years, we have implemented new practices to always be kinder! Take a look at the little things we do! 2% of our sales for animal welfare 2% of our sales are always donated to a different shelter or organization helping animals. In 2019, we donated to Blitz Rescue and in 2020, we donated to Refuge Pageau. Since 2021, we are donating 2% of our online and in store sales to SOS Miss Dolittle, a shelter for wildlife located in Quebec. Bulk options to reduce waste Most of our products are available in bulk or in a package-free option in our boutiques and in a few points of sale across Canada. This is a great and easy way to reduce packaging waste and still enjoy beauty products. Bring your jars on your next visit! Biodegradable shipping material Our online orders are shipped in cardboard boxes filled with 100% biodegradable peanuts made of cornstarch to protect your products! They melt under water, leaving no toxic waste in the environment. Ocean Bound for cleaner oceans Many of our packaging materials are made from Ocean Bound Plastic (OBP); a recycled raw material made from plastic waste collected in at-risk areas, located within 200 km of shores and waterways to help reduce the amount of plastic waste in our oceans. Recyclable & sustainable packs As we like when things last, our recycled plastic packaging is resistant and durable to be able to benefit from several refills in store. And when you are done with it, you can recycle your product. All of our cardboard packaging are also 100% recyclable. Eco-friendly products In order to be as environmentally friendly as possible, we have introduced more eco-friendly swaps for daily ...
+Being respectful and thoughtful of everything around us ♡ At BKIND, we offer all-natural, plant-based, vegan, eco-friendly beauty and skin care products made in Quebec. Each product is carefully developed in laboratory.
+
+From ingredients to packaging, we choose the best options for you, your skin and the environment. Kind stuff that we do Over the years, we have implemented new practices to always be kinder! Take a look at the little things we do!
+
+2% of our sales for animal welfare 2% of our sales are always donated to a different shelter or organization helping animals. In 2019, we donated to Blitz Rescue and in 2020, we donated to Refuge Pageau.
+
+Since 2021, we are donating 2% of our online and in store sales to SOS Miss Dolittle, a shelter for wildlife located in Quebec. Bulk options to reduce waste Most of our products are available in bulk or in a package-free option in our boutiques and in a few points of sale across Canada.
+
+This is a great and easy way to reduce packaging waste and still enjoy beauty products. Bring your jars on your next visit! Biodegradable shipping material Our online orders are shipped in cardboard boxes filled with 100% biodegradable peanuts made of cornstarch to protect your products!
+
+They melt under water, leaving no toxic waste in the environment. Ocean Bound for cleaner oceans Many of our packaging materials are made from Ocean Bound Plastic (OBP); a recycled raw material made from plastic waste collected in at-risk areas, located within 200 km of shores and waterways to help reduce the amount of plastic waste in our oceans.
+
+Recyclable & sustainable packs As we like when things last, our recycled plastic packaging is resistant and durable to be able to benefit from several refills in store. And when you are done with it, you can recycle your product.
+
+All of our cardboard packaging are also 100% recyclable. Eco-friendly products In order to be as environmentally friendly as possible, we have introduced more eco-friendly swaps for daily ...

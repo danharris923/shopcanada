@@ -1,9 +1,21 @@
 ---
 slug: guru-energy
 name: Guru Energy
-type: brand
+type: store
 ---
 
-# Guru Energy
+# GURU Organic Energy
 
-Skip to content Orders placed after Dec 23 ship after the holidays SUBSCRIBE TO OUR NEWSLETTER Free shipping on all orders over $75 Proudly Canadian since 1999 Bestsellers Original & Lite Zero Punch Variety Packs Original Lite Wild Berry Wild Strawberry Watermelon Wild Ice Pop View all Original Lite View all Wild Berry Wild Ice Pop Wild Ruby Red Wild Strawberry Watermelon Zero Variety Pack View all Island Breeze Punch Fruit Punch Tropical Punch Peach Mango Punch Punch Variety Pack View all Punch Variety Pack Zero Variety Pack Variety Pack View all About Us Store Locator Log in Green Tea Caffeine Zero Sucralose. Zero Aspartame. Focus + Metabolism Boost No Jitters. No Crash. Proudly Canadian Since 1999 Organic Certified OUR STORY 1990 In the fabric of change, revolutions often spark in the most unexpected corners. Rewind to the vibrant nights of ’95, where the Montreal after hours scene was pumping with vibes and Smart Drinks held the spotlight. Our GURU founder had just opened the legendary SONA Nightclub. Justin, our Art Director, was blending the legendary plant-based Justin’s Smart Drinks at the very same place. 1999 Fast forward to ’99 and voilà, the world’s first Natural Energy Drink was born: GURU. Why? To provide our tribe with the perfect dose of good energy matching their vibe and active lifestyle. 2024 Two decades down the road, we’ve waltzed beyond the nocturnal rhythms of nightlife. Today, GURU is more than a drink; it’s a choice for good, for fun, uplifting not just your nights but every waking moment. FINDING A GURU IS EASY WHEN WE SEARCH FOR THE RIGHT VALUES. GOOD PEOPLE The unsung superheroes of daily life, spreading positivity like confetti. Good people are the human, making the world brighter one smile at a time. GOOD FOR YOU Sip on the potion of vitality! “Good for you” is the high-five to your well-being. It’s the approval for choosing a healthy energy drink, a concoction of good vibes and even better ingredients. GOOD LIFESTYLE Living your best l...
+GURU Organic Energy was founded in 1999 in Montreal, making it one of the first organic energy drinks in the world. The company was created by a group of friends who wanted an energy drink that delivered real energy from natural, plant-based ingredients rather than the synthetic caffeine, taurine, and artificial colours that defined the category. GURU was organic and plant-powered years before "clean energy" became a marketing buzzword, giving the brand genuine pioneer status.
+
+## Plant-Based Energy
+
+GURU's formulations use organic green tea caffeine, organic guarana, organic ginseng, and organic echinacea for their energy and functional benefits. The drinks contain no artificial sweeteners, colours, or flavours — every ingredient is organic and plant-derived. The Original GURU delivers 100mg of natural caffeine per can (comparable to a cup of coffee), while other varieties adjust the caffeine level and flavour profile. The brand's sugar-free options use organic stevia leaf extract, avoiding the artificial sweeteners found in most zero-calorie energy drinks.
+
+## The Product Line
+
+GURU offers several varieties including the Original (sparkling with organic cane sugar), GURU Lite (reduced calories), GURU Yerba Maté, and Punch (fruit-flavoured). The cans feature clean, minimalist design that stands out against the aggressive, neon-coloured branding of mainstream energy drinks. This aesthetic signals the brand's positioning: energy for people who care about what they put in their bodies, not just the rush.
+
+## Canadian and Publicly Traded
+
+GURU Organic Energy Corp. is headquartered in Montreal and publicly traded on the Toronto Stock Exchange (TSX: GURU). The brand is available at major Canadian retailers including Costco, Metro, IGA, and convenience stores, as well as through Amazon and its own online store. GURU has also expanded into the United States. As the organic energy drink category has grown, GURU's advantage has been its authenticity — the brand was making organic energy drinks for over two decades before most competitors entered the space.

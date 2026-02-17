@@ -1,9 +1,19 @@
 ---
 slug: firebelly-tea
 name: Firebelly Tea
-type: brand
+type: store
 ---
 
 # Firebelly Tea
 
-Dedicated To What's Real We're on a mission to craft the best tea products on the planet, combining a modern, design-forward sensibility with timeless quality. Don't be fooled by the first sip. There’s no question about it, teas with "natural" or artifical flavorings hit big on that first sip. They immediately activate your taste buds and trick your brain into tasting something that isn’t there. But much like chewing watermelon gum – after a few chews you don’t feel so great.Those flavorings not only contain unlisted preservative and additives but they overpower with one note, and by the end of the cup dull your taste buds.Real ingredients develop in the cup and become more complex with each sip. Teas with real ingredients leave you feeling better with each cup. BROWSE REAL TEAS We're proud to be transparent, sustainable, and crafted with care at every step. CompostablePackaging Climate NeutralCertified Carbon NeutralShipping ResponsiblySourced CertifiedOrganic Our founder story. David spent years working in the tea industry. Over time, his passion for tea grew deeper as he discovered new flavors, growing regions, or steeping methods. And he was always sharing the best teas he found with friends.One of those friends was Harley, who like many of us was finding that coffee in the afternoon made him feel jittery and impacted his sleep. So David set Harley up with some incredible green teas that gave him sustained energy in the afternoons, without any of the jitters or side effects. A new tea lover was born, and so was Firebelly. READ DAVID'S TEA STORY Whether it’s Japanese green tea to power my morning or a calming herbal tea to reset at night, tea helps me stay intentional and perform at my best.
+Dedicated To What's Real We're on a mission to craft the best tea products on the planet, combining a modern, design-forward sensibility with timeless quality. Don't be fooled by the first sip. There’s no question about it, teas with "natural" or artifical flavorings hit big on that first sip.
+
+They immediately activate your taste buds and trick your brain into tasting something that isn’t there. But much like chewing watermelon gum – after a few chews you don’t feel so great. Those flavorings not only contain unlisted preservative and additives but they overpower with one note, and by the end of the cup dull your taste buds.
+
+Real ingredients develop in the cup and become more complex with each sip. Teas with real ingredients leave you feeling better with each cup. BROWSE REAL TEAS We're proud to be transparent, sustainable, and crafted with care at every step.
+
+CompostablePackaging Climate NeutralCertified Carbon NeutralShipping ResponsiblySourced CertifiedOrganic Our founder story. David spent years working in the tea industry. Over time, his passion for tea grew deeper as he discovered new flavors, growing regions, or steeping methods.
+
+And he was always sharing the best teas he found with friends. One of those friends was Harley, who like many of us was finding that coffee in the afternoon made him feel jittery and impacted his sleep.
+
+So David set Harley up with some incredible green teas that gave him sustained energy in the afternoons, without any of the jitters or side effects. A new tea lover was born, and so was Firebelly. READ DAVID'S TEA STORY Whether it’s Japanese green tea to power my morning or a calming herbal tea to reset at night, tea helps me stay intentional and perform at my best.

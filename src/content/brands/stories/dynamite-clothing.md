@@ -1,9 +1,21 @@
 ---
 slug: dynamite-clothing
 name: Dynamite Clothing
-type: brand
+type: store
 ---
 
 # Dynamite Clothing
 
-About Us Our Why Every day inspires us to look and feel exceptional, regardless of the occasion. Since our founding in 1984 in the fashion-forward city of Montréal, we have continually evolved with the times while maintaining our commitment to outfitting you for all of life’s moments. Our designs are crafted to empower you to do it and own it all, with styles that seamlessly transition from the demands of the day to the vibrant energy of the night. Our Design Inspirations We draw inspiration from our favourite style icons as we create our collections for each month. A year-round neutral colour palette ensures our pieces remain timeless and seasonless, while touches of print and colour capture the essence of every season. From ideation to creation, we constantly ask ourselves “Where is she going?” and “What’s the outfit?”. Day-to- night dressing is at the heart of our designs and styling, offering versatile outfitting solutions perfect for any occasion – be it a client lunch, a date night or drinks with the girls. We design for the woman she is and all she aspires to be, because she’s enjoying her life to the fullest, and we’re here to dress her for every moment. "Our focus has always been our customer. Today, she is navigating a more busy and full lifestyle than ever before, and she's making it all look possible – even when it may not be perfect. We're here to keep up with her, deliver her fashion and style she feels great about, and ensure she feels confident in her wardrobe from day to night." "Our focus has always been our customer. Today, she is navigating a more busy and full lifestyle than ever before, and she's making it all look possible – even when it may not be perfect. We're here to keep up with her, deliver her fashion and style she feels great about, and ensure she feels confident in her wardrobe from day to night." – Stacie Beaver, President & Chief Operating Officer Our Community As a brand that celebrates women who are magnetic, passionate, and confi...
+About Us Our Why Every day inspires us to look and feel exceptional, regardless of the occasion. Since our founding in 1984 in the fashion-forward city of Montréal, we have continually evolved with the times while maintaining our commitment to outfitting you for all of life’s moments.
+
+Our designs are crafted to empower you to do it and own it all, with styles that seamlessly transition from the demands of the day to the vibrant energy of the night. Our Design Inspirations We draw inspiration from our favourite style icons as we create our collections for each month.
+
+A year-round neutral colour palette ensures our pieces remain timeless and seasonless, while touches of print and colour capture the essence of every season. From ideation to creation, we constantly ask ourselves “Where is she going?
+
+” and “What’s the outfit? ”. Day-to- night dressing is at the heart of our designs and styling, offering versatile outfitting solutions perfect for any occasion – be it a client lunch, a date night or drinks with the girls.
+
+We design for the woman she is and all she aspires to be, because she’s enjoying her life to the fullest, and we’re here to dress her for every moment. "Our focus has always been our customer. Today, she is navigating a more busy and full lifestyle than ever before, and she's making it all look possible – even when it may not be perfect.
+
+We're here to keep up with her, deliver her fashion and style she feels great about, and ensure she feels confident in her wardrobe from day to night. " "Our focus has always been our customer. Today, she is navigating a more busy and full lifestyle than ever before, and she's making it all look possible – even when it may not be perfect.
+
+We're here to keep up with her, deliver her fashion and style she feels great about, and ensure she feels confident in her wardrobe from day to night. " – Stacie Beaver, President & Chief Operating Officer Our Community As a brand that celebrates women who are magnetic, passionate, and confi...

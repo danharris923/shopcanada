@@ -1,9 +1,21 @@
 ---
 slug: sundog-eyewear
 name: Sundog Eyewear
-type: brand
+type: store
 ---
 
 # Sundog Eyewear
 
-Skip to content FREE SHIPPING on orders over $100Important Shipping Update Canada Post DisruptionDue to the Canada Post strike, we are unable to deliver to PO boxes at this time. Please ensure your shipping address is a physical address to avoid delays with your order. Thank you for your understanding! Click for Full Details HOLIDAY HOURS Holiday HoursPlease note that orders placed between now and Christmas are not guaranteed for delivery before December 25th.Our offices will be closed from December 24th through January 5th. Orders placed during this period will be shipped on January 5th upon our return.Happy Holidays from Team Sundog! 🎄✨ Your cart is empty Start shopping A Canadian Company with a MissionPROVIDING HIGH-QUALITY, PERFORMANCE-DRIVEN SUNGLASSESSundog Eyewear, a Calgary-based company founded in 1983, is dedicated to providing high-quality, performance-driven sunglasses for athletes and outdoor enthusiasts. With a focus on superior protection, clarity, and comfort, Sundog's products are designed to meet the unique needs of golfers, runners, and cyclists, as well as those who enjoy other outdoor activities. Genuine Performance AdvancedTechnologies andMaterials Sundog's commitment to performance and quality is evident in its use of advanced technologies and materials. Its proprietary TrueBlue and Polarized lenses reduce glare and provide crystal-clear vision, allowing you to see more clearly and comfortably in bright sunlight. The company also offers a range of lens colors and styles to suit different activities and lighting conditions, ensuring that you can always find the perfect pair of sunglasses for your needs. Innovation Meets FunctionalityExperience the Sundog DifferenceAt Sundog Eyewear, we believe that eyewear should not only look good but also offer superior functionality and innovation. That's why we integrate technology and design to provide maximum quality to our customers.Our sunglasses feature premier lens technology, including TrueBlue™️, P...
+Sundog Eyewear is a Canadian-designed sunglasses brand that has built its reputation in the sport and performance eyewear market. The company specializes in polarized sunglasses engineered for outdoor activities including golf, fishing, cycling, running, and winter sports. Sundog's approach combines advanced lens technology with sport-specific frame designs at price points well below premium brands like Oakley and Maui Jim, making quality polarized eyewear accessible to a broader range of Canadian athletes and outdoor enthusiasts.
+
+## Lens Technology
+
+Sundog's competitive advantage centres on its lens technology. The brand offers multiple lens tiers, including TrueBlue polarized lenses that filter blue light and reduce glare, and MELA-LENS technology designed to stimulate melatonin production by filtering specific light wavelengths. The polarized lenses are particularly valued by golfers and anglers, where glare reduction directly impacts performance — golfers can read greens better, and fishermen can see below the water's surface. All Sundog lenses provide 100% UV protection with optical-grade clarity.
+
+## Sport-Specific Design
+
+Rather than producing one-size-fits-all sunglasses, Sundog designs frames for specific activities. Golf frames are lightweight with non-slip temples that stay put during a swing. Fishing frames feature wrap-around designs that block peripheral light. Lifestyle frames offer a more casual aesthetic for everyday wear. The brand uses durable materials including TR-90 nylon frames that flex under pressure without breaking — a critical feature for active use. Rubberized nose pads and temple tips keep glasses secure during movement and sweating.
+
+## Canadian Roots
+
+Sundog Eyewear is designed in Canada and has maintained a particularly strong presence in the Canadian golf market, where the brand has been a fixture at pro shops and tournaments. The company sells through its online store, sporting goods retailers, and golf courses across the country. In a sunglasses market dominated by Italian conglomerates and luxury fashion brands, Sundog offers Canadian consumers performance-focused eyewear that prioritizes function and value over brand prestige.

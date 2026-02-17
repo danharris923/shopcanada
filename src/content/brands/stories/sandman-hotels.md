@@ -1,9 +1,21 @@
 ---
 slug: sandman-hotels
 name: Sandman Hotels
-type: brand
+type: store
 ---
 
 # Sandman Hotels
 
-Skip to navigation Skip to main content Skip to footer arrow-right arrow-left arrow-bottom arrow-top calendar phone website download-arrow facebook facebook flickr flickr x google-plus tripadvisor tripadvisor instagram instagram pause play cross quote-open sun Menu mail marker clock check pinterest pinterest pinterest youtube youtube wechat wechat linkedin linkedin tiktok tiktok line-msg line-msg foursquare foursquare whatsapp whatsapp weibo weibo gallery-video triangle hotel hotel-air logout arrow-down xing xing person triangle-ruler bed floorplan google google snapchat snapchat upload close calendar guest edit dates guests rooms code search remove hotel map-view list-view video-play video-pause zoom-magnify chain-link alert height dimensions max-capacity star review-user trash tag circle-enlarge circle-video home printer Group home icon Sandman Hotels—A Family LegacyFounded by Bob Gaglardi in 1963, Sandman Hotel Group has deep roots in Canadian hospitality. With a $5000 loan and a bold vision, Bob established Northland Properties Incorporated with the intention of building hotels and restaurants where people could come together to experience exceptional customer service. Since opening our first hotel in Smithers, BC, in 1967, we have grown into a proud family-run business, now led by Bob’s son Tom. Today, you will find us across Canada–from St Johns to Vancouver–with over 60 hotels across Canada, the UK, Ireland, and the USA. Our BrandsAffordable Comfort or Premium Luxury—The Choice is Yours When you choose to stay at a Sandman Hotel, Inn, Suite, or premium Signature location, you’ll be greeted with true Canadian hospitality, comfort, style, and affordability. Sandman Hotels, Inns, & Suites are exactly where you need to be and offer incredible value for every traveller. In comparison, you can enjoy a premium experience by checking in to a Sandman Signature where spacious suites, upscale décor and enhanced amenities are yours to discover. Whether you’re travelling ...
+The Sandman Hotel Group was founded by Bob Dickinson in 1967 in Smithers, British Columbia, a small town in the province's northern interior. Dickinson, who had been working in the mining and forestry industries, saw an opportunity to build hotels that served the working travellers moving through British Columbia's resource towns. That first Sandman hotel was functional and affordable — exactly what truckers, loggers, and mining workers needed. From this pragmatic start, Dickinson built one of Canada's largest privately held hotel companies.
+
+## The Northland Properties Empire
+
+Sandman Hotels is part of Northland Properties Corporation, the Dickinson family's privately held conglomerate headquartered in Vancouver. Northland also owns the Sandman Signature and Sutton Place Hotels brands, the Moxie's, Chop Steakhouse, Denny's (Canadian franchise), and Shark Club restaurant and entertainment brands, as well as the Dallas Stars NHL franchise. The combined portfolio makes Northland one of the largest privately held hospitality companies in North America. Bob Dickinson's son, Tom Gaglardi, now leads the empire.
+
+## Three Hotel Tiers
+
+The Sandman group operates three hotel brands at different price points. Sandman Hotels are the original mid-range properties, offering comfortable rooms, on-site restaurants (usually a Denny's or Moxie's), pools, and meeting spaces at competitive rates. Sandman Signature hotels are upscale properties with premium finishes, full-service restaurants, and spa facilities, positioned in major urban centres. The Sutton Place Hotels brand sits at the luxury end, with boutique-style properties in cities like Vancouver, Edmonton, and Revelstoke.
+
+## Across Canada and Beyond
+
+The Sandman group operates over 50 properties across Canada, concentrated in British Columbia, Alberta, and Saskatchewan, with locations also in Ontario, Manitoba, and the United Kingdom. The hotels are typically located near highways, airports, and city centres, serving a mix of business travellers, families, and tourists. The company remains privately held by the Gaglardi family, which has allowed it to make long-term investment decisions without the quarterly earnings pressure that public hotel companies face.

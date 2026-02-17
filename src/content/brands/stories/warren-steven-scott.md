@@ -1,9 +1,21 @@
 ---
 slug: warren-steven-scott
 name: Warren Steven Scott
-type: brand
+type: store
 ---
 
 # Warren Steven Scott
 
-About Warren Steven Scott is a contemporary accessory designer, fashion designer, and craftsperson. His label was formed in 2018. Born in 1988 in White Rock, B.C., Scott is a member of the Nlaka’pamux Nation, whose territory is located in the interior of present-day British Columbia, with Sts’ailes and British ancestry. Growing up, Scott immersed himself in North American and European fashion culture, obsessively flipping through magazines and watching the iconic Canadian television series, Fashion File. The designers he looked up to created garments that were fantastical and other-worldly, offering a window through which he could envision an alternative, seemingly unattainable way of life. Following a brief period of enrollment at a local college for horticultural studies, and realizing his love for fashion, Scott left school with a curious, open mind and devised a plan to pursue his dream of designing clothes. It wasn’t until he began assembling his first portfolio application that Scott taught himself to sew. In 2011 he attended Ryerson University, where he would later receive a Bachelor of Design in Fashion. He received an educational sponsorship from his Band and is a two-time bursary recipient of Indspire. After graduating from Ryerson, Scott interned for esteemed Canadian designers Jeremy Laing and Comrags, where he credits receiving his formal training. Scott’s debut collection, Sissy, took place as part of the inaugural Indigenous Fashion Arts Festival in Toronto, founded by Indigenous artist and innovator, Sage Paul. His collection bridges the Western concept of luxury fashion with his ancestral worldview on ethics, craft, and aesthetic sensibility, representing a distinct contribution to a genuine Canadian fashion. Scott’s approach to design pictures a modern image of fashion through an Indigenous lens. The Sissy woman is cute, fluid, and enviable, representing a vision of girlishness and familial sisterhood. Scott lives and works in Toronto.
+About Warren Steven Scott is a contemporary accessory designer, fashion designer, and craftsperson. His label was formed in 2018. Born in 1988 in White Rock, B. C. , Scott is a member of the Nlaka’pamux Nation, whose territory is located in the interior of present-day British Columbia, with Sts’ailes and British ancestry.
+
+Growing up, Scott immersed himself in North American and European fashion culture, obsessively flipping through magazines and watching the iconic Canadian television series, Fashion File. The designers he looked up to created garments that were fantastical and other-worldly, offering a window through which he could envision an alternative, seemingly unattainable way of life.
+
+Following a brief period of enrollment at a local college for horticultural studies, and realizing his love for fashion, Scott left school with a curious, open mind and devised a plan to pursue his dream of designing clothes.
+
+It wasn’t until he began assembling his first portfolio application that Scott taught himself to sew. In 2011 he attended Ryerson University, where he would later receive a Bachelor of Design in Fashion.
+
+He received an educational sponsorship from his Band and is a two-time bursary recipient of Indspire. After graduating from Ryerson, Scott interned for esteemed Canadian designers Jeremy Laing and Comrags, where he credits receiving his formal training.
+
+Scott’s debut collection, Sissy, took place as part of the inaugural Indigenous Fashion Arts Festival in Toronto, founded by Indigenous artist and innovator, Sage Paul. His collection bridges the Western concept of luxury fashion with his ancestral worldview on ethics, craft, and aesthetic sensibility, representing a distinct contribution to a genuine Canadian fashion.
+
+Scott’s approach to design pictures a modern image of fashion through an Indigenous lens. The Sissy woman is cute, fluid, and enviable, representing a vision of girlishness and familial sisterhood. Scott lives and works in Toronto.

@@ -1,9 +1,21 @@
 ---
 slug: ross-chocolates
 name: Ross Chocolates
-type: brand
+type: store
 ---
 
 # Ross Chocolates
 
-About UsAbout Our ChocolateNo Sugar Added Chocolate At Ross Chocolates, we create premium No Sugar Added Chocolate for those with diabetes and others striving to eliminate sugars from their lives.Our chocolate has the smooth, rich taste of premium chocolate that chocolate lovers crave without added sugars that increase caloric intake and blood glucose levels. Sweetened with stevia and a touch of erythritol, our newest line of chocolate – with only 2.6 net carbs per bar – has virtually no impact on blood sugars and up to 17% fewer calories than chocolate sweetened with sugar. Our legacy maltitol line has been made for 25 years and continues to be a favorite of many of our customers. This chocolate for diabetics is very popular as it is suitable for both Type 1 and Type 2 diabetics, those on keto and low-carb diets, and, of course, those wanting to eliminate sugars from their diets.Try each of our bars — or a pouch of our minis — to discover how good No Sugar Added chocolate can be.Ross Chocolates — Quit Sugar, Not Chocolate! Shop NowOur Social ResponsibilityCommitment to Diabetes ResearchRoss Chocolates has always supported the diabetes community in many ways, including sponsorship of JDRF and Diabetes Canada events and research and committing a portion of each sale to diabetes research. In the area of research, we also participated in a study with the University of British Columbia in 2021 in which our dark chocolate was given to diabetics (T1D and T2D) to determine if it had any effect on blood sugar levels. We are happy to report that our dark chocolate flavors do not affect blood sugar levels to any noticeable degree.In addition, during 2021, we started supporting our cocoa farmers through Cocoa Horizons, an organization that works with Cocoa farmers in remote equatorial locations to ensure sustainable and profitable operations, so their farms and communities thrive.Finally, in recent years, we have expanded our community support to many local, small, non-profit ...
+About UsAbout Our ChocolateNo Sugar Added Chocolate At Ross Chocolates, we create premium No Sugar Added Chocolate for those with diabetes and others striving to eliminate sugars from their lives. Our chocolate has the smooth, rich taste of premium chocolate that chocolate lovers crave without added sugars that increase caloric intake and blood glucose levels.
+
+Sweetened with stevia and a touch of erythritol, our newest line of chocolate – with only 2. 6 net carbs per bar – has virtually no impact on blood sugars and up to 17% fewer calories than chocolate sweetened with sugar.
+
+Our legacy maltitol line has been made for 25 years and continues to be a favorite of many of our customers. This chocolate for diabetics is very popular as it is suitable for both Type 1 and Type 2 diabetics, those on keto and low-carb diets, and, of course, those wanting to eliminate sugars from their diets.
+
+Try each of our bars — or a pouch of our minis — to discover how good No Sugar Added chocolate can be. Ross Chocolates — Quit Sugar, Not Chocolate! Shop NowOur Social ResponsibilityCommitment to Diabetes ResearchRoss Chocolates has always supported the diabetes community in many ways, including sponsorship of JDRF and Diabetes Canada events and research and committing a portion of each sale to diabetes research.
+
+In the area of research, we also participated in a study with the University of British Columbia in 2021 in which our dark chocolate was given to diabetics (T1D and T2D) to determine if it had any effect on blood sugar levels.
+
+We are happy to report that our dark chocolate flavors do not affect blood sugar levels to any noticeable degree. In addition, during 2021, we started supporting our cocoa farmers through Cocoa Horizons, an organization that works with Cocoa farmers in remote equatorial locations to ensure sustainable and profitable operations, so their farms and communities thrive.
+
+Finally, in recent years, we have expanded our community support to many local, small, non-profit ...

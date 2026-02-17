@@ -6,4 +6,8 @@ type: store
 
 # Marshalls
 
-<h3>Surprise is Always in Store</h3><p>Marshalls, a TJX Companies banner, provides a similar treasure-hunt experience to Winners with a greater emphasis on home goods and beauty products.</p><h3>New Arrivals Daily</h3><p>Like its sister stores, Marshalls receives fresh merchandise frequently, rewarding repeat visits with new discoveries at great prices.</p>
+## What Marshalls Means to Canadian Shoppers
+
+Marshalls offers Canadian bargain hunters brand-name fashion, home decor, and accessories at prices typically 20-60% below department store prices. As part of TJX Companies alongside Winners and HomeSense, the retailer rotates inventory frequently.
+
+TJX Canada employs thousands of Canadians across its Marshalls, Winners, and HomeSense locations. The company operates distribution centres and corporate offices supporting the Canadian retail network.

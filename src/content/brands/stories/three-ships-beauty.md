@@ -1,9 +1,21 @@
 ---
 slug: three-ships-beauty
 name: Three Ships Beauty
-type: brand
+type: store
 ---
 
 # Three Ships Beauty
 
-Play background video About Us Three Ships is a results-driven skincare brand putting the power back in your hands with radically transparent, clinically proven, next-level natural™ formulas. SHOP NOW Our Story What's in a bottle?In many cases, a lot more than you may think.The truth is:ingredients aren’t made equal.And natural and effective are a moving scale.We feel you. It’s frustrating.For now...Uncensorship. Leadership. Partnership.That’s what you’ll find in ours.Aside from the best naturally-derived ingredients, of course!Because we believe beauty shouldn’t be this confusing.And industry standards shouldn’t be up for interpretation.Natural and effective skincare needs a new definition.And we’re here to write it. Transparently. Together. Best Sellers Shop best sellers made with radically transparent, clinically proven, next-level natural™ formulas. Best - Sellers Discovery Kit Three Ships KITS Natural Vegan Cruelty - free Skincare Save 24% Best-Sellers Discovery Kit Mini Sized Cleanser, Hydrating + Firming Serum, & Cream Jelly Drops™ Kakadu Plum + Mushroom Hyaluronic Acid Serum Three Ships SERUMS Natural Vegan Cruelty - free Skincare BEST SELLER Jelly Drops™ Hyaluronic Acid Serum Jelly-Like Hydrating Serum SkinHero™ Calendula + 2% Bakuchiol Bio - Retinol Serum Three Ships SERUMS Natural Vegan Cruelty - free Skincare BEST SELLER SkinHero™ Bio-Retinol Serum Multi-Talented Tone-Evening & Firming Serum Firm Believer™ Goji Stem Cell + Pomegranate Smoothing Neck + Face Cream Three Ships CREAMS Natural Vegan Cruelty - free Skincare BEST SELLER Firm Believer™ Smoothing Neck + Face Cream Revolutionary Neck + Face Firming Cream Radiance Grape Stem Cell + Squalane Ultra - Hydrating Cream Three Ships CREAMS Natural Vegan Cruelty - free Skincare BEST SELLER Radiance Ultra-Hydrating Cream Moisture Replenishing Light-Weight Cream Purify Aloe + Amino Acid Gel Cleanser Three Ships CLEANSERS Natural Vegan Cruelty - free Skincare BEST SELLER Purify Aloe + Amino Acid Gel Cleanser ...
+Connie Lo and Laura Burget founded Three Ships Beauty in 2017 in Toronto after spending months researching skincare ingredients and realizing that most "natural" products on the market were either ineffective or not truly natural. The two met at a University of Waterloo business competition and bonded over a shared frustration: why couldn't skincare be both plant-based and backed by clinical results? They launched the brand from their apartment with $3,300 in savings and a commitment to radical transparency.
+
+## The Transparency Standard
+
+Three Ships publishes the full ingredient list, sourcing information, and clinical testing results for every product on its website. Each formula is plant-based, vegan, cruelty-free, and made with ingredients that score well on the EWG (Environmental Working Group) safety database. The brand avoids synthetic fragrances, parabens, sulfates, and phthalates, but what sets it apart from other clean beauty brands is its emphasis on clinical proof. Products undergo third-party clinical trials to verify their efficacy claims, an investment that most indie beauty brands skip.
+
+## From Startup to Sephora
+
+Three Ships grew quickly from a direct-to-consumer operation into a brand stocked at major retailers. The company's products are now available at Sephora Canada, Indigo, and hundreds of independent retailers. Key products include the Jelly Drops Hyaluronic Acid Serum, the SkinHero Bio-Retinol Serum (using bakuchiol as a plant-based retinol alternative), and the Purify Aloe Gel Cleanser. Price points typically range from $22 to $45 CAD, positioning Three Ships in the accessible-luxury segment of clean skincare.
+
+## Canadian-Made
+
+All Three Ships products are formulated and manufactured in Toronto, a detail the founders highlight as a point of pride and quality control. The company has won multiple Canadian beauty industry awards and was featured on Dragons' Den. Lo and Burget have been vocal about the challenges of building a beauty brand in Canada, where the domestic market is smaller and retail partnerships require different strategies than in the U.S.

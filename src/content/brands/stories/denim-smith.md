@@ -1,9 +1,23 @@
 ---
 slug: denim-smith
 name: Denim Smith
-type: brand
+type: store
 ---
 
 # Denim Smith
 
-Honoring Tradition, Celebrating Craftsmanship At Denim & Smith Barbershops, our mission is clear: to provide exceptional grooming experiences that honour tradition, celebrate craftsmanship, and foster community connections. We are dedicated to delivering premium services at fair prices, ensuring every client leaves feeling confident, valued, and ready to take on the world. Rooted in Tradition, Built for Connection Denim & Smith Barbershops was founded in 2001 with a simple vision: to create barbershops that offer more than just haircuts. From our first location, we’ve grown into a trusted name in grooming with over 37 locations across Calgary, Cochrane, and Edmonton.Our journey began with the principles of tradition and community at the forefront. We envisioned spaces where clients could connect, relax, and feel at home while receiving exceptional service. Each independently owned location reflects this vision, offering tailored services, welcoming atmospheres, and barbers who are passionate about their craft.From precision haircuts and beard trims to luxurious hot shaves, Denim & Smith seamlessly blends tradition with modern grooming excellence. The Pillars of Denim & Smith Tradition: We cherish the timeless art of barbering, blending classic techniques with modern trends to create a unique experience for every client.Craftsmanship: Our barbers are dedicated professionals who continually refine their skills to deliver precision, quality, and unmatched style.Community: Each of our locations serves as a hub for connection—a place where stories are shared, relationships are built, and everyone feels at home.Transparency: We prioritize clear communication and honest pricing, ensuring every client feels respected and well-informed.These values shape every aspect of what we do, from the services we offer to the relationships we build. More Than a Barbershop Denim & Smith Barbershops is proud to be a cornerstone of the communities we serve. Our skilled barbers deliver top...
+Honoring Tradition, Celebrating Craftsmanship At Denim & Smith Barbershops, our mission is clear: to provide exceptional grooming experiences that honour tradition, celebrate craftsmanship, and foster community connections.
+
+We are dedicated to delivering premium services at fair prices, ensuring every client leaves feeling confident, valued, and ready to take on the world. Rooted in Tradition, Built for Connection Denim & Smith Barbershops was founded in 2001 with a simple vision: to create barbershops that offer more than just haircuts.
+
+From our first location, we’ve grown into a trusted name in grooming with over 37 locations across Calgary, Cochrane, and Edmonton. Our journey began with the principles of tradition and community at the forefront.
+
+We envisioned spaces where clients could connect, relax, and feel at home while receiving exceptional service. Each independently owned location reflects this vision, offering tailored services, welcoming atmospheres, and barbers who are passionate about their craft.
+
+From precision haircuts and beard trims to luxurious hot shaves, Denim & Smith seamlessly blends tradition with modern grooming excellence. The Pillars of Denim & Smith Tradition: We cherish the timeless art of barbering, blending classic techniques with modern trends to create a unique experience for every client.
+
+Craftsmanship: Our barbers are dedicated professionals who continually refine their skills to deliver precision, quality, and unmatched style. Community: Each of our locations serves as a hub for connection—a place where stories are shared, relationships are built, and everyone feels at home.
+
+Transparency: We prioritize clear communication and honest pricing, ensuring every client feels respected and well-informed. These values shape every aspect of what we do, from the services we offer to the relationships we build.
+
+More Than a Barbershop Denim & Smith Barbershops is proud to be a cornerstone of the communities we serve. Our skilled barbers deliver top...

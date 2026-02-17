@@ -1,9 +1,23 @@
 ---
 slug: fresh-prep
 name: Fresh Prep
-type: brand
+type: store
 ---
 
 # Fresh Prep
 
-Better isn’t just a word—it’s our mission. It’s a call to action that fuels our passion for healthier, more convenient, and more sustainable ways of eating, doing business, and supporting the communities we live in.Our story starts with a simple question: "What’s for dinner?"In 2014, lifelong friends Becky Brauer, Dhruv Sood, and Husein Rahemtulla set out to make home-cooked meals easier for busy people—without the waste that often came with traditional meal kits. Fresh Prep was born: a local, innovative solution that made meal kits more sustainable and a whole lot smarter.In 2024, Fresh Prep acquired Cook it, a beloved Montreal-based meal kit company, and rebranded it in 2025 to expand across Canada—bringing even more Canadians an easier, better way to eat well.We’re changing how Canada does dinner.Less packaging & food wasteWe deliver in reusable cooler bags and offer most recipes in our patented Zero Waste Kit. We are continuing to scale our zero-waste solutions—because better meals shouldn't come with more waste.We also partner with Canadian organizations to fight food insecurity, reduce food waste, and donate meals to those in need—year-round.Fresher, quality ingredientsWe work with Canadian suppliers and producers who share our commitment to sustainability, sourcing fresh, high-quality ingredients for our chef-inspired recipes and ready-to-eat meals. We offer sustainably sourced seafood and antibiotic-free meat and poultry. Recipe ingredients are carefully chopped, prepared, and portioned to minimize waste and make mealtime easy.Delivering the promiseWe don’t rely on third-party couriers—we proudly operate our own delivery fleet. That means better quality control, convenient delivery windows, and real- time tracking, so you always know when your order is arriving. To reduce our impact, all deliveries are carbon offset, making them 100% net zero emissions.Fresh Prep was created with one simple goal: to offer something better. It’s what drives us every day—and w...
+Better isn’t just a word—it’s our mission. It’s a call to action that fuels our passion for healthier, more convenient, and more sustainable ways of eating, doing business, and supporting the communities we live in.
+
+Our story starts with a simple question: "What’s for dinner? "In 2014, lifelong friends Becky Brauer, Dhruv Sood, and Husein Rahemtulla set out to make home-cooked meals easier for busy people—without the waste that often came with traditional meal kits.
+
+Fresh Prep was born: a local, innovative solution that made meal kits more sustainable and a whole lot smarter. In 2024, Fresh Prep acquired Cook it, a beloved Montreal-based meal kit company, and rebranded it in 2025 to expand across Canada—bringing even more Canadians an easier, better way to eat well.
+
+We’re changing how Canada does dinner. Less packaging & food wasteWe deliver in reusable cooler bags and offer most recipes in our patented Zero Waste Kit. We are continuing to scale our zero-waste solutions—because better meals shouldn't come with more waste.
+
+We also partner with Canadian organizations to fight food insecurity, reduce food waste, and donate meals to those in need—year-round. Fresher, quality ingredientsWe work with Canadian suppliers and producers who share our commitment to sustainability, sourcing fresh, high-quality ingredients for our chef-inspired recipes and ready-to-eat meals.
+
+We offer sustainably sourced seafood and antibiotic-free meat and poultry. Recipe ingredients are carefully chopped, prepared, and portioned to minimize waste and make mealtime easy. Delivering the promiseWe don’t rely on third-party couriers—we proudly operate our own delivery fleet.
+
+That means better quality control, convenient delivery windows, and real- time tracking, so you always know when your order is arriving. To reduce our impact, all deliveries are carbon offset, making them 100% net zero emissions.
+
+Fresh Prep was created with one simple goal: to offer something better. It’s what drives us every day—and w...

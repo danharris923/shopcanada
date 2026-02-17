@@ -1,9 +1,21 @@
 ---
 slug: bootlegger
 name: Bootlegger
-type: brand
+type: store
 ---
 
 # Bootlegger
 
-The Bootlegger Story The Bootlegger Story Bootlegger is a trusted, Canadian destination that was founded over 50 years ago in Vancouver, British Columbia. Bootlegger’s mission from early on was to be the place for jeans in Canada where you will find the perfect fit, quality and value.With a passionate commitment to genuine connections Bootlegger strives to create great products generating excitement and loyal raving fans. Find A Store Near You Our Core Values TrustWe have integrity. TeamworkTeamwork makes the dream work. PassionWe love what we do and do what we love. EnterpreneurshipOwn it! GrowthProgress is the heartbeat of growth! We are proud supporters of the 2SLGBTQIA+ communities.June is Pride month, an annual celebration of the many contributions made by the 2SLGBTQIA+ community to history, society, and cultures worldwide. In June, 2SLGBTQIA+ communities come together and celebrate the freedom to be themselves.This year for Pride Month, Bootlegger Store and Home Office teams are expanding our knowledge around the history and evolution of the Pride Flag. The goal of this training is to help our team members understand that the flag is an important symbol not only in the month of June, but year-round. We are learning about how the Intersex-Inclusive Pride flag has evolved into today's version and what a powerful symbol it is for the 2SLGBTQA+ community. What Our Customers Are Saying! ★★★★★“I can’t believe how long it took me to find this brand!”★★★★★“Cannot live without” Find your perfect look today! Start Shopping
+The Bootlegger Story The Bootlegger Story Bootlegger is a trusted, Canadian destination that was founded over 50 years ago in Vancouver, British Columbia. Bootlegger’s mission from early on was to be the place for jeans in Canada where you will find the perfect fit, quality and value.
+
+With a passionate commitment to genuine connections Bootlegger strives to create great products generating excitement and loyal raving fans. Find A Store Near You Our Core Values TrustWe have integrity.
+
+TeamworkTeamwork makes the dream work. PassionWe love what we do and do what we love. EnterpreneurshipOwn it! GrowthProgress is the heartbeat of growth! We are proud supporters of the 2SLGBTQIA+ communities.
+
+June is Pride month, an annual celebration of the many contributions made by the 2SLGBTQIA+ community to history, society, and cultures worldwide. In June, 2SLGBTQIA+ communities come together and celebrate the freedom to be themselves.
+
+This year for Pride Month, Bootlegger Store and Home Office teams are expanding our knowledge around the history and evolution of the Pride Flag. The goal of this training is to help our team members understand that the flag is an important symbol not only in the month of June, but year-round.
+
+We are learning about how the Intersex-Inclusive Pride flag has evolved into today's version and what a powerful symbol it is for the 2SLGBTQA+ community. What Our Customers Are Saying! ★★★★★“I can’t believe how long it took me to find this brand!
+
+”★★★★★“Cannot live without” Find your perfect look today!

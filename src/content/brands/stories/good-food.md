@@ -1,9 +1,21 @@
 ---
 slug: good-food
 name: Good Food
-type: brand
+type: store
 ---
 
 # Good Food
 
-The Goodfood origin storyOur journey from a Montreal apartment to being the #1 Canadian meal kit, creating a sustainably delicious food future.Meet the original Goodfoodies Our founders, Jonathan Ferrari and Neil Cuggy, are truly the original Goodfoodies. Before they started Goodfood in 2014, they each had an interest in our food supply chain that goes way back.Jonathan opened his first bank account at age six, with the goal of saving up to buy a tractor. While Neil developed a kitchen inventory management system when he was a kid, designed to recognize when something, like peanut butter, was half empty and automatically trigger a replacement order. Fast forward a few years, and the friends and former investment bankers found themselves starting what would become the #1 Canadian Meal Kit in a tiny Montreal apartment. “We always thought about ourselves as really differentiating by getting food on the table but making it exciting. Because Montrealers know how to do food. We were able to create really interesting recipes by just going to the market, finding a couple interesting things, putting them together in a dish and then serving it to friends and family at a dinner party,” reflected Neil.Nearly 10 years later, Goodfood has hundreds of thousands of customers across Canada, but we’re still choosing our recipes and ingredients just as carefully. “We won’t serve anything that we wouldn’t be proud to serve our families at Sunday dinner,” explained Jonathan. Good for business, good for everyone We’re doing this by sourcing our ingredients responsibly—a strategy that’s good for the business, our customers and the planet.“From a business perspective, we want to be involved in solving the world's biggest challenges because that’s where the greatest opportunities can be found. One of the biggest problems of our generation is to solve our climate crisis. It’s our generation’s responsibility to drive sustainable transformation across all industries, and Goodfood is leading th...
+The Goodfood origin storyOur journey from a Montreal apartment to being the #1 Canadian meal kit, creating a sustainably delicious food future. Meet the original Goodfoodies Our founders, Jonathan Ferrari and Neil Cuggy, are truly the original Goodfoodies.
+
+Before they started Goodfood in 2014, they each had an interest in our food supply chain that goes way back. Jonathan opened his first bank account at age six, with the goal of saving up to buy a tractor.
+
+While Neil developed a kitchen inventory management system when he was a kid, designed to recognize when something, like peanut butter, was half empty and automatically trigger a replacement order. Fast forward a few years, and the friends and former investment bankers found themselves starting what would become the #1 Canadian Meal Kit in a tiny Montreal apartment.
+
+“We always thought about ourselves as really differentiating by getting food on the table but making it exciting. Because Montrealers know how to do food. We were able to create really interesting recipes by just going to the market, finding a couple interesting things, putting them together in a dish and then serving it to friends and family at a dinner party,” reflected Neil.
+
+Nearly 10 years later, Goodfood has hundreds of thousands of customers across Canada, but we’re still choosing our recipes and ingredients just as carefully. “We won’t serve anything that we wouldn’t be proud to serve our families at Sunday dinner,” explained Jonathan.
+
+Good for business, good for everyone We’re doing this by sourcing our ingredients responsibly—a strategy that’s good for the business, our customers and the planet. “From a business perspective, we want to be involved in solving the world's biggest challenges because that’s where the greatest opportunities can be found.
+
+One of the biggest problems of our generation is to solve our climate crisis. It’s our generation’s responsibility to drive sustainable transformation across all industries, and Goodfood is leading th...

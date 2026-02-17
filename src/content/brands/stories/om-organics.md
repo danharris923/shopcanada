@@ -1,9 +1,23 @@
 ---
 slug: om-organics
 name: Om Organics
-type: brand
+type: store
 ---
 
 # Om Organics
 
-Own Your Individual Beauty You are not a collection of flaws to be fixed. What makes you different is what makes you powerful and strong. At the heart of Om is an appreciation for who we are as individuals and the unique gifts we each bring to the world. We’ll speak the truth, unfiltered and unretouched, and we’ll celebrate each other as we are. Beautifully made. Our Promise Pure, plant-based, totally clean skincareNo synthetic colour or fragranceNo fillers, parabens or sulfatesNo toxic chemicals or harsh ingredientsCruelty-free, gluten-free, veganSafe for moms-to-beHandcrafted in Canada Certified by CertClean North America's standard for toxin-free skin care. Better for Everyone We believe that premium products don’t have to come with a premium price tag. We keep our plant-based, totally clean formulas affordable so we can reach more people and make a bigger difference. Meet Our Founder “I spent many years working as an esthetician. Although I had access to the ‘best’ skincare products, I could never seem to manage my own skin struggles: extremely sensitive, reactive and breakout prone. I started creating my own with plant-based formulations and saw a drastic improvement in the health of my skin. Without much consideration, I quit my job, maxed out my credit cards and began a three year journey of intensive study into the world of natural cosmetics. My passion, vision and excitement for green beauty took hold. They have become deeply rooted in every part of Om.”Kari Asselin Read More Our Apothecary Each of our products is meticulously handcrafted with intention at our Apothecary in Invermere, B.C. By bringing our formulas to life in small batches, we ensure the highest level of quality and care goes into every product. This artisanal approach allows us to ensure the purity and potency of our craft, resulting in truly effective and luxurious skincare. We encourage you to experience the difference that our dedication and craftsmanship bring to your beauty regimen. Sh...
+Own Your Individual Beauty You are not a collection of flaws to be fixed. What makes you different is what makes you powerful and strong. At the heart of Om is an appreciation for who we are as individuals and the unique gifts we each bring to the world.
+
+We’ll speak the truth, unfiltered and unretouched, and we’ll celebrate each other as we are. Beautifully made. Our Promise Pure, plant-based, totally clean skincareNo synthetic colour or fragranceNo fillers, parabens or sulfatesNo toxic chemicals or harsh ingredientsCruelty-free, gluten-free, veganSafe for moms-to-beHandcrafted in Canada Certified by CertClean North America's standard for toxin-free skin care.
+
+Better for Everyone We believe that premium products don’t have to come with a premium price tag. We keep our plant-based, totally clean formulas affordable so we can reach more people and make a bigger difference.
+
+Meet Our Founder “I spent many years working as an esthetician. Although I had access to the ‘best’ skincare products, I could never seem to manage my own skin struggles: extremely sensitive, reactive and breakout prone.
+
+I started creating my own with plant-based formulations and saw a drastic improvement in the health of my skin. Without much consideration, I quit my job, maxed out my credit cards and began a three year journey of intensive study into the world of natural cosmetics.
+
+My passion, vision and excitement for green beauty took hold. They have become deeply rooted in every part of Om. ”Kari Asselin Read More Our Apothecary Each of our products is meticulously handcrafted with intention at our Apothecary in Invermere, B.
+
+C. By bringing our formulas to life in small batches, we ensure the highest level of quality and care goes into every product. This artisanal approach allows us to ensure the purity and potency of our craft, resulting in truly effective and luxurious skincare.
+
+We encourage you to experience the difference that our dedication and craftsmanship bring to your beauty regimen. Sh...

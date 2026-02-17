@@ -1,9 +1,21 @@
 ---
 slug: carolines-homemade-home
 name: Carolines Homemade Home
-type: brand
+type: store
 ---
 
 # Carolines Homemade Home
 
-Etsy Keep Commerce Human Etsy is the global marketplace for unique and creative goods. It’s home to a universe of special, extraordinary items, from unique handcrafted pieces to vintage treasures. In a time of increasing automation, it’s our mission to keep human connection at the heart of commerce. That’s why we built a place where creativity lives and thrives because it’s powered by people. We help our community of sellers turn their ideas into successful businesses. Our platform connects them with millions of buyers looking for an alternative - something special with a human touch, for those moments in life that deserve imagination. As a company, we strive to lead with our guiding principles and to help spread ideas of sustainability and responsibility whose impact can reach far beyond our own business. 45 million items Etsy highlights the magic of human imagination - it’s the only place where you can find the perfect wedding gift and a cape for your bearded lizard while you’re at it. If you can dream it up, it’s probably on Etsy. 1.9 million active sellers Every day, millions of creative entrepreneurs pour passion and energy into their Etsy shops. As a creative outlet, part-time job, or full-time career, Etsy sellers support their economic and artistic well-being by creating and curating ingenious things. 31.7 million active buyers If you’re giving a gift, celebrating a milestone, or expressing your style, Etsy empowers you to find the perfect thing. With a dynamic, ever-changing selection of special items to explore, Etsy is the joyful way to shop. Our guiding principles We commit to our craft. We minimise waste. We embrace differences. We dig deeper. We lead with optimism. How Etsy Works Our global marketplace is a vibrant community of real people connecting over special goods. The platform empowers sellers to do what they love and helps buyers find what they love. Sell extraordinarily With low fees, powerful tools, and support and education, we help creative ...
+Etsy Keep Commerce Human Etsy is the global marketplace for unique and creative goods. It’s home to a universe of special, extraordinary items, from unique handcrafted pieces to vintage treasures. In a time of increasing automation, it’s our mission to keep human connection at the heart of commerce.
+
+That’s why we built a place where creativity lives and thrives because it’s powered by people. We help our community of sellers turn their ideas into successful businesses. Our platform connects them with millions of buyers looking for an alternative - something special with a human touch, for those moments in life that deserve imagination.
+
+As a company, we strive to lead with our guiding principles and to help spread ideas of sustainability and responsibility whose impact can reach far beyond our own business. 45 million items Etsy highlights the magic of human imagination - it’s the only place where you can find the perfect wedding gift and a cape for your bearded lizard while you’re at it.
+
+If you can dream it up, it’s probably on Etsy. 1. 9 million active sellers Every day, millions of creative entrepreneurs pour passion and energy into their Etsy shops. As a creative outlet, part-time job, or full-time career, Etsy sellers support their economic and artistic well-being by creating and curating ingenious things.
+
+31. 7 million active buyers If you’re giving a gift, celebrating a milestone, or expressing your style, Etsy empowers you to find the perfect thing. With a dynamic, ever-changing selection of special items to explore, Etsy is the joyful way to shop.
+
+Our guiding principles We commit to our craft. We minimise waste. We embrace differences. We dig deeper. We lead with optimism. How Etsy Works Our global marketplace is a vibrant community of real people connecting over special goods.
+
+The platform empowers sellers to do what they love and helps buyers find what they love. Sell extraordinarily With low fees, powerful tools, and support and education, we help creative ...

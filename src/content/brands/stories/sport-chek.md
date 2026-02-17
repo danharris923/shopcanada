@@ -6,4 +6,8 @@ type: store
 
 # Sport Chek
 
-<h3>Gear for Every Game</h3><p>Sport Chek serves Canadian athletes from beginners to pros with equipment, apparel, and expert advice. The retailer stocks major brands alongside exclusive products.</p><h3>Triangle Rewards</h3><p>As part of Canadian Tire Corporation, Sport Chek participates in the Triangle Rewards program. The WOW Deals program offers significant savings on premium gear.</p>
+Corporate Information About Sport Chek About Sport Chek Canada’s home for sport since 1976. Whether you’re racing towards the goal line, pushing through that last lap or sweating on the court, we understand the value of sport, how it connects us, and how it makes us feel.
+
+​Sharing Canadians' passion for sport, Sport Chek is proud to be Canada’s destination for sport. Our belief in the importance of living healthy, active lives is backed by our dedicated employees with a deep understanding and commitment to sport.
+
+No matter what sport or activity you’re into, we’re always on your team. For more information about our parent company, visit CanadianTire. ca.

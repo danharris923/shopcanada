@@ -1,9 +1,21 @@
 ---
 slug: revive-superfoods
 name: Revive Superfoods
-type: brand
+type: store
 ---
 
 # Revive Superfoods
 
-GET 50% OFF YOUR FIRST BOX. USE CODE: REVIVE50 EAT BETTER LIVE BETTER “ I love smoothies but I hated the prep work. I’d get my smoothies from cafes near me but they were always packed with added sugar and unhealthy ingredients that left me feeling bloated and tired. So, my partners and I joined forces with a mission: to solve this smoothie dilemma for busy folks like me. Our solution? Frozen, pre-portioned smoothies that are not just tasty and packed with goodness, but also ready in seconds. NOUR KAISS, CO-FOUNDER + CMO “ Empowering people to build healthy eating habits Smoothies that are good for you and the environment Making healthy food accessible to everyone Always balancing taste and nutrition IT ALL STARTS FROM WITHIN What you put inside your body matters From the very beginning, our mission has centered around the profound impact of your food choices on your well-being and performance. That’s precisely why we’ve dedicated ourselves to crafting smoothies composed of the finest, vitamin-rich ingredients. Our goal is simple: to transform your life for the better with every sip. We don’t eat enough fruits & veggies According to the CDC, a mere one in ten individuals manages to meet the daily recommended intake of fruits and vegetables. At our core, we’re committed to making it effortless and convenient for you to embrace a broader spectrum of superfoods through our perfectly portioned smoothies. Frozen to lock in the good stuff Right from the start, our vision was crystal clear – we were going to craft our smoothies using frozen ingredients. Why the emphasis on frozen? Well, it all boils down to the supply chain. You see, the path that fresh produce takes from the farm to your table spans weeks, and during that time, fruits and veggies can lose over 30% of their nutritional goodness just three days after being harvested. By freezing produce right at the source, we lock in those essential nutrients and flavors, ensuring that every sip of our smoothies maximizes t...
+GET 50% OFF YOUR FIRST BOX. USE CODE: REVIVE50 EAT BETTER LIVE BETTER “ I love smoothies but I hated the prep work. I’d get my smoothies from cafes near me but they were always packed with added sugar and unhealthy ingredients that left me feeling bloated and tired.
+
+So, my partners and I joined forces with a mission: to solve this smoothie dilemma for busy folks like me. Our solution? Frozen, pre-portioned smoothies that are not just tasty and packed with goodness, but also ready in seconds.
+
+NOUR KAISS, CO-FOUNDER + CMO “ Empowering people to build healthy eating habits Smoothies that are good for you and the environment Making healthy food accessible to everyone Always balancing taste and nutrition IT ALL STARTS FROM WITHIN What you put inside your body matters From the very beginning, our mission has centered around the profound impact of your food choices on your well-being and performance.
+
+That’s precisely why we’ve dedicated ourselves to crafting smoothies composed of the finest, vitamin-rich ingredients. Our goal is simple: to transform your life for the better with every sip. We don’t eat enough fruits & veggies According to the CDC, a mere one in ten individuals manages to meet the daily recommended intake of fruits and vegetables.
+
+At our core, we’re committed to making it effortless and convenient for you to embrace a broader spectrum of superfoods through our perfectly portioned smoothies. Frozen to lock in the good stuff Right from the start, our vision was crystal clear – we were going to craft our smoothies using frozen ingredients.
+
+Why the emphasis on frozen? Well, it all boils down to the supply chain. You see, the path that fresh produce takes from the farm to your table spans weeks, and during that time, fruits and veggies can lose over 30% of their nutritional goodness just three days after being harvested.
+
+By freezing produce right at the source, we lock in those essential nutrients and flavors, ensuring that every sip of our smoothies maximizes t...

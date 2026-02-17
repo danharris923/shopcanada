@@ -1,9 +1,25 @@
 ---
 slug: marks
-name: Mark
+name: Marks
 type: store
 ---
 
-# Mark
+# Marks
 
-Corporate Information About Mark's Citizenship Ethical Sourcing Program Affiliate Program About Mark's As a proud Canadian retailer since 1977, we’re all about helping people across the country dress for the best day possible. We carry a mix of national and owned brands, invest in new technologies to tackle everything from the weather to workplace demands, and put more on display than hoodies, steel toe boots and rain gear. When you shop at Mark’s, you can always expect a warm welcome, a commitment to quality and the desire to know better than any other retailer what Canadians need when it comes to their wardrobes. Visit one of our 380+ stores or shop online today to see our full offering of casual clothing, footwear, workwear and accessories. Mark's is a member of the Canadian Tire Group of Companies. For more information, please visit https://corp.canadiantire.ca Citizenship Mark's is proud to support Canadian Tire Jumpstart as its charity of choice. Jumpstart is a nationally registered charity helping kids across Canada with financial barriers take part in organized sport and activity. Since its inception in 2005, Jumpstart has helped over 700,000 kids get in the game. For more information, please visit http://jumpstart.canadiantire.ca/ Ethical Sourcing Program Mark's is committed to Corporate Responsibility and Ethical Sourcing. For more information, please refer to our corporate website, Canadian Tire Corporation, or contact media.inquiries@marks.com. Affilate Program Build your own online store!If you have a web site, you can make money selling Mark's products. It's easy and it's free to join.Click here to join now and earn commissions of up to 4% Why join? Turn your web site into a virtual clothing, footwear, and accessories store.Earn referral fees of up to 6% on thousands of top quality clothing, footwear, and accessory products.Be up and running quickly. It's easy.Buy clothing, footwear, and accessory products for yourself through your link, and pocket the...
+Corporate Information About Mark's Citizenship Ethical Sourcing Program Affiliate Program About Mark's As a proud Canadian retailer since 1977, we’re all about helping people across the country dress for the best day possible.
+
+We carry a mix of national and owned brands, invest in new technologies to tackle everything from the weather to workplace demands, and put more on display than hoodies, steel toe boots and rain gear.
+
+When you shop at Mark’s, you can always expect a warm welcome, a commitment to quality and the desire to know better than any other retailer what Canadians need when it comes to their wardrobes. Visit one of our 380+ stores or shop online today to see our full offering of casual clothing, footwear, workwear and accessories.
+
+Mark's is a member of the Canadian Tire Group of Companies. For more information, please visit https://corp. canadiantire. ca Citizenship Mark's is proud to support Canadian Tire Jumpstart as its charity of choice.
+
+Jumpstart is a nationally registered charity helping kids across Canada with financial barriers take part in organized sport and activity. Since its inception in 2005, Jumpstart has helped over 700,000 kids get in the game.
+
+For more information, please visit http://jumpstart. canadiantire. ca/ Ethical Sourcing Program Mark's is committed to Corporate Responsibility and Ethical Sourcing. For more information, please refer to our corporate website, Canadian Tire Corporation, or contact media.
+
+inquiries@marks. com. Affilate Program Build your own online store! If you have a web site, you can make money selling Mark's products. It's easy and it's free to join. Click here to join now and earn commissions of up to 4% Why join?
+
+Turn your web site into a virtual clothing, footwear, and accessories store. Earn referral fees of up to 6% on thousands of top quality clothing, footwear, and accessory products. Be up and running quickly.
+
+It's easy. Buy clothing, footwear, and accessory products for yourself through your link, and pocket the...

@@ -1,9 +1,21 @@
 ---
 slug: blair-nadeau
 name: Blair Nadeau
-type: brand
+type: store
 ---
 
 # Blair Nadeau
 
-About Us Blair Nadeau Bridal Adornments was established in 2009, born out of our love of bridal and fashion. We believe that every bride is unique and deserves adornments that are as beautiful and unique as she is. Combining bridal and fashion, we create curated collections of modern and yesteryear inspired accessories. Crafted by hand in our atelier just outside of Toronto, we use the finest and highest quality materials sourced from around the world. Utilizing traditional techniques applied in a modern fashion, we create inspired adornments for the modern bride. All of our designs are made to order, allowing each piece to be given the love and attention it deserves. Every romance has a story and we are so honored to have our adornments play a small part in your story. Thank you for supporting handmade. Our work has been worn by Canadian actresses, gifted to celebrities including Gwen Stefani, Drew Barrymore, Scarlet Johannson and Kortney Wilson from Masters of Flip. We have been featured in British Vogue & Harper's Bazaar, Vogue Italia, and has graced the covers of magazines, newspapers and hundreds of editorial features, in addition to countless top wedding blogs and style blogs. Our work has been staple accessories on all four seasons of the hit CW Television show Reign, Riverdale and Charmed. Blair Nadeau is an award winning designer as Top 10 Bridal Accessory Designers in the World by Wedding Industry Experts and a Top 3 Finalist for the 2014 Canadian Accessory Designer of the Year from the Canadian Wedding Awards. Please visit our Etsy Shop to read our 5 star glowing reviews from our beautiful brides! ♥ "She leaves of path of glitter wherever she goes....." Photo Courtesy of Khristel Studios
+About Us Blair Nadeau Bridal Adornments was established in 2009, born out of our love of bridal and fashion. We believe that every bride is unique and deserves adornments that are as beautiful and unique as she is.
+
+Combining bridal and fashion, we create curated collections of modern and yesteryear inspired accessories. Crafted by hand in our atelier just outside of Toronto, we use the finest and highest quality materials sourced from around the world.
+
+Utilizing traditional techniques applied in a modern fashion, we create inspired adornments for the modern bride. All of our designs are made to order, allowing each piece to be given the love and attention it deserves.
+
+Every romance has a story and we are so honored to have our adornments play a small part in your story. Thank you for supporting handmade. Our work has been worn by Canadian actresses, gifted to celebrities including Gwen Stefani, Drew Barrymore, Scarlet Johannson and Kortney Wilson from Masters of Flip.
+
+We have been featured in British Vogue & Harper's Bazaar, Vogue Italia, and has graced the covers of magazines, newspapers and hundreds of editorial features, in addition to countless top wedding blogs and style blogs.
+
+Our work has been staple accessories on all four seasons of the hit CW Television show Reign, Riverdale and Charmed. Blair Nadeau is an award winning designer as Top 10 Bridal Accessory Designers in the World by Wedding Industry Experts and a Top 3 Finalist for the 2014 Canadian Accessory Designer of the Year from the Canadian Wedding Awards.
+
+Please visit our Etsy Shop to read our 5 star glowing reviews from our beautiful brides! ♥ "She leaves of path of glitter wherever she goes.....

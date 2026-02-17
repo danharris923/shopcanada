@@ -25,7 +25,7 @@ export function WebsitePreview({ brandName, brandSlug, brandUrl }: WebsitePrevie
         className="block group relative overflow-hidden rounded-lg border-2 border-silver-light hover:border-maple-red transition-colors"
       >
         <img
-          src={`/brand-screenshots/${brandSlug}.png`}
+          src={`/brand-screenshots/${brandSlug}.webp`}
           alt={`${brandName} website preview`}
           className="w-full h-auto object-cover"
           onError={() => setImageError(true)}

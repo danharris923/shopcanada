@@ -1,9 +1,23 @@
 ---
 slug: understance
 name: Understance
-type: brand
+type: store
 ---
 
 # Understance
 
-Who We AreUnderstance is a solution-oriented lingerie company based in Vancouver, BC. Our mission is to empower people to discover the transformative power of comfort and support.Our PeopleUnderstance is a Canadian company based in British Columbia, Canada. Our team is proud to be made up of over 68 employees from 21 countries. About 85% POC, 85% of our leadership positions are occupied by women.Our CommitmentAt Understance, our goal isn't just to sell as many bras as possible—we want to make a difference in your comfort, confidence, and sense of self. We pledge to be honest—no photoshopped models, no fictitious pricing. What you see is what you get.Thoughtful DesignWe don't claim to have re-invented the bra. The bra industry doesn't need a revolution but reform is overdue. With thoughtful design and updated materials, an expertly-made bra can be comfortable, flattering, and attractive. If you've tried our products, you know we infuse every detail with the utmost care.Our ValuesOur ValuesBra EducationWe are committed to providing you with all the resources you need so that you can make the best decision for your shape.Ethical ManufacturingWhen you shop with us, you can take comfort in knowing that the people who made your products are treated well.Sustainable PracticeWe use 50% less wastewater, 100% recycled tags and packaging and we'll always choose recycled fabrics wherever we can.PhilanthropyWe are first & foremost a customer-focused company, but, we are also dedicated to giving back to our local community.Our FactoriesOur products are made by an award-winning factory with a focus on sustainable practices based in Ganzhou, China. It is primarily powered by solar energy with a two-tier water conservation system. Seamstresses and technicians are paid 20% above the regional average, enjoy paid time off, and work in a safety-first environment.So, what's next?Enough about us, now it's about you! Here are some options to get you started on your journey to comfort!
+Who We AreUnderstance is a solution-oriented lingerie company based in Vancouver, BC. Our mission is to empower people to discover the transformative power of comfort and support. Our PeopleUnderstance is a Canadian company based in British Columbia, Canada.
+
+Our team is proud to be made up of over 68 employees from 21 countries. About 85% POC, 85% of our leadership positions are occupied by women. Our CommitmentAt Understance, our goal isn't just to sell as many bras as possible—we want to make a difference in your comfort, confidence, and sense of self.
+
+We pledge to be honest—no photoshopped models, no fictitious pricing. What you see is what you get. Thoughtful DesignWe don't claim to have re-invented the bra. The bra industry doesn't need a revolution but reform is overdue.
+
+With thoughtful design and updated materials, an expertly-made bra can be comfortable, flattering, and attractive. If you've tried our products, you know we infuse every detail with the utmost care. Our ValuesOur ValuesBra EducationWe are committed to providing you with all the resources you need so that you can make the best decision for your shape.
+
+Ethical ManufacturingWhen you shop with us, you can take comfort in knowing that the people who made your products are treated well. Sustainable PracticeWe use 50% less wastewater, 100% recycled tags and packaging and we'll always choose recycled fabrics wherever we can.
+
+PhilanthropyWe are first & foremost a customer-focused company, but, we are also dedicated to giving back to our local community. Our FactoriesOur products are made by an award-winning factory with a focus on sustainable practices based in Ganzhou, China.
+
+It is primarily powered by solar energy with a two-tier water conservation system. Seamstresses and technicians are paid 20% above the regional average, enjoy paid time off, and work in a safety-first environment.
+
+So, what's next? Enough about us, now it's about you! Here are some options to get you started on your journey to comfort!

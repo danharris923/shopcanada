@@ -1,9 +1,21 @@
 ---
 slug: m-m-food-market
 name: M M Food Market
-type: brand
+type: store
 ---
 
 # M M Food Market
 
-About us Proudly serving Canadians since 1980Since 1980, M&M Food Market has helped Canadians put delicious meals on the table by offering restaurant-quality food, great customer service and a convenient shopping experience. We’ve taken this task to heart and have grown to become Canada’s leading retailer of fine frozen foods, and a trusted guest at dinner tables across the country. Read our story Real food, real lifeOur goal is to make your meals easier without compromising on quality, which is why there are no artificial colours, flavours, or sweeteners in any of our foods. We strive to source Canadian products as much as possible because we take great pride in supporting local businesses and showcasing the incredible quality our country has to offer. In fact, over 80% of our M&M Food Market branded products are “Made in Canada from domestic and imported ingredients” or a “Product of Canada”! Shop products Learn more about our food Shop with us your wayConvenience is at the heart of what we do. Shop online for same-day pickup or delivery, or visit us in-store. You can also find our frozen meals at M&M Food Market Express locations in the freezer aisles of select retailers, including convenience stores, pharmacies, and gas stations–making it easy for you to grab a quick, tasty meal wherever you are. Learn more about online shopping Learn more about M&M Food Market Express Franchise opportunities Be a part of a truly iconic Canadian brand. Learn more Careers Browse our open positions and consider joining our team! Learn more Social responsibility We are dedicated to our customers, our employees, our communities and our environment. Learn More Frequently asked questions Looking for more information? Learn more Awards and recognitionAwards we’ve been pleased to accept. Learn more Media roomM&M Food Market in the news. Learn more Top of Page
+About us Proudly serving Canadians since 1980Since 1980, M&M Food Market has helped Canadians put delicious meals on the table by offering restaurant-quality food, great customer service and a convenient shopping experience.
+
+We’ve taken this task to heart and have grown to become Canada’s leading retailer of fine frozen foods, and a trusted guest at dinner tables across the country. Read our story Real food, real lifeOur goal is to make your meals easier without compromising on quality, which is why there are no artificial colours, flavours, or sweeteners in any of our foods.
+
+We strive to source Canadian products as much as possible because we take great pride in supporting local businesses and showcasing the incredible quality our country has to offer. In fact, over 80% of our M&M Food Market branded products are “Made in Canada from domestic and imported ingredients” or a “Product of Canada”!
+
+Shop products Learn more about our food Shop with us your wayConvenience is at the heart of what we do. Shop online for same-day pickup or delivery, or visit us in-store. You can also find our frozen meals at M&M Food Market Express locations in the freezer aisles of select retailers, including convenience stores, pharmacies, and gas stations–making it easy for you to grab a quick, tasty meal wherever you are.
+
+Learn more about online shopping Learn more about M&M Food Market Express Franchise opportunities Be a part of a truly iconic Canadian brand. Learn more Careers Browse our open positions and consider joining our team!
+
+Learn more Social responsibility We are dedicated to our customers, our employees, our communities and our environment. Learn More Frequently asked questions Looking for more information? Learn more Awards and recognitionAwards we’ve been pleased to accept.
+
+Learn more Media roomM&M Food Market in the news.

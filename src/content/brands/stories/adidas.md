@@ -6,4 +6,12 @@ type: store
 
 # Adidas
 
-<h3>Impossible Is Nothing</h3><p>Adidas has deep roots in sport, from World Cup soccer to NBA basketball. The brand's Originals line brings classic designs like Stan Smith and Superstar to street fashion.</p><h3>Sustainability Focus</h3><p>Adidas partners with Parley for the Oceans to create products from recycled ocean plastic. The adiClub rewards program offers points, exclusive products, and member-only experiences.</p>
+## What Adidas Means to Canadian Shoppers
+
+Adidas holds a distinctive position in Canadian retail as both a performance sportswear company and a lifestyle brand. The three-stripe logo appears equally in university gyms, professional sports venues, and downtown streetwear shops.
+
+## Canadian Jobs & Operations
+
+Adidas employs Canadians across retail stores, corporate functions, and distribution operations. The Brantford distribution centre represents a significant logistics operation, handling inventory and fulfilment for Canadian orders. The brand is the official apparel sponsor for the Canadian Collegiate Athletic Association.
+
+The free adiClub program offers free shipping on all orders, points on every purchase, and early access to sales. Students get 30% off regular prices and 15% off outlet items. Black Friday discounts reach up to 60% for members.
