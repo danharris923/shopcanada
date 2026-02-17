@@ -204,7 +204,7 @@ export default async function HomePage() {
                       id={deal.id}
                       title={deal.title}
                       slug={deal.slug}
-                      imageUrl={deal.image_blob_url || deal.image_url || deal.imageUrl || '/placeholder-deal.jpg'}
+                      imageUrl={deal.image_blob_url || deal.image_url || deal.imageUrl || '/placeholder-deal.svg'}
                       price={deal.price}
                       originalPrice={deal.original_price ?? deal.originalPrice ?? null}
                       discountPercent={deal.discount_percent ?? deal.discountPercent ?? null}
@@ -222,7 +222,7 @@ export default async function HomePage() {
                       id={deal.id}
                       title={deal.title}
                       slug={deal.slug}
-                      imageUrl={deal.image_blob_url || deal.image_url || deal.imageUrl || '/placeholder-deal.jpg'}
+                      imageUrl={deal.image_blob_url || deal.image_url || deal.imageUrl || '/placeholder-deal.svg'}
                       price={deal.price}
                       originalPrice={deal.original_price ?? deal.originalPrice ?? null}
                       discountPercent={deal.discount_percent ?? deal.discountPercent ?? null}
@@ -297,7 +297,7 @@ export default async function HomePage() {
                     id={deal.id}
                     title={deal.title}
                     slug={deal.slug}
-                    imageUrl={deal.image_blob_url || deal.image_url || deal.imageUrl || '/placeholder-deal.jpg'}
+                    imageUrl={deal.image_blob_url || deal.image_url || deal.imageUrl || '/placeholder-deal.svg'}
                     price={deal.price}
                     originalPrice={deal.original_price ?? deal.originalPrice ?? null}
                     discountPercent={deal.discount_percent ?? deal.discountPercent ?? null}
@@ -315,7 +315,7 @@ export default async function HomePage() {
                     id={deal.id}
                     title={deal.title}
                     slug={deal.slug}
-                    imageUrl={deal.image_blob_url || deal.image_url || deal.imageUrl || '/placeholder-deal.jpg'}
+                    imageUrl={deal.image_blob_url || deal.image_url || deal.imageUrl || '/placeholder-deal.svg'}
                     price={deal.price}
                     originalPrice={deal.original_price ?? deal.originalPrice ?? null}
                     discountPercent={deal.discount_percent ?? deal.discountPercent ?? null}

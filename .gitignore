@@ -7,6 +7,19 @@ out/
 
 # Env
 .env*.local
+.env.production
+
+# Claude Code temp files
+tmpclaude-*
+
+# One-time migration scripts (already ran)
+scripts/migrate-*.mjs
+scripts/migrate-*.ts
+scripts/check-db-schema.ts
+scripts/sync-costco-images.js
+
+# Temp/backup image files
+*.webp.tmp
 
 # Vercel
 .vercel
