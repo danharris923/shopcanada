@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { SafeImg } from '@/components/SafeImg'
 
 interface BrandCardProps {
   name: string
@@ -16,7 +17,7 @@ export function BrandCard({ name, tagline, established, href, image, amazonLink,
       <Link href={href}>
         <div className="bg-white border border-silver-light hover:border-maple-red transition-all rounded-card overflow-hidden">
           <div className="relative aspect-[4/3] overflow-hidden bg-ivory">
-            <img
+            <SafeImg
               src={image || "/placeholder.svg"}
               alt={name}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"

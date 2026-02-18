@@ -101,7 +101,7 @@ export interface DealCardProps {
   id: string
   title: string
   slug: string
-  imageUrl: string
+  imageUrl?: string
   price: number | null
   originalPrice: number | null
   discountPercent: number | null

@@ -40,6 +40,7 @@ export function YouTubeEmbed({ video, autoplay = false }: YouTubeEmbedProps) {
         src={video.thumbnail}
         alt={video.title}
         className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        onError={(e) => { e.currentTarget.style.display = 'none' }}
       />
 
       {/* Play button overlay */}

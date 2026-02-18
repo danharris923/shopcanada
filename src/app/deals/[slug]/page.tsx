@@ -30,6 +30,7 @@ import { StockWarning } from '@/components/deal/StockWarning'
 import { TrustBadges, StoreBadge } from '@/components/deal/TrustBadges'
 import { Breadcrumbs } from '@/components/breadcrumbs'
 import { StickyMobileCTA } from '@/components/deal/StickyMobileCTA'
+import { SafeImg } from '@/components/SafeImg'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { DealCard, DealGrid } from '@/components/DealCard'
@@ -51,7 +52,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const title = generatePageTitle(deal)
   const description = generateMetaDescription(deal)
-  const imageUrl = deal.image_blob_url || deal.image_url || '/hero-desktop.png'
+  const ogImageUrl = deal.image_blob_url || deal.image_url || '/hero-desktop.png'
   const canonicalUrl = `${SITE_URL}/deals/${deal.slug}`
   const publishedTime = deal.date_added ? new Date(deal.date_added).toISOString() : new Date().toISOString()
   const modifiedTime = deal.date_updated ? new Date(deal.date_updated).toISOString() : publishedTime
@@ -66,7 +67,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title,
       description,
       url: canonicalUrl,
-      images: [{ url: imageUrl, width: 800, height: 600, alt: deal.title }],
+      images: [{ url: ogImageUrl, width: 800, height: 600, alt: deal.title }],
       type: 'article',
       publishedTime,
       modifiedTime,
@@ -77,7 +78,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: 'summary_large_image',
       title,
       description,
-      images: [imageUrl],
+      images: [ogImageUrl],
     },
   }
 }
@@ -135,7 +136,7 @@ export default async function DealPage({ params }: PageProps) {
   // Filter out null schemas
   const schemas = [productSchema, breadcrumbSchema, faqSchema, reviewSchema].filter(Boolean)
 
-  const imageUrl = deal.image_blob_url || deal.image_url || '/placeholder-deal.svg'
+  const imageUrl = deal.image_blob_url || deal.image_url || null
   const storeName = formatStoreName(deal.store)
   const storeSlug = deal.store?.toLowerCase().replace(/\s+/g, '-') || ''
 
@@ -176,14 +177,29 @@ export default async function DealPage({ params }: PageProps) {
 
               {/* Image */}
               <div className="relative aspect-square bg-ivory rounded-card overflow-hidden">
-                <Image
-                  src={imageUrl}
-                  alt={deal.title}
-                  fill
-                  className="object-contain"
-                  priority
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
+                {imageUrl ? (
+                  <Image
+                    src={imageUrl}
+                    alt={deal.title}
+                    fill
+                    className="object-contain"
+                    priority
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center p-8 gap-4">
+                    {storeSlug && (
+                      <SafeImg
+                        src={`/images/stores/${storeSlug}.png`}
+                        alt={storeName}
+                        className="w-24 h-24 object-contain opacity-50"
+                      />
+                    )}
+                    <p className="text-sm text-slate text-center line-clamp-4 leading-relaxed max-w-xs">
+                      {deal.title}
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -339,7 +355,7 @@ export default async function DealPage({ params }: PageProps) {
                         id={related.id}
                         title={related.title}
                         slug={related.slug}
-                        imageUrl={related.image_blob_url || related.image_url || '/placeholder-deal.svg'}
+                        imageUrl={related.image_blob_url || related.image_url || undefined}
                         price={related.price}
                         originalPrice={related.original_price}
                         discountPercent={related.discount_percent}
@@ -396,6 +412,7 @@ export default async function DealPage({ params }: PageProps) {
                                   width={48}
                                   height={48}
                                   className="object-cover w-full h-full"
+                                  onError={(e) => { e.currentTarget.style.display = 'none' }}
                                 />
                               )}
                             </div>

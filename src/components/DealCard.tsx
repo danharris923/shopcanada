@@ -47,26 +47,20 @@ export function DealCard({
   // Get store logo path for fallback
   const storeLogoFallback = getStoreLogoPath(store)
 
-  // Determine initial image: use deal image, or store logo if no deal image
-  const getInitialImage = () => {
-    if (imageUrl) return imageUrl
-    if (storeLogoFallback) return storeLogoFallback
-    return '/placeholder-deal.svg'
-  }
-
-  const [imgSrc, setImgSrc] = useState(getInitialImage())
+  const [imgSrc, setImgSrc] = useState(imageUrl || '')
   const [imgError, setImgError] = useState(false)
-  const [triedStoreLogo, setTriedStoreLogo] = useState(!imageUrl) // Already using store logo if no imageUrl
+  const [triedStoreLogo, setTriedStoreLogo] = useState(false)
+  const [noProductImage, setNoProductImage] = useState(!imageUrl)
 
   const handleImageError = () => {
     if (!imgError && !triedStoreLogo && storeLogoFallback) {
-      // First error: try store logo
+      // First error: try store logo as product image
       setTriedStoreLogo(true)
       setImgSrc(storeLogoFallback)
     } else if (!imgError) {
-      // Final fallback: placeholder
+      // All image sources failed — hide image, show text layout
       setImgError(true)
-      setImgSrc('/placeholder-deal.svg')
+      setNoProductImage(true)
     }
   }
 
@@ -182,15 +176,32 @@ export function DealCard({
         )}
 
 
-        {/* Image */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={imgSrc}
-          alt={title}
-          className="absolute inset-0 w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-200"
-          onError={handleImageError}
-          loading="lazy"
-        />
+        {/* Image or No-Image Layout */}
+        {noProductImage ? (
+          <div className="absolute inset-0 flex flex-col items-center justify-center p-4 gap-2">
+            {storeLogoFallback && (
+              /* eslint-disable-next-line @next/next/no-img-element */
+              <img
+                src={storeLogoFallback}
+                alt={store || 'Store'}
+                className="w-20 h-20 object-contain opacity-60"
+                onError={(e) => { e.currentTarget.style.display = 'none' }}
+              />
+            )}
+            <p className="text-xs text-slate text-center line-clamp-4 leading-relaxed px-2">
+              {title}
+            </p>
+          </div>
+        ) : (
+          /* eslint-disable-next-line @next/next/no-img-element */
+          <img
+            src={imgSrc}
+            alt={title}
+            className="absolute inset-0 w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-200"
+            onError={handleImageError}
+            loading="lazy"
+          />
+        )}
       </div>
 
       {/* Content */}
@@ -213,7 +224,7 @@ export function DealCard({
         )}
 
         {/* Title */}
-        <h3 className="deal-card-title mb-2 line-clamp-2 group-hover:text-maple-red transition-colors">
+        <h3 className={`deal-card-title mb-2 group-hover:text-maple-red transition-colors ${noProductImage ? 'line-clamp-3' : 'line-clamp-2'}`}>
           {title}
         </h3>
 

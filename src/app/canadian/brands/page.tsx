@@ -5,6 +5,7 @@ import { Footer } from '@/components/Footer'
 import { StatsBar } from '@/components/StatsBar'
 import { Breadcrumbs } from '@/components/breadcrumbs'
 import type { Metadata } from 'next'
+import { SafeImg } from '@/components/SafeImg'
 import type { Store } from '@/types/deal'
 
 export const metadata: Metadata = {
@@ -84,7 +85,7 @@ export default async function AllBrandsPage() {
                     >
                       <div className="flex items-start gap-3 mb-2">
                         {brand.logo_url ? (
-                          <img
+                          <SafeImg
                             src={brand.logo_url}
                             alt={`${brand.name} logo`}
                             className="w-10 h-10 rounded object-contain bg-cream flex-shrink-0"

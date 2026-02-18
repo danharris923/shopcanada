@@ -123,6 +123,7 @@ export function FashionCarousel({ cards, autoPlayInterval = 60000 }: FashionCaro
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                   sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   loading={index < visibleCount ? 'eager' : 'lazy'}
+                  onError={(e) => { e.currentTarget.style.display = 'none' }}
                 />
 
                 {/* Gradient overlay for text readability */}

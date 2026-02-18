@@ -12,6 +12,7 @@ import { StoreLogo } from '@/components/StoreLogo'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { StatsBar } from '@/components/StatsBar'
+import { SafeImg } from '@/components/SafeImg'
 import { ExternalLink, Truck, RotateCcw, Award, CreditCard } from 'lucide-react'
 import { getVideosForStore } from '@/lib/youtube'
 import { StoreVideos } from '@/components/YouTubeEmbed'
@@ -199,10 +200,11 @@ export default async function StorePage({ params }: PageProps) {
           {store.screenshot_url && (
             <div className="mb-8">
               <div className="relative rounded-card overflow-hidden border border-silver-light shadow-lg">
-                <img
+                <SafeImg
                   src={store.screenshot_url}
                   alt={`${storeName} website screenshot`}
                   className="w-full h-auto"
+                  hideParent
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
                   <p className="text-white text-sm">
@@ -236,7 +238,7 @@ export default async function StorePage({ params }: PageProps) {
                     id={deal.id}
                     title={deal.title}
                     slug={deal.slug}
-                    imageUrl={deal.image_blob_url || deal.image_url || '/placeholder-deal.svg'}
+                    imageUrl={deal.image_blob_url || deal.image_url || undefined}
                     price={deal.price}
                     originalPrice={deal.original_price}
                     discountPercent={deal.discount_percent}
@@ -387,7 +389,7 @@ export default async function StorePage({ params }: PageProps) {
                   >
                     <div className="mb-4 h-16 flex items-center justify-center">
                       {relatedStore.logo_url ? (
-                        <img
+                        <SafeImg
                           src={relatedStore.logo_url}
                           alt={`${relatedStore.name} logo`}
                           className="max-h-full max-w-full object-contain"

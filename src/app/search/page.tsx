@@ -123,7 +123,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                           id={deal.id}
                           title={deal.title}
                           slug={deal.slug}
-                          imageUrl={deal.image_blob_url || deal.image_url || '/placeholder-deal.svg'}
+                          imageUrl={deal.image_blob_url || deal.image_url || undefined}
                           price={deal.price}
                           originalPrice={deal.original_price}
                           discountPercent={deal.discount_percent}
