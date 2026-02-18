@@ -28,7 +28,7 @@ export const REVALIDATE_NEVER = 0
 /**
  * Base site URL - used for canonical URLs, Open Graph, and sitemaps
  */
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://shopcanada.cc'
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://canadiandealfinder.ca'
 
 // =============================================================================
 // SOCIAL MEDIA LINKS

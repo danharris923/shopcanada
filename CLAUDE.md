@@ -15,7 +15,7 @@ No test suite is configured.
 
 ## Architecture
 
-ShopCanada is a **Next.js 14 App Router** Canadian deals aggregator deployed on **Vercel** at shopcanada.cc. A separate scraper (runs on a DigitalOcean droplet) writes deals to the shared Vercel Postgres database; this frontend reads and renders them.
+Canadian Deal Finder is a **Next.js 14 App Router** Canadian deals aggregator deployed on **Vercel** at canadiandealfinder.ca (formerly shopcanada.cc). A separate scraper (runs on a DigitalOcean droplet) writes deals to the shared Vercel Postgres database; this frontend reads and renders them.
 
 ### Data Flow
 ```
