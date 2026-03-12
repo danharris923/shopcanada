@@ -148,25 +148,6 @@ export async function searchFlipp(
 /**
  * Get deals for a specific store
  */
-export async function getFlippStoreDeals(
-  storeName: string,
-  postalCode: string = DEFAULT_POSTAL_CODE
-): Promise<FlippDeal[]> {
-  try {
-    const response = await searchFlipp(storeName, postalCode)
-    // Filter to only include items from the requested store
-    // (Flipp search can return items where the query matches product name, not just store)
-    const storeNameLower = storeName.toLowerCase()
-    const filteredItems = response.items.filter(item =>
-      item.merchant_name.toLowerCase().includes(storeNameLower) ||
-      storeNameLower.includes(item.merchant_name.toLowerCase())
-    )
-    return transformFlippItems(filteredItems)
-  } catch (error) {
-    // Error fetching Flipp deals for store
-    return []
-  }
-}
 
 /**
  * Get deals for a product search
@@ -189,25 +170,6 @@ export async function searchFlippDeals(
 /**
  * Get deals from multiple stores
  */
-export async function getFlippDealsMultiStore(
-  storeNames: string[],
-  postalCode: string = DEFAULT_POSTAL_CODE
-): Promise<FlippDeal[]> {
-  const allDeals: FlippDeal[] = []
-
-  for (const store of storeNames) {
-    const deals = await getFlippStoreDeals(store, postalCode)
-    allDeals.push(...deals)
-  }
-
-  // Dedupe by id
-  const seen = new Set<string>()
-  return allDeals.filter(deal => {
-    if (seen.has(deal.id)) return false
-    seen.add(deal.id)
-    return true
-  })
-}
 
 // =============================================================================
 // TRANSFORM FUNCTIONS

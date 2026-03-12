@@ -383,22 +383,6 @@ export const COOKIE_BYPASS_PARAMS: Record<string, string> = {
 // UNIFIED API
 // =============================================================================
 
-/**
- * Get affiliate link for a store (base URL without search)
- * Now only supports Rakuten merchants - other stores should use affiliate_url from DB
- */
-export function getStoreAffiliateLink(storeSlug: string | null): string | null {
-  if (!storeSlug) return null
-
-  // Check Rakuten (return base link to homepage)
-  const rakutenMerchant = RAKUTEN_MERCHANTS[storeSlug]
-  if (rakutenMerchant) {
-    const encodedUrl = encodeURIComponent(rakutenMerchant.domain)
-    return `https://click.linksynergy.com/deeplink?id=${RAKUTEN_PUBLISHER_ID}&mid=${rakutenMerchant.mid}&murl=${encodedUrl}`
-  }
-
-  return null
-}
 
 /**
  * Extract clean search terms from a product title
@@ -486,21 +470,6 @@ export function extractSearchTerms(title: string, brandName?: string): string {
   return cleaned
 }
 
-/**
- * Build affiliate search URL from a base search URL and product title
- * @param searchUrl - The base search URL from DB (e.g., "https://www.amazon.ca/s?k=")
- * @param productTitle - The product to search for (will be cleaned)
- * @param storeSlug - Optional store slug for cookie bypass params
- */
-export function buildAffiliateSearchUrl(
-  searchUrl: string,
-  productTitle: string,
-  storeSlug?: string | null
-): string {
-  const cleanedTitle = extractSearchTerms(productTitle)
-  const bypassParam = storeSlug ? (COOKIE_BYPASS_PARAMS[storeSlug] || '') : ''
-  return `${searchUrl}${encodeURIComponent(cleanedTitle)}${bypassParam}`
-}
 
 /**
  * Map store slugs to brand names for search term cleaning
@@ -773,20 +742,7 @@ export function getDealAffiliateUrl(
   return getAffiliateSearchUrl(storeSlug, productTitle)
 }
 
-/**
- * Check if a store has a Rakuten affiliate link
- */
-export function hasStoreAffiliate(storeSlug: string | null): boolean {
-  if (!storeSlug) return false
-  return storeSlug in RAKUTEN_MERCHANTS
-}
 
-/**
- * Get list of all Rakuten affiliate store slugs
- */
-export function getAffiliateStores(): string[] {
-  return Object.keys(RAKUTEN_MERCHANTS)
-}
 
 // =============================================================================
 // AFFILIATE BRAND TYPE (for components that need it)

@@ -41,17 +41,13 @@ const STORE_PATTERNS: Record<string, string[]> = {
 /**
  * Match video title to a store slug
  */
-export function matchStoreFromTitle(title: string): string | null {
+function matchStoreFromTitle(title: string): string | null {
   const lowerTitle = title.toLowerCase()
-
-  for (const [storeSlug, patterns] of Object.entries(STORE_PATTERNS)) {
-    for (const pattern of patterns) {
-      if (lowerTitle.includes(pattern)) {
-        return storeSlug
-      }
+  for (const [slug, patterns] of Object.entries(STORE_PATTERNS)) {
+    if (patterns.some(p => lowerTitle.includes(p))) {
+      return slug
     }
   }
-
   return null
 }
 
@@ -156,9 +152,4 @@ export async function getVideosForStore(storeSlug: string, limit: number = 3): P
     .slice(0, limit)
 }
 
-/**
- * Get latest videos (for homepage)
- */
-export async function getLatestVideos(limit: number = 6): Promise<YouTubeVideo[]> {
-  return fetchYouTubeVideos(limit)
-}
+

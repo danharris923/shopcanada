@@ -10,13 +10,10 @@ import {
   generatePageTitle,
   generateBreadcrumbs,
   formatStoreName,
-  generateFAQ,
-  getStoreDescription,
 } from '@/lib/content-generator'
 import {
   generateProductSchema,
   generateBreadcrumbSchema,
-  generateFAQSchema,
   generateReviewSchema,
 } from '@/lib/schema'
 import { getStockWarning, generateUrgencyData } from '@/lib/urgency'
@@ -108,8 +105,6 @@ export default async function DealPage({ params }: PageProps) {
   const stockWarning = getStockWarning(urgencyData)
   const breadcrumbs = generateBreadcrumbs(deal)
   const description = generateDealDescription(deal)
-  const faqs = generateFAQ(deal)
-  const storeDescription = getStoreDescription(deal.store)
 
   let relatedDeals: Deal[] = []
   try {
@@ -130,11 +125,10 @@ export default async function DealPage({ params }: PageProps) {
   // Schema markup - enhanced with Review for rich snippets
   const productSchema = generateProductSchema(deal)
   const breadcrumbSchema = generateBreadcrumbSchema(deal)
-  const faqSchema = generateFAQSchema(deal) // Returns null if no real FAQs
   const reviewSchema = generateReviewSchema(deal)
 
   // Filter out null schemas
-  const schemas = [productSchema, breadcrumbSchema, faqSchema, reviewSchema].filter(Boolean)
+  const schemas = [productSchema, breadcrumbSchema, reviewSchema].filter(Boolean)
 
   const imageUrl = deal.image_blob_url || deal.image_url || null
   const storeName = formatStoreName(deal.store)

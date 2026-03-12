@@ -275,29 +275,6 @@ export function generateBreadcrumbs(deal: Deal): { label: string; href?: string 
   return breadcrumbs
 }
 
-/**
- * Generate store description
- * Returns empty string - store descriptions are now in the database
- */
-export function getStoreDescription(storeSlug: string | null): string {
-  if (!storeSlug) return ''
-  // Store descriptions are now fetched from the database
-  // This function is kept for backwards compatibility but returns empty
-  return ''
-}
-
-/**
- * Generate FAQ items for a deal
- * Store-specific info is now in the database, so this returns an empty array
- * FAQs should be generated at the page level using async database queries
- */
-export function generateFAQ(deal: Deal): { question: string; answer: string }[] {
-  // Store policies are now in the database and should be fetched async
-  // This function returns empty array - FAQ generation should happen
-  // at the page level where async DB access is available
-  return []
-}
-
 // =============================================================================
 // HELPERS
 // =============================================================================

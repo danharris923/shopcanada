@@ -3,7 +3,7 @@
  */
 
 import { Deal } from '@/types/deal'
-import { formatStoreName, generateBreadcrumbs, generateFAQ } from './content-generator'
+import { formatStoreName, generateBreadcrumbs } from './content-generator'
 import { SITE_URL } from './config'
 
 /**
@@ -173,31 +173,7 @@ export function generateBreadcrumbSchema(deal: Deal) {
   }
 }
 
-/**
- * Generate FAQPage schema - only if there are real FAQs
- * Returns null if no FAQ data (avoids empty schema)
- */
-export function generateFAQSchema(deal: Deal) {
-  const faqs = generateFAQ(deal)
 
-  // Don't generate empty FAQ schema
-  if (faqs.length === 0) {
-    return null
-  }
-
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map(faq => ({
-      '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.answer,
-      },
-    })),
-  }
-}
 
 /**
  * Generate WebSite schema for homepage
@@ -257,70 +233,5 @@ export function generateItemListSchema(deals: Deal[], listName: string) {
   }
 }
 
-/**
- * Generate LocalBusiness schema for store pages
- */
-export function generateLocalBusinessSchema(store: { name: string; slug: string; logo_url?: string }) {
-  const storeInfo: Record<string, { address: string; phone?: string }> = {
-    'amazon': { address: '120 Bremner Blvd, Toronto, ON M5J 0A8' },
-    'walmart': { address: '1940 Argentia Rd, Mississauga, ON L5N 1P9' },
-    'costco': { address: '415 West Hunt Club Road, Ottawa, ON K2E 1C5' },
-    'best-buy': { address: '8800 Glenlyon Pkwy, Burnaby, BC V5J 5K3' },
-    'canadian-tire': { address: '2180 Yonge St, Toronto, ON M4S 2B9' },
-    'home-depot': { address: '1 Concorde Gate, Toronto, ON M3C 3N6' },
-    'shoppers': { address: '243 Consumers Rd, North York, ON M2J 4W8' },
-    'loblaws': { address: '1 President\'s Choice Circle, Brampton, ON L6Y 5S5' },
-  }
 
-  const info = storeInfo[store.slug] || { address: 'Canada' }
 
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Store',
-    name: formatStoreName(store.slug),
-    url: `${SITE_URL}/stores/${store.slug}`,
-    logo: store.logo_url || `https://logo.clearbit.com/${store.slug}.com`,
-    address: {
-      '@type': 'PostalAddress',
-      addressCountry: 'CA',
-      addressLocality: info.address,
-    },
-    priceRange: '$-$$$$',
-    servesCuisine: undefined,
-    areaServed: {
-      '@type': 'Country',
-      name: 'Canada',
-    },
-  }
-}
-
-/**
- * Generate SiteNavigationElement schema
- */
-export function generateNavigationSchema() {
-  const navItems = [
-    { name: 'Deals', url: '/deals' },
-    { name: 'Stores', url: '/stores' },
-    { name: 'Categories', url: '/category' },
-    { name: 'Canadian Brands', url: '/canadian' },
-    { name: 'Today\'s Deals', url: '/deals/today' },
-  ]
-
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'SiteNavigationElement',
-    name: 'Main Navigation',
-    hasPart: navItems.map(item => ({
-      '@type': 'WebPage',
-      name: item.name,
-      url: `${SITE_URL}${item.url}`,
-    })),
-  }
-}
-
-/**
- * Combine multiple schemas into a single JSON-LD block
- */
-export function combineSchemas(...schemas: any[]) {
-  return JSON.stringify(schemas)
-}
