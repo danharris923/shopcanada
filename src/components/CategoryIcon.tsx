@@ -53,4 +53,3 @@ export function CategoryIcon({ category, size = 24, className = '' }: CategoryIc
 }
 
 // Export the icon map for use in other components
-export { iconMap }
