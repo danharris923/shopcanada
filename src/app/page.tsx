@@ -15,6 +15,7 @@ import { REVALIDATE_INTERVAL, FEATURED_STORE_SLUGS } from '@/lib/config'
 import { getCanadianFashionBrands, FASHION_IMAGES_BASE_URL, FASHION_SEARCH_URLS } from '@/lib/fashion-brands'
 import { IMAGE_MANIFEST } from '@/lib/fashion-deals'
 import { Store, MixedDeal } from '@/types/deal'
+import { toDealCardProps } from '@/lib/utils/deal-utils'
 
 // Badge display configuration for homepage store cards
 const BADGE_CONFIG: Record<string, { emoji: string; label: string; priority: number }> = {
@@ -198,39 +199,10 @@ export default async function HomePage() {
               </div>
               <DealGrid>
                 {shuffledFeatured.deals.map(deal => (
-                  deal.source === 'flipp' ? (
-                    <DealCard
+                  <DealCard
                       key={deal.id}
-                      id={deal.id}
-                      title={deal.title}
-                      slug={deal.slug}
-                      imageUrl={deal.image_blob_url || deal.image_url || deal.imageUrl || undefined}
-                      price={deal.price}
-                      originalPrice={deal.original_price ?? deal.originalPrice ?? null}
-                      discountPercent={deal.discount_percent ?? deal.discountPercent ?? null}
-                      store={deal.store || null}
-                      affiliateUrl={deal.affiliate_url || ''}
-                      variant="flipp"
-                      storeSlug={deal.storeSlug || deal.store?.toLowerCase().replace(/\s+/g, '-') || 'general'}
-                      storeLogo={deal.storeLogo || ''}
-                      validTo={deal.validTo || new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString()}
-                      saleStory={deal.saleStory ?? null}
+                      {...toDealCardProps(deal, { featured: true })}
                     />
-                  ) : (
-                    <DealCard
-                      key={deal.id}
-                      id={deal.id}
-                      title={deal.title}
-                      slug={deal.slug}
-                      imageUrl={deal.image_blob_url || deal.image_url || deal.imageUrl || undefined}
-                      price={deal.price}
-                      originalPrice={deal.original_price ?? deal.originalPrice ?? null}
-                      discountPercent={deal.discount_percent ?? deal.discountPercent ?? null}
-                      store={deal.store || null}
-                      affiliateUrl={deal.affiliate_url}
-                      featured={true}
-                    />
-                  )
                 ))}
               </DealGrid>
             </div>
@@ -291,39 +263,10 @@ export default async function HomePage() {
             </div>
             <DealGrid>
               {shuffledLatest.deals.map(deal => (
-                deal.source === 'flipp' ? (
-                  <DealCard
+                <DealCard
                     key={deal.id}
-                    id={deal.id}
-                    title={deal.title}
-                    slug={deal.slug}
-                    imageUrl={deal.image_blob_url || deal.image_url || deal.imageUrl || undefined}
-                    price={deal.price}
-                    originalPrice={deal.original_price ?? deal.originalPrice ?? null}
-                    discountPercent={deal.discount_percent ?? deal.discountPercent ?? null}
-                    store={deal.store || null}
-                    affiliateUrl={deal.affiliate_url || ''}
-                    variant="flipp"
-                    storeSlug={deal.storeSlug || deal.store?.toLowerCase().replace(/\s+/g, '-') || 'general'}
-                    storeLogo={deal.storeLogo || ''}
-                    validTo={deal.validTo || new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString()}
-                    saleStory={deal.saleStory ?? null}
+                    {...toDealCardProps(deal)}
                   />
-                ) : (
-                  <DealCard
-                    key={deal.id}
-                    id={deal.id}
-                    title={deal.title}
-                    slug={deal.slug}
-                    imageUrl={deal.image_blob_url || deal.image_url || deal.imageUrl || undefined}
-                    price={deal.price}
-                    originalPrice={deal.original_price ?? deal.originalPrice ?? null}
-                    discountPercent={deal.discount_percent ?? deal.discountPercent ?? null}
-                    store={deal.store || null}
-                    affiliateUrl={deal.affiliate_url}
-                    featured={deal.featured}
-                  />
-                )
               ))}
             </DealGrid>
           </div>

@@ -120,9 +120,9 @@ export default async function StorePage({ params }: PageProps) {
 
   // Fetch deals, videos, related stores, and brand story in parallel
   const [deals, videos, relatedStores, brandStoryMarkdown] = await Promise.all([
-    getDealsByStore(storeSlug).catch(() => []),
+    getDealsByStore(storeSlug).catch((e) => { console.error('getDealsByStore error:', e); return [] }),
     skipYouTube ? Promise.resolve([]) : getVideosForStore(storeSlug, 3),
-    getRelatedCanadianBrands(store, 6).catch(() => []),
+    getRelatedCanadianBrands(store, 6).catch((e) => { console.error('getRelatedBrands error:', e); return [] }),
     getBrandStory(storeSlug),
   ])
 

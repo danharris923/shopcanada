@@ -1,9 +1,12 @@
 /**
  * Deal Utilities
  *
- * Shared utilities for deal cards including highlight tags and tag selection.
- * Used by DealCard (with variant='default' or variant='flipp') for consistent tag display.
+ * Shared utilities for deal cards including highlight tags, tag selection,
+ * and MixedDeal to DealCardProps normalization.
  */
+
+import { hashString } from './hash'
+import type { MixedDeal, DealCardProps } from '@/types/deal'
 
 /**
  * Highlight tag configuration with text and Tailwind color class
@@ -40,11 +43,34 @@ export const highlightTags: HighlightTag[] = [
  * getRandomTag("deal-123") // Same result every time for same input
  */
 export function getRandomTag(input: string): HighlightTag {
-  // Simple hash function: djb2-style string hashing
-  const hash = input.split('').reduce((a, b) => {
-    a = ((a << 5) - a) + b.charCodeAt(0)
-    return a & a
-  }, 0)
+  return highlightTags[hashString(input) % highlightTags.length]
+}
 
-  return highlightTags[Math.abs(hash) % highlightTags.length]
+
+/**
+ * Normalize a MixedDeal (from any source) into clean DealCardProps.
+ * Eliminates the snake_case/camelCase fallback chains at the page level.
+ */
+export function toDealCardProps(deal: MixedDeal, overrides?: Partial<DealCardProps>): DealCardProps {
+  const isFlipp = deal.source === 'flipp'
+  return {
+    id: deal.id,
+    title: deal.title,
+    slug: deal.slug,
+    imageUrl: deal.image_blob_url || deal.image_url || deal.imageUrl || undefined,
+    price: deal.price,
+    originalPrice: deal.original_price ?? deal.originalPrice ?? null,
+    discountPercent: deal.discount_percent ?? deal.discountPercent ?? null,
+    store: deal.store || null,
+    affiliateUrl: deal.affiliate_url || '',
+    featured: deal.featured,
+    ...(isFlipp && {
+      variant: 'flipp' as const,
+      storeSlug: deal.storeSlug || deal.store?.toLowerCase().replace(/\s+/g, '-') || 'general',
+      storeLogo: deal.storeLogo || '',
+      validTo: deal.validTo || new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
+      saleStory: deal.saleStory ?? null,
+    }),
+    ...overrides,
+  }
 }

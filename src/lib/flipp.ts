@@ -162,7 +162,7 @@ export async function searchFlippDeals(
     const deals = transformFlippItems(response.items)
     return deals.slice(0, limit)
   } catch (error) {
-    // Error searching Flipp for query
+    console.error('Flipp search error:', error)
     return []
   }
 }

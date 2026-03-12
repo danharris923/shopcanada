@@ -85,7 +85,7 @@ export default async function DealPage({ params }: PageProps) {
   try {
     deal = await getDealBySlug(params.slug)
   } catch (error) {
-    // Database error for deal during build
+    console.error('getDealBySlug error:', error)
     notFound()
   }
 
@@ -110,7 +110,7 @@ export default async function DealPage({ params }: PageProps) {
   try {
     relatedDeals = await getRelatedDeals(deal)
   } catch (error) {
-    // Database error for related deals during build
+    console.error('getRelatedDeals error:', error)
     relatedDeals = []
   }
 
