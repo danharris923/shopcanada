@@ -11,6 +11,7 @@
  * - Uses affiliate search URLs for click-through
  */
 
+import { getIntervalIndex } from '@/lib/utils/interval'
 import { Deal } from '@/types/deal'
 import { RETAILER_SEARCH_URLS, extractSearchTerms } from './affiliates'
 
@@ -626,17 +627,7 @@ export const FASHION_IMAGES_BASE_URL = '/images/fashion'
 // Matches the existing deal shuffle timing in deal-shuffle.ts
 // =============================================================================
 
-/**
- * Get the current 15-minute interval index
- * Used for deterministic image rotation across all users/instances
- */
-function getIntervalIndex(): number {
-  const now = new Date()
-  const minutes = now.getHours() * 60 + now.getMinutes()
-  const intervalIndex = Math.floor(minutes / 15)  // Changes every 15 minutes
-  const dayOfYear = Math.floor((now.getTime() - new Date(now.getFullYear(), 0, 0).getTime()) / 86400000)
-  return dayOfYear * 96 + intervalIndex  // 96 intervals per day (24*4)
-}
+
 
 /**
  * Get the image index for a brand based on current time interval

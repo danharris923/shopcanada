@@ -4,7 +4,7 @@ import { searchDeals, searchStoresByKeyword } from '@/lib/db'
 import { searchFlippDeals } from '@/lib/flipp'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
-import { DealCard, DealGrid, FlippDealGrid } from '@/components/DealCard'
+import { DealCard, DealGrid } from '@/components/DealCard'
 import { StatsBar } from '@/components/StatsBar'
 
 export const revalidate = 0 // Don't cache search results
@@ -142,7 +142,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                     <h2 className="text-2xl font-bold text-heading mb-6">
                       Flyer Deals ({flippDeals.length})
                     </h2>
-                    <FlippDealGrid>
+                    <DealGrid>
                       {flippDeals.map(deal => (
                         <DealCard
                           key={deal.id}
@@ -162,7 +162,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                           saleStory={deal.saleStory}
                         />
                       ))}
-                    </FlippDealGrid>
+                    </DealGrid>
                   </div>
                 )}
 

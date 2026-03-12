@@ -10,6 +10,7 @@
  */
 
 import { Deal, MixedDeal } from '@/types/deal'
+import { seededRandom, shuffleArray } from '@/lib/utils/interval'
 import { searchFlippDeals, FlippDeal } from '@/lib/flipp'
 import { getDeals, getLatestDeals, getFeaturedDeals } from '@/lib/db'
 import { getFashionDeals, getTopTierFashionDeals, getPremiumFashionDeals, isFashionDeal } from '@/lib/fashion-deals'
@@ -25,42 +26,7 @@ export interface ShuffledDeals {
   }
 }
 
-/**
- * Get time-based seed for 15-minute intervals
- */
-function getTimeSeed(): number {
-  const now = new Date()
-  const minutes = now.getHours() * 60 + now.getMinutes()
-  const intervalIndex = Math.floor(minutes / 15) // Changes every 15 minutes
-  const dayOfYear = Math.floor((now.getTime() - new Date(now.getFullYear(), 0, 0).getTime()) / 86400000)
-  return dayOfYear * 96 + intervalIndex // 96 intervals per day
-}
 
-/**
- * Seeded random number generator
- */
-function seededRandom(seed: number): () => number {
-  let x = seed
-  return () => {
-    x = Math.sin(x) * 10000
-    return x - Math.floor(x)
-  }
-}
-
-/**
- * Fisher-Yates shuffle with seeded random
- */
-function shuffleArray<T>(array: T[], seed: number): T[] {
-  const shuffled = [...array]
-  const random = seededRandom(seed)
-
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(random() * (i + 1))
-    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
-  }
-
-  return shuffled
-}
 
 /**
  * Transform FlippDeal to match Deal interface for consistency

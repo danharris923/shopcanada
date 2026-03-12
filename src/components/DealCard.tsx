@@ -358,5 +358,3 @@ export function DealGrid({ children }: { children: React.ReactNode }) {
   )
 }
 
-// Alias for FlippDealGrid - same as DealGrid for backward compatibility
-export const FlippDealGrid = DealGrid

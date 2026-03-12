@@ -5,7 +5,8 @@
  * Cards rotate every 15 minutes to match the site's shuffle timing.
  *
  * Usage in deal-shuffle.ts:
- *   import { getFashionDeals, getTopTierFashionDeals } from './fashion-deals'
+ *   import { getIntervalIndex } from '@/lib/utils/interval'
+import { getFashionDeals, getTopTierFashionDeals } from './fashion-deals'
  *   const fashionDeals = await getFashionDeals()
  *   const topTierDeals = await getTopTierFashionDeals()
  */
@@ -107,21 +108,14 @@ interface DealCache {
 
 let dealCache: DealCache | null = null
 
-/**
- * Get the current 15-minute interval (for cache invalidation)
- */
-function getCurrentInterval(): number {
-  const now = new Date()
-  const minutes = now.getHours() * 60 + now.getMinutes()
-  return Math.floor(minutes / 15)
-}
+
 
 /**
  * Check if cache is valid (same 15-minute interval)
  */
 function isCacheValid(): boolean {
   if (!dealCache) return false
-  return dealCache.interval === getCurrentInterval()
+  return dealCache.interval === getIntervalIndex()
 }
 
 // =============================================================================
@@ -163,7 +157,7 @@ export async function getFashionDeals(): Promise<Deal[]> {
   dealCache = {
     deals,
     timestamp: Date.now(),
-    interval: getCurrentInterval(),
+    interval: getIntervalIndex(),
   }
 
   return deals
