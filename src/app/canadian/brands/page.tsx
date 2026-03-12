@@ -3,7 +3,7 @@ import { getCanadianBrands } from '@/lib/db'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { StatsBar } from '@/components/StatsBar'
-import { Breadcrumbs } from '@/components/breadcrumbs'
+import { Breadcrumbs } from '@/components/Breadcrumbs'
 import type { Metadata } from 'next'
 import { SafeImg } from '@/components/SafeImg'
 import type { Store } from '@/types/deal'
@@ -111,7 +111,7 @@ export default async function AllBrandsPage() {
                       </p>
                       <div className="flex gap-2">
                         <Link
-                          href={`/canadian/brand/${brand.slug}`}
+                          href={`/stores/${brand.slug}`}
                           className="flex-1 text-center bg-maple-red hover:bg-burgundy text-white font-bold py-2 px-3 text-sm transition-colors rounded-button"
                         >
                           Read More

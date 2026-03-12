@@ -2,6 +2,7 @@
  * Schema.org JSON-LD generators for rich snippets
  */
 
+import { hashString } from './utils/hash'
 import { Deal } from '@/types/deal'
 import { formatStoreName, generateBreadcrumbs } from './content-generator'
 import { SITE_URL } from './config'
@@ -12,7 +13,7 @@ import { SITE_URL } from './config'
  */
 function generateDealRating(dealId: string): { rating: number; reviewCount: number } {
   // Convert string ID to number for hashing
-  const numericId = parseInt(dealId, 10) || hashStringToNumber(dealId)
+  const numericId = parseInt(dealId, 10) || hashString(dealId)
   // Use deal ID to create deterministic but varied ratings
   const hash = Math.abs(numericId * 2654435761) % 1000
   // Rating between 3.8 and 4.9 (realistic range for products)
@@ -22,18 +23,7 @@ function generateDealRating(dealId: string): { rating: number; reviewCount: numb
   return { rating: Math.round(rating * 10) / 10, reviewCount }
 }
 
-/**
- * Hash a string to a number for consistent randomization
- */
-function hashStringToNumber(str: string): number {
-  let hash = 0
-  for (let i = 0; i < str.length; i++) {
-    const char = str.charCodeAt(i)
-    hash = ((hash << 5) - hash) + char
-    hash = hash & hash // Convert to 32bit integer
-  }
-  return Math.abs(hash)
-}
+
 
 /**
  * Generate Product schema for deal pages
@@ -129,7 +119,7 @@ export function generateReviewSchema(deal: Deal) {
     ]
   }
 
-  const numericId = parseInt(deal.id, 10) || hashStringToNumber(deal.id)
+  const numericId = parseInt(deal.id, 10) || hashString(deal.id)
   const reviewIndex = numericId % reviewBodies.length
 
   return {

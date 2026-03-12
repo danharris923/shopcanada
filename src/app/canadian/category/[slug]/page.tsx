@@ -4,7 +4,7 @@ import { getCanadianBrandsByCategory } from '@/lib/db'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { StatsBar } from '@/components/StatsBar'
-import { Breadcrumbs } from '@/components/breadcrumbs'
+import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { CategoryIcon } from '@/components/CategoryIcon'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
@@ -130,7 +130,7 @@ export default async function CategoryPage({ params }: Props) {
                   </p>
                   <div className="flex flex-col gap-2">
                     <Link
-                      href={`/canadian/brand/${brand.slug}`}
+                      href={`/stores/${brand.slug}`}
                       className="text-center bg-maple-red hover:bg-burgundy text-white font-bold py-3 px-4 transition-colors rounded-button"
                     >
                       READ MORE

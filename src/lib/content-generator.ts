@@ -1,3 +1,4 @@
+import { hashString } from './utils/hash'
 /**
  * Content Generator - Creates unique descriptions for SEO
  *
@@ -279,15 +280,7 @@ export function generateBreadcrumbs(deal: Deal): { label: string; href?: string 
 // HELPERS
 // =============================================================================
 
-function hashString(str: string): number {
-  let hash = 0
-  for (let i = 0; i < str.length; i++) {
-    const char = str.charCodeAt(i)
-    hash = ((hash << 5) - hash) + char
-    hash = hash & hash
-  }
-  return Math.abs(hash)
-}
+
 
 export function formatStoreName(slug: string | null): string {
   if (!slug) return 'this retailer'

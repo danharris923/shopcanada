@@ -8,7 +8,7 @@ import { Footer } from '@/components/Footer'
 import { StoreLogo } from '@/components/StoreLogo'
 import { Leaf, Store, Globe, Search } from 'lucide-react'
 import { StatsBar } from '@/components/StatsBar'
-import { Breadcrumbs } from '@/components/breadcrumbs'
+import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { EXTENDED_CATEGORIES } from '@/lib/categories'
 import { Store as StoreType } from '@/types/deal'
 

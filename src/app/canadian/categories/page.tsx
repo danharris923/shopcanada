@@ -3,7 +3,7 @@ import { getCanadianBrandCategories } from '@/lib/db'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { StatsBar } from '@/components/StatsBar'
-import { Breadcrumbs } from '@/components/breadcrumbs'
+import { Breadcrumbs } from '@/components/Breadcrumbs'
 import type { Metadata } from 'next'
 import * as LucideIcons from 'lucide-react'
 

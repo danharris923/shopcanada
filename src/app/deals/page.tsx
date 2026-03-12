@@ -5,7 +5,7 @@ import { Footer } from '@/components/Footer'
 import { DealCard, DealGrid } from '@/components/DealCard'
 import { FilterSidebar } from '@/components/FilterSidebar'
 import { StatsBar } from '@/components/StatsBar'
-import { Breadcrumbs } from '@/components/breadcrumbs'
+import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { SITE_URL } from '@/lib/config'
 import type { Metadata } from 'next'
 
