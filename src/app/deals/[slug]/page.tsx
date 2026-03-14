@@ -133,6 +133,8 @@ export default async function DealPage({ params }: PageProps) {
   const imageUrl = deal.image_blob_url || deal.image_url || null
   const storeName = formatStoreName(deal.store)
   const storeSlug = deal.store?.toLowerCase().replace(/\s+/g, '-') || ''
+  const storeDescription = storeName ? `Shop the latest deals and discounts from ${storeName}. Find great prices on top products available to Canadian shoppers.` : ''
+  const faqs: { question: string; answer: string }[] = []
 
   return (
     <>

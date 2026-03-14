@@ -21,6 +21,7 @@ import {
   getStandardBrands,
 } from './fashion-brands'
 import { getStoreBySlug } from './db'
+import { getIntervalIndex } from '@/lib/utils/interval'
 
 // =============================================================================
 // IMAGE PATH CONFIGURATION
