@@ -6,14 +6,11 @@ import { DealCard, DealGrid } from '@/components/DealCard'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { StoreLogo } from '@/components/StoreLogo'
-import { FashionCarousel } from '@/components/FashionCarousel'
 import { Leaf } from 'lucide-react'
 import { CORE_CATEGORIES } from '@/lib/categories'
 import { StatsBar } from '@/components/StatsBar'
 import { getShuffledFeaturedDeals, getShuffledDeals, getDistributionSummary } from '@/lib/deal-shuffle'
 import { REVALIDATE_INTERVAL, FEATURED_STORE_SLUGS } from '@/lib/config'
-import { getCanadianFashionBrands, FASHION_IMAGES_BASE_URL, FASHION_SEARCH_URLS } from '@/lib/fashion-brands'
-import { IMAGE_MANIFEST } from '@/lib/fashion-deals'
 import { Store, MixedDeal } from '@/types/deal'
 import { toDealCardProps } from '@/lib/utils/deal-utils'
 
@@ -88,7 +85,7 @@ export default async function HomePage() {
           <div className="hidden md:block relative w-full h-[400px]">
             <Image
               src="/hero-desktop.webp"
-              alt="Shop Canada - Best Canadian Deals"
+              alt="Click & Save Canada - Best Canadian Deals"
               fill
               priority
               className="object-cover"
@@ -99,7 +96,7 @@ export default async function HomePage() {
           <div className="block md:hidden relative w-full h-[300px]">
             <Image
               src="/hero-mobile.webp"
-              alt="Shop Canada - Best Canadian Deals"
+              alt="Click & Save Canada - Best Canadian Deals"
               fill
               priority
               className="object-cover"
@@ -108,10 +105,11 @@ export default async function HomePage() {
           </div>
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-full max-w-7xl mx-auto px-4 flex flex-col items-end">
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-2 text-right tracking-wide" style={{
+              <h1 className="text-white mb-2 text-right tracking-wide" style={{
                 textShadow: '2px 2px 4px rgba(0,0,0,0.8)'
               }}>
-                Shop Canada
+                <span className="block text-lg md:text-2xl font-medium text-white/90">click &amp; save</span>
+                <span className="block text-4xl md:text-6xl font-bold">Canada</span>
               </h1>
               <p className="text-white/90 text-sm md:text-lg text-right" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}>
                 The best deals for Canadian shoppers
@@ -156,29 +154,6 @@ export default async function HomePage() {
                 </Link>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* Icons of Canadian Fashion - Carousel */}
-        <section className="py-8 bg-white">
-          <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-2xl md:text-3xl font-bold text-charcoal mb-6">
-              Icons of Canadian Fashion
-            </h2>
-            <FashionCarousel
-              cards={getCanadianFashionBrands().map((brand, brandIdx) => {
-                const images = IMAGE_MANIFEST[brand.folder] || []
-                const img = images[brandIdx % images.length] || images[0]
-                return {
-                  slug: brand.slug,
-                  name: brand.name,
-                  title: brand.cardTitles[0],
-                  imageUrl: `${FASHION_IMAGES_BASE_URL}/${brand.folder}/${img}`,
-                  affiliateUrl: FASHION_SEARCH_URLS[brand.slug] || `/stores/${brand.slug}`,
-                }
-              })}
-              autoPlayInterval={60000}
-            />
           </div>
         </section>
 
@@ -315,9 +290,9 @@ export default async function HomePage() {
         {/* SEO Content */}
         <section className="py-12 section-white">
           <div className="max-w-4xl mx-auto px-4 prose">
-            <h2>About Shop Canada – Deals for Canadian Shoppers</h2>
+            <h2>About Click &amp; Save Canada – Deals for Canadian Shoppers</h2>
             <p>
-              Shop Canada helps Canadians find the best deals available in Canada — including sales, markdowns,
+              Click &amp; Save Canada helps Canadians find the best deals available in Canada — including sales, markdowns,
               and verified discounts from Canadian brands and major retailers that serve Canadian shoppers.
             </p>
             <p>

@@ -22,12 +22,12 @@ export interface Deal {
 }
 
 /**
- * Mixed deal type - handles deals from multiple sources (DB, Flipp API, Fashion API)
+ * Mixed deal type - handles deals from multiple sources (DB, Flipp API)
  * Use this when combining deals from different sources where extra fields may exist
  */
 export interface MixedDeal extends Deal {
   // Source identifier
-  source?: 'flipp' | 'fashion' | 'database' | string
+  source?: 'flipp' | 'database' | string
   // Flipp API fields
   storeSlug?: string
   storeLogo?: string

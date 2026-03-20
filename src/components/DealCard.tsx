@@ -93,9 +93,6 @@ export function DealCard({
   const hasPriceData = priceNum !== null && priceNum > 0
   const hasDiscount = discountPercent !== null && discountPercent > 0
 
-  // Check if this is a fashion affiliate deal (synthetic, no deal page)
-  const isFashionDeal = id.startsWith('fashion-')
-
   // Function to handle Read More click
   // Affiliated deals go to store page, others go to deal page
   const handleReadMoreClick = (e: React.MouseEvent) => {

@@ -2,10 +2,9 @@
  * Deal Shuffle System
  *
  * Provides balanced content distribution with:
- * - 33% Fashion affiliate deals (premium Canadian brands get guaranteed priority)
  * - 25% Flipp/RFD-style sale deals
  * - 20% Amazon deals (maximum)
- * - 22% other deals from various sources
+ * - 55% other deals from various sources
  * - Random shuffling that changes every 15 minutes
  */
 
@@ -13,13 +12,11 @@ import { Deal, MixedDeal } from '@/types/deal'
 import { seededRandom, shuffleArray } from '@/lib/utils/interval'
 import { searchFlippDeals, FlippDeal } from '@/lib/flipp'
 import { getDeals, getLatestDeals, getFeaturedDeals } from '@/lib/db'
-import { getFashionDeals, getTopTierFashionDeals, getPremiumFashionDeals, isFashionDeal } from '@/lib/fashion-deals'
 
 export interface ShuffledDeals {
   deals: MixedDeal[]
   distribution: {
     total: number
-    fashion: number
     flipp: number
     amazon: number
     other: number
@@ -61,8 +58,6 @@ function normalizeFlippDeal(flippDeal: FlippDeal): MixedDeal {
 
 /**
  * Get shuffled deals with balanced distribution
- * Now includes fashion affiliate deals with priority placement
- * Premium Canadian brands (Lululemon, Aritzia, Ardene) get highest priority
  */
 export async function getShuffledDeals(
   limit: number = 24,
@@ -71,20 +66,16 @@ export async function getShuffledDeals(
   // Always use a unique seed so each ISR rebuild gets a fresh shuffle
   const seed = Date.now() + Math.floor(Math.random() * 100000)
 
-  // Calculate target distribution - balanced equal mix
-  const targetFashion = Math.max(Math.floor(limit * 0.33), 3) // 33% fashion, minimum 3
+  // Calculate target distribution
   const targetFlipp = Math.max(Math.floor(limit * 0.25), 2) // 25% Flipp/RFD-style
-  const maxAmazon = Math.floor(limit * 0.20) // Maximum 20% Amazon (reduced from 25%)
+  const maxAmazon = Math.floor(limit * 0.20) // Maximum 20% Amazon
 
   try {
     // Fetch a large random sample from the DB so each revalidation pulls different deals
     const poolSize = Math.max(limit * 12, 200)
-    const [dbDeals, flippDeals, fashionDeals, premiumFashion, topTierFashion] = await Promise.all([
+    const [dbDeals, flippDeals] = await Promise.all([
       getDeals({ limit: poolSize, orderBy: 'random' }),
       searchFlippDeals('sale', Math.min(targetFlipp * 3, 50)),
-      getFashionDeals(),
-      getPremiumFashionDeals(),  // Lululemon, Aritzia, Ardene
-      getTopTierFashionDeals()   // Premium + top tier (Foot Locker, Aldo, etc.)
     ])
 
     // Categorize database deals
@@ -97,39 +88,22 @@ export async function getShuffledDeals(
       !deal.affiliate_url?.includes('amazon.ca')
     )
 
-    // Select fashion deals with priority tiers:
-    // 1. Premium brands (Lululemon, Aritzia, Ardene) - ALL guaranteed slots
-    // 2. Top tier brands (Foot Locker, Aldo, etc.) - fill next slots
-    // 3. Standard brands - fill remaining fashion slots
-    const premiumCount = Math.min(premiumFashion.length, Math.ceil(targetFashion * 0.5)) // Premium gets ~50% of fashion slots
-    const topTierOnly = topTierFashion.filter(d => !premiumFashion.some(p => p.id === d.id))
-    const topTierCount = Math.min(topTierOnly.length, Math.ceil(targetFashion * 0.3)) // Top tier gets ~30%
-    const standardFashionCount = Math.max(0, targetFashion - premiumCount - topTierCount)
-    const standardFashion = fashionDeals.filter(d => !topTierFashion.some(t => t.id === d.id))
-
-    const selectedFashion = [
-      ...shuffleArray(premiumFashion, seed).slice(0, premiumCount),
-      ...shuffleArray(topTierOnly, seed).slice(0, topTierCount),
-      ...shuffleArray(standardFashion, seed).slice(0, standardFashionCount)
-    ].map(deal => ({ ...deal, source: 'fashion' }))
-
-    // Select Flipp deals (increased to 25%)
+    // Select Flipp deals
     const selectedFlipp = shuffleArray(flippDeals.slice(0, targetFlipp * 2), seed)
       .slice(0, targetFlipp)
       .map(normalizeFlippDeal)
 
-    // Select Amazon deals (reduced to 20% max)
+    // Select Amazon deals (max 20%)
     const selectedAmazon = shuffleArray(amazonDeals, seed)
       .slice(0, Math.min(maxAmazon, amazonDeals.length))
 
     // Fill remaining slots with other deals
-    const remainingSlots = limit - selectedFashion.length - selectedFlipp.length - selectedAmazon.length
+    const remainingSlots = limit - selectedFlipp.length - selectedAmazon.length
     const selectedOther = shuffleArray(otherDeals, seed)
       .slice(0, Math.max(0, remainingSlots))
 
     // Combine and shuffle all selected deals
     const allSelected: MixedDeal[] = [
-      ...selectedFashion,
       ...selectedFlipp,
       ...selectedAmazon.map(deal => ({ ...deal, source: 'database' as const })),
       ...selectedOther.map(deal => ({ ...deal, source: 'database' as const }))
@@ -142,7 +116,6 @@ export async function getShuffledDeals(
       deals: finalDeals,
       distribution: {
         total: finalDeals.length,
-        fashion: selectedFashion.length,
         flipp: selectedFlipp.length,
         amazon: selectedAmazon.length,
         other: selectedOther.length
@@ -162,7 +135,6 @@ export async function getShuffledDeals(
       deals: shuffled.map(deal => ({ ...deal, source: 'database' as const })),
       distribution: {
         total: shuffled.length,
-        fashion: 0,
         flipp: 0,
         amazon: amazonCount,
         other: shuffled.length - amazonCount
@@ -173,7 +145,6 @@ export async function getShuffledDeals(
 
 /**
  * Get shuffled featured deals for homepage
- * Includes premium Canadian fashion brands with highest visibility
  */
 export async function getShuffledFeaturedDeals(
   limit: number = 8
@@ -181,20 +152,11 @@ export async function getShuffledFeaturedDeals(
   const seed = Date.now() + Math.floor(Math.random() * 100000)
 
   try {
-    // Get a large random pool of featured deals, Flipp deals, and premium/top-tier fashion
     const featuredPoolSize = Math.max(limit * 10, 80)
-    const [featuredDeals, flippDeals, premiumFashion, topTierFashion] = await Promise.all([
+    const [featuredDeals, flippDeals] = await Promise.all([
       getFeaturedDeals(featuredPoolSize, true),
       searchFlippDeals('featured', Math.min(Math.floor(limit * 0.25), 10)),
-      getPremiumFashionDeals(),  // Lululemon, Aritzia, Ardene
-      getTopTierFashionDeals()
     ])
-
-    // Add premium fashion deals first (guaranteed 2-3 slots for Canadian brands)
-    const premiumToAdd = Math.min(3, premiumFashion.length)
-    const selectedPremium = shuffleArray(premiumFashion, seed)
-      .slice(0, premiumToAdd)
-      .map(deal => ({ ...deal, source: 'fashion' }))
 
     // Add some Flipp deals to featured mix (up to 25%)
     const flippToAdd = Math.min(Math.floor(limit * 0.25), flippDeals.length)
@@ -202,9 +164,7 @@ export async function getShuffledFeaturedDeals(
       .slice(0, flippToAdd)
       .map(normalizeFlippDeal)
 
-    // Combine and limit - premium fashion gets priority placement
     const combined: MixedDeal[] = [
-      ...selectedPremium,
       ...featuredDeals.map(deal => ({ ...deal, source: 'database' as const })),
       ...selectedFlipp
     ]
@@ -215,16 +175,14 @@ export async function getShuffledFeaturedDeals(
       deal.store?.toLowerCase().includes('amazon') ||
       deal.affiliate_url?.includes('amazon.ca')
     ).length
-    const fashionCount = shuffled.filter(deal => isFashionDeal(deal)).length
 
     return {
       deals: shuffled,
       distribution: {
         total: shuffled.length,
-        fashion: fashionCount,
         flipp: selectedFlipp.length,
         amazon: amazonCount,
-        other: shuffled.length - fashionCount - selectedFlipp.length - amazonCount
+        other: shuffled.length - selectedFlipp.length - amazonCount
       }
     }
   } catch (error) {
@@ -241,7 +199,6 @@ export async function getShuffledFeaturedDeals(
       deals: shuffled.map(deal => ({ ...deal, source: 'database' as const })),
       distribution: {
         total: shuffled.length,
-        fashion: 0,
         flipp: 0,
         amazon: amazonCount,
         other: shuffled.length - amazonCount
@@ -272,10 +229,9 @@ export function getNextShuffleTime(): Date {
  * Get distribution summary as string for logging
  */
 export function getDistributionSummary(distribution: ShuffledDeals['distribution']): string {
-  const fashionPercent = Math.round((distribution.fashion / distribution.total) * 100)
   const flippPercent = Math.round((distribution.flipp / distribution.total) * 100)
   const amazonPercent = Math.round((distribution.amazon / distribution.total) * 100)
   const otherPercent = Math.round((distribution.other / distribution.total) * 100)
 
-  return `${distribution.total} deals: ${distribution.fashion} Fashion (${fashionPercent}%), ${distribution.flipp} Flipp (${flippPercent}%), ${distribution.amazon} Amazon (${amazonPercent}%), ${distribution.other} Other (${otherPercent}%)`
+  return `${distribution.total} deals: ${distribution.flipp} Flipp (${flippPercent}%), ${distribution.amazon} Amazon (${amazonPercent}%), ${distribution.other} Other (${otherPercent}%)`
 }
