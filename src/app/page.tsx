@@ -82,7 +82,7 @@ export default async function HomePage() {
         {/* Hero Banner */}
         <section className="relative">
           {/* Desktop Hero - hidden on mobile */}
-          <div className="hidden md:block relative w-full h-[400px]">
+          <div className="hidden md:block relative w-full h-[240px]">
             <Image
               src="/hero-desktop.webp"
               alt="Click & Save Canada - Best Canadian Deals"
@@ -93,7 +93,7 @@ export default async function HomePage() {
             />
           </div>
           {/* Mobile Hero - hidden on desktop */}
-          <div className="block md:hidden relative w-full h-[300px]">
+          <div className="block md:hidden relative w-full h-[180px]">
             <Image
               src="/hero-mobile.webp"
               alt="Click & Save Canada - Best Canadian Deals"
