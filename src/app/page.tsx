@@ -105,7 +105,7 @@ export default async function HomePage() {
           </div>
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-full max-w-7xl mx-auto px-4 flex flex-col items-end">
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-2 text-right tracking-wide" style={{
+              <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-2 text-right tracking-wide whitespace-nowrap" style={{
                 textShadow: '2px 2px 4px rgba(0,0,0,0.8)'
               }}>
                 Click &amp; Save Canada
