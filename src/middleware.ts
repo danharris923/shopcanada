@@ -8,6 +8,9 @@ const OLD_DOMAINS = [
   'www.shopcanada.cc',
   'canadiandealfinder.ca',
   'www.canadiandealfinder.ca',
+  'canadiandealfinder.com',
+  'www.canadiandealfinder.com',
+  'www.clickandsavecanada.com',
 ]
 
 export function middleware(request: NextRequest) {
