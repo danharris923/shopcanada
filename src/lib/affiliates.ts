@@ -108,8 +108,8 @@ export function cleanAffiliateUrl(url: string): string {
 // AMAZON AFFILIATE CONFIG
 // =============================================================================
 
-// PromoPenguin Amazon Associates tag
-export const AMAZON_AFFILIATE_TAG = 'promopenguin-20'
+// Amazon Associates tag
+export const AMAZON_AFFILIATE_TAG = 'f10a7654-20'
 
 /**
  * Clean an Amazon URL and replace any existing affiliate tag with ours

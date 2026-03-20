@@ -1,5 +1,6 @@
 import { Pool } from 'pg'
 import { Deal, Store, Category, StoreCardData } from '@/types/deal'
+import { cleanAmazonUrl, cleanAffiliateUrl } from '@/lib/affiliates'
 
 /**
  * Database queries for deals, stores, and categories.
@@ -50,6 +51,9 @@ function transformRow<T>(row: Record<string, unknown>): T {
       } else {
         transformed[key] = []
       }
+    } else if (key === 'affiliate_url' && typeof value === 'string') {
+      // Strip competitor tags and ensure Amazon links use our affiliate tag
+      transformed[key] = cleanAmazonUrl(cleanAffiliateUrl(value))
     } else if (key === 'is_canadian') {
       // Ensure boolean type
       transformed[key] = Boolean(value)

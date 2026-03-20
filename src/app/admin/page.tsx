@@ -251,7 +251,7 @@ export default function AdminPage() {
               type="text"
               value={amazonTag}
               onChange={(e) => setAmazonTag(e.target.value)}
-              placeholder="e.g. promopenguin-20"
+              placeholder="e.g. f10a7654-20"
               className="flex-1 max-w-xs px-3 py-2 border rounded"
             />
             <button
