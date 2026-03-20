@@ -199,7 +199,12 @@ export default async function StorePage({ params }: PageProps) {
           {/* Store Screenshot */}
           {store.screenshot_url && (
             <div className="mb-8">
-              <div className="relative rounded-card overflow-hidden border border-silver-light shadow-lg">
+              <a
+                href={store.affiliate_url || store.website_url || '#'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block relative rounded-card overflow-hidden border border-silver-light shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+              >
                 <SafeImg
                   src={store.screenshot_url}
                   alt={`${storeName} website screenshot`}
@@ -211,7 +216,7 @@ export default async function StorePage({ params }: PageProps) {
                     Preview of {storeName} website
                   </p>
                 </div>
-              </div>
+              </a>
             </div>
           )}
 
