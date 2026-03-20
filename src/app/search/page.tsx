@@ -16,7 +16,7 @@ interface SearchPageProps {
 export async function generateMetadata({ searchParams }: SearchPageProps): Promise<Metadata> {
   const query = searchParams.q || ''
   return {
-    title: query ? `Search: ${query} | Shop Canada` : 'Search Results | Shop Canada',
+    title: query ? `Search: ${query} | Click & Save Canada` : 'Search Results | Click & Save Canada',
     description: query
       ? `Search results for "${query}" - Find the best Canadian deals`
       : 'Search for deals across all Canadian retailers',

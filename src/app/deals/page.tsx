@@ -10,7 +10,7 @@ import { SITE_URL } from '@/lib/config'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'All Deals - Shop Canada',
+  title: 'All Deals - Click & Save Canada',
   description: 'Browse all the best deals from Canadian retailers. Find discounts from Amazon.ca, Walmart, Costco, Best Buy, Canadian Tire and more.',
   alternates: {
     canonical: `${SITE_URL}/deals`,

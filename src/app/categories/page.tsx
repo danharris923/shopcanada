@@ -9,7 +9,7 @@ import { getDealsByCategory } from '@/lib/db'
 import { SITE_URL } from '@/lib/config'
 
 export const metadata: Metadata = {
-  title: 'Browse Categories - Shop Canada',
+  title: 'Browse Categories - Click & Save Canada',
   description: 'Browse deals by category. Find electronics, fashion, home & garden, grocery, beauty, sports, and more from Canadian retailers.',
   alternates: {
     canonical: `${SITE_URL}/categories`,

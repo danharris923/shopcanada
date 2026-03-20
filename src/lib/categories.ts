@@ -1,5 +1,5 @@
 /**
- * Centralized category configuration for Shop Canada
+ * Centralized category configuration for Click & Save Canada
  *
  * This file contains all category definitions used throughout the site,
  * including icons, descriptions, and SEO keywords.

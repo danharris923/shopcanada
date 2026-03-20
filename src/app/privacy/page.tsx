@@ -5,8 +5,8 @@ import { Footer } from '@/components/Footer'
 import { SITE_URL } from '@/lib/config'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy - Shop Canada',
-  description: 'Shop Canada privacy policy. Learn how we handle your information, our use of cookies, and your privacy rights as a Canadian visitor.',
+  title: 'Privacy Policy - Click & Save Canada',
+  description: 'Click & Save Canada privacy policy. Learn how we handle your information, our use of cookies, and your privacy rights as a Canadian visitor.',
   alternates: {
     canonical: `${SITE_URL}/privacy`,
   },
@@ -35,7 +35,7 @@ export default function PrivacyPage() {
             <div className="bg-white rounded-card p-8 shadow-soft prose prose-slate max-w-none">
               <h2>Our Commitment to Privacy</h2>
               <p>
-                Shop Canada respects your privacy. This policy explains what information we collect, how we use
+                Click & Save Canada respects your privacy. This policy explains what information we collect, how we use
                 it, and your rights regarding your personal data. We are committed to protecting the privacy of
                 Canadian visitors and complying with applicable privacy laws, including PIPEDA (Personal Information
                 Protection and Electronic Documents Act).
@@ -43,7 +43,7 @@ export default function PrivacyPage() {
 
               <h2>Information We Collect</h2>
               <p>
-                Shop Canada is designed to be used without requiring personal information. We do not require
+                Click & Save Canada is designed to be used without requiring personal information. We do not require
                 account creation, registration, or login to browse deals. However, we may automatically collect
                 certain non-personal information:
               </p>
@@ -123,7 +123,7 @@ export default function PrivacyPage() {
 
               <h2>Children's Privacy</h2>
               <p>
-                Shop Canada is not directed at children under 13 years of age. We do not knowingly collect
+                Click & Save Canada is not directed at children under 13 years of age. We do not knowingly collect
                 personal information from children. If you believe a child has provided us with personal
                 information, please contact us.
               </p>

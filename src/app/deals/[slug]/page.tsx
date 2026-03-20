@@ -37,7 +37,7 @@ interface PageProps {
   params: { slug: string }
 }
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://shopcanada.cc'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://clickandsavecanada.com'
 
 // Generate metadata with enhanced SEO
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -68,7 +68,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: 'article',
       publishedTime,
       modifiedTime,
-      authors: ['Shop Canada'],
+      authors: ['Click & Save Canada'],
       tags: [deal.category || 'deals', deal.store || 'canada', 'canadian deals', 'savings'],
     },
     twitter: {

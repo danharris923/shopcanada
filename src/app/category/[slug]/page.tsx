@@ -26,12 +26,12 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
 
   if (!category) {
     return {
-      title: 'Category Not Found - Shop Canada',
+      title: 'Category Not Found - Click & Save Canada',
     }
   }
 
   return {
-    title: `${category.name} Deals - Shop Canada`,
+    title: `${category.name} Deals - Click & Save Canada`,
     description: category.description,
     keywords: category.keywords,
   }

@@ -12,8 +12,8 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Shop Canada - Best Canadian Deals & Discounts 2025',
-    template: '%s | Shop Canada'
+    default: 'Click & Save Canada - Best Canadian Deals & Discounts 2025',
+    template: '%s | Click & Save Canada'
   },
   description: 'Find the best deals from top Canadian retailers like Amazon.ca, Walmart, Costco & Best Buy. Save up to 70% on electronics, fashion & home goods. Updated hourly.',
   keywords: [
@@ -31,28 +31,28 @@ export const metadata: Metadata = {
     'black friday canada',
     'cyber monday canada',
   ],
-  authors: [{ name: 'Shop Canada' }],
-  creator: 'Shop Canada',
-  publisher: 'Shop Canada',
+  authors: [{ name: 'Click & Save Canada' }],
+  creator: 'Click & Save Canada',
+  publisher: 'Click & Save Canada',
   openGraph: {
     type: 'website',
     locale: 'en_CA',
     url: SITE_URL,
-    siteName: 'Shop Canada',
-    title: 'Shop Canada - Best Canadian Deals & Discounts',
+    siteName: 'Click & Save Canada',
+    title: 'Click & Save Canada - Best Canadian Deals & Discounts',
     description: 'Find the best deals from top Canadian retailers. Save up to 70% on electronics, fashion, home goods.',
     images: [
       {
         url: `${SITE_URL}/hero-desktop.png`,
         width: 1200,
         height: 400,
-        alt: 'Shop Canada - Best Canadian Deals',
+        alt: 'Click & Save Canada - Best Canadian Deals',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Shop Canada - Best Canadian Deals & Discounts',
+    title: 'Click & Save Canada - Best Canadian Deals & Discounts',
     description: 'Find the best deals from top Canadian retailers. Updated hourly.',
     images: [`${SITE_URL}/hero-desktop.png`],
   },
@@ -94,7 +94,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-icon.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Shop Canada" />
+        <meta name="apple-mobile-web-app-title" content="Click & Save Canada" />
 
         {/* Umami Analytics */}
         <script

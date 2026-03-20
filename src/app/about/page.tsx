@@ -6,8 +6,8 @@ import { Leaf, Target, Users, TrendingUp } from 'lucide-react'
 import { SITE_URL } from '@/lib/config'
 
 export const metadata: Metadata = {
-  title: 'About Shop Canada - Canadian Deals & Savings',
-  description: 'Shop Canada helps Canadians find the best deals from trusted retailers like Amazon.ca, Walmart, Costco, and more. Learn about our mission to save you money.',
+  title: 'About Click & Save Canada - Canadian Deals & Savings',
+  description: 'Click & Save Canada helps Canadians find the best deals from trusted retailers like Amazon.ca, Walmart, Costco, and more. Learn about our mission to save you money.',
   alternates: {
     canonical: `${SITE_URL}/about`,
   },
@@ -22,7 +22,7 @@ export default function AboutPage() {
         <section className="bg-soft-black py-12">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              About Shop Canada
+              About Click & Save Canada
             </h1>
             <p className="text-silver text-lg">
               Helping Canadians find great deals from the stores they trust.
@@ -42,7 +42,7 @@ export default function AboutPage() {
                 <h2 className="text-2xl font-bold text-charcoal">Our Mission</h2>
               </div>
               <p className="text-slate leading-relaxed mb-4">
-                Shop Canada was created with a simple goal: help Canadian shoppers save money on everyday purchases.
+                Click & Save Canada was created with a simple goal: help Canadian shoppers save money on everyday purchases.
                 We aggregate deals from major Canadian retailers including Amazon.ca, Walmart Canada, Costco, Best Buy,
                 Canadian Tire, and many more, making it easy to find the best prices in one place.
               </p>
@@ -86,7 +86,7 @@ export default function AboutPage() {
                 <h2 className="text-2xl font-bold text-charcoal">Built for Canadians</h2>
               </div>
               <p className="text-slate leading-relaxed mb-4">
-                Unlike deal sites that focus on US retailers, Shop Canada is built specifically for Canadian
+                Unlike deal sites that focus on US retailers, Click & Save Canada is built specifically for Canadian
                 shoppers. All prices are in Canadian dollars, all retailers ship to Canada, and we understand
                 the stores that Canadians actually shop at.
               </p>
@@ -105,7 +105,7 @@ export default function AboutPage() {
                 <h2 className="text-2xl font-bold text-charcoal">How We Earn</h2>
               </div>
               <p className="text-slate leading-relaxed mb-4">
-                Shop Canada is a free service supported by affiliate partnerships. When you click a deal and
+                Click & Save Canada is a free service supported by affiliate partnerships. When you click a deal and
                 make a purchase, we may earn a small commission from the retailer. This doesn't affect the
                 price you pay—it's simply how retailers reward sites that send them customers.
               </p>

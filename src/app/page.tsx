@@ -105,11 +105,10 @@ export default async function HomePage() {
           </div>
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-full max-w-7xl mx-auto px-4 flex flex-col items-end">
-              <h1 className="text-white mb-2 text-right tracking-wide" style={{
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-2 text-right tracking-wide" style={{
                 textShadow: '2px 2px 4px rgba(0,0,0,0.8)'
               }}>
-                <span className="block text-lg md:text-2xl font-medium text-white/90">click &amp; save</span>
-                <span className="block text-4xl md:text-6xl font-bold">Canada</span>
+                Click &amp; Save Canada
               </h1>
               <p className="text-white/90 text-sm md:text-lg text-right" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}>
                 The best deals for Canadian shoppers

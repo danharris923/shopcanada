@@ -32,7 +32,7 @@ export function Header() {
           <Link href="/" className="flex items-center gap-2 text-white shrink-0">
             <Leaf size={24} className="text-maple-red" />
             <span className="hidden sm:inline text-2xl font-bold tracking-wide">
-              Shop Canada
+              Click &amp; Save Canada
             </span>
           </Link>
 

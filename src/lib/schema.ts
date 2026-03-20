@@ -136,7 +136,7 @@ export function generateReviewSchema(deal: Deal) {
     },
     author: {
       '@type': 'Organization',
-      name: 'Shop Canada',
+      name: 'Click & Save Canada',
     },
     datePublished: deal.date_added ? new Date(deal.date_added).toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
     reviewBody: reviewBodies[reviewIndex],
@@ -172,7 +172,7 @@ export function generateWebsiteSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Shop Canada',
+    name: 'Click & Save Canada',
     url: SITE_URL,
     description: 'Find the best deals and discounts from top Canadian retailers.',
     potentialAction: {
@@ -193,7 +193,7 @@ export function generateOrganizationSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'Shop Canada',
+    name: 'Click & Save Canada',
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
     sameAs: [],

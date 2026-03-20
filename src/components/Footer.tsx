@@ -9,7 +9,7 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="font-bold text-xl text-white mb-4 inline-block">
-              Shop Canada
+              Click &amp; Save Canada
             </Link>
             <p className="text-sm text-silver mb-4">
               Great deals from stores Canadians love.
@@ -70,7 +70,7 @@ export function Footer() {
         {/* Bottom */}
         <div className="border-t border-charcoal mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-slate">
-            &copy; {new Date().getFullYear()} Shop Canada. All rights reserved.
+            &copy; {new Date().getFullYear()} Click &amp; Save Canada. All rights reserved.
           </p>
           <div className="flex gap-4 text-sm text-slate">
             <Link href="/privacy" className="hover:text-cream transition-colors">Privacy</Link>
@@ -82,7 +82,7 @@ export function Footer() {
         {/* Affiliate Disclosure */}
         <div className="mt-6 text-xs text-slate text-center">
           <p>
-            As an affiliate, Shop Canada earns from qualifying purchases.
+            As an affiliate, Click &amp; Save Canada earns from qualifying purchases.
             Prices and availability are subject to change.
           </p>
         </div>

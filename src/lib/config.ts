@@ -1,5 +1,5 @@
 /**
- * Centralized configuration constants for ShopCanada
+ * Centralized configuration constants for Click & Save Canada
  *
  * This file contains all site-wide configuration values that may be reused
  * across multiple components and pages. Import from here instead of
@@ -28,7 +28,7 @@ export const REVALIDATE_NEVER = 0
 /**
  * Base site URL - used for canonical URLs, Open Graph, and sitemaps
  */
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://canadiandealfinder.ca'
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://clickandsavecanada.com'
 
 // =============================================================================
 // SOCIAL MEDIA LINKS
