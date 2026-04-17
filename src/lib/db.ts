@@ -1,5 +1,5 @@
 import { Pool } from 'pg'
-import { Deal, Store, Category, StoreCardData } from '@/types/deal'
+import { Deal, Store, StoreCardData } from '@/types/deal'
 import { cleanAmazonUrl, cleanAffiliateUrl } from '@/lib/affiliates'
 
 /**
@@ -251,18 +251,6 @@ export async function getDealsByStore(store: string, limit: number = 50): Promis
   }
 }
 
-export async function getDealsByCategory(category: string, limit: number = 50): Promise<Deal[]> {
-  try {
-    return await query<Deal>(
-      'SELECT * FROM deals WHERE category = $1 AND is_active = TRUE ORDER BY date_added DESC LIMIT $2',
-      [category, limit]
-    )
-  } catch (error) {
-    console.error('getDealsByCategory error:', error)
-    return []
-  }
-}
-
 export async function getRelatedDeals(deal: Deal, limit: number = 6): Promise<Deal[]> {
   try {
     const titleWords = deal.title
@@ -495,31 +483,6 @@ export async function getCanadianBrandCategories(): Promise<{ name: string; slug
   } catch (error) {
     console.error('getCanadianBrandCategories error:', error)
     return []
-  }
-}
-
-// =============================================================================
-// CATEGORIES (queries old categories table)
-// =============================================================================
-
-export async function getCategories(): Promise<Category[]> {
-  try {
-    return await query<Category>('SELECT * FROM categories ORDER BY deal_count DESC')
-  } catch (error) {
-    console.error('getCategories error:', error)
-    return []
-  }
-}
-
-export async function getCategoryBySlug(slug: string): Promise<Category | null> {
-  try {
-    return await queryOne<Category>(
-      'SELECT * FROM categories WHERE slug = $1 LIMIT 1',
-      [slug]
-    )
-  } catch (error) {
-    console.error('getCategoryBySlug error:', error)
-    return null
   }
 }
 
