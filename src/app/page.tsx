@@ -9,7 +9,7 @@ import { StoreLogo } from '@/components/StoreLogo'
 import { Leaf } from 'lucide-react'
 import { CORE_CATEGORIES } from '@/lib/categories'
 import { getShuffledFeaturedDeals, getShuffledDeals, getDistributionSummary } from '@/lib/deal-shuffle'
-import { REVALIDATE_INTERVAL, FEATURED_STORE_SLUGS } from '@/lib/config'
+import { FEATURED_STORE_SLUGS } from '@/lib/config'
 import { Store, MixedDeal } from '@/types/deal'
 import { toDealCardProps } from '@/lib/utils/deal-utils'
 
@@ -48,7 +48,7 @@ function extractDomain(url: string | null): string {
   }
 }
 
-export const revalidate = REVALIDATE_INTERVAL
+export const revalidate = 900
 
 export default async function HomePage() {
   const [shuffledFeatured, shuffledLatest, ...featuredStoreResults] = await Promise.all([
