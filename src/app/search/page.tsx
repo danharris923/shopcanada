@@ -1,12 +1,17 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { searchDeals, searchStoresByKeyword } from '@/lib/db'
-import { searchFlippDeals } from '@/lib/flipp'
+import { getFlippDealsAsDeals } from '@/lib/flipp'
+import { mixDeals } from '@/lib/mix-deals'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { DealCard, DealGrid } from '@/components/DealCard'
+import { toDealCardProps } from '@/lib/utils/deal-utils'
 
 export const revalidate = 0 // Don't cache search results
+
+// Per-source cap for the canonical 3-source mix on search.
+const PER_SOURCE = 20
 
 interface SearchPageProps {
   searchParams: Promise<{ q?: string }>
@@ -28,15 +33,16 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   const query = q?.trim() || ''
   const hasQuery = query.length >= 2
 
-  // Search all sources in parallel
-  // Priority: Affiliated stores > DB deals > Flipp
-  const [dbDeals, flippDeals, matchingStores] = await Promise.all([
-    hasQuery ? searchDeals(query, 30) : Promise.resolve([]),
-    hasQuery ? searchFlippDeals(query, 20) : Promise.resolve([]),
+  // Canonical 3-source mix (Flipp + RFD + Guru) + shopcanada's matching-stores block.
+  const [flippDeals, rfdDeals, guruDeals, matchingStores] = await Promise.all([
+    hasQuery ? getFlippDealsAsDeals(query, PER_SOURCE) : Promise.resolve([]),
+    hasQuery ? searchDeals(query, PER_SOURCE, { bucket: 'non-guru' }) : Promise.resolve([]),
+    hasQuery ? searchDeals(query, PER_SOURCE, { bucket: 'guru' }) : Promise.resolve([]),
     hasQuery ? searchStoresByKeyword(query, 12) : Promise.resolve([]),
   ])
 
-  const totalResults = dbDeals.length + flippDeals.length + matchingStores.length
+  const mixedDeals = mixDeals(flippDeals, rfdDeals, guruDeals)
+  const totalResults = mixedDeals.length + matchingStores.length
 
   return (
     <>
@@ -50,7 +56,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             </h1>
             {hasQuery ? (
               <p className="text-silver-light text-lg">
-                {totalResults} result{totalResults !== 1 ? 's' : ''} for "{query}"
+                {totalResults} result{totalResults !== 1 ? 's' : ''} for &quot;{query}&quot;
               </p>
             ) : (
               <p className="text-silver-light text-lg">
@@ -65,11 +71,11 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           <div className="max-w-7xl mx-auto">
             {hasQuery ? (
               <>
-                {/* Stores that sell this product */}
+                {/* Matching Stores block (shopcanada-unique) */}
                 {matchingStores.length > 0 && (
                   <div className="mb-12">
                     <h2 className="text-2xl font-bold text-heading mb-6">
-                      Stores for "{query}" ({matchingStores.length})
+                      Stores for &quot;{query}&quot; ({matchingStores.length})
                     </h2>
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
                       {matchingStores.map(store => (
@@ -84,6 +90,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                             </span>
                           )}
                           {store.logo_url ? (
+                            // eslint-disable-next-line @next/next/no-img-element
                             <img
                               src={store.logo_url}
                               alt={store.name}
@@ -108,56 +115,17 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                   </div>
                 )}
 
-                {/* DB Deals */}
-                {dbDeals.length > 0 && (
+                {/* Canonical 3-source mix */}
+                {mixedDeals.length > 0 && (
                   <div className="mb-12">
                     <h2 className="text-2xl font-bold text-heading mb-6">
-                      Deals ({dbDeals.length})
+                      Deals ({mixedDeals.length})
                     </h2>
                     <DealGrid>
-                      {dbDeals.map(deal => (
+                      {mixedDeals.map(deal => (
                         <DealCard
                           key={deal.id}
-                          id={deal.id}
-                          title={deal.title}
-                          slug={deal.slug}
-                          imageUrl={deal.image_blob_url || deal.image_url || undefined}
-                          price={deal.price}
-                          originalPrice={deal.original_price}
-                          discountPercent={deal.discount_percent}
-                          store={deal.store || null}
-                          affiliateUrl={deal.affiliate_url}
-                          featured={deal.featured}
-                        />
-                      ))}
-                    </DealGrid>
-                  </div>
-                )}
-
-                {/* Flipp Deals */}
-                {flippDeals.length > 0 && (
-                  <div className="mb-12">
-                    <h2 className="text-2xl font-bold text-heading mb-6">
-                      Flyer Deals ({flippDeals.length})
-                    </h2>
-                    <DealGrid>
-                      {flippDeals.map(deal => (
-                        <DealCard
-                          key={deal.id}
-                          id={deal.id}
-                          title={deal.title}
-                          slug={deal.slug}
-                          imageUrl={deal.imageUrl}
-                          price={deal.price}
-                          originalPrice={deal.originalPrice}
-                          discountPercent={deal.discountPercent}
-                          store={deal.store}
-                          affiliateUrl=""
-                          variant="flipp"
-                          storeSlug={deal.storeSlug}
-                          storeLogo={deal.storeLogo}
-                          validTo={deal.validTo}
-                          saleStory={deal.saleStory}
+                          {...toDealCardProps(deal)}
                         />
                       ))}
                     </DealGrid>
@@ -168,7 +136,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                 {totalResults === 0 && (
                   <div className="text-center py-16">
                     <p className="text-body text-lg mb-4">
-                      No deals found for "{query}"
+                      No deals found for &quot;{query}&quot;
                     </p>
                     <p className="text-meta mb-8">
                       Try a different search term or browse our{' '}
