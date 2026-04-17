@@ -9,7 +9,6 @@ import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { StoreLogo } from '@/components/StoreLogo'
 import { Leaf } from 'lucide-react'
-import { CORE_CATEGORIES } from '@/lib/categories'
 import { FEATURED_STORE_SLUGS } from '@/lib/config'
 import { Store } from '@/types/deal'
 import { toDealCardProps } from '@/lib/utils/deal-utils'
@@ -214,30 +213,6 @@ export default async function HomePage() {
                         {badge.emoji} {badge.label}
                       </span>
                     )}
-                  </Link>
-                )
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* Categories */}
-        <section className="py-12 section-white">
-          <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-2xl md:text-3xl font-bold text-charcoal mb-6">
-              Browse Categories
-            </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-              {CORE_CATEGORIES.map(cat => {
-                const Icon = cat.icon
-                return (
-                  <Link
-                    key={cat.slug}
-                    href={`/category/${cat.slug}`}
-                    className="category-pill justify-center"
-                  >
-                    <Icon size={28} className="text-maple-red" />
-                    <span className="font-semibold text-charcoal">{cat.name}</span>
                   </Link>
                 )
               })}

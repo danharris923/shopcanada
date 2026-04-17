@@ -8,11 +8,7 @@ import { Footer } from '@/components/Footer'
 import { StoreLogo } from '@/components/StoreLogo'
 import { Leaf, Store, Globe, Search } from 'lucide-react'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
-import { EXTENDED_CATEGORIES } from '@/lib/categories'
 import { Store as StoreType } from '@/types/deal'
-
-// Product categories for deals - use centralized configuration
-const productCategories = EXTENDED_CATEGORIES
 
 // Badge display configuration - priority order (highest first)
 const BADGE_CONFIG: Record<string, { emoji: string; label: string; priority: number }> = {
@@ -197,30 +193,6 @@ function StoresContent({ stores }: { stores: StoreType[] }) {
             <p className="text-silver-light text-lg max-w-2xl mx-auto">
               Discover {filteredRetailers.length}+ retailers serving Canada, from homegrown brands to international favorites
             </p>
-          </div>
-        </section>
-
-        {/* Product Categories */}
-        <section className="py-6 bg-white border-b border-silver-light">
-          <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-lg font-bold text-charcoal mb-4">Shop by Category</h2>
-            <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
-              {productCategories.map(cat => {
-                const Icon = cat.icon
-                return (
-                  <Link
-                    key={cat.slug}
-                    href={`/category/${cat.slug}`}
-                    className="flex flex-col items-center min-w-[80px] p-3 bg-cream rounded-lg hover:bg-maple-red/10 transition-colors group"
-                  >
-                    <Icon size={24} className="text-maple-red mb-1" />
-                    <span className="text-xs font-medium text-charcoal group-hover:text-maple-red whitespace-nowrap">
-                      {cat.name}
-                    </span>
-                  </Link>
-                )
-              })}
-            </div>
           </div>
         </section>
 
