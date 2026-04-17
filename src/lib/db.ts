@@ -425,7 +425,7 @@ export async function getCanadianBrandsByCategory(category: string): Promise<Sto
         affiliate_network, screenshot_url, deal_count
       FROM stores
       WHERE (type = 'brand' OR is_canadian = TRUE)
-        AND $1 = ANY(top_categories)
+        AND top_categories @> to_jsonb($1::text)
       ORDER BY deal_count DESC`,
       [category]
     )
