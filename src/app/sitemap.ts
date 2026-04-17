@@ -1,12 +1,11 @@
 import { MetadataRoute } from 'next'
-import { getAllDealSlugs, getStores, getCategories } from '@/lib/db'
+import { getAllDealSlugs, getStores } from '@/lib/db'
 import { SITE_URL } from '@/lib/config'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [dealSlugs, stores, categories] = await Promise.all([
+  const [dealSlugs, stores] = await Promise.all([
     getAllDealSlugs(),
     getStores(),
-    getCategories(),
   ])
 
   const now = new Date()
@@ -27,12 +26,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: `${SITE_URL}/stores`,
-      lastModified: now,
-      changeFrequency: 'daily',
-      priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}/category`,
       lastModified: now,
       changeFrequency: 'daily',
       priority: 0.8,
@@ -61,13 +54,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }))
 
-  // Category pages
-  const categoryPages: MetadataRoute.Sitemap = categories.map(cat => ({
-    url: `${SITE_URL}/category/${cat.slug}`,
-    lastModified: now,
-    changeFrequency: 'daily' as const,
-    priority: 0.8,
-  }))
-
-  return [...staticPages, ...dealPages, ...storePages, ...categoryPages]
+  return [...staticPages, ...dealPages, ...storePages]
 }
