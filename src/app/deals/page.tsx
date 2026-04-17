@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { getDeals, getDealCount, getStores, getCategories } from '@/lib/db'
+import { getDeals, getDealCount, getStores } from '@/lib/db'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { DealCard, DealGrid } from '@/components/DealCard'
@@ -20,17 +20,15 @@ export const metadata: Metadata = {
 export const revalidate = 900
 
 export default async function DealsPage() {
-  const [deals, dealCount, stores, categories] = await Promise.all([
+  const [deals, dealCount, stores] = await Promise.all([
     getDeals({ limit: 100, orderBy: 'random' }),
     getDealCount(),
     getStores(),
-    getCategories(),
   ])
   const storeCount = stores.length
 
   // Transform for FilterSidebar
   const filterStores = stores.map(s => ({ name: s.name, slug: s.slug, count: s.deal_count }))
-  const filterCategories = categories.map(c => ({ name: c.name, slug: c.slug, count: c.deal_count }))
 
   return (
     <>
@@ -57,7 +55,7 @@ export default async function DealsPage() {
         </section>
 
         {/* Filter Sidebar */}
-        <FilterSidebar stores={filterStores} categories={filterCategories} />
+        <FilterSidebar stores={filterStores} />
 
         {/* Deals Grid */}
         <section className="py-12 px-4">

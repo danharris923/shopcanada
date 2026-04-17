@@ -5,12 +5,10 @@ import Link from 'next/link'
 
 interface FilterSidebarProps {
   stores: { name: string; slug: string; count: number }[]
-  categories: { name: string; slug: string; count: number }[]
   currentStore?: string
-  currentCategory?: string
 }
 
-export function FilterSidebar({ stores, categories, currentStore, currentCategory }: FilterSidebarProps) {
+export function FilterSidebar({ stores, currentStore }: FilterSidebarProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -55,7 +53,7 @@ export function FilterSidebar({ stores, categories, currentStore, currentCategor
         </div>
 
         {/* Clear Filters */}
-        {(currentStore || currentCategory) && (
+        {currentStore && (
           <div className="p-4 border-b border-silver-light">
             <Link
               href="/deals"
@@ -68,7 +66,7 @@ export function FilterSidebar({ stores, categories, currentStore, currentCategor
         )}
 
         {/* Stores */}
-        <div className="p-4 border-b border-silver-light">
+        <div className="p-4">
           <h3 className="font-semibold text-charcoal mb-3">Stores</h3>
           <div className="space-y-2 max-h-64 overflow-y-auto">
             {stores.map(store => (
@@ -87,32 +85,6 @@ export function FilterSidebar({ stores, categories, currentStore, currentCategor
                 <span className="flex items-center justify-between">
                   <span>{store.name}</span>
                   <span className="text-xs opacity-60">{store.count}</span>
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        {/* Categories */}
-        <div className="p-4">
-          <h3 className="font-semibold text-charcoal mb-3">Categories</h3>
-          <div className="space-y-2">
-            {categories.map(cat => (
-              <Link
-                key={cat.slug}
-                href={`/category/${cat.slug}`}
-                onClick={() => setIsOpen(false)}
-                className={`
-                  block px-3 py-2 rounded-lg text-sm transition-colors
-                  ${currentCategory === cat.slug
-                    ? 'bg-maple-red text-white'
-                    : 'hover:bg-cream text-charcoal'
-                  }
-                `}
-              >
-                <span className="flex items-center justify-between">
-                  <span>{cat.name}</span>
-                  <span className="text-xs opacity-60">{cat.count}</span>
                 </span>
               </Link>
             ))}

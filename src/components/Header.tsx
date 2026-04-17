@@ -3,13 +3,12 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { Menu, X, Leaf, Home, ShoppingBag, Store, Grid3X3, Search } from 'lucide-react'
+import { Menu, X, Leaf, Home, ShoppingBag, Store, Search } from 'lucide-react'
 
 const navLinks = [
   { href: '/', label: 'Home', icon: Home },
   { href: '/deals', label: "Today's Deals", icon: ShoppingBag },
   { href: '/stores', label: 'Stores', icon: Store },
-  { href: '/categories', label: 'Categories', icon: Grid3X3 },
 ]
 
 export function Header() {

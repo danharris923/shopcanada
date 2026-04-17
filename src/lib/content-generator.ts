@@ -251,14 +251,6 @@ export function generateBreadcrumbs(deal: Deal): { label: string; href?: string 
     { label: 'Home', href: '/' },
   ]
 
-  // Add category if available
-  if (deal.category) {
-    breadcrumbs.push({
-      label: formatCategoryName(deal.category),
-      href: `/category/${deal.category}`,
-    })
-  }
-
   // Add store with proper slug
   if (deal.store) {
     const storeSlug = deal.store.toLowerCase().replace(/\s+/g, '-')
