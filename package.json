@@ -11,7 +11,6 @@
     "sync-fashion-images": "node scripts/sync-fashion-images.js"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.89.0",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
