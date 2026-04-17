@@ -7,7 +7,6 @@ import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { StoreLogo } from '@/components/StoreLogo'
 import { Leaf, Store, Globe, Search } from 'lucide-react'
-import { StatsBar } from '@/components/StatsBar'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { EXTENDED_CATEGORIES } from '@/lib/categories'
 import { Store as StoreType } from '@/types/deal'
@@ -200,9 +199,6 @@ function StoresContent({ stores }: { stores: StoreType[] }) {
             </p>
           </div>
         </section>
-
-        {/* Stats Bar */}
-        <StatsBar storeCount={filteredRetailers.length} />
 
         {/* Product Categories */}
         <section className="py-6 bg-white border-b border-silver-light">

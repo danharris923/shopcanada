@@ -16,15 +16,12 @@ import {
   generateBreadcrumbSchema,
   generateReviewSchema,
 } from '@/lib/schema'
-import { getStockWarning, generateUrgencyData } from '@/lib/urgency'
 import { toNumber, formatPrice, calculateSavings } from '@/lib/price-utils'
 import { cleanAffiliateUrl, cleanAmazonUrl } from '@/lib/affiliates'
 
-import { StatsBar } from '@/components/StatsBar'
 import { PriceDisplay } from '@/components/deal/PriceDisplay'
 import { CTAButton } from '@/components/deal/CTAButton'
-import { StockWarning } from '@/components/deal/StockWarning'
-import { TrustBadges, StoreBadge } from '@/components/deal/TrustBadges'
+import { StoreBadge } from '@/components/deal/StoreBadge'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { StickyMobileCTA } from '@/components/deal/StickyMobileCTA'
 import { SafeImg } from '@/components/SafeImg'
@@ -100,9 +97,6 @@ export default async function DealPage({ params }: PageProps) {
     deal = { ...deal, affiliate_url: cleaned }
   }
 
-  // Generate urgency data for stock warning only
-  const urgencyData = generateUrgencyData(deal.id)
-  const stockWarning = getStockWarning(urgencyData)
   const breadcrumbs = generateBreadcrumbs(deal)
   const description = generateDealDescription(deal)
 
@@ -150,9 +144,6 @@ export default async function DealPage({ params }: PageProps) {
 
       {/* ABOVE THE FOLD - Maximum CTR Zone */}
       <div className="min-h-screen bg-cream">
-        {/* Stats Bar */}
-        <StatsBar />
-
         {/* Main Content */}
         <main className="max-w-7xl mx-auto px-4 py-4">
           {/* Breadcrumbs */}
@@ -233,16 +224,6 @@ export default async function DealPage({ params }: PageProps) {
                 />
               </div>
 
-              {/* Stock Warning */}
-              {stockWarning && (
-                <div className="mb-4">
-                  <StockWarning
-                    variant={stockWarning.variant}
-                    message={stockWarning.message}
-                  />
-                </div>
-              )}
-
               {/* Primary CTA */}
               <div className="mb-4">
                 <CTAButton
@@ -251,11 +232,6 @@ export default async function DealPage({ params }: PageProps) {
                   storeName={storeName}
                   size="xl"
                 />
-              </div>
-
-              {/* Trust Badges */}
-              <div className="mb-6">
-                <TrustBadges storeName={storeName} />
               </div>
 
               {/* Quick Stats - only show if we have real data */}

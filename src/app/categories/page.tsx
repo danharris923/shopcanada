@@ -3,7 +3,6 @@ import type { Metadata } from 'next'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
-import { StatsBar } from '@/components/StatsBar'
 import { CATEGORIES } from '@/lib/categories'
 import { getDealsByCategory } from '@/lib/db'
 import { SITE_URL } from '@/lib/config'
@@ -31,8 +30,6 @@ export default async function CategoriesPage() {
     })
   )
 
-  const totalDeals = categoryDeals.reduce((sum, cat) => sum + cat.dealCount, 0)
-
   return (
     <>
       <Header />
@@ -56,9 +53,6 @@ export default async function CategoriesPage() {
             </p>
           </div>
         </section>
-
-        {/* Stats Bar */}
-        <StatsBar dealCount={totalDeals} />
 
         {/* Categories Grid */}
         <section className="py-12 px-4">

@@ -4,7 +4,6 @@ import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { DealCard, DealGrid } from '@/components/DealCard'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
-import { StatsBar } from '@/components/StatsBar'
 import { getDealsByCategory } from '@/lib/db'
 import { CATEGORIES, getCategoryBySlug, type Category } from '@/lib/categories'
 import type { Metadata } from 'next'
@@ -84,9 +83,6 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             </p>
           </div>
         </section>
-
-        {/* Stats Bar */}
-        <StatsBar dealCount={deals.length} />
 
         {/* Deals Grid */}
         <section className="py-12 px-4">

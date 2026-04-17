@@ -3,7 +3,6 @@ import Image from 'next/image'
 import { getCanadianBrandsByCategory } from '@/lib/db'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
-import { StatsBar } from '@/components/StatsBar'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { CategoryIcon } from '@/components/CategoryIcon'
 import type { Metadata } from 'next'
@@ -46,7 +45,6 @@ export default async function CategoryPage({ params }: Props) {
   return (
     <>
       <Header />
-      <StatsBar />
       <main className="bg-cream min-h-screen">
         {/* Breadcrumbs */}
         <div className="max-w-6xl mx-auto px-6 pt-4">

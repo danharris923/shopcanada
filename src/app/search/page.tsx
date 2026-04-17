@@ -5,7 +5,6 @@ import { searchFlippDeals } from '@/lib/flipp'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { DealCard, DealGrid } from '@/components/DealCard'
-import { StatsBar } from '@/components/StatsBar'
 
 export const revalidate = 0 // Don't cache search results
 
@@ -58,9 +57,6 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             )}
           </div>
         </section>
-
-        {/* Stats Bar */}
-        <StatsBar />
 
         {/* Results */}
         <section className="py-12 px-4">

@@ -122,19 +122,6 @@ export interface DealCardProps {
 }
 
 /**
- * Urgency data for psychological triggers
- */
-export interface UrgencyData {
-  viewerCount: number
-  purchaseCount: number
-  stockLevel: 'high' | 'medium' | 'low' | 'critical'
-  stockCount?: number
-  expiresAt?: Date
-  isPriceDrop?: boolean
-  isLowestEver?: boolean
-}
-
-/**
  * Content generation context
  */
 export interface ContentContext {

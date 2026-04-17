@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { getStoreStats, getStoreBySlug } from '@/lib/db'
+import { getStoreBySlug } from '@/lib/db'
 import { generateWebsiteSchema, generateOrganizationSchema } from '@/lib/schema'
 import { DealCard, DealGrid } from '@/components/DealCard'
 import { Header } from '@/components/Header'
@@ -8,7 +8,6 @@ import { Footer } from '@/components/Footer'
 import { StoreLogo } from '@/components/StoreLogo'
 import { Leaf } from 'lucide-react'
 import { CORE_CATEGORIES } from '@/lib/categories'
-import { StatsBar } from '@/components/StatsBar'
 import { getShuffledFeaturedDeals, getShuffledDeals, getDistributionSummary } from '@/lib/deal-shuffle'
 import { REVALIDATE_INTERVAL, FEATURED_STORE_SLUGS } from '@/lib/config'
 import { Store, MixedDeal } from '@/types/deal'
@@ -52,10 +51,9 @@ function extractDomain(url: string | null): string {
 export const revalidate = REVALIDATE_INTERVAL
 
 export default async function HomePage() {
-  const [shuffledFeatured, shuffledLatest, storeStats, ...featuredStoreResults] = await Promise.all([
+  const [shuffledFeatured, shuffledLatest, ...featuredStoreResults] = await Promise.all([
     getShuffledFeaturedDeals(8),
     getShuffledDeals(16),
-    getStoreStats(),
     ...FEATURED_STORE_SLUGS.map(slug => getStoreBySlug(slug)),
   ])
 
@@ -116,12 +114,6 @@ export default async function HomePage() {
             </div>
           </div>
         </section>
-
-        {/* Stats Bar */}
-        <StatsBar
-          dealCount={shuffledLatest.deals.length + shuffledFeatured.deals.length + 250}
-          storeCount={storeStats.length + 45}
-        />
 
         {/* Canadian Picks - Above the Fold CTA */}
         <section className="py-6 bg-gradient-to-r from-maple-red to-burgundy">

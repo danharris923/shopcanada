@@ -11,11 +11,8 @@ import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { StoreLogo } from '@/components/StoreLogo'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
-import { StatsBar } from '@/components/StatsBar'
 import { SafeImg } from '@/components/SafeImg'
 import { ExternalLink, Truck, RotateCcw, Award, CreditCard } from 'lucide-react'
-import { getVideosForStore } from '@/lib/youtube'
-import { StoreVideos } from '@/components/YouTubeEmbed'
 import { getBrandStory, markdownToHtml } from '@/lib/brand-story'
 
 interface PageProps {
@@ -115,13 +112,9 @@ export default async function StorePage({ params }: PageProps) {
   // Get primary category for related stores
   const primaryCategory = store.top_categories?.[0] || 'Retail'
 
-  // Skip YouTube for Costco (no relevant content)
-  const skipYouTube = storeSlug === 'costco'
-
-  // Fetch deals, videos, related stores, and brand story in parallel
-  const [deals, videos, relatedStores, brandStoryMarkdown] = await Promise.all([
+  // Fetch deals, related stores, and brand story in parallel
+  const [deals, relatedStores, brandStoryMarkdown] = await Promise.all([
     getDealsByStore(storeSlug).catch((e) => { console.error('getDealsByStore error:', e); return [] }),
-    skipYouTube ? Promise.resolve([]) : getVideosForStore(storeSlug, 3),
     getRelatedCanadianBrands(store, 6).catch((e) => { console.error('getRelatedBrands error:', e); return [] }),
     getBrandStory(storeSlug),
   ])
@@ -158,7 +151,6 @@ export default async function StorePage({ params }: PageProps) {
       )}
 
       <Header />
-      <StatsBar dealCount={deals.length} />
 
       <main className="min-h-screen bg-cream">
         <div className="max-w-7xl mx-auto px-4 py-6">
@@ -264,15 +256,6 @@ export default async function StorePage({ params }: PageProps) {
                 </div>
               )}
             </section>
-          )}
-
-          {/* YOUTUBE VIDEOS SECTION */}
-          {videos.length > 0 && (
-            <StoreVideos
-              storeSlug={storeSlug}
-              storeName={storeName}
-              videos={videos}
-            />
           )}
 
           {/* ABOUT SECTION */}
