@@ -441,11 +441,11 @@ export async function getCanadianBrandsByCategory(category: string): Promise<Sto
 export async function getCanadianBrandCategories(): Promise<{ name: string; slug: string; count: number }[]> {
   try {
     const rows = await query<{ category: string; count: string }>(
-      `SELECT unnest(top_categories) as category, COUNT(*) as count
+      `SELECT jsonb_array_elements_text(top_categories) as category, COUNT(*) as count
        FROM stores
        WHERE (type = 'brand' OR is_canadian = TRUE)
          AND top_categories IS NOT NULL
-         AND array_length(top_categories, 1) > 0
+         AND jsonb_array_length(top_categories) > 0
        GROUP BY category
        ORDER BY count DESC`
     )
