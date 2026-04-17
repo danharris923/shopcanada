@@ -15,13 +15,14 @@ export const revalidate = 900
 const categories = CATEGORIES
 
 interface CategoryPageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
-  const category = categories.find(cat => cat.slug === params.slug)
+  const { slug } = await params
+  const category = categories.find(cat => cat.slug === slug)
 
   if (!category) {
     return {
@@ -37,7 +38,8 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
 }
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
-  const category = categories.find(cat => cat.slug === params.slug)
+  const { slug } = await params
+  const category = categories.find(cat => cat.slug === slug)
 
   if (!category) {
     notFound()

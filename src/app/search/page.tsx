@@ -9,11 +9,12 @@ import { DealCard, DealGrid } from '@/components/DealCard'
 export const revalidate = 0 // Don't cache search results
 
 interface SearchPageProps {
-  searchParams: { q?: string }
+  searchParams: Promise<{ q?: string }>
 }
 
 export async function generateMetadata({ searchParams }: SearchPageProps): Promise<Metadata> {
-  const query = searchParams.q || ''
+  const { q } = await searchParams
+  const query = q || ''
   return {
     title: query ? `Search: ${query} | Click & Save Canada` : 'Search Results | Click & Save Canada',
     description: query
@@ -23,7 +24,8 @@ export async function generateMetadata({ searchParams }: SearchPageProps): Promi
 }
 
 export default async function SearchPage({ searchParams }: SearchPageProps) {
-  const query = searchParams.q?.trim() || ''
+  const { q } = await searchParams
+  const query = q?.trim() || ''
   const hasQuery = query.length >= 2
 
   // Search all sources in parallel

@@ -31,14 +31,15 @@ import { DealCard, DealGrid } from '@/components/DealCard'
 import Link from 'next/link'
 
 interface PageProps {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://clickandsavecanada.com'
 
 // Generate metadata with enhanced SEO
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const deal = await getDealBySlug(params.slug)
+  const { slug } = await params
+  const deal = await getDealBySlug(slug)
 
   if (!deal) {
     return { title: 'Deal Not Found' }
@@ -78,9 +79,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function DealPage({ params }: PageProps) {
+  const { slug } = await params
   let deal = null
   try {
-    deal = await getDealBySlug(params.slug)
+    deal = await getDealBySlug(slug)
   } catch (error) {
     console.error('getDealBySlug error:', error)
     notFound()
