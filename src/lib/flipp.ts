@@ -5,6 +5,8 @@
  * Endpoint: https://backflipp.wishabi.com/flipp/items/search
  */
 
+import type { MixedDeal } from '@/types/deal'
+
 // =============================================================================
 // TYPES
 // =============================================================================
@@ -259,4 +261,57 @@ function generateSlug(name: string, id: number): string {
     .replace(/^-|-$/g, '')
     .slice(0, 60)
   return `${base}-${id}`
+}
+
+// =============================================================================
+// ADAPTER: FlippDeal -> Deal-compatible row for the 3-source mix
+// =============================================================================
+
+/**
+ * Adapt a FlippDeal into a MixedDeal (which extends Deal) so it can flow
+ * through mixDeals() and DealGrid alongside DB-sourced rows. The DealCard
+ * component dispatches on source='flipp' to render the flipp variant using
+ * the storeSlug / storeLogo / validTo / saleStory fields preserved here.
+ *
+ * affiliate_url is left empty — flipp rows click through via the flipp
+ * variant in DealCard, which uses storeSlug to construct the outbound link.
+ */
+export function flippToMixedDeal(f: FlippDeal): MixedDeal {
+  return {
+    id: f.id,
+    title: f.title,
+    slug: f.slug,
+    image_url: f.imageUrl,
+    image_blob_url: null,
+    price: f.price,
+    original_price: f.originalPrice,
+    discount_percent: f.discountPercent,
+    store: f.store,
+    category: f.category,
+    description: null,
+    affiliate_url: '',
+    source_url: null,
+    featured: false,
+    date_added: f.validFrom,
+    date_updated: f.validFrom,
+    is_active: true,
+    // MixedDeal extensions the flipp variant of DealCard reads.
+    source: 'flipp',
+    storeSlug: f.storeSlug,
+    storeLogo: f.storeLogo,
+    validTo: f.validTo,
+    saleStory: f.saleStory,
+    imageUrl: f.imageUrl,
+    originalPrice: f.originalPrice,
+    discountPercent: f.discountPercent,
+  }
+}
+
+/**
+ * Fetch Flipp flyer items and return them as Deal-compatible rows for the
+ * canonical 3-source mix used by the homepage and search page.
+ */
+export async function getFlippDealsAsDeals(query: string, limit: number): Promise<MixedDeal[]> {
+  const flipp = await searchFlippDeals(query, limit)
+  return flipp.map(flippToMixedDeal).slice(0, limit)
 }
