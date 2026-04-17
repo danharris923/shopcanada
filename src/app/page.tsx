@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { getStoreBySlug } from '@/lib/db'
+import { getStoreBySlug, getGuruDeals, getRfdDeals } from '@/lib/db'
+import { getFlippDealsAsDeals } from '@/lib/flipp'
+import { mixDeals } from '@/lib/mix-deals'
 import { generateWebsiteSchema, generateOrganizationSchema } from '@/lib/schema'
 import { DealCard, DealGrid } from '@/components/DealCard'
 import { Header } from '@/components/Header'
@@ -8,9 +10,8 @@ import { Footer } from '@/components/Footer'
 import { StoreLogo } from '@/components/StoreLogo'
 import { Leaf } from 'lucide-react'
 import { CORE_CATEGORIES } from '@/lib/categories'
-import { getShuffledFeaturedDeals, getShuffledDeals, getDistributionSummary } from '@/lib/deal-shuffle'
 import { FEATURED_STORE_SLUGS } from '@/lib/config'
-import { Store, MixedDeal } from '@/types/deal'
+import { Store } from '@/types/deal'
 import { toDealCardProps } from '@/lib/utils/deal-utils'
 
 // Badge display configuration for homepage store cards
@@ -50,17 +51,24 @@ function extractDomain(url: string | null): string {
 
 export const revalidate = 900
 
+// Per-source cap for the 3-source mix. 17 * 3 = 51 potential rows,
+// sliced down to 47 below for the grid layout (matches livingonaloonie).
+const PER_SOURCE = 17
+const MAX_DEALS = 47
+
 export default async function HomePage() {
-  const [shuffledFeatured, shuffledLatest, ...featuredStoreResults] = await Promise.all([
-    getShuffledFeaturedDeals(8),
-    getShuffledDeals(16),
+  const [flippDeals, rfdDeals, guruDeals, ...featuredStoreResults] = await Promise.all([
+    getFlippDealsAsDeals('deals', PER_SOURCE),
+    getRfdDeals(PER_SOURCE),
+    getGuruDeals(PER_SOURCE),
     ...FEATURED_STORE_SLUGS.map(slug => getStoreBySlug(slug)),
   ])
 
+  // Canonical 3-source round-robin feed. Same shape as livingonaloonie.
+  const mixedDeals = mixDeals(flippDeals, rfdDeals, guruDeals).slice(0, MAX_DEALS)
+
   // Filter out null results and cast to Store[]
   const featuredStores = featuredStoreResults.filter((s): s is Store => s !== null)
-
-  // Distribution logging removed for production
 
   const websiteSchema = generateWebsiteSchema()
   const orgSchema = generateOrganizationSchema()
@@ -115,7 +123,7 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* Canadian Picks - Above the Fold CTA */}
+        {/* Canadian Picks - Above the Fold CTA (shopcanada-unique) */}
         <section className="py-6 bg-gradient-to-r from-maple-red to-burgundy">
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
@@ -148,13 +156,13 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* Hot Sales */}
-        {shuffledFeatured.deals.length > 0 && (
+        {/* Today's Deals - canonical 3-source mix (Flipp + RFD + Guru) */}
+        {mixedDeals.length > 0 && (
           <section className="py-12 section-ivory">
             <div className="max-w-7xl mx-auto px-4">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-2xl md:text-3xl font-bold text-charcoal">
-                  Hot Sales
+                  Today&apos;s Deals
                 </h2>
                 <Link
                   href="/deals"
@@ -164,11 +172,11 @@ export default async function HomePage() {
                 </Link>
               </div>
               <DealGrid>
-                {shuffledFeatured.deals.map(deal => (
+                {mixedDeals.map(deal => (
                   <DealCard
-                      key={deal.id}
-                      {...toDealCardProps(deal, { featured: true })}
-                    />
+                    key={deal.id}
+                    {...toDealCardProps(deal)}
+                  />
                 ))}
               </DealGrid>
             </div>
@@ -210,31 +218,6 @@ export default async function HomePage() {
                 )
               })}
             </div>
-          </div>
-        </section>
-
-        {/* Fresh Markdowns */}
-        <section className="py-12 section-ivory">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl md:text-3xl font-bold text-charcoal">
-                Fresh Markdowns
-              </h2>
-              <Link
-                href="/deals"
-                className="text-maple-red hover:text-burgundy font-semibold transition-colors"
-              >
-                View All →
-              </Link>
-            </div>
-            <DealGrid>
-              {shuffledLatest.deals.map(deal => (
-                <DealCard
-                    key={deal.id}
-                    {...toDealCardProps(deal)}
-                  />
-              ))}
-            </DealGrid>
           </div>
         </section>
 
