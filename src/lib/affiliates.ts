@@ -3,7 +3,18 @@
  *
  * Utility functions for building affiliate URLs.
  * Store-specific data (search URLs, affiliate URLs) is now stored in the database.
+ *
+ * Canonical structure ported from promopenguin-frontend; shopcanada-specific
+ * constants (Amazon Associates tag, double-URL unwrap, 'amazon-ca' alias,
+ * AffiliateBrand type) preserved verbatim.
  */
+
+// =============================================================================
+// SHOPCANADA AMAZON AFFILIATE TAG
+// (Preserved verbatim — do not change without also updating the scraper.)
+// =============================================================================
+
+export const AMAZON_AFFILIATE_TAG = 'f10a7654-20'
 
 // =============================================================================
 // URL CLEANING - Strip competitor affiliate tags
@@ -50,7 +61,10 @@ const COMPETITOR_PATTERNS = [
 
 /**
  * Clean a URL by removing competitor affiliate tags and tracking parameters
- * Preserves the base URL and any legitimate product/search parameters
+ * Preserves the base URL and any legitimate product/search parameters.
+ *
+ * (Shopcanada-specific: also unwraps double-wrapped URLs like
+ *  https://example.com/https://example.com/... before processing.)
  */
 export function cleanAffiliateUrl(url: string): string {
   if (!url) return url
@@ -108,11 +122,10 @@ export function cleanAffiliateUrl(url: string): string {
 // AMAZON AFFILIATE CONFIG
 // =============================================================================
 
-// Amazon Associates tag
-export const AMAZON_AFFILIATE_TAG = 'f10a7654-20'
-
 /**
  * Clean an Amazon URL and replace any existing affiliate tag with ours
+ *
+ * (Shopcanada-specific: also unwraps double-wrapped Amazon URLs.)
  */
 export function cleanAmazonUrl(url: string): string {
   if (!url) return url
@@ -217,7 +230,7 @@ export const RETAILER_SEARCH_URLS: Record<string, string> = {
   // Big Box / General
   'walmart': 'https://www.walmart.ca/search?q=',
   'amazon': 'https://www.amazon.ca/s?k=',
-  'amazon-ca': 'https://www.amazon.ca/s?k=',
+  'amazon-ca': 'https://www.amazon.ca/s?k=',  // Shopcanada-specific alias
   'canadian-tire': 'https://www.canadiantire.ca/en/search.html?q=',
   'dollarama': 'https://www.dollarama.com/en-CA/search?q=',
 
@@ -295,7 +308,7 @@ export const RETAILER_SEARCH_URLS: Record<string, string> = {
   'michaels': 'https://canada.michaels.com/en/search?q=',
   'eb-games': 'https://www.ebgames.ca/SearchResult/QuickSearch?q=',
 
-  // Flipp Grocery/Specialty Stores (unique aliases only - duplicates removed)
+  // Flipp Grocery/Specialty Stores
   'adonis': 'https://www.marchesadonis.com/en/search?q=',
   'marches-adonis': 'https://www.marchesadonis.com/en/search?q=',
   'starsky': 'https://www.starskydeli.com/',
@@ -383,14 +396,9 @@ export const COOKIE_BYPASS_PARAMS: Record<string, string> = {
 // UNIFIED API
 // =============================================================================
 
-
 /**
  * Extract clean search terms from a product title
  * Strips out prices, sale language, sizes, and other noise
- *
- * "Sale $6 Jays My Mighty Wolf, Doggy Bits dog treats" -> "Jays My Mighty Wolf Doggy Bits dog treats"
- * "SAVE 50% Tide Pods 42ct" -> "Tide Pods"
- * "$19.99 Samsung Galaxy Buds" -> "Samsung Galaxy Buds"
  */
 export function extractSearchTerms(title: string, brandName?: string): string {
   if (!title) return ''
@@ -470,6 +478,18 @@ export function extractSearchTerms(title: string, brandName?: string): string {
   return cleaned
 }
 
+/**
+ * Build affiliate search URL from a base search URL and product title
+ */
+export function buildAffiliateSearchUrl(
+  searchUrl: string,
+  productTitle: string,
+  storeSlug?: string | null
+): string {
+  const cleanedTitle = extractSearchTerms(productTitle)
+  const bypassParam = storeSlug ? (COOKIE_BYPASS_PARAMS[storeSlug] || '') : ''
+  return `${searchUrl}${encodeURIComponent(cleanedTitle)}${bypassParam}`
+}
 
 /**
  * Map store slugs to brand names for search term cleaning
@@ -509,7 +529,6 @@ const STORE_BRAND_NAMES: Record<string, string> = {
 /**
  * Get affiliate link with product search query appended
  * Priority: Rakuten affiliate > Direct retailer search URL
- * Automatically cleans the product title for better search results
  */
 export function getAffiliateSearchUrl(storeSlug: string | null, productTitle: string): string | null {
   if (!storeSlug) return null
@@ -560,17 +579,7 @@ function isAmazonProductLink(url: string): boolean {
 }
 
 /**
- * Affiliate tracking domains that support deep linking with custom URLs
- * These can wrap a search URL while maintaining affiliate tracking
- */
-const DEEP_LINK_AFFILIATE_DOMAINS: Record<string, (url: string, publisherId: string) => string> = {
-  // Rakuten/LinkShare - supports murl parameter for destination
-  'click.linksynergy.com': (url, publisherId) =>
-    `https://click.linksynergy.com/deeplink?id=${publisherId}&mid=1&murl=${encodeURIComponent(url)}`,
-}
-
-/**
- * Affiliate tracking domains that are static redirects (cannot add search params)
+ * Static affiliate domains that are redirects (cannot add search params)
  */
 const STATIC_AFFILIATE_DOMAINS = [
   'rstyle.me',           // rewardStyle/LTK - static redirect links
@@ -585,8 +594,8 @@ const STATIC_AFFILIATE_DOMAINS = [
 ]
 
 /**
- * Store slug → LTK affiliate URL mapping
- * ALL deals from these stores should use the cookie wrapper, regardless of source
+ * Store slug -> LTK affiliate URL mapping
+ * ALL deals from these stores should use the cookie wrapper
  */
 const STORE_LTK_URLS: Record<string, string> = {
   'aldo': 'https://rstyle.me/+CBJ4WHku-A5YVGy6FO0_rQ',
@@ -638,23 +647,6 @@ function isStaticAffiliateLink(url: string): boolean {
 }
 
 /**
- * Check if a URL already has search parameters (is a search URL template with query)
- */
-function hasSearchQuery(url: string): boolean {
-  try {
-    const urlObj = new URL(url)
-    // Check for common search params that already have values
-    const searchParams = ['q', 'query', 'search', 'searchTerm', 'keyword', 'k', 'Ntt', 'text']
-    return searchParams.some(param => {
-      const value = urlObj.searchParams.get(param)
-      return value && value.length > 0
-    })
-  } catch {
-    return false
-  }
-}
-
-/**
  * Build affiliate redirect URL that sets cookie AND redirects to search
  * Uses /api/go endpoint to load affiliate link in iframe, then redirect to search
  */
@@ -680,7 +672,6 @@ export function getDealAffiliateUrl(
   const cleanedDealUrl = dealAffiliateUrl ? cleanAffiliateUrl(dealAffiliateUrl) : null
 
   // PRIORITY 1: LTK stores - ALWAYS use cookie wrapper regardless of deal's affiliate_url
-  // This ensures scraped deals (lululemon.com URLs) still set the affiliate cookie
   if (storeSlug) {
     const ltkAffiliateUrl = STORE_LTK_URLS[storeSlug]
     if (ltkAffiliateUrl) {
@@ -743,9 +734,9 @@ export function getDealAffiliateUrl(
 }
 
 
-
 // =============================================================================
 // AFFILIATE BRAND TYPE (for components that need it)
+// Shopcanada-specific export — preserved from prior version.
 // =============================================================================
 
 export interface AffiliateBrand {
