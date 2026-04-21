@@ -15,7 +15,9 @@ No test suite is configured.
 
 ## Architecture
 
-Canadian Deal Finder is a **Next.js 14 App Router** Canadian deals aggregator deployed on **Vercel** at canadiandealfinder.ca (formerly shopcanada.cc). A separate scraper (runs on a DigitalOcean droplet) writes deals to the shared Vercel Postgres database; this frontend reads and renders them.
+Canadian Deal Finder is a **Next.js App Router** Canadian deals aggregator deployed on **Vercel** at clickandsavecanada.com (formerly shopcanada.cc / canadiandealfinder.ca). A separate scraper (runs on a DigitalOcean droplet) writes deals to the shared Vercel Postgres database; this frontend reads and renders them.
+
+This is one of three consolidated sister sites sharing the same DB and converging on the same code — only visuals should differ (`danharris923/shopcanada`, `danharris923/livingonaloonie`, `danharris923/promopenguin-frontend`). **This repo is the only one of the three that carries a Stores / Canadian Brands section** — it's the carrier of the brand-story markdown corpus in `src/content/brands/stories/`. Do not propagate `/stores/*` routes or "Shop by Store" UI to the other two sites.
 
 ### Data Flow
 ```
