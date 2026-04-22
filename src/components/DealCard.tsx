@@ -57,20 +57,22 @@ export function DealCard({
   const storeLogoFallback = getStoreLogoPath(store)
   const skipToLogo = isRfdAmazon(store, slug) && !!storeLogoFallback
 
-  const [imgSrc, setImgSrc] = useState(skipToLogo ? storeLogoFallback! : (imageUrl || ''))
-  const [imgError, setImgError] = useState(false)
-  const [triedStoreLogo, setTriedStoreLogo] = useState(skipToLogo)
-  const [noProductImage, setNoProductImage] = useState(!imageUrl && !skipToLogo)
+  // If the product image fails and the store-logo fallback also fails (or
+  // there was no usable image to begin with), drop the card entirely —
+  // never render a dead/broken image placeholder.
+  const initialSrc = skipToLogo
+    ? storeLogoFallback!
+    : (imageUrl || storeLogoFallback || '')
+  const [imgSrc, setImgSrc] = useState(initialSrc)
+  const [triedFallback, setTriedFallback] = useState(skipToLogo || !imageUrl)
+  const [hideCard, setHideCard] = useState(!initialSrc)
 
   const handleImageError = () => {
-    if (!imgError && !triedStoreLogo && storeLogoFallback) {
-      // First error: try store logo as product image
-      setTriedStoreLogo(true)
+    if (!triedFallback && storeLogoFallback) {
+      setTriedFallback(true)
       setImgSrc(storeLogoFallback)
-    } else if (!imgError) {
-      // All image sources failed — hide image, show text layout
-      setImgError(true)
-      setNoProductImage(true)
+    } else {
+      setHideCard(true)
     }
   }
 
@@ -179,32 +181,15 @@ export function DealCard({
         )}
 
 
-        {/* Image or No-Image Layout */}
-        {noProductImage ? (
-          <div className="absolute inset-0 flex flex-col items-center justify-center p-4 gap-2">
-            {storeLogoFallback && (
-              /* eslint-disable-next-line @next/next/no-img-element */
-              <img
-                src={storeLogoFallback}
-                alt={store || 'Store'}
-                className="w-20 h-20 object-contain opacity-60"
-                onError={(e) => { e.currentTarget.style.display = 'none' }}
-              />
-            )}
-            <p className="text-xs text-slate text-center line-clamp-4 leading-relaxed px-2">
-              {title}
-            </p>
-          </div>
-        ) : (
-          /* eslint-disable-next-line @next/next/no-img-element */
-          <img
-            src={imgSrc}
-            alt={title}
-            className="absolute inset-0 w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-200"
-            onError={handleImageError}
-            loading="lazy"
-          />
-        )}
+        {/* Product image — card is unmounted via hideCard if this fails */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={imgSrc}
+          alt={title}
+          className="absolute inset-0 w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-200"
+          onError={handleImageError}
+          loading="lazy"
+        />
       </div>
 
       {/* Content */}
@@ -227,7 +212,7 @@ export function DealCard({
         )}
 
         {/* Title */}
-        <h3 className={`deal-card-title mb-2 group-hover:text-maple-red transition-colors ${noProductImage ? 'line-clamp-3' : 'line-clamp-2'}`}>
+        <h3 className="deal-card-title mb-2 group-hover:text-maple-red transition-colors line-clamp-2">
           {title}
         </h3>
 
@@ -317,6 +302,9 @@ export function DealCard({
       </div>
     </>
   )
+
+  // Never render a card whose image we couldn't load
+  if (hideCard) return null
 
   // Always go direct to retailer if affiliateUrl exists
   if (effectiveAffiliateUrl) {
