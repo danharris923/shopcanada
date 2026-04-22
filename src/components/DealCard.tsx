@@ -20,6 +20,15 @@ const getStoreLogoPath = (store: string | null | undefined): string | null => {
   return `/images/stores/${slug}.png`
 }
 
+// RFD-sourced Amazon deals don't carry reliable product images (the scraped
+// image_url is often a hotlink that 403s from non-amazon origins). Skip the
+// broken-image flash and render the Amazon logo directly. Non-RFD rows
+// (guru-prefixed slugs) come with real product images in blob storage.
+const isRfdAmazon = (store: string | null | undefined, slug: string): boolean => {
+  if (!store) return false
+  return /amazon/i.test(store) && !slug.startsWith('guru-')
+}
+
 export function DealCard({
   id,
   title,
@@ -46,11 +55,12 @@ export function DealCard({
 
   // Get store logo path for fallback
   const storeLogoFallback = getStoreLogoPath(store)
+  const skipToLogo = isRfdAmazon(store, slug) && !!storeLogoFallback
 
-  const [imgSrc, setImgSrc] = useState(imageUrl || '')
+  const [imgSrc, setImgSrc] = useState(skipToLogo ? storeLogoFallback! : (imageUrl || ''))
   const [imgError, setImgError] = useState(false)
-  const [triedStoreLogo, setTriedStoreLogo] = useState(false)
-  const [noProductImage, setNoProductImage] = useState(!imageUrl)
+  const [triedStoreLogo, setTriedStoreLogo] = useState(skipToLogo)
+  const [noProductImage, setNoProductImage] = useState(!imageUrl && !skipToLogo)
 
   const handleImageError = () => {
     if (!imgError && !triedStoreLogo && storeLogoFallback) {
