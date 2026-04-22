@@ -104,15 +104,11 @@ export function DealCard({
   const hasDiscount = discountPercent !== null && discountPercent > 0
 
   // Function to handle Read More click
-  // Affiliated deals go to store page, others go to deal page
+  // Read More always goes to the internal deal page; the card itself (outer <a>) already goes to the affiliate URL
   const handleReadMoreClick = (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
-    if (effectiveAffiliateUrl && storeSlug) {
-      window.location.href = `/stores/${storeSlug}`
-    } else {
-      window.location.href = `/deals/${slug}`
-    }
+    window.location.href = `/deals/${slug}`
   }
 
   const cardContent = (
