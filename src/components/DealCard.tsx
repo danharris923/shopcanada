@@ -13,6 +13,19 @@ import { getAffiliateSearchUrl, getDealAffiliateUrl } from '@/lib/affiliates'
 const generateLogoUrl = (domain: string) =>
   `https://www.google.com/s2/favicons?domain=${domain}&sz=128`
 
+// Scraper-output store names sometimes already include a TLD ("Amazon.ca"),
+// which makes the slug 'amazon.ca'; blindly appending '.ca' produces
+// 'amazon.ca.ca' which 404s on Google's favicon service. And some retailers
+// aren't .ca at all (RedFlagDeals is .com). Build the domain accordingly.
+const KNOWN_DOMAINS: Record<string, string> = {
+  redflagdeals: 'redflagdeals.com',
+}
+const buildFaviconDomain = (slug: string): string => {
+  const cleaned = slug.toLowerCase().replace(/-/g, '')
+  if (/\.(ca|com|org|net|co|io|us)$/.test(cleaned)) return cleaned
+  return KNOWN_DOMAINS[cleaned] || `${cleaned}.ca`
+}
+
 // Helper to generate store logo path from store name
 const getStoreLogoPath = (store: string | null | undefined): string | null => {
   if (!store) return null
@@ -84,7 +97,7 @@ export function DealCard({
   const storeSlug = propStoreSlug || storeData?.slug || store?.toLowerCase().replace(/\s+/g, '-') || ''
 
   // Determine store logo - use prop for Flipp, then database data, then fallback to generated URL
-  const storeLogo = propStoreLogo || storeData?.logo_url || generateLogoUrl(storeSlug.replace(/-/g, '') + '.ca')
+  const storeLogo = propStoreLogo || storeData?.logo_url || generateLogoUrl(buildFaviconDomain(storeSlug))
   const storeName = storeData?.name || store
 
   // Store policy data for SEO badges (from storeData prop)
