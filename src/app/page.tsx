@@ -50,21 +50,19 @@ function extractDomain(url: string | null): string {
 
 export const revalidate = 900
 
-// Per-source cap for the 3-source mix. 17 * 3 = 51 potential rows,
-// sliced down to 47 below for the grid layout (matches livingonaloonie).
-const PER_SOURCE = 17
+// Guru-priority mix; RFD kept low (flaky upstream) — just enough non-Amazon
+// variety. Source order in mixDeals controls the top-left grid slot.
 const MAX_DEALS = 47
 
 export default async function HomePage() {
-  const [flippDeals, rfdDeals, guruDeals, ...featuredStoreResults] = await Promise.all([
-    getFlippDealsAsDeals('deals', PER_SOURCE),
-    getRfdDeals(PER_SOURCE),
-    getGuruDeals(PER_SOURCE),
+  const [guruDeals, flippDeals, rfdDeals, ...featuredStoreResults] = await Promise.all([
+    getGuruDeals(24),
+    getFlippDealsAsDeals('deals', 17),
+    getRfdDeals(6),
     ...FEATURED_STORE_SLUGS.map(slug => getStoreBySlug(slug)),
   ])
 
-  // Canonical 3-source round-robin feed. Same shape as livingonaloonie.
-  const mixedDeals = mixDeals(flippDeals, rfdDeals, guruDeals).slice(0, MAX_DEALS)
+  const mixedDeals = mixDeals(guruDeals, flippDeals, rfdDeals).slice(0, MAX_DEALS)
 
   // Filter out null results and cast to Store[]
   const featuredStores = featuredStoreResults.filter((s): s is Store => s !== null)
