@@ -13,11 +13,33 @@ import { getAffiliateSearchUrl, getDealAffiliateUrl } from '@/lib/affiliates'
 const generateLogoUrl = (domain: string) =>
   `https://www.google.com/s2/favicons?domain=${domain}&sz=128`
 
+// Scraper-output store names sometimes already include a TLD ("Amazon.ca"),
+// which makes the slug 'amazon.ca'; blindly appending '.ca' produces
+// 'amazon.ca.ca' which 404s on Google's favicon service. And some retailers
+// aren't .ca at all (RedFlagDeals is .com). Build the domain accordingly.
+const KNOWN_DOMAINS: Record<string, string> = {
+  redflagdeals: 'redflagdeals.com',
+}
+const buildFaviconDomain = (slug: string): string => {
+  const cleaned = slug.toLowerCase().replace(/-/g, '')
+  if (/\.(ca|com|org|net|co|io|us)$/.test(cleaned)) return cleaned
+  return KNOWN_DOMAINS[cleaned] || `${cleaned}.ca`
+}
+
 // Helper to generate store logo path from store name
 const getStoreLogoPath = (store: string | null | undefined): string | null => {
   if (!store) return null
   const slug = store.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
   return `/images/stores/${slug}.png`
+}
+
+// RFD-sourced Amazon deals don't carry reliable product images (the scraped
+// image_url is often a hotlink that 403s from non-amazon origins). Skip the
+// broken-image flash and render the Amazon logo directly. Non-RFD rows
+// (guru-prefixed slugs) come with real product images in blob storage.
+const isRfdAmazon = (store: string | null | undefined, slug: string): boolean => {
+  if (!store) return false
+  return /amazon/i.test(store) && !slug.startsWith('guru-')
 }
 
 export function DealCard({
@@ -46,21 +68,24 @@ export function DealCard({
 
   // Get store logo path for fallback
   const storeLogoFallback = getStoreLogoPath(store)
+  const skipToLogo = isRfdAmazon(store, slug) && !!storeLogoFallback
 
-  const [imgSrc, setImgSrc] = useState(imageUrl || '')
-  const [imgError, setImgError] = useState(false)
-  const [triedStoreLogo, setTriedStoreLogo] = useState(false)
-  const [noProductImage, setNoProductImage] = useState(!imageUrl)
+  // If the product image fails and the store-logo fallback also fails (or
+  // there was no usable image to begin with), drop the card entirely —
+  // never render a dead/broken image placeholder.
+  const initialSrc = skipToLogo
+    ? storeLogoFallback!
+    : (imageUrl || storeLogoFallback || '')
+  const [imgSrc, setImgSrc] = useState(initialSrc)
+  const [triedFallback, setTriedFallback] = useState(skipToLogo || !imageUrl)
+  const [hideCard, setHideCard] = useState(!initialSrc)
 
   const handleImageError = () => {
-    if (!imgError && !triedStoreLogo && storeLogoFallback) {
-      // First error: try store logo as product image
-      setTriedStoreLogo(true)
+    if (!triedFallback && storeLogoFallback) {
+      setTriedFallback(true)
       setImgSrc(storeLogoFallback)
-    } else if (!imgError) {
-      // All image sources failed — hide image, show text layout
-      setImgError(true)
-      setNoProductImage(true)
+    } else {
+      setHideCard(true)
     }
   }
 
@@ -72,7 +97,7 @@ export function DealCard({
   const storeSlug = propStoreSlug || storeData?.slug || store?.toLowerCase().replace(/\s+/g, '-') || ''
 
   // Determine store logo - use prop for Flipp, then database data, then fallback to generated URL
-  const storeLogo = propStoreLogo || storeData?.logo_url || generateLogoUrl(storeSlug.replace(/-/g, '') + '.ca')
+  const storeLogo = propStoreLogo || storeData?.logo_url || generateLogoUrl(buildFaviconDomain(storeSlug))
   const storeName = storeData?.name || store
 
   // Store policy data for SEO badges (from storeData prop)
@@ -94,15 +119,11 @@ export function DealCard({
   const hasDiscount = discountPercent !== null && discountPercent > 0
 
   // Function to handle Read More click
-  // Affiliated deals go to store page, others go to deal page
+  // Read More always goes to the internal deal page; the card itself (outer <a>) already goes to the affiliate URL
   const handleReadMoreClick = (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
-    if (effectiveAffiliateUrl && storeSlug) {
-      window.location.href = `/stores/${storeSlug}`
-    } else {
-      window.location.href = `/deals/${slug}`
-    }
+    window.location.href = `/deals/${slug}`
   }
 
   const cardContent = (
@@ -173,32 +194,15 @@ export function DealCard({
         )}
 
 
-        {/* Image or No-Image Layout */}
-        {noProductImage ? (
-          <div className="absolute inset-0 flex flex-col items-center justify-center p-4 gap-2">
-            {storeLogoFallback && (
-              /* eslint-disable-next-line @next/next/no-img-element */
-              <img
-                src={storeLogoFallback}
-                alt={store || 'Store'}
-                className="w-20 h-20 object-contain opacity-60"
-                onError={(e) => { e.currentTarget.style.display = 'none' }}
-              />
-            )}
-            <p className="text-xs text-slate text-center line-clamp-4 leading-relaxed px-2">
-              {title}
-            </p>
-          </div>
-        ) : (
-          /* eslint-disable-next-line @next/next/no-img-element */
-          <img
-            src={imgSrc}
-            alt={title}
-            className="absolute inset-0 w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-200"
-            onError={handleImageError}
-            loading="lazy"
-          />
-        )}
+        {/* Product image — card is unmounted via hideCard if this fails */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={imgSrc}
+          alt={title}
+          className="absolute inset-0 w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-200"
+          onError={handleImageError}
+          loading="lazy"
+        />
       </div>
 
       {/* Content */}
@@ -221,7 +225,7 @@ export function DealCard({
         )}
 
         {/* Title */}
-        <h3 className={`deal-card-title mb-2 group-hover:text-maple-red transition-colors ${noProductImage ? 'line-clamp-3' : 'line-clamp-2'}`}>
+        <h3 className="deal-card-title mb-2 group-hover:text-maple-red transition-colors line-clamp-2">
           {title}
         </h3>
 
@@ -311,6 +315,9 @@ export function DealCard({
       </div>
     </>
   )
+
+  // Never render a card whose image we couldn't load
+  if (hideCard) return null
 
   // Always go direct to retailer if affiliateUrl exists
   if (effectiveAffiliateUrl) {
