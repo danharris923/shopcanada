@@ -127,14 +127,6 @@ export function DealCard({
   const hasPriceData = priceNum !== null && priceNum > 0
   const hasDiscount = discountPercent !== null && discountPercent > 0
 
-  // Function to handle Read More click
-  // Read More always goes to the internal deal page; the card itself (outer <a>) already goes to the affiliate URL
-  const handleReadMoreClick = (e: React.MouseEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-    window.location.href = `/deals/${slug}`
-  }
-
   const cardContent = (
     <>
       {/* Image Container */}
@@ -311,15 +303,13 @@ export function DealCard({
           </div>
         )}
 
-        {/* Read More / Shop Now button (only for regular variant) */}
+        {/* View Deal CTA (only for regular variant) — visual only;
+            click bubbles up to the outer <a> and goes to the affiliate URL */}
         {!isFlipp && (
           <div className="mt-2">
-            <button
-              onClick={handleReadMoreClick}
-              className="inline-block px-4 py-2 bg-white border border-charcoal text-charcoal text-sm font-medium rounded-lg hover:shadow-md transition-shadow"
-            >
-              Read More
-            </button>
+            <span className="inline-block px-4 py-2 bg-white border border-charcoal text-charcoal text-sm font-medium rounded-lg group-hover:shadow-md transition-shadow">
+              View Deal
+            </span>
           </div>
         )}
       </div>
