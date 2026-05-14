@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Leaf, ExternalLink, RotateCcw, Truck } from 'lucide-react'
 import Link from 'next/link'
 import { DealCardProps } from '@/types/deal'
@@ -70,15 +70,14 @@ export function DealCard({
   const storeLogoFallback = getStoreLogoPath(store)
   const skipToLogo = isRfdAmazon(store, slug) && !!storeLogoFallback
 
-  // If the product image fails and the store-logo fallback also fails (or
-  // there was no usable image to begin with), drop the card entirely —
-  // never render a dead/broken image placeholder.
-  const initialSrc = skipToLogo
-    ? storeLogoFallback!
-    : (imageUrl || storeLogoFallback || '')
+  // The store logo is an onError fallback only — never the primary image.
+  // Upscaling a 128px logo into a 400px card slot looks blank with just
+  // a title floating below. If imageUrl is missing, drop the card.
+  const initialSrc = skipToLogo ? storeLogoFallback! : (imageUrl || '')
   const [imgSrc, setImgSrc] = useState(initialSrc)
-  const [triedFallback, setTriedFallback] = useState(skipToLogo || !imageUrl)
+  const [triedFallback, setTriedFallback] = useState(skipToLogo)
   const [hideCard, setHideCard] = useState(!initialSrc)
+  const imgRef = useRef<HTMLImageElement>(null)
 
   const handleImageError = () => {
     if (!triedFallback && storeLogoFallback) {
@@ -88,6 +87,16 @@ export function DealCard({
       setHideCard(true)
     }
   }
+
+  // SSR/hydration race: if the <img> finished loading with zero
+  // dimensions before React attached its onError listener, the listener
+  // never fires. Re-check on mount and after each src change.
+  useEffect(() => {
+    const img = imgRef.current
+    if (img && img.complete && img.naturalWidth === 0) {
+      handleImageError()
+    }
+  }, [imgSrc])
 
   const priceNum = toNumber(price)
   const originalPriceNum = toNumber(originalPrice)
@@ -117,14 +126,6 @@ export function DealCard({
   // Flipp-specific: check if we have price data
   const hasPriceData = priceNum !== null && priceNum > 0
   const hasDiscount = discountPercent !== null && discountPercent > 0
-
-  // Function to handle Read More click
-  // Read More always goes to the internal deal page; the card itself (outer <a>) already goes to the affiliate URL
-  const handleReadMoreClick = (e: React.MouseEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-    window.location.href = `/deals/${slug}`
-  }
 
   const cardContent = (
     <>
@@ -197,6 +198,7 @@ export function DealCard({
         {/* Product image — card is unmounted via hideCard if this fails */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
+          ref={imgRef}
           src={imgSrc}
           alt={title}
           className="absolute inset-0 w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-200"
@@ -301,15 +303,13 @@ export function DealCard({
           </div>
         )}
 
-        {/* Read More / Shop Now button (only for regular variant) */}
+        {/* View Deal CTA (only for regular variant) — visual only;
+            click bubbles up to the outer <a> and goes to the affiliate URL */}
         {!isFlipp && (
           <div className="mt-2">
-            <button
-              onClick={handleReadMoreClick}
-              className="inline-block px-4 py-2 bg-white border border-charcoal text-charcoal text-sm font-medium rounded-lg hover:shadow-md transition-shadow"
-            >
-              Read More
-            </button>
+            <span className="inline-block px-4 py-2 bg-white border border-charcoal text-charcoal text-sm font-medium rounded-lg group-hover:shadow-md transition-shadow">
+              View Deal
+            </span>
           </div>
         )}
       </div>
